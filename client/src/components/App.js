@@ -1,12 +1,13 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
 import './App.css';
+import Header from './Header';
 
 const App = () => (
-    <div className="App">
-      <p>
-        Inside App Component
-      </p>
-    </div>
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>
 );
 
 export default App;
