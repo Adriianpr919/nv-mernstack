@@ -11,5 +11,9 @@
     "Paez"
   ],
   "author": "Adrian Paez",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.1"
+  }
 }
