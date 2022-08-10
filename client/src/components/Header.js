@@ -7,7 +7,7 @@ const Header = () => {
     const showNavigation = () => (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container px-4 px-lg-5">
-                <Link to='#' className="navbar-brand">
+                <Link to='/' className="navbar-brand">
                     <img src={Logo} alt="Nury Valenzuela Joyería." title="Nury Valenzuela Joyería." />
                 </Link>
                 <button 
@@ -26,14 +26,14 @@ const Header = () => {
                             <Link 
                             className="nav-link active" 
                             aria-current="page" 
-                            to='#'>
+                            to='/'>
                                 <i class="fa-solid fa-globe"></i> Inicio.
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link 
                             className="nav-link" 
-                            to='#'>
+                            to='/about'>
                                 <i class="fa-solid fa-circle-info"></i> Sobre Nosotros.
                             </Link>
                         </li>
@@ -49,28 +49,17 @@ const Header = () => {
                             </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <Link 
-                                    className="dropdown-item" 
-                                    to='#'>
-                                        <i class="fa-solid fa-bag-shopping"></i> Todos Los Productos.
-                                    </Link>
-                                </li>
-                                <li>
                                     <hr className="dropdown-divider" />
                                 </li>
                                 <li>
                                     <Link 
                                     className="dropdown-item" 
-                                    to='#'>
-                                        <i class="fa-solid fa-bag-shopping"></i> Artículos Populares.
+                                    to='/products'>
+                                        <i class="fa-solid fa-bag-shopping"></i> Ver Todos Los Productos.
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link 
-                                    className="dropdown-item" 
-                                    to='#'>
-                                        <i class="fa-solid fa-bag-shopping"></i> Los Recién Llegados.
-                                    </Link>
+                                    <hr className="dropdown-divider" />
                                 </li>
                             </ul>
                         </li>
@@ -81,14 +70,14 @@ const Header = () => {
                         <li className="nav-item">
                             <Link 
                             className="nav-link" 
-                            to='#'>
+                            to='/signing'>
                                 <i class="fa-solid fa-house-chimney-user"></i> Inicia Sesión.
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link 
                             className="nav-link" 
-                            to='#'>
+                            to='/signup'>
                                 <i class="fa-solid fa-user-plus"></i> Registrarse.
                             </Link>
                         </li>
