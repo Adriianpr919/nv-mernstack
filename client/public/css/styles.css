@@ -10,6 +10,39 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+@font-face {
+  font-family: "Zara";
+  src: url("../assets/Zara-Font/Zara.otf");
+}
+
+/** Scroll **/
+body::-webkit-scrollbar {
+  width: 8px; /** Tamaño Scroll en Vertical */
+  height: 8px; /** Tamaño Scroll en Horizontal **/
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(136, 136, 136); /** Color barra **/
+  border-radius: 4px; /** Borde redondeado barra **/
+}
+
+body::-webkit-scrollbar-track {
+  background: #ffffff; /** Color fondo **/
+  border-radius: 4px; /** Borde redondeado **/
+}
+
+/** Al pasar el cursor **/
+body::-webkit-scrollbar-thumb:hover {
+  background: rgb(136, 136, 136); /** Color barra **/
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); /** Sombra barra **/
+}
+
+body::-webkit-scrollbar-track:hover,
+body::-webkit-scrollbar-track:active {
+  background: #ffffff; /** Color fondo **/
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -53,8 +86,8 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-font-sans-serif: 'Zara', sans-serif;
+  --bs-font-monospace: 'Zara', sans-serif;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
