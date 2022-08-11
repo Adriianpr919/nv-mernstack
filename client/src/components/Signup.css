@@ -63,3 +63,7 @@ input:valid+span:after {
 .signup-form .input-group:focus-within {
     z-index: 2;
 }
+
+.invalid-feedback{
+    color: white;
+}
