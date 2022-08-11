@@ -5,18 +5,21 @@ import equals from 'validator/lib/equals';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import { Link } from 'react-router-dom';
+import { signup } from '../api/auth';
 import './Signup.css';
 
 const Signup = () => {
+    /************ component state *************/
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        password2: '',
+        username: 'example123',
+        email: 'example123@gmail.com',
+        password: 'abc12345',
+        password2: 'abc12345',
         successMsg: false,
         errorMsg: false,
-        loading: true,
+        loading: false,
     });
+
     const {
         username,
         email,
@@ -53,22 +56,38 @@ const Signup = () => {
                 ...formData, 
                 errorMsg: 'Todos Los Campos Son Obligatorios.',
             });
-        } else if (!isEmail(email)) {
+        } else if ( !isEmail(email) ) {
             setFormData({
                 ...formData,
                 errorMsg: 'Tu Correo Inválido.',
             });
-        } else if (!equals(password, password2)) {
+        } else if ( !equals(password, password2) ) {
             setFormData({
                 ...formData, 
                 errorMsg: 'La Contraseña No Coincide.',
             });
         } else {
-            //Successfully
-            setFormData({
-                ...formData,
-                successMsg: 'Éxito De La Validación.',
-            });
+            const { username, email, password } = formData;
+            const data = { username, email, password };
+
+            setFormData({ ...formData, loading: true });
+
+            signup(data)
+                .then((response) => {
+                    console.log('Éxito De Registro De Axios: ', response);
+                    setFormData({
+                        username: '',
+                        email: '',
+                        password: '',
+                        password2: '',
+                        loading: false,
+                        successMsg: response.data.succcessMessage,
+                    });
+                })
+                .catch((err) => {
+                    console.log('Error De Registro De Axios: ', err);
+                    setFormData({ ...formData, loading: false });
+                });
         }
     };    
     /********************************************** 
