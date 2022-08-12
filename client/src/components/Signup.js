@@ -33,7 +33,6 @@ const Signup = () => {
      * EVENT HANDLERS 
     **********************************************/
     const handleChange = (evt) => {
-        //console.log(evt);
         setFormData({
             ...formData,
             [evt.target.name]: evt.target.value,
@@ -47,9 +46,9 @@ const Signup = () => {
 
         // client-side validation
         if (
-            isEmpty(username) ││ 
-            isEmpty(email) ││ 
-            isEmpty(password) ││ 
+            isEmpty(username) || 
+            isEmpty(email) || 
+            isEmpty(password) || 
             isEmpty(password2)
         ) {
             setFormData({
