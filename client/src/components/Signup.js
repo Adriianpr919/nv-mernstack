@@ -6,7 +6,6 @@ import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import { Link } from 'react-router-dom';
 import { signup } from '../api/auth';
-import './Signup.css';
 
 const Signup = () => {
     /************ component state *************/
