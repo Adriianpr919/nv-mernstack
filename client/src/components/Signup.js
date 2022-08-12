@@ -80,12 +80,12 @@ const Signup = () => {
                         password: '',
                         password2: '',
                         loading: false,
-                        successMsg: response.data.succcessMessage,
+                        successMsg: response.data.successMessage,
                     });
                 })
                 .catch((err) => {
                     console.log('Error De Registro De Axios: ', err);
-                    setFormData({ ...formData, loading: false });
+                    setFormData({ ...formData, loading: false, errorMsg: err.response.data.errorMessage });
                 });
         }
     };    
@@ -147,7 +147,7 @@ const Signup = () => {
     **********************************************/
     return (
         <div className="signup-container">
-            <div className="px-3 vh-100">
+            <div className="row px-3 vh-100">
                 <div className="col-md-5 mx-auto align-self-center">
                     {successMsg && showSuccessMsg(successMsg)}
                     {errorMsg && showErrorMsg(errorMsg)}
