@@ -18,7 +18,6 @@ const Signup = () => {
         errorMsg: false,
         loading: false,
     });
-
     const {
         username,
         email,
@@ -84,7 +83,11 @@ const Signup = () => {
                 })
                 .catch((err) => {
                     console.log('Error De Registro De Axios: ', err);
-                    setFormData({ ...formData, loading: false, errorMsg: err.response.data.errorMessage });
+                    setFormData({ 
+                        ...formData, 
+                        loading: false, 
+                        errorMsg: err.response.data.errorMessage, 
+                    });
                 });
         }
     };    
@@ -99,35 +102,69 @@ const Signup = () => {
             </p>
             {/*Username*/}
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-user-plus"></i></span>
-                <input type="text" name="username" value={username} onChange={handleChange} className="form-control" placeholder="Nombre De Usuario." aria-label="Nombre De Usuario." aria-describedby="basic-addon1" required/>
-                <span className="validity"></span>
+                <span className="input-group-text"><i class="fa-solid fa-user-plus"></i></span>
+                <input 
+                    type="text" 
+                    name="username" 
+                    value={username} 
+                    onChange={handleChange} 
+                    className="form-control" 
+                    placeholder="Nombre De Usuario."
+                    aria-label="Nombre De Usuario."
+                    required 
+                />
                 <div className="invalid-feedback">Por favor ingrese el nombre de usuario en el área de texto.</div>
             </div>
             {/*Email*/}
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
-                <input type="email" name="email" value={email} onChange={handleChange} className="form-control" placeholder="Tu Correo." aria-label="Tu Correo." aria-describedby="basic-addon1" required/>
-                <span className="validity"></span>
+                <input 
+                    type="email" 
+                    name="email" 
+                    value={email} 
+                    onChange={handleChange} 
+                    className="form-control" 
+                    placeholder="Tu Correo."
+                    aria-label="Tu Correo."
+                    required 
+                />
                 <div className="invalid-feedback">Por favor ingrese tu correo en el área de texto.</div>
             </div>
             {/*password A1*/}
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" name="password" value={password} onChange={handleChange} pattern=".{150,}" className="form-control" placeholder="Contraseña." aria-label="Contraseña." aria-describedby="basic-addon1" required/>
-                <span className="validity"></span>
+                <input 
+                    type="password" 
+                    name="password" 
+                    value={password} 
+                    onChange={handleChange} 
+                    className="form-control" 
+                    placeholder="Contraseña."
+                    aria-label="Contraseña."
+                    pattern=".{6,}" 
+                    required
+                />
                 <div className="invalid-feedback">Por favor ingrese la contraseña en el área de texto.</div>
             </div>
             {/*password A2*/}
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                <input type="password" name="password2" value={password2} onChange={handleChange} pattern=".{150,}" className="form-control" placeholder="Confirmar La Contraseña." aria-label="Confirmar La Contraseña." aria-describedby="basic-addon1" required/>
-                <span className="validity"></span>
+                <input 
+                    type="password" 
+                    name="password2" 
+                    value={password2} 
+                    onChange={handleChange} 
+                    className="form-control" 
+                    placeholder="Confirmar La Contraseña." 
+                    aria-label="Confirmar La Contraseña."
+                    pattern=".{6,}"
+                    required
+                />
                 <div className="invalid-feedback">Por favor ingrese confirmar la contraseña en el área de texto.</div>
             </div>
             {/*Signup Button*/}
             <div className="form-group">
-                <button type="submit" className="btn btn-primary d-grid gap-2 col-6 mx-auto">
+                <button type="submit" className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
                     Registrarse.
                 </button>
             </div>

@@ -14,10 +14,9 @@ app.use('/api/auth', authRoutes);
 // connect database
 connectDB();
 
-// routes
 app.get('/', (req, res) => {
     res.send('Dentro Del Servidor');
-}); 
+});
 
 const port = process.env.PORT || 5000;
 
