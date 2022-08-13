@@ -113,7 +113,6 @@ const Signup = () => {
                     aria-label="Nombre De Usuario."
                     required 
                 />
-                <div className="invalid-feedback">Por favor ingrese el nombre de usuario en el área de texto.</div>
             </div>
             {/*Email*/}
             <div className="input-group mb-3">
@@ -128,7 +127,6 @@ const Signup = () => {
                     aria-label="Tu Correo."
                     required 
                 />
-                <div className="invalid-feedback">Por favor ingrese tu correo en el área de texto.</div>
             </div>
             {/*password A1*/}
             <div className="input-group mb-3">
@@ -144,7 +142,6 @@ const Signup = () => {
                     pattern=".{6,}" 
                     required
                 />
-                <div className="invalid-feedback">Por favor ingrese la contraseña en el área de texto.</div>
             </div>
             {/*password A2*/}
             <div className="input-group mb-3">
@@ -160,7 +157,6 @@ const Signup = () => {
                     pattern=".{6,}"
                     required
                 />
-                <div className="invalid-feedback">Por favor ingrese confirmar la contraseña en el área de texto.</div>
             </div>
             {/*Signup Button*/}
             <div className="form-group">
