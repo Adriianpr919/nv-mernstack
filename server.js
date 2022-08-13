@@ -14,7 +14,7 @@ app.use('/api/auth', authRoutes);
 // connect database
 connectDB();
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
     res.send('Dentro Del Servidor');
 });
 
