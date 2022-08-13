@@ -95,7 +95,7 @@ const Signup = () => {
      * VIEWS
     **********************************************/
     const showSignupForm = () => (
-        <form className="signup-form was-validated" onSubmit={handleSubmit} noValidate>
+        <form className="signup-form" onSubmit={handleSubmit} noValidate>
             {/*Signup*/}
             <p className="text-center text-white">
                 <i class="fa-solid fa-user-plus"></i> <h3 className="titleSignup">Registrarse.</h3>
