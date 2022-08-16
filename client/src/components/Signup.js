@@ -98,7 +98,7 @@ const Signup = () => {
         <form className="signup-form" onSubmit={handleSubmit} noValidate>
             {/*Signup*/}
             <p className="text-center text-white">
-                <i class="fa-solid fa-user-plus"></i> <h3 className="titleSignup">Registrarse.</h3>
+                <i class="fa-solid fa-user-plus"></i> <h3 className="titleSignup">Regístrarse.</h3>
             </p>
             {/*Username*/}
             <div className="input-group mb-3">
@@ -161,7 +161,7 @@ const Signup = () => {
             {/*Signup Button*/}
             <div className="form-group">
                 <button type="submit" className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
-                    Registrarse.
+                    Crear Cuenta.
                 </button>
             </div>
             {/*Already have account*/}

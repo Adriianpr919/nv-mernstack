@@ -8,6 +8,13 @@ exports.signupValidator = [
         .withMessage('La Contraseña Debe Tener Al Menos 6 Caracteres.'),
 ];
 
+exports.signingValidator = [
+    check('email').isEmail().normalizeEmail().withMessage('Tu Correo Inválido.'),
+    check('password')
+        .isLength({ min: 6 })
+        .withMessage('La Contraseña Debe Tener Al Menos 6 Caracteres.'),
+];
+
 exports.validatorResult = (req, res, next) => {
     const result = validationResult(req);
     const hasErrors = !result.isEmpty();

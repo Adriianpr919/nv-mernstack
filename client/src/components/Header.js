@@ -78,7 +78,7 @@ const Header = () => {
                             <Link 
                             className="nav-link" 
                             to='/signup'>
-                                <i class="fa-solid fa-user-plus"></i> Registrarse.
+                                <i class="fa-solid fa-user-plus"></i> Regístrarse.
                             </Link>
                         </li>
                         <li>
