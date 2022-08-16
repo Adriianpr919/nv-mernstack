@@ -1,26 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
-import { Link } from 'react-router-dom';
+import { setAuthentication, isAuthenticated } from '../helpers/auth';
+import { Link, useHistory } from 'react-router-dom';
 import { signing } from '../api/auth';
 
 const Signing = () => {
+    let history = useHistory();
+
+    useEffect(() => {
+        if (isAuthenticated() && isAuthenticated().role === 1) {
+            history.push('/admin/dashboard');
+        } else if (isAuthenticated() && isAuthenticated().role === 0) {
+            history.push('/user/dashboard');
+        }
+    }, [history]);
+
     /************ component state *************/
     const [formData, setFormData] = useState({
         email: 'example123@gmail.com',
         password: 'abc12345',
         errorMsg: false,
         loading: false,
-        redirectToDashboard: false,
     });
     const {
         email,
         password,
         errorMsg,
         loading,
-        redirectToDashboard,
     } = formData;
     /********************************************** 
      * EVENT HANDLERS 
@@ -37,15 +46,12 @@ const Signing = () => {
         evt.preventDefault();
 
         // client-side validation
-        if (
-            isEmpty(email) || 
-            isEmpty(password)
-        ) {
+        if (isEmpty(email) || isEmpty(password)) {
             setFormData({
                 ...formData, 
                 errorMsg: 'Todos Los Campos Son Obligatorios.',
             });
-        } else if ( !isEmail(email) ) {
+        } else if (!isEmail(email)) {
             setFormData({
                 ...formData,
                 errorMsg: 'Tu Correo Inválido.',
@@ -57,6 +63,20 @@ const Signing = () => {
             setFormData({ ...formData, loading: true });
 
             signing(data)
+                .then((response) => {
+                    setAuthentication(response.data.token, response.data.user);
+
+                    if (isAuthenticated() && isAuthenticated().role === 1) {
+                        console.log('Redirigir Al Panel De Control Administración.');
+                        history.push('/admin/dashboard');
+                    } else {
+                        console.log('Redirigir Al Panel De Control Del Usuario.');
+                        history.push('/user/dashboard');
+                    }
+                })
+                .catch((err) => {
+                    console.log('iniciar sesión en el error de la función api: ', err);
+                });
                 
         }
     };
