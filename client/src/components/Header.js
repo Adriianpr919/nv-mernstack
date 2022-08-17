@@ -1,8 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { isAuthenticated, logout } from '../helpers/auth';
 import Logo from './img/Logonv.png';
 
-const Header = () => {
+const Header = ({ history }) => {
+    const handleLogout = (evt) => {
+        logout(() => {
+            history.push('/signing');
+        });
+    };
     //views header
     const showNavigation = () => (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -67,20 +73,61 @@ const Header = () => {
                 </div>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li className="nav-item">
-                            <Link 
-                            className="nav-link" 
-                            to='/signing'>
-                                <i class="fa-solid fa-house-chimney-user"></i> Inicia Sesión.
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link 
-                            className="nav-link" 
-                            to='/signup'>
-                                <i class="fa-solid fa-user-plus"></i> Regístrarse.
-                            </Link>
-                        </li>
+                        {!isAuthenticated() && (
+                            <Fragment>
+                                <li className="nav-item">
+                                    <Link 
+                                    className="nav-link" 
+                                    to='/signing'>
+                                        <i class="fa-solid fa-house-chimney-user"></i>{' '} 
+                                        Inicia Sesión.
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link 
+                                    className="nav-link" 
+                                    to='/signup'>
+                                        <i class="fa-solid fa-user-plus"></i> Regístrarse.
+                                    </Link>
+                                </li>
+                            </Fragment>
+                        )}
+                        {isAuthenticated() && isAuthenticated().role === 0 && (
+                            <Fragment>
+                                <li className="nav-item">
+                                    <Link 
+                                    className="nav-link active" 
+                                    aria-current="page" 
+                                    to='/user/dashboard'>
+                                        <i class="fa-solid fa-grid-horizontal"></i> Panel De Usuario.
+                                    </Link>
+                                </li>
+                            </Fragment>
+                        )}
+                        {isAuthenticated() && isAuthenticated().role === 1 && (
+                            <Fragment>
+                                <li className="nav-item">
+                                    <Link 
+                                    className="nav-link active" 
+                                    aria-current="page" 
+                                    to='/admin/dashboard'>
+                                        <i class="fa-solid fa-grid-horizontal"></i> Panel De Administrador.
+                                    </Link>
+                                </li>
+                            </Fragment>
+                        )}
+                        {isAuthenticated() && (
+                            <Fragment>
+                                <li className="nav-item">
+                                    <button 
+                                    className="btn btn-danger btn-block btn-lg d-grid gap-2 col-6 mx-auto text-secondary text-decoration-none pl-0"
+                                    onClick={handleLogout}>
+                                        <i class="fa-solid fa-hexagon-xmark"></i>{' '} 
+                                        Cerrar Sesión.
+                                    </button>
+                                </li>
+                            </Fragment>
+                        )}
                         <li>
                             <form className="d-flex">
                                 <button class="btn btn-outline-dark" type="submit">
@@ -103,4 +150,4 @@ const Header = () => {
 
 };
 
-export default Header;
+export default withRouter(Header);

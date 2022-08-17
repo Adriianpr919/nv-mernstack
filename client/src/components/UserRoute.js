@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { isAuthenticated } from '../helpers/auth';
 
-const AdminRoute = ({ component: Component, ...rest }) => {
+const UserRoute = ({ component: Component, ...rest }) => {
     return (
         <Route
             {...rest}
             render={(props) => 
-                isAuthenticated() && isAuthenticated().role === 1 ? (
+                isAuthenticated() && isAuthenticated().role === 0 ? (
                     <Component {...props} />
                 ) : (
                     <Redirect to="/signing" />
@@ -17,4 +17,4 @@ const AdminRoute = ({ component: Component, ...rest }) => {
     );
 };
 
-export default AdminRoute;
+export default UserRoute;

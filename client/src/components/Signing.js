@@ -76,6 +76,11 @@ const Signing = () => {
                 })
                 .catch((err) => {
                     console.log('iniciar sesión en el error de la función api: ', err);
+                    setFormData({ 
+                        ...formData, 
+                        loading: false, 
+                        errorMsg: err.response.data.errorMessage, 
+                    });
                 });
                 
         }

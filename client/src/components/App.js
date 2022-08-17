@@ -11,6 +11,8 @@ import Products from './Products';
 import Info from './Info';
 import UserDashboard from './UserDashboard';
 import AdminDashboard from './AdminDashboard';
+import AdminRoute from './AdminRoute';
+import UserRoute from './UserRoute';
 import NotFound from './NotFound';
 
 const App = () => (
@@ -24,8 +26,8 @@ const App = () => (
           <Route exact path="/about" component={About} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/info" component={Info} />
-          <Route exact path="/user/dashboard" component={UserDashboard} />
-          <Route exact path="/admin/dashboard" component={AdminDashboard} />
+          <UserRoute exact path="/user/dashboard" component={UserDashboard} />
+          <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
           <Route component={NotFound} />
         </Switch>
       </main>
