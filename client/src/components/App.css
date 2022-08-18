@@ -1,3 +1,19 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "Zara";
+    src: url("../../public/assets/Zara-Font/Zara.otf");
+}
+
+:root {
+    --bs-font-sans-serif: 'Zara', sans-serif;
+    --bs-font-monospace: 'Zara', sans-serif;
+}
+
+body {
+    font-family: var(--bs-body-font-family);
+}
+
 .signup-container {
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,6 +30,14 @@
     opacity: 0.8;
 
     background: linear-gradient( 45deg, rgba(0, 0, 0, 0.9), rgb(223,177,106) 100% );
+}
+
+.logoutHover {
+    color: black;
+}
+
+.logoutHover:hover {
+    color: white;
 }
 
 .linkLogin {

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
+import Head from './Head';
 import Header from './Header';
 import Home from './Home';
 import Signup from './Signup';
@@ -17,6 +18,7 @@ import NotFound from './NotFound';
 
 const App = () => (
     <BrowserRouter>
+      <Head />
       <Header />
       <main>
         <Switch>

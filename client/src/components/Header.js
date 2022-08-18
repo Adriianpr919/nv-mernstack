@@ -99,7 +99,7 @@ const Header = ({ history }) => {
                                     className="nav-link active" 
                                     aria-current="page" 
                                     to='/user/dashboard'>
-                                        <i class="fa-solid fa-grid-horizontal"></i> Panel De Usuario.
+                                        <i class="fa-solid fa-house-user"></i> Panel De Usuario.
                                     </Link>
                                 </li>
                             </Fragment>
@@ -111,7 +111,7 @@ const Header = ({ history }) => {
                                     className="nav-link active" 
                                     aria-current="page" 
                                     to='/admin/dashboard'>
-                                        <i class="fa-solid fa-grid-horizontal"></i> Panel De Administrador.
+                                        <i class="fa-solid fa-house-user"></i> Panel De Administrador.
                                     </Link>
                                 </li>
                             </Fragment>
@@ -120,9 +120,9 @@ const Header = ({ history }) => {
                             <Fragment>
                                 <li className="nav-item">
                                     <button 
-                                    className="btn btn-danger btn-block btn-lg d-grid gap-2 col-6 mx-auto text-secondary text-decoration-none pl-0"
+                                    className="btn btn-outline-danger logoutHover"
                                     onClick={handleLogout}>
-                                        <i class="fa-solid fa-hexagon-xmark"></i>{' '} 
+                                        <i class="fa-solid fa-circle-xmark"></i>{' '} 
                                         Cerrar Sesión.
                                     </button>
                                 </li>

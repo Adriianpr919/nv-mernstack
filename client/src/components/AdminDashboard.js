@@ -1,4 +1,5 @@
 import React from 'react';
+import './AdminStyle.css';
 
 const AdminDashboard = () => {
     /********************************************** 
@@ -9,9 +10,9 @@ const AdminDashboard = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <h1>
-                            <i class="fa-solid fa-grid-horizontal"> Panel De Administrador.</i>
-                        </h1>
+                        <h5 className="fontFamilyH6">
+                            <i class="fa-solid fa-house-user"></i> Panel De Administrador.
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -24,31 +25,31 @@ const AdminDashboard = () => {
                 <div className="row pb-3">
                     <div className="col-md-4 my-1">
                         <button className="btn btn-outline-dark btn-block">
-                            <i class="fa-solid fa-circle-plus"> Añadir Categoría.</i>
+                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
                         <button className="btn btn-outline-info btn-block">
-                            <i class="fa-solid fa-circle-plus"> Añadir Categoría Talla.</i>
+                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría Talla.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
                         <button className="btn btn-outline-warning btn-block">
-                            <i class="fa-solid fa-circle-plus"> Añadir Categoría Color De Oro.</i>
+                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría Color De Oro.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
                         <button className="btn btn-outline-secondary btn-block">
-                            <i class="fa-solid fa-circle-plus"> Añadir Categoría Color De Piedra.</i>
+                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría Color De Piedra.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
                         <button className="btn btn-outline-primary btn-block">
-                            <i class="fa-solid fa-circle-plus"> Añadir Productos.</i>
+                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Productos.</h5>
                         </button>
                     </div>
 
@@ -56,7 +57,7 @@ const AdminDashboard = () => {
                         <button className="btn btn-outline-success btn-block">
                             <i class="fa-solid fa-eye"> 
                                 {' '}
-                                Ver Pedidos.
+                                <h5 className="fontFamilyH6">Ver Pedidos.</h5> 
                             </i>
                         </button>
                     </div>
@@ -69,8 +70,8 @@ const AdminDashboard = () => {
     **********************************************/
     return (
         <section>
-            { showHeader() }
-            { showActionBtns() }
+            {showHeader()}
+            {showActionBtns()}
         </section>
     );
 };
