@@ -66,5 +66,13 @@
         })
     })()
     </script>
+    <script type="text/javascript" charset="utf8">
+      var myModal = document.getElementById('myModal')
+      var myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+      })
+    </script>
   </body>
 </html>
