@@ -1,7 +1,51 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
+import { createCategory1 } from '../api/category1';
+import isEmpty from 'validator/lib/isEmpty';
+import { showErrorMsg, showSuccessMsg } from '../helpers/message';
+import { showLoading } from '../helpers/loading';
 import './AdminStyle.css';
 
 const AdminDashboard = () => {
+    const [category1, setCategory1] = useState('');
+    
+    const [errorMsg, setErrorMsg] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
+    const [loading, setLoading] = useState('false');
+    /********************************************** 
+     * EVENT HANDLERS
+    **********************************************/
+    const handleMessages = (_evt) => {
+        setErrorMsg('');
+        setSuccessMsg('');
+    };
+
+    const handleCategory1Change = (evt) => {
+        setErrorMsg('');
+        setSuccessMsg('');
+        setCategory1(evt.target.value);
+    };
+
+    const handleCategory1Submit = (evt) => {
+        evt.preventDefault();
+
+        if (isEmpty(category1)) {
+            setErrorMsg('Por favor Ingrese Una Categoría.'); 
+        } else {
+            const data = { category1 };
+
+            setLoading(true);
+            createCategory1(data)
+                .then((response) => {
+                    setLoading(false);
+                    setSuccessMsg(response.data.successMessage);
+                    setCategory1('');
+                })
+                .catch((err) => {
+                    setLoading(false);
+                    setErrorMsg(err.response.data.errorMessage);
+                });
+        }
+    };
     /********************************************** 
      * VIEWS
     **********************************************/
@@ -69,257 +113,51 @@ const AdminDashboard = () => {
      * MODAL PLUGIN DEFINITIONS
     **********************************************/
     const showCategoryModal1 = () => (
-        <div id="addCategoryModal1" className="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="addCategoryModal1" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">
                 <div className="modal-content">
+                <form onSubmit={handleCategory1Submit}>    
                 <div className="modal-header bg-dark text-white">
-                    <h5 className="modal-title" id="exampleModalLabel">
+                    <h5 className="modal-title">
                     <i class="fa-solid fa-circle-plus"></i> Añadir Categoría.
                     </h5>
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
+                    <button className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
                         <span>
                         <i class="fa-solid fa-circle-xmark"></i> Cerrar.
                         </span>
                     </button>
                 </div>
                 <div className="modal-body my-2">
-                    <form>
-                    <div className="row g-2">
-                    <div className="col-md">
-                        <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInputGrid" placeholder="Añadir Categoría." />
-                        <label for="floatingInputGrid"><i class="fa-solid fa-circle-plus"></i> Añadir Categoría. *:</label>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
+                    {errorMsg && showErrorMsg(errorMsg)}
+                    {successMsg && showSuccessMsg(successMsg)}
+
+                    {loading ? (
+                            <div className="text-center">
+                                {showLoading()}
+                            </div>
+                        ) : (
+                            <Fragment>
+                                <label className="text-secondary"><i class="fa-solid fa-circle-plus"></i> Añadir Categoría. *:</label>
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Añadir Categoría." 
+                                    name="category1"
+                                    value={category1}
+                                    onChange={handleCategory1Change} 
+                                />
+                            </Fragment>
+                    )}
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">
+                    <button className="btn btn-outline-danger" data-bs-dismiss="modal">
                     <i class="fa-solid fa-circle-xmark"></i> Cerrar.
                     </button>
-                    <button type="button" className="btn btn-outline-success">
+                    <button type="submit" className="btn btn-outline-success">
                     <i class="fa-solid fa-floppy-disk"></i> Guardar.
                     </button>
                 </div>
-                </div>
-            </div>
-        </div>
-    );
-    const showCategoryModal2 = () => (
-        <div id="addCategoryModal2" className="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-lg">
-                <div className="modal-content">
-                <div className="modal-header bg-info">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                        <i class="fa-solid fa-circle-plus"></i> Añadir Categoría Talla.
-                    </h5>
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
-                        <span>
-                        <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                        </span>
-                    </button>
-                </div>
-                <div className="modal-body my-2">
-                    <form>
-                    <div className="row g-2">
-                    <div className="col-md">
-                        <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInputGrid" placeholder="Añadir Categoría Talla." />
-                        <label for="floatingInputGrid"><i class="fa-solid fa-circle-plus"></i> Añadir Categoría Talla. *:</label>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                    </button>
-                    <button type="button" className="btn btn-outline-success">
-                    <i class="fa-solid fa-floppy-disk"></i> Guardar.
-                    </button>
-                </div>
-                </div>
-            </div>
-        </div>
-    );
-    const showCategoryModal3 = () => (
-        <div id="addCategoryModal3" className="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-lg">
-                <div className="modal-content">
-                <div className="modal-header bg-warning">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                        <i class="fa-solid fa-circle-plus"></i> Añadir Categoría Color De Oro.
-                    </h5>
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
-                        <span>
-                        <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                        </span>
-                    </button>
-                </div>
-                <div className="modal-body my-2">
-                    <form>
-                    <div className="row g-2">
-                    <div className="col-md">
-                        <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInputGrid" placeholder="Añadir Categoría Color De Oro." />
-                        <label for="floatingInputGrid"><i class="fa-solid fa-circle-plus"></i> Añadir Categoría Color De Oro. *:</label>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                    </button>
-                    <button type="button" className="btn btn-outline-success">
-                    <i class="fa-solid fa-floppy-disk"></i> Guardar.
-                    </button>
-                </div>
-                </div>
-            </div>
-        </div>
-    );
-    const showCategoryModal4 = () => (
-        <div id="addCategoryModal4" className="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-lg">
-                <div className="modal-content">
-                <div className="modal-header bg-secondary text-white">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                        <i class="fa-solid fa-circle-plus"></i> Añadir Categoría Color De Piedra.
-                    </h5>
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
-                        <span>
-                        <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                        </span>
-                    </button>
-                </div>
-                <div className="modal-body my-2">
-                    <form>
-                    <div className="row g-2">
-                    <div className="col-md">
-                        <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInputGrid" placeholder="Añadir Categoría Color De Piedra." />
-                        <label for="floatingInputGrid"><i class="fa-solid fa-circle-plus"></i> Añadir Categoría Color De Piedra. *:</label>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                    </button>
-                    <button type="button" className="btn btn-outline-success">
-                    <i class="fa-solid fa-floppy-disk"></i> Guardar.
-                    </button>
-                </div>
-                </div>
-            </div>
-        </div>
-    );
-    const showCategoryModal5 = () => (
-        <div id="addCategoryModal5" className="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-lg">
-                <div className="modal-content">
-                <div className="modal-header bg-primary text-white">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                        <i class="fa-solid fa-circle-plus"></i> Añadir Productos.
-                    </h5>
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
-                        <span>
-                        <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                        </span>
-                    </button>
-                </div>
-                <div className="modal-body my-2">
-                    <form>
-                    <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="floatingInputGrid" placeholder="Nombre Del Producto." />
-                            <label for="floatingInputGrid"><i class="fa-solid fa-circle-plus"></i> Nombre Del Producto. *:</label>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <input type="number" className="form-control" id="floatingInputGrid" placeholder="Precio Anterior." />
-                            <label for="floatingInputGrid"><i class="fa-solid fa-circle-dollar-to-slot"></i> Precio Anterior. *:</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <input type="number" className="form-control" id="floatingInputGrid" placeholder="Precio Actual." />
-                            <label for="floatingInputGrid"><i class="fa-solid fa-circle-dollar-to-slot"></i> Precio Actual. *:</label>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <input type="number" className="form-control" id="floatingInputGrid" placeholder="Cantidad." />
-                            <label for="floatingInputGrid"><i class="fa-solid fa-hashtag"></i> Cantidad. *:</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                                talla
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                                color de oro
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                                color de piedra
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <textarea className="form-control" placeholder="Descripción." id="floatingTextarea2" style={{height: "100px"}}></textarea>
-                            <label for="floatingTextarea2"><i class="fa-solid fa-circle-plus"></i> Descripción. *:</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <select className="form-select" id="floatingSelect" aria-label="Selecciónar Categorías.">
-                                <option selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <label for="floatingSelect"><i class="fa-solid fa-circle-plus"></i> Selecciónar Categorías. *:</label>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="form-floating mb-3">
-                            <input type="file" className="form-control" id="inputGroupFile02" />
-                            <label for="floatingFile"><i class="fa-solid fa-file-image"></i> Fotos. *:</label>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-circle-xmark"></i> Cerrar.
-                    </button>
-                    <button type="button" className="btn btn-outline-success">
-                    <i class="fa-solid fa-floppy-disk"></i> Guardar.
-                    </button>
-                </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -332,10 +170,6 @@ const AdminDashboard = () => {
             {showHeader()}
             {showActionBtns()}
             {showCategoryModal1()}
-            {showCategoryModal2()}
-            {showCategoryModal3()}
-            {showCategoryModal4()}
-            {showCategoryModal5()}
         </section>
     );
 };
