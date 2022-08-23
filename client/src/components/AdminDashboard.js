@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react';
-import { createCategory1 } from '../api/category1';
+import { createCategory } from '../api/category';
 import isEmpty from 'validator/lib/isEmpty';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import './AdminStyle.css';
 
 const AdminDashboard = () => {
-    const [category1, setCategory1] = useState('');
+    const [category, setCategory] = useState('');
     
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
@@ -19,26 +19,26 @@ const AdminDashboard = () => {
         setSuccessMsg('');
     };
 
-    const handleCategory1Change = (evt) => {
+    const handleCategoryChange = (evt) => {
         setErrorMsg('');
         setSuccessMsg('');
-        setCategory1(evt.target.value);
+        setCategory(evt.target.value);
     };
 
-    const handleCategory1Submit = (evt) => {
+    const handleCategorySubmit = (evt) => {
         evt.preventDefault();
 
-        if (isEmpty(category1)) {
+        if (isEmpty(category)) {
             setErrorMsg('Por favor Ingrese Una Categoría.'); 
         } else {
-            const data = { category1 };
+            const data = { category };
 
             setLoading(true);
-            createCategory1(data)
+            createCategory(data)
                 .then((response) => {
                     setLoading(false);
                     setSuccessMsg(response.data.successMessage);
-                    setCategory1('');
+                    setCategory('');
                 })
                 .catch((err) => {
                     setLoading(false);
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
                 <div className="row">
                     <div className="col-md-6">
                         <h5 className="fontFamilyH6">
-                            <i class="fa-solid fa-house-user"></i> Panel De Administrador.
+                            <i className="fas fa-user-tie"></i> Panel De Administrador.
                         </h5>
                     </div>
                 </div>
@@ -68,38 +68,38 @@ const AdminDashboard = () => {
             <div className="container">
                 <div className="row pb-3">
                     <div className="col-md-4 my-1">
-                        <button className="btn btn-outline-dark btn-block" data-bs-toggle="modal" data-bs-target="#addCategoryModal1">
-                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría.</h5>
+                        <button className="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#addCategoryModal">
+                            <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Categoría.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
-                        <button className="btn btn-outline-info btn-block" data-bs-toggle="modal" data-bs-target="#addCategoryModal2">
-                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría Talla.</h5>
+                        <button className="btn btn-outline-info btn-block" data-toggle="modal" data-target="#addCategoryModal1">
+                            <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Categoría Talla.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
-                        <button className="btn btn-outline-warning btn-block" data-bs-toggle="modal" data-bs-target="#addCategoryModal3">
-                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría Color De Oro.</h5>
+                        <button className="btn btn-outline-warning btn-block" data-toggle="modal" data-target="#addCategoryModal2">
+                            <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Categoría Color De Oro.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
-                        <button className="btn btn-outline-secondary btn-block" data-bs-toggle="modal" data-bs-target="#addCategoryModal4">
-                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Categoría Color De Piedra.</h5>
+                        <button className="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#addCategoryModal3">
+                            <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Categoría Color De Piedra.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
-                        <button className="btn btn-outline-primary btn-block" data-bs-toggle="modal" data-bs-target="#addCategoryModal5">
-                            <i class="fa-solid fa-circle-plus"></i><h5 className="fontFamilyH6">Añadir Productos.</h5>
+                        <button className="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#addCategoryModal4">
+                            <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Productos.</h5>
                         </button>
                     </div>
 
                     <div className="col-md-4 my-1">
                         <button className="btn btn-outline-success btn-block">
-                            <i class="fa-solid fa-eye"> 
+                            <i className="fas fa-eye"> 
                                 {' '}
                                 <h5 className="fontFamilyH6">Ver Pedidos.</h5> 
                             </i>
@@ -112,18 +112,18 @@ const AdminDashboard = () => {
     /********************************************** 
      * MODAL PLUGIN DEFINITIONS
     **********************************************/
-    const showCategoryModal1 = () => (
-        <div id="addCategoryModal1" className="modal" onClick={handleMessages}>
+    const showCategoryModal = () => (
+        <div id="addCategoryModal" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">
                 <div className="modal-content">
-                <form onSubmit={handleCategory1Submit}>    
+                <form onSubmit={handleCategorySubmit}>    
                 <div className="modal-header bg-dark text-white">
                     <h5 className="modal-title">
-                    <i class="fa-solid fa-circle-plus"></i> Añadir Categoría.
+                    <i className="fas fa-plus-circle"></i> Añadir Categoría.
                     </h5>
-                    <button className="btn btn-danger" data-bs-dismiss="modal" aria-label="Cerrar.">
+                    <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
                         <span>
-                        <i class="fa-solid fa-circle-xmark"></i> Cerrar.
+                        <i className="fas fa-window-close"></i> Cerrar.
                         </span>
                     </button>
                 </div>
@@ -137,24 +137,24 @@ const AdminDashboard = () => {
                             </div>
                         ) : (
                             <Fragment>
-                                <label className="text-secondary"><i class="fa-solid fa-circle-plus"></i> Añadir Categoría. *:</label>
+                                <label htmlFor="addCategory" className="text-secondary"><i className="fas fa-plus-circle"></i> Añadir Categoría. *:</label>
                                 <input 
                                     type="text" 
                                     className="form-control" 
                                     placeholder="Añadir Categoría." 
-                                    name="category1"
-                                    value={category1}
-                                    onChange={handleCategory1Change} 
+                                    name="category"
+                                    value={category}
+                                    onChange={handleCategoryChange} 
                                 />
                             </Fragment>
                     )}
                 </div>
                 <div className="modal-footer">
-                    <button className="btn btn-outline-danger" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-circle-xmark"></i> Cerrar.
+                    <button className="btn btn-outline-danger" data-dismiss="modal">
+                    <i className="fas fa-window-close"></i> Cerrar.
                     </button>
                     <button type="submit" className="btn btn-outline-success">
-                    <i class="fa-solid fa-floppy-disk"></i> Guardar.
+                    <i className="far fa-check-circle"></i> Guardar.
                     </button>
                 </div>
                 </form>
@@ -169,7 +169,7 @@ const AdminDashboard = () => {
         <section>
             {showHeader()}
             {showActionBtns()}
-            {showCategoryModal1()}
+            {showCategoryModal()}
         </section>
     );
 };

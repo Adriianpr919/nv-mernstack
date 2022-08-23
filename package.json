@@ -28,8 +28,13 @@
     "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-react-html-attrs": "^3.0.5",
     "concurrently": "^7.3.0",
     "minimist": "^1.2.6",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "webpack": "^5.74.0"
   }
 }

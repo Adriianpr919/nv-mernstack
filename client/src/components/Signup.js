@@ -108,11 +108,11 @@ const Signup = () => {
         <form className="signup-form" onSubmit={handleSubmit} noValidate>
             {/*Signup*/}
             <p className="text-center text-white">
-                <i class="fa-solid fa-user-plus"></i> <h3 className="titleSignup">Regístrarse.</h3>
+                <i className="fas fa-user-plus"></i> <h3 className="titleSignup">Regístrarse.</h3>
             </p>
             {/*Username*/}
             <div className="input-group mb-3">
-                <span className="input-group-text"><i class="fa-solid fa-user-plus"></i></span>
+                <span className="input-group-text"><i className="fas fa-user-plus"></i></span>
                 <input 
                     type="text" 
                     name="username" 
@@ -126,7 +126,7 @@ const Signup = () => {
             </div>
             {/*Email*/}
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
                 <input 
                     type="email" 
                     name="email" 
@@ -140,7 +140,7 @@ const Signup = () => {
             </div>
             {/*password A1*/}
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
                 <input 
                     type="password" 
                     name="password" 
@@ -155,7 +155,7 @@ const Signup = () => {
             </div>
             {/*password A2*/}
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
                 <input 
                     type="password" 
                     name="password2" 
@@ -178,7 +178,7 @@ const Signup = () => {
             <p className="text-center text-white">
                 ¿Ya Tienes Una Cuenta? 
                 <Link to="/signing" className="linkLogin" rel="noopener noreferrer" aria-label="Inicia Sesión."> 
-                    <i class="fa-solid fa-house-chimney-user"></i> Inicia Sesión.
+                    <i className="fas fa-user-shield"></i> Inicia Sesión.
                 </Link>
             </p>
         </form>

@@ -92,11 +92,11 @@ const Signing = () => {
         <form className="signing-form" onSubmit={handleSubmit} noValidate>
             {/*Signing*/}
             <p className="text-center text-white">
-                <i class="fa-solid fa-house-chimney-user"></i> <h3 className="titleSigning">Inicia Sesión.</h3>
+                <i className="fas fa-user-shield"></i> <h3 className="titleSigning">Inicia Sesión.</h3>
             </p>
             {/*Email*/}
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
                 <input 
                     type="email" 
                     name="email" 
@@ -110,7 +110,7 @@ const Signing = () => {
             </div>
             {/*password A1*/}
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
                 <input 
                     type="password" 
                     name="password" 
@@ -130,13 +130,16 @@ const Signing = () => {
                 </button>
             </div>
             {/*Already have account*/}
-            <p className="text-center text-white">
+            <p className="commentFormSigning">
                 <br />
+                <p className="commentFormP">
                 SI TODAVÍA NO TIENES UNA CUENTA DE USUARIO DE https://nuryvalenzuelajoyeria.com.co/ UTILIZA ESTA OPCIÓN PARA ACCEDER AL FORMULARIO DE REGISTRO.
 
-                TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA AGILIZAR EL PROCESO DE COMPRA. <br />
+                TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA AGILIZAR EL PROCESO DE COMPRA.
+                </p>
+                <br />
                 <Link to="/signup" className="linkLogin" rel="noopener noreferrer" aria-label="Regístrarse."> 
-                    <i class="fa-solid fa-user-plus"></i> Regístrarse.
+                    <i className="fas fa-user-plus"></i> Regístrarse.
                 </Link>
             </p>
         </form>

@@ -11,7 +11,16 @@
 }
 
 body {
-    font-family: var(--bs-body-font-family);
+    font-family: var(--bs-font-sans-serif);
+}
+
+.commentFormSigning {
+    text-align: center;
+    color: white;    
+}
+
+.commentFormP {
+    text-align: justify;
 }
 
 .signup-container {

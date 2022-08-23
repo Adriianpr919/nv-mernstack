@@ -11,9 +11,9 @@
 }
 
 body {
-    font-family: var(--bs-body-font-family);
+    font-family: var(--bs-font-sans-serif);
 }
 
 .fontFamilyH6 {
-    font-family: var(--bs-body-font-family);
+    font-family: var(--bs-font-sans-serif);
 }
