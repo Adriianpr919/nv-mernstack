@@ -6,6 +6,9 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./database/db');
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/category');
+const sizeRoutes = require('./routes/category1');
+const goldRoutes = require('./routes/category2');
+const stoneRoutes = require('./routes/category3');
 
 // middleware
 app.use(cors());
@@ -14,6 +17,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/category', categoryRoutes);
+app.use('/api/category1', sizeRoutes);
+app.use('/api/category2', goldRoutes);
+app.use('/api/category3', stoneRoutes);
 
 // connect database
 connectDB();
