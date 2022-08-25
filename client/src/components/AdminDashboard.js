@@ -411,6 +411,185 @@ const AdminDashboard = () => {
             </div>
         </div>
     );
+    const showProductsModal = () => (
+        <div id="addProductsModal" className="modal">
+            <div className="modal-dialog modal-dialog-centered modal-lg">
+                <div className="modal-content">
+                <div className="modal-header bg-primary text-white">
+                    <h5 className="modal-title">
+                        <i className="fas fa-plus-circle"></i> Añadir Productos.
+                    </h5>
+                    <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
+                        <span>
+                        <i className="fas fa-window-close"></i> Cerrar.
+                        </span>
+                    </button>
+                </div>
+                <div className="modal-body my-2">
+                    <form>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addProducts" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Nombre Del Producto. *:
+                                </label>
+                                <input 
+                                    type="text" 
+                                    className="form-control"
+                                    placeholder="Nombre Del Producto."
+                                />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addCategory" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
+                                </label>
+                                <select className="custom-select mr-sm-2" aria-label="Selecciónar Categorías.">
+                                    <option selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
+                                    <option value="1">1</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addSize" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Selecciónar Talla. *:
+                                </label><br />
+                                <select multiple className="selectTagsSize" data-role="tagsinput" aria-label="Selecciónar Talla.">
+                                    <option selected>--- Selecciónar Talla ---</option>
+                                    <option value="1">1</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addGold" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Selecciónar Color De Oro. *:
+                                </label><br />
+                                <select multiple className="selectTagsGold" data-role="tagsinput" aria-label="Selecciónar Color De Oro.">
+                                    <option selected>--- Selecciónar Color De Oro ---</option>
+                                    <option value="1">1</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addStone" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Selecciónar Color De Piedra. *:
+                                </label><br />
+                                <select multiple className="selectTagsStone" data-role="tagsinput" aria-label="Selecciónar Color De Piedra.">
+                                    <option selected>--- Selecciónar Color De Piedra ---</option>
+                                    <option value="1">1</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addPreviousPrice" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Precio Anterior. *:
+                                </label>
+                                <input 
+                                    type="text" 
+                                    className="form-control"
+                                    placeholder="Precio Anterior."
+                                />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addActualPrice" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Precio Actual. *:
+                                </label>
+                                <input 
+                                    type="text" 
+                                    className="form-control"
+                                    placeholder="Precio Actual."
+                                />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addQuantity" 
+                                    className="text-secondary">
+                                        <i className="fas fa-plus-circle"></i> Cantidad. *:
+                                </label>
+                                <input 
+                                    type="number"
+                                    min="0" 
+                                    max="9000"
+                                    className="form-control"
+                                    placeholder="Cantidad."
+                                />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addDescription" 
+                                    className="text-secondary">
+                                        <i className="fas fa-info-circle"></i> Descripción. *:
+                                </label>
+                                <div className="input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-info-circle"></i> Descripción. *:
+                                        </span>
+                                    </div>
+                                    <textarea className="form-control" rows="5" aria-label="Descripción." placeholder="Descripción." />
+                                </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 mb-2">
+                                <label 
+                                    htmlFor="addFile" 
+                                    className="text-secondary">
+                                        <i className="fas fa-upload"></i> Fotos. *:
+                                </label>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="inputGroupFileAddon01">Subir.</span>
+                                    </div>
+                                    <div className="custom-file">
+                                        <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
+                                        <label className="custom-file-label" htmlFor="inputGroupFile01">
+                                            <i className="fas fa-upload"></i> Fotos. *:
+                                        </label>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div className="modal-footer">
+                    <button className="btn btn-outline-danger" data-dismiss="modal">
+                    <i className="fas fa-window-close"></i> Cerrar.
+                    </button>
+                    <button type="submit" className="btn btn-outline-success">
+                    <i className="far fa-check-circle"></i> Guardar.
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    );
     /********************************************** 
      * RENDERING
     **********************************************/
@@ -422,6 +601,7 @@ const AdminDashboard = () => {
             {showSizeModal()}
             {showGoldModal()}
             {showStoneModal()}
+            {showProductsModal()}
         </section>
     );
 };

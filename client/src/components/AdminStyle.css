@@ -17,3 +17,7 @@ body {
 .fontFamilyH6 {
     font-family: var(--bs-font-sans-serif);
 }
+
+.selectTagsSize{
+    color: black !important;
+}
