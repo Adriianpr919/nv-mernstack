@@ -16,6 +16,48 @@ const AdminDashboard = () => {
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
     const [loading, setLoading] = useState(false);
+
+    const [tags, setTags] = useState([])
+
+    function handleKeyDown(e){
+        if(e.key !== 'Enter') return
+        const value = e.target.value
+        if(!value.trim()) return
+        setTags([...tags, value])
+        e.target.value = ''
+    }
+
+    function removeTag(index){
+        setTags(tags.filter((el, i) => i !== index))
+    }
+
+    const [tags2, setTags2] = useState([])
+
+    function handleKeyDown2(e){
+        if(e.key !== 'Enter') return
+        const value = e.target.value
+        if(!value.trim()) return
+        setTags2([...tags2, value])
+        e.target.value = ''
+    }
+
+    function removeTag2(index2){
+        setTags2(tags2.filter((el, i) => i !== index2))
+    }
+
+    const [tags3, setTags3] = useState([])
+
+    function handleKeyDown3(e){
+        if(e.key !== 'Enter') return
+        const value = e.target.value
+        if(!value.trim()) return
+        setTags3([...tags3, value])
+        e.target.value = ''
+    }
+
+    function removeTag3(index3){
+        setTags3(tags3.filter((el, i) => i !== index3))
+    }
     /********************************************** 
      * EVENT HANDLERS
     **********************************************/
@@ -412,180 +454,332 @@ const AdminDashboard = () => {
         </div>
     );
     const showProductsModal = () => (
-        <div id="addProductsModal" className="modal">
+        <div id="addProductsModal" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">
                 <div className="modal-content">
-                <div className="modal-header bg-primary text-white">
-                    <h5 className="modal-title">
-                        <i className="fas fa-plus-circle"></i> Añadir Productos.
-                    </h5>
-                    <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
-                        <span>
-                        <i className="fas fa-window-close"></i> Cerrar.
-                        </span>
-                    </button>
-                </div>
-                <div className="modal-body my-2">
-                    <form>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addProducts" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Nombre Del Producto. *:
-                                </label>
-                                <input 
-                                    type="text" 
-                                    className="form-control"
-                                    placeholder="Nombre Del Producto."
-                                />
+                    <form onSubmit={handleCategorySubmit}>
+                        <div className="modal-header bg-primary text-white">
+                            <h5 className="modal-title">
+                                <i className="fas fa-plus-circle"></i> Añadir Productos.
+                            </h5>
+                            <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
+                                <span>
+                                <i className="fas fa-window-close"></i> Cerrar.
+                                </span>
+                            </button>
+                        </div>
+                        <div className="modal-body my-2">
+                        {errorMsg && showErrorMsg(errorMsg)}
+                        {successMsg && showSuccessMsg(successMsg)}
+
+                        {loading ? (
+                                <div className="text-center">
+                                    {showLoading()}
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addCategory" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
-                                </label>
-                                <select className="custom-select mr-sm-2" aria-label="Selecciónar Categorías.">
-                                    <option selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                    <option value="1">1</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addSize" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Selecciónar Talla. *:
-                                </label><br />
-                                <select multiple className="selectTagsSize" data-role="tagsinput" aria-label="Selecciónar Talla.">
-                                    <option selected>--- Selecciónar Talla ---</option>
-                                    <option value="1">1</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addGold" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Selecciónar Color De Oro. *:
-                                </label><br />
-                                <select multiple className="selectTagsGold" data-role="tagsinput" aria-label="Selecciónar Color De Oro.">
-                                    <option selected>--- Selecciónar Color De Oro ---</option>
-                                    <option value="1">1</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addStone" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Selecciónar Color De Piedra. *:
-                                </label><br />
-                                <select multiple className="selectTagsStone" data-role="tagsinput" aria-label="Selecciónar Color De Piedra.">
-                                    <option selected>--- Selecciónar Color De Piedra ---</option>
-                                    <option value="1">1</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addPreviousPrice" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Precio Anterior. *:
-                                </label>
-                                <input 
-                                    type="text" 
-                                    className="form-control"
-                                    placeholder="Precio Anterior."
-                                />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addActualPrice" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Precio Actual. *:
-                                </label>
-                                <input 
-                                    type="text" 
-                                    className="form-control"
-                                    placeholder="Precio Actual."
-                                />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addQuantity" 
-                                    className="text-secondary">
-                                        <i className="fas fa-plus-circle"></i> Cantidad. *:
-                                </label>
-                                <input 
-                                    type="number"
-                                    min="0" 
-                                    max="9000"
-                                    className="form-control"
-                                    placeholder="Cantidad."
-                                />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addDescription" 
-                                    className="text-secondary">
-                                        <i className="fas fa-info-circle"></i> Descripción. *:
-                                </label>
-                                <div className="input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text">
-                                            <i className="fas fa-info-circle"></i> Descripción. *:
-                                        </span>
+                            ) : (
+                                <Fragment>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addProducts" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Nombre Del Producto. *:
+                                            </label>
+                                            <input 
+                                                type="text" 
+                                                className="form-control"
+                                                placeholder="Nombre Del Producto."
+                                            />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addCategory" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
+                                            </label>
+                                            <select className="custom-select mr-sm-2" aria-label="Selecciónar Categorías.">
+                                                <option selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
+                                                <option value="1">1</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addSize" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-plus-circle"></i> Selecciónar Talla. *:
+                                                </label>
+                                                <div className="tags-input-container">
+                                                    { tags.map((tag, index) => (
+                                                        <div className="tag-item" key={index}>
+                                                            <span className="text">{tag}</span>
+                                                            <span className="close" onClick={() => removeTag(index)}>&times;</span>
+                                                        </div>
+                                                    )) }
+                                                    <input onKeyDown={handleKeyDown} type="text" className="tags-input" placeholder="Escribe Algo." />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addGold" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-plus-circle"></i> Selecciónar Color De Oro. *:
+                                                </label>
+                                                <div className="tags-input-container">
+                                                    { tags2.map((tag2, index2) => (
+                                                        <div className="tag-item" key={index2}>
+                                                            <span className="text">{tag2}</span>
+                                                            <span className="close" onClick={() => removeTag2(index2)}>&times;</span>
+                                                        </div>
+                                                    )) }
+                                                    <input onKeyDown={handleKeyDown2} type="text" className="tags-input" placeholder="Escribe Algo." />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addStone" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-plus-circle"></i> Selecciónar Color De Piedra. *:
+                                                </label>
+                                                <div className="tags-input-container">
+                                                    { tags3.map((tag3, index3) => (
+                                                        <div className="tag-item" key={index3}>
+                                                            <span className="text">{tag3}</span>
+                                                            <span className="close" onClick={() => removeTag3(index3)}>&times;</span>
+                                                        </div>
+                                                    )) }
+                                                    <input onKeyDown={handleKeyDown3} type="text" className="tags-input" placeholder="Escribe Algo." />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addPreviousPrice" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Precio Anterior. *:
+                                            </label>
+                                            <input 
+                                                type="text" 
+                                                className="form-control"
+                                                placeholder="Precio Anterior."
+                                            />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addActualPrice" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Precio Actual. *:
+                                            </label>
+                                            <input 
+                                                type="text" 
+                                                className="form-control"
+                                                placeholder="Precio Actual."
+                                            />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addQuantity" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Cantidad. *:
+                                            </label>
+                                            <input 
+                                                type="number"
+                                                min="0" 
+                                                max="9000"
+                                                className="form-control"
+                                                placeholder="Cantidad."
+                                            />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addDescription" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-info-circle"></i> Descripción. *:
+                                            </label>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text">
+                                                        <i className="fas fa-info-circle"></i> Descripción. *:
+                                                    </span>
+                                                </div>
+                                                <textarea className="form-control" rows="10" cols="80" aria-label="Descripción." placeholder="Descripción." />
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 1. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 1. *:
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 2. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 2. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 3. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 3. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 4. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 4. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 5. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 5. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 6. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 6. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 7. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 7. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addFile" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-upload"></i> Fotos 8. *:
+                                                </label>
+                                                <div className="input-group mb-3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                    </div>
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                            <i className="fas fa-upload"></i> Fotos 8. *:
+                                                        </label>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                        </div>
                                     </div>
-                                    <textarea className="form-control" rows="5" aria-label="Descripción." placeholder="Descripción." />
-                                </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 mb-2">
-                                <label 
-                                    htmlFor="addFile" 
-                                    className="text-secondary">
-                                        <i className="fas fa-upload"></i> Fotos. *:
-                                </label>
-                                <div className="input-group mb-3">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroupFileAddon01">Subir.</span>
-                                    </div>
-                                    <div className="custom-file">
-                                        <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
-                                        <label className="custom-file-label" htmlFor="inputGroupFile01">
-                                            <i className="fas fa-upload"></i> Fotos. *:
-                                        </label>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+                                </Fragment>
+                        )}
+                        </div>
+                        <div className="modal-footer">
+                            <button className="btn btn-outline-danger" data-dismiss="modal">
+                            <i className="fas fa-window-close"></i> Cerrar.
+                            </button>
+                            <button type="submit" className="btn btn-outline-success">
+                            <i className="far fa-check-circle"></i> Guardar.
+                            </button>
                         </div>
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button className="btn btn-outline-danger" data-dismiss="modal">
-                    <i className="fas fa-window-close"></i> Cerrar.
-                    </button>
-                    <button type="submit" className="btn btn-outline-success">
-                    <i className="far fa-check-circle"></i> Guardar.
-                    </button>
-                </div>
                 </div>
             </div>
         </div>
