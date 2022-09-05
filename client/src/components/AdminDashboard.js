@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import { createCategory } from '../api/category';
+import React, { Fragment, useState, useEffect } from 'react';
+import { createCategory, getCategories } from '../api/category';
 import { createSize } from '../api/category1';
 import { createGold } from '../api/category2';
 import { createStone } from '../api/category3';
@@ -9,6 +9,7 @@ import { showLoading } from '../helpers/loading';
 import './AdminStyle.css';
 
 const AdminDashboard = () => {
+    const [categories, setCategories] = useState(null);
     const [category, setCategory] = useState('');
     const [size, setSize] = useState('');
     const [gold, setGold] = useState('');
@@ -17,6 +18,26 @@ const AdminDashboard = () => {
     const [successMsg, setSuccessMsg] = useState('');
     const [loading, setLoading] = useState(false);
 
+    /********************************************** 
+     * LIFECYCLE METHODS ****************
+    **********************************************/
+    useEffect(() => {
+        loadCategories();
+    }, [loading]);
+
+    const loadCategories = async () => {
+        await getCategories()
+            .then((response) => {
+                setCategories(response.data.categories);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    /********************************************** 
+     * TAGS 
+    **********************************************/
     const [tags, setTags] = useState([])
 
     function handleKeyDown(e){
@@ -502,7 +523,14 @@ const AdminDashboard = () => {
                                             </label>
                                             <select className="custom-select mr-sm-2" aria-label="Selecciónar Categorías.">
                                                 <option selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                                <option value="1">1</option>
+                                                {categories && 
+                                                    categories.map((c) => (
+                                                        <option
+                                                        key={c._id} 
+                                                        value={c._id}>
+                                                            {c.category}
+                                                        </option>
+                                                ))}
                                             </select>
                                             </div>
                                         </div>
