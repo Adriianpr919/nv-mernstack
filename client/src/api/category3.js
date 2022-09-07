@@ -12,7 +12,7 @@ export const createStone = async (formData) => {
     return response;
 };
 
-export const getCategories = async () => {
+export const getCategories3 = async () => {
     const response = await axios.get('/api/category3');
 
     return response;

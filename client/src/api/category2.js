@@ -12,7 +12,7 @@ export const createGold = async (formData) => {
     return response;
 };
 
-export const getCategories = async () => {
+export const getCategories2 = async () => {
     const response = await axios.get('/api/category2');
 
     return response;

@@ -12,7 +12,7 @@ export const createSize = async (formData) => {
     return response;
 };
 
-export const getCategories = async () => {
+export const getCategories1 = async () => {
     const response = await axios.get('/api/category1');
 
     return response;
