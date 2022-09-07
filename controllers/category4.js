@@ -1,0 +1,63 @@
+const Product = require('../models/category4');
+
+exports.create = async (req, res) => {
+    console.log('req.body: ', req.body);
+    console.log('req.file: ', req.file);
+    console.log('req.user: ', req.user);
+
+    const {
+        filename1, 
+        filename2, 
+        filename3, 
+        filename4, 
+        filename5, 
+        filename6, 
+        filename7, 
+        filename8
+    } = req.file;
+    const {
+        productName,
+        productCategory,
+        productSize,
+        productGold,
+        productStone,
+        productPreviousPrice,
+        productActualPrice,
+        productQty,
+        productDesc
+    } = req.body;
+
+    try {
+        let product = new Product();
+        product.productName = productName;
+        product.productCategory = productCategory;
+        product.productSize = productSize;
+        product.productGold = productGold;
+        product.productStone = productStone;
+        product.productPreviousPrice = productPreviousPrice;
+        product.productActualPrice = productActualPrice;
+        product.productQty = productQty;
+        product.productDesc = productDesc;
+        product.fileName1 = filename1;
+        product.fileName2 = filename2;
+        product.fileName3 = filename3;
+        product.fileName4 = filename4;
+        product.fileName5 = filename5;
+        product.fileName6 = filename6;
+        product.fileName7 = filename7;
+        product.fileName8 = filename8;
+
+        await product.save();
+
+        res.json({
+            successMessage: `${productName} Fue Creado Con Éxito.`,
+            product
+        })
+    } catch (err) {
+        console.log(err, 'productController.create error');
+
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.'
+        })
+    }
+};

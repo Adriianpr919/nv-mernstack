@@ -12,6 +12,8 @@
 
 body {
     font-family: var(--bs-font-sans-serif);
+    background-image: url(./img/pared-b.jpg);
+    font-size: 16px;
 }
 
 body::-webkit-scrollbar {

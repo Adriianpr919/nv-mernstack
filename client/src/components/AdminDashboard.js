@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { createCategory, getCategories } from '../api/category';
+import { createProduct } from '../api/category4';
 import { createSize } from '../api/category1';
 import { createGold } from '../api/category2';
 import { createStone } from '../api/category3';
@@ -17,7 +18,45 @@ const AdminDashboard = () => {
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
     const [loading, setLoading] = useState(false);
+    const [productData, setProductData] = useState({
+        productName: '',
+        productCategory: '',
+        productSize: '',
+        productGold: '',
+        productStone: '',
+        productPreviousPrice: '',
+        productActualPrice: '',
+        productQty: '',
+        productDesc: '',
+        productImage1: null,
+        productImage2: null,
+        productImage3: null,
+        productImage4: null,
+        productImage5: null,
+        productImage6: null,
+        productImage7: null,
+        productImage8: null,
+    });
 
+    const {
+        productName,
+        productCategory,
+        productSize,
+        productGold,
+        productStone,
+        productPreviousPrice,
+        productActualPrice,
+        productQty,
+        productDesc,
+        productImage1,
+        productImage2,
+        productImage3,
+        productImage4,
+        productImage5,
+        productImage6,
+        productImage7,
+        productImage8,
+    } = productData;
     /********************************************** 
      * LIFECYCLE METHODS ****************
     **********************************************/
@@ -190,6 +229,159 @@ const AdminDashboard = () => {
                     setLoading(false);
                     setErrorMsg(err.response.data.errorMessage);
                 });
+        }
+    };
+
+    const handleProductChange = (evt) => {
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.value,
+        });
+    };
+
+    const handleProductImage1 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage2 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage3 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage4 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage5 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage6 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage7 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductImage8 = (evt) => {
+        console.log(evt.target.files[0]);
+        setProductData({
+            ...productData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleProductSubmit = (evt) => {
+        evt.preventDefault();
+
+        if (
+            productImage1, 
+            productImage2, 
+            productImage3, 
+            productImage4, 
+            productImage5, 
+            productImage6, 
+            productImage7, 
+            productImage8 === null) {
+                setErrorMsg("Seleccione Una Imagen.");
+        } else if (
+            isEmpty(productName) || 
+            isEmpty(productPreviousPrice) ||
+            isEmpty(productActualPrice) ||
+            isEmpty(productDesc)
+        ) {
+            setErrorMsg("Todos Los Campos Son Obligatorios.");
+        } else if (isEmpty(productCategory)) {
+            setErrorMsg("Por favor Seleccione Una Categoría.");
+        } else if (isEmpty(productSize)) {
+            setErrorMsg("Por favor Escriba El Talla.");
+        } else if (isEmpty(productGold)) {
+            setErrorMsg("Por favor Escriba Color De Oro.");
+        } else if (isEmpty(productStone)) {
+            setErrorMsg("Por favor Escriba Color De Piedra.");
+        } else if (isEmpty(productQty)) {
+            setErrorMsg("Seleccione Una Cantidad.");
+        } else {
+            let formData = new FormData();
+
+            formData.append('productName', productName);
+            formData.append('productCategory', productCategory);
+            formData.append('productSize', productSize);
+            formData.append('productGold', productGold);
+            formData.append('productStone', productStone);
+            formData.append('productPreviousPrice', productPreviousPrice);
+            formData.append('productActualPrice', productActualPrice);
+            formData.append('productQty', productQty);
+            formData.append('productDesc', productDesc);
+            formData.append('productImage1', productImage1);
+            formData.append('productImage2', productImage2);
+            formData.append('productImage3', productImage3);
+            formData.append('productImage4', productImage4);
+            formData.append('productImage5', productImage5);
+            formData.append('productImage6', productImage6);
+            formData.append('productImage7', productImage7);
+            formData.append('productImage8', productImage8);
+
+            createProduct(formData)
+
+            .then((response) => {
+                setProductData({
+                    productName: '',
+                    productCategory: '',
+                    productSize: '',
+                    productGold: '',
+                    productStone: '',
+                    productPreviousPrice: '',
+                    productActualPrice: '',
+                    productQty: '',
+                    productDesc: '',
+                    productImage1: null,
+                    productImage2: null,
+                    productImage3: null,
+                    productImage4: null,
+                    productImage5: null,
+                    productImage6: null,
+                    productImage7: null,
+                    productImage8: null,
+                })
+                setSuccessMsg(response.data.successMessage)
+            })
+            .catch((err) => {
+                console.log(err);
+                setErrorMsg(err.response.data.errorMessage)
+            });
         }
     };
     /********************************************** 
@@ -478,7 +670,7 @@ const AdminDashboard = () => {
         <div id="addProductsModal" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">
                 <div className="modal-content">
-                    <form onSubmit={handleCategorySubmit}>
+                    <form onSubmit={handleProductSubmit}>
                         <div className="modal-header bg-primary text-white">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Productos.
@@ -508,7 +700,10 @@ const AdminDashboard = () => {
                                                     <i className="fas fa-plus-circle"></i> Nombre Del Producto. *:
                                             </label>
                                             <input 
-                                                type="text" 
+                                                type="text"
+                                                name='productName'
+                                                value={productName} 
+                                                onChange={handleProductChange} 
                                                 className="form-control"
                                                 placeholder="Nombre Del Producto."
                                             />
@@ -521,8 +716,12 @@ const AdminDashboard = () => {
                                                 className="text-secondary">
                                                     <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
                                             </label>
-                                            <select className="custom-select mr-sm-2" aria-label="Selecciónar Categorías.">
-                                                <option selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
+                                            <select 
+                                            name='productCategory'
+                                            onChange={handleProductChange}
+                                            className="custom-select mr-sm-2" 
+                                            aria-label="Selecciónar Categorías.">
+                                                <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
                                                 {categories && 
                                                     categories.map((c) => (
                                                         <option
@@ -548,7 +747,14 @@ const AdminDashboard = () => {
                                                             <span className="close" onClick={() => removeTag(index)}>&times;</span>
                                                         </div>
                                                     )) }
-                                                    <input onKeyDown={handleKeyDown} type="text" className="tags-input" placeholder="Escribe Algo." />
+                                                    <input 
+                                                    onKeyDown={handleKeyDown} 
+                                                    type="text" 
+                                                    name='productSize'
+                                                    value={productSize}
+                                                    onChange={handleProductChange}
+                                                    className="tags-input" 
+                                                    placeholder="Escribe Algo." />
                                                 </div>
                                             </div>
                                         </div>
@@ -566,7 +772,14 @@ const AdminDashboard = () => {
                                                             <span className="close" onClick={() => removeTag2(index2)}>&times;</span>
                                                         </div>
                                                     )) }
-                                                    <input onKeyDown={handleKeyDown2} type="text" className="tags-input" placeholder="Escribe Algo." />
+                                                    <input 
+                                                    onKeyDown={handleKeyDown2} 
+                                                    type="text" 
+                                                    name='productGold'
+                                                    value={productGold}
+                                                    onChange={handleProductChange}
+                                                    className="tags-input" 
+                                                    placeholder="Escribe Algo." />
                                                 </div>
                                             </div>
                                         </div>
@@ -584,7 +797,14 @@ const AdminDashboard = () => {
                                                             <span className="close" onClick={() => removeTag3(index3)}>&times;</span>
                                                         </div>
                                                     )) }
-                                                    <input onKeyDown={handleKeyDown3} type="text" className="tags-input" placeholder="Escribe Algo." />
+                                                    <input 
+                                                    onKeyDown={handleKeyDown3} 
+                                                    type="text" 
+                                                    name='productStone'
+                                                    value={productStone}
+                                                    onChange={handleProductChange}
+                                                    className="tags-input" 
+                                                    placeholder="Escribe Algo." />
                                                 </div>
                                             </div>
                                         </div>
@@ -596,7 +816,10 @@ const AdminDashboard = () => {
                                                     <i className="fas fa-plus-circle"></i> Precio Anterior. *:
                                             </label>
                                             <input 
-                                                type="text" 
+                                                type="text"
+                                                name='productPreviousPrice'
+                                                value={productPreviousPrice} 
+                                                onChange={handleProductChange}
                                                 className="form-control"
                                                 placeholder="Precio Anterior."
                                             />
@@ -610,7 +833,10 @@ const AdminDashboard = () => {
                                                     <i className="fas fa-plus-circle"></i> Precio Actual. *:
                                             </label>
                                             <input 
-                                                type="text" 
+                                                type="text"
+                                                name='productActualPrice'
+                                                value={productActualPrice} 
+                                                onChange={handleProductChange}
                                                 className="form-control"
                                                 placeholder="Precio Actual."
                                             />
@@ -625,6 +851,9 @@ const AdminDashboard = () => {
                                             </label>
                                             <input 
                                                 type="number"
+                                                name='productQty'
+                                                value={productQty}
+                                                onChange={handleProductChange}
                                                 min="0" 
                                                 max="9000"
                                                 className="form-control"
@@ -645,7 +874,14 @@ const AdminDashboard = () => {
                                                         <i className="fas fa-info-circle"></i> Descripción. *:
                                                     </span>
                                                 </div>
-                                                <textarea className="form-control" rows="10" cols="80" aria-label="Descripción." placeholder="Descripción." />
+                                                <textarea 
+                                                name='productDesc'
+                                                value={productDesc}
+                                                onChange={handleProductChange}
+                                                className="form-control"
+                                                rows="10" cols="80" 
+                                                aria-label="Descripción." 
+                                                placeholder="Descripción." />
                                             </div>
                                             </div>
                                         </div>
@@ -661,7 +897,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file"
+                                                        name='productImage1'
+                                                        onChange={handleProductImage1} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 1. *:
                                                         </label>
@@ -679,7 +923,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file" 
+                                                        name='productImage2'
+                                                        onChange={handleProductImage2} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 2. *:
                                                         </label>
@@ -697,7 +949,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file" 
+                                                        name='productImage3'
+                                                        onChange={handleProductImage3} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 3. *:
                                                         </label>
@@ -715,7 +975,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file" 
+                                                        name='productImage4'
+                                                        onChange={handleProductImage4} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 4. *:
                                                         </label>
@@ -733,7 +1001,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file" 
+                                                        name='productImage5'
+                                                        onChange={handleProductImage5} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 5. *:
                                                         </label>
@@ -751,7 +1027,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file" 
+                                                        name='productImage6'
+                                                        onChange={handleProductImage6} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 6. *:
                                                         </label>
@@ -769,7 +1053,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file" 
+                                                        name='productImage7'
+                                                        onChange={handleProductImage7} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 7. *:
                                                         </label>
@@ -787,7 +1079,15 @@ const AdminDashboard = () => {
                                                         <span className="input-group-text" id="customFileLang">Subir.</span>
                                                     </div>
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="customFileLang" aria-describedby="customFileLang" data-browse="Elegir" lang="es" />
+                                                        <input 
+                                                        type="file"
+                                                        name='productImage8' 
+                                                        onChange={handleProductImage8} 
+                                                        className="custom-file-input" 
+                                                        id="customFileLang" 
+                                                        aria-describedby="customFileLang" 
+                                                        data-browse="Elegir" 
+                                                        lang="es" />
                                                         <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                             <i className="fas fa-upload"></i> Fotos 8. *:
                                                         </label>

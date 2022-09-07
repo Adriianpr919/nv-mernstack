@@ -4,6 +4,13 @@ exports.create = async (req, res) => {
     const { gold } = req.body;
 
     try {
+        const categoryExist = await Gold.findOne({ gold });
+        if (categoryExist) {
+            return res.status(400).json({
+                errorMessage: `${gold} El Color De Oro Ya Existe.`,
+            });
+        }
+
         let newGold = new Gold();
         newGold.gold = gold;
 
@@ -18,4 +25,19 @@ exports.create = async (req, res) => {
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
         });
     }
+};
+
+exports.readAll = async (req, res) => {
+    try {
+        const categories = await Gold.find({});
+
+        res.status(200).json({
+            categories,
+        });
+    } catch (err) {
+        console.log('Error Color De Oro readAll: ', err);
+        res.status(500).json({ 
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        });
+    }   
 };

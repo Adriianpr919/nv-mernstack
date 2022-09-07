@@ -4,6 +4,13 @@ exports.create = async (req, res) => {
     const { stone } = req.body;
 
     try {
+        const categoryExist = await Stone.findOne({ stone });
+        if (categoryExist) {
+            return res.status(400).json({
+                errorMessage: `${stone} El Color De Piedra Ya Existe.`,
+            });
+        }
+
         let newStone = new Stone();
         newStone.stone = stone;
 
@@ -18,4 +25,19 @@ exports.create = async (req, res) => {
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
         });
     }
+};
+
+exports.readAll = async (req, res) => {
+    try {
+        const categories = await Stone.find({});
+
+        res.status(200).json({
+            categories,
+        });
+    } catch (err) {
+        console.log('Error Color De Piedra readAll: ', err);
+        res.status(500).json({ 
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        });
+    }   
 };

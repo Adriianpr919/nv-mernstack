@@ -9,6 +9,7 @@ const categoryRoutes = require('./routes/category');
 const sizeRoutes = require('./routes/category1');
 const goldRoutes = require('./routes/category2');
 const stoneRoutes = require('./routes/category3');
+const productRoutes = require('./routes/category4');
 
 // middleware
 app.use(cors());
@@ -20,6 +21,7 @@ app.use('/api/category', categoryRoutes);
 app.use('/api/category1', sizeRoutes);
 app.use('/api/category2', goldRoutes);
 app.use('/api/category3', stoneRoutes);
+app.use('/api/category4', productRoutes);
 
 // connect database
 connectDB();

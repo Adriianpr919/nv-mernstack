@@ -11,3 +11,9 @@ export const createSize = async (formData) => {
 
     return response;
 };
+
+export const getCategories = async () => {
+    const response = await axios.get('/api/category1');
+
+    return response;
+};
