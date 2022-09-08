@@ -1,18 +1,20 @@
-import React, { Fragment, useState, useEffect, useEffect1, useEffect2, useEffect3 } from 'react';
-import { getCategories } from '../api/category';
-import { getCategories1 } from '../api/category1';
-import { getCategories2 } from '../api/category2';
-import { getCategories3 } from '../api/category3';
-import { createProduct } from '../api/category4';
+import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
+//Redux ***************************************************************
+import { useSelector, useDispatch } from 'react-redux';
+import { clearMessages } from '../redux/actions/messageActions';
+import { createProduct } from '../redux/actions/productActions';
 
 const AdminProductModal = () => {
-    const [categories, setCategories, setCategories1, setCategories2, setCategories3] = useState(null);
-    const [errorMsg, setErrorMsg] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
-    const [loading, setLoading] = useState(false);
+    const { loading } = useSelector(state => state.loading);
+    const { successMsg, errorMsg } = useSelector(state => state.messages);
+    const { categories } = useSelector(state => state.categories);
+
+    const dispatch = useDispatch();
+
+    const [clientSideError, setClientSideError] = useState('');
     const [productData, setProductData] = useState({
         productName: '',
         productCategory: '',
@@ -53,8 +55,8 @@ const AdminProductModal = () => {
     } = productData;
 
     const handleMessages = (_evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
+        setClientSideError('');
     };
 
     const handleProductChange = (evt) => {
@@ -140,24 +142,24 @@ const AdminProductModal = () => {
             productImage6, 
             productImage7, 
             productImage8 === null) {
-                setErrorMsg("Seleccione Una Imagen.");
+                setClientSideError("Seleccione Una Imagen.");
         } else if (
             isEmpty(productName) || 
             isEmpty(productPreviousPrice) ||
             isEmpty(productActualPrice) ||
             isEmpty(productDesc)
         ) {
-            setErrorMsg("Todos Los Campos Son Obligatorios.");
+            setClientSideError("Todos Los Campos Son Obligatorios.");
         } else if (isEmpty(productCategory)) {
-            setErrorMsg("Por favor Seleccione Una Categoría.");
+            setClientSideError("Por favor Seleccione Una Categoría.");
         } else if (isEmpty(productSize)) {
-            setErrorMsg("Por favor Escriba El Talla.");
+            setClientSideError("Por favor Escriba El Talla.");
         } else if (isEmpty(productGold)) {
-            setErrorMsg("Por favor Escriba Color De Oro.");
+            setClientSideError("Por favor Escriba Color De Oro.");
         } else if (isEmpty(productStone)) {
-            setErrorMsg("Por favor Escriba Color De Piedra.");
+            setClientSideError("Por favor Escriba Color De Piedra.");
         } else if (isEmpty(productQty)) {
-            setErrorMsg("Seleccione Una Cantidad.");
+            setClientSideError("Seleccione Una Cantidad.");
         } else {
             let formData = new FormData();
 
@@ -179,94 +181,27 @@ const AdminProductModal = () => {
             formData.append('productImage7', productImage7);
             formData.append('productImage8', productImage8);
 
-            setLoading(true);
-            createProduct(formData)
-
-            .then((response) => {
-                setLoading(false);
-                setProductData({
-                    productName: '',
-                    productCategory: '',
-                    productSize: '',
-                    productGold: '',
-                    productStone: '',
-                    productPreviousPrice: '',
-                    productActualPrice: '',
-                    productQty: '',
-                    productDesc: '',
-                    productImage1: null,
-                    productImage2: null,
-                    productImage3: null,
-                    productImage4: null,
-                    productImage5: null,
-                    productImage6: null,
-                    productImage7: null,
-                    productImage8: null,
-                });
-                setSuccessMsg(response.data.successMessage);
-            })
-            .catch((err) => {
-                setLoading(false);
-                console.log(err);
-                setErrorMsg(err.response.data.errorMessage);
+            dispatch(createProduct(formData));
+            setProductData({
+                productName: '',
+                productCategory: '',
+                productSize: '',
+                productGold: '',
+                productStone: '',
+                productPreviousPrice: '',
+                productActualPrice: '',
+                productQty: '',
+                productDesc: '',
+                productImage1: null,
+                productImage2: null,
+                productImage3: null,
+                productImage4: null,
+                productImage5: null,
+                productImage6: null,
+                productImage7: null,
+                productImage8: null,
             });
         }
-    };
-
-    useEffect(() => {
-        loadCategories();
-    }, [loading]);
-
-    const loadCategories = async () => {
-        await getCategories()
-            .then((response) => {
-                setCategories(response.data.categories);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
-    useEffect1(() => {
-        loadCategories1();
-    }, [loading]);
-    
-    const loadCategories1 = async () => {
-        await getCategories1()
-            .then((response) => {
-                setCategories1(response.data.categories);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-    
-    useEffect2(() => {
-        loadCategories2();
-    }, [loading]);
-    
-    const loadCategories2 = async () => {
-        await getCategories2()
-            .then((response) => {
-                setCategories2(response.data.categories);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-    
-    useEffect3(() => {
-        loadCategories3();
-    }, [loading]);
-    
-    const loadCategories3 = async () => {
-        await getCategories3()
-            .then((response) => {
-                setCategories3(response.data.categories);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
     };
 
     /********************************************** 
@@ -330,6 +265,8 @@ const AdminProductModal = () => {
                         </button>
                     </div>
                     <div className="modal-body my-2">
+                    {clientSideError && 
+                                showErrorMsg(clientSideError)}
                     {errorMsg && showErrorMsg(errorMsg)}
                     {successMsg && showSuccessMsg(successMsg)}
 

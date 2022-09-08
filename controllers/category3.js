@@ -17,6 +17,7 @@ exports.create = async (req, res) => {
         newStone = await newStone.save();
 
         res.status(200).json({
+            stone: newStone,
             successMessage: `${newStone.stone} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {

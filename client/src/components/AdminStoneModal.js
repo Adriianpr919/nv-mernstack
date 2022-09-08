@@ -1,23 +1,27 @@
 import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
-import { createStone } from '../api/category3';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
+//Redux ***************************************************************
+import { useSelector, useDispatch } from 'react-redux';
+import { clearMessages } from '../redux/actions/messageActions';
+import { createStone } from '../redux/actions/storeActions';
 
 const AdminStoneModal = () => {
+    const { successMsg, errorMsg } = useSelector(state => state.messages);
+    const { loading } = useSelector(state => state.loading);
+
+    const dispatch = useDispatch();
+
     const [stone, setStone] = useState('');
-    const [errorMsg, setErrorMsg] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
 
     const handleMessages = (_evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
     };
 
     const handleStoneChange = (evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
         setStone(evt.target.value);
     };
     
@@ -25,21 +29,11 @@ const AdminStoneModal = () => {
         evt.preventDefault();
 
         if (isEmpty(stone)) {
-            setErrorMsg('Por favor Ingrese El Color De Piedra.'); 
+            setClientSideErrorMsg('Por favor Ingrese El Color De Piedra.'); 
         } else {
             const data = { stone };
-
-            setLoading(true);
-            createStone(data)
-                .then((response) => {
-                    setLoading(false);
-                    setSuccessMsg(response.data.successMessage);
-                    setStone('');
-                })
-                .catch((err) => {
-                    setLoading(false);
-                    setErrorMsg(err.response.data.errorMessage);
-                });
+            dispatch(createStone(data));
+            setStone('');
         }
     };
 
@@ -59,6 +53,8 @@ const AdminStoneModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
+                            {clientSideErrorMsg && 
+                                        showErrorMsg(clientSideErrorMsg)}
                             {errorMsg && showErrorMsg(errorMsg)}
                             {successMsg && showSuccessMsg(successMsg)}
 

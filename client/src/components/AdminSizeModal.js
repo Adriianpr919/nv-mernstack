@@ -1,23 +1,27 @@
 import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
-import { createSize } from '../api/category1';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
+//Redux ***************************************************************
+import { useSelector, useDispatch } from 'react-redux';
+import { clearMessages } from '../redux/actions/messageActions';
+import { createSize } from '../redux/actions/sizeActions';
 
 const AdminSizeModal = () => {
+    const { successMsg, errorMsg } = useSelector(state => state.messages);
+    const { loading } = useSelector(state => state.loading);
+
+    const dispatch = useDispatch();
+
     const [size, setSize] = useState('');
-    const [errorMsg, setErrorMsg] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
 
     const handleMessages = (_evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
     };
 
     const handleSizeChange = (evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
         setSize(evt.target.value);
     };
 
@@ -25,21 +29,11 @@ const AdminSizeModal = () => {
         evt.preventDefault();
 
         if (isEmpty(size)) {
-            setErrorMsg('Por favor Ingrese Una Talla.'); 
+            setClientSideErrorMsg('Por favor Ingrese Una Talla.'); 
         } else {
             const data = { size };
-
-            setLoading(true);
-            createSize(data)
-                .then((response) => {
-                    setLoading(false);
-                    setSuccessMsg(response.data.successMessage);
-                    setSize('');
-                })
-                .catch((err) => {
-                    setLoading(false);
-                    setErrorMsg(err.response.data.errorMessage);
-                });
+            dispatch(createSize(data));
+            setSize('');
         }
     };
 
@@ -59,6 +53,8 @@ const AdminSizeModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
+                            {clientSideErrorMsg && 
+                                    showErrorMsg(clientSideErrorMsg)}
                             {errorMsg && showErrorMsg(errorMsg)}
                             {successMsg && showSuccessMsg(successMsg)}
 

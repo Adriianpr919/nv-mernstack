@@ -1,23 +1,27 @@
 import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
-import { createGold } from '../api/category2';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
+//Redux ***************************************************************
+import { useSelector, useDispatch } from 'react-redux';
+import { clearMessages } from '../redux/actions/messageActions';
+import { createGold } from '../redux/actions/goldActions';
 
 const AdminGoldModal = () => {
+    const { successMsg, errorMsg } = useSelector(state => state.messages);
+    const { loading } = useSelector(state => state.loading);
+
+    const dispatch = useDispatch();
+
     const [gold, setGold] = useState('');
-    const [errorMsg, setErrorMsg] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
 
     const handleMessages = (_evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
     };
 
     const handleGoldChange = (evt) => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
         setGold(evt.target.value);
     };
 
@@ -25,21 +29,11 @@ const AdminGoldModal = () => {
         evt.preventDefault();
 
         if (isEmpty(gold)) {
-            setErrorMsg('Por favor Ingrese El Color De Oro.'); 
+            setClientSideErrorMsg('Por favor Ingrese El Color De Oro.'); 
         } else {
             const data = { gold };
-
-            setLoading(true);
-            createGold(data)
-                .then((response) => {
-                    setLoading(false);
-                    setSuccessMsg(response.data.successMessage);
-                    setGold('');
-                })
-                .catch((err) => {
-                    setLoading(false);
-                    setErrorMsg(err.response.data.errorMessage);
-                });
+            dispatch(createGold(data));
+            setGold('');
         }
     };
     
@@ -59,6 +53,8 @@ const AdminGoldModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
+                            {clientSideErrorMsg && 
+                                        showErrorMsg(clientSideErrorMsg)}
                             {errorMsg && showErrorMsg(errorMsg)}
                             {successMsg && showSuccessMsg(successMsg)}
 

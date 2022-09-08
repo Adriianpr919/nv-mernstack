@@ -17,6 +17,7 @@ exports.create = async (req, res) => {
         newGold = await newGold.save();
 
         res.status(200).json({
+            gold: newGold,
             successMessage: `${newGold.gold} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {

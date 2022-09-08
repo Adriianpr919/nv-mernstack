@@ -17,6 +17,7 @@ exports.create = async (req, res) => {
         newSize = await newSize.save();
 
         res.status(200).json({
+            size: newSize,
             successMessage: `${newSize.size} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
