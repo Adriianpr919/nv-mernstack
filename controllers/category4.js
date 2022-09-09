@@ -58,6 +58,22 @@ exports.create = async (req, res) => {
 
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.'
-        })
+        });
     }
+};
+
+exports.readAll = async (req, res) => {
+    try {
+        const products = await Product.find({}).populate(
+                'productCategory',
+                'category'
+        );
+        res.json(products);    
+    } catch (err) {
+        console.log(err, 'productController.readAll error');
+
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
+        });
+    }    
 };

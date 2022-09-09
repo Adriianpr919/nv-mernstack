@@ -7,11 +7,13 @@ import categoryReducers from './reducers/categoryReducers';
 import sizeReducers from './reducers/sizeReducers';
 import goldReducers from './reducers/goldReducers';
 import stoneReducers from './reducers/stoneReducers';
+import productReducers from './reducers/productReducers';
 
 const reducer = combineReducers({
     loading: loadingReducer,
     messages: messageReducer,
     categories: categoryReducers, sizeReducers, goldReducers, stoneReducers,
+    products: productReducers,
 });
 
 const initialState = {};

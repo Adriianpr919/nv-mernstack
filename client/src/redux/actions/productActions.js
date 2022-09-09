@@ -4,6 +4,7 @@ import {
     SHOW_ERROR_MESSAGE,
     SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
+import { GET_PRODUCTS } from '../constants/productConstants';
 
 export const createProduct = formData => async dispatch => {
     try {
@@ -16,6 +17,25 @@ export const createProduct = formData => async dispatch => {
         });
     } catch (err) {
         console.log('createProduct API Error: ', err);
+        dispatch({ type: STOP_LOADING });
+        dispatch({ 
+            type: SHOW_ERROR_MESSAGE, 
+            payload: err.response.data.errorMessage, 
+        });
+    }
+};
+
+export const getProducts = () => async dispatch => {
+    try {
+        dispatch({ type: START_LOADING });
+        const response = await axios.get('/api/category4');
+        dispatch({ type: STOP_LOADING });
+        dispatch({ 
+            type: GET_PRODUCTS, 
+            payload: response.data.products, 
+        });
+    } catch (err) {
+        console.log('getProducts API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_ERROR_MESSAGE, 
