@@ -14,7 +14,7 @@ exports.create = async (req, res) => {
         filename5, 
         filename6, 
         filename7, 
-        filename8
+        filename8,
     } = req.file;
     const {
         productName,
@@ -25,7 +25,7 @@ exports.create = async (req, res) => {
         productPreviousPrice,
         productActualPrice,
         productQty,
-        productDesc
+        productDesc,
     } = req.body;
 
     try {
@@ -52,13 +52,13 @@ exports.create = async (req, res) => {
 
         res.json({
             successMessage: `${productName} Fue Creado Con Éxito.`,
-            product
-        })
+            product,
+        });
     } catch (err) {
         console.log(err, 'productController.create error');
 
         res.status(500).json({
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.'
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };
@@ -67,7 +67,10 @@ exports.readAll = async (req, res) => {
     try {
         const products = await Product.find({}).populate(
                 'productCategory',
-                'category'
+                'category',
+                'size',
+                'gold',
+                'stone'
         );
         res.json({ products });    
     } catch (err) {

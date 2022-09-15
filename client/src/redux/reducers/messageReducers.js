@@ -6,8 +6,8 @@ import {
 
 const INITIAL_STATE = {
     successMsg: '',
-    errorMsg: ''
-}
+    errorMsg: '',
+};
 
 const messageReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {

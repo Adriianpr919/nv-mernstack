@@ -1,6 +1,6 @@
 import { 
     GET_CATEGORIES, 
-    CREATE_CATEGORY 
+    CREATE_CATEGORY, 
 } from '../constants/sizeConstants';
 
 const INITIAL_STATE = {

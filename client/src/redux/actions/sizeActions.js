@@ -1,6 +1,12 @@
 import { START_LOADING, STOP_LOADING } from '../constants/loadingConstants';
-import { SHOW_ERROR_MESSAGE, SHOW_SUCCESS_MESSAGE } from '../constants/messageConstants';
-import { GET_CATEGORIES, CREATE_CATEGORY } from '../constants/sizeConstants';
+import { 
+    SHOW_ERROR_MESSAGE, 
+    SHOW_SUCCESS_MESSAGE, 
+} from '../constants/messageConstants';
+import { 
+    GET_CATEGORIES, 
+    CREATE_CATEGORY, 
+} from '../constants/sizeConstants';
 import axios from 'axios';
 
 export const getSize = () => async dispatch => {
@@ -24,16 +30,22 @@ export const createSize = formData => async dispatch => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-            }
-        }
+            },
+        };
         dispatch({ type: START_LOADING });
         const response = await axios.post('/api/size', formData, config);
         dispatch({ type: STOP_LOADING });
-        dispatch({ type: SHOW_SUCCESS_MESSAGE, payload: response.data.successMessage, });
+        dispatch({ 
+            type: SHOW_SUCCESS_MESSAGE, 
+            payload: response.data.successMessage, 
+        });
         dispatch({ type: CREATE_CATEGORY, payload: response.data.size });
     } catch (err) {
         console.log('createSize API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({ type: SHOW_ERROR_MESSAGE, payload: err.response.data.errorMessage, });
+        dispatch({ 
+            type: SHOW_ERROR_MESSAGE, 
+            payload: err.response.data.errorMessage, 
+        });
     }
 };

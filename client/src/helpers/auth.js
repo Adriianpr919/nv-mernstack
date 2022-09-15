@@ -2,7 +2,7 @@ import { setCookie, getCookie, deleteCookie } from "./cookies";
 import { 
     setLocalStorage, 
     getLocalStorage, 
-    deleteLocalStorage 
+    deleteLocalStorage, 
 } from "./localStorage";
 
 export const setAuthentication = (token, user) => {
