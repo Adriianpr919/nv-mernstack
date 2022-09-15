@@ -7,13 +7,13 @@ export const createStone = async (formData) => {
         },
     };
 
-    const response = await axios.post('/api/category3', formData, config);
+    const response = await axios.post('/api/stone', formData, config);
 
     return response;
 };
 
-export const getCategories3 = async () => {
-    const response = await axios.get('/api/category3');
+export const getStone = async () => {
+    const response = await axios.get('/api/stone');
 
     return response;
 };

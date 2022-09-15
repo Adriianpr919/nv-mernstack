@@ -76,3 +76,19 @@ body::-webkit-scrollbar-thumb {
     border: none;
     outline: none;
 }
+
+.SizeSelect {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.GoldSelect {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.StoneSelect {
+    width: 400px;
+    margin: 20px auto;
+}
+

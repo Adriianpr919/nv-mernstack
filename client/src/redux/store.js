@@ -12,7 +12,10 @@ import productReducers from './reducers/productReducers';
 const reducer = combineReducers({
     loading: loadingReducer,
     messages: messageReducer,
-    categories: categoryReducers, sizeReducers, goldReducers, stoneReducers,
+    categories: categoryReducers,   
+    categoriesSize: sizeReducers,
+    categoriesGold: goldReducers,
+    categoriesStone: stoneReducers,
     products: productReducers,
 });
 

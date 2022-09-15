@@ -4,7 +4,7 @@ import {
 } from '../constants/sizeConstants';
 
 const INITIAL_STATE = {
-    categories: [],
+    categoriesSize: [],
 };
 
 const sizeReducers = (state = INITIAL_STATE, action) => {
@@ -12,12 +12,12 @@ const sizeReducers = (state = INITIAL_STATE, action) => {
         case GET_CATEGORIES:
             return {
                 ...state,
-                categories: action.payload,
+                categoriesSize: action.payload,
             };
         case CREATE_CATEGORY:
             return {
                 ...state,
-                categories: [...state.categories, action.payload],
+                categoriesSize: [...state.categoriesSize, action.payload],
             };    
         default:
             return state;    

@@ -13,7 +13,7 @@ const Header = ({ history }) => {
     const showNavigation = () => (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to='/' className="navbar-brand">
-            <img src={Logo} alt="Nury Valenzuela Joyería." title="Nury Valenzuela Joyería." />
+            <img src={Logo} alt="Nury Valenzuela Joyería." title="Nury Valenzuela Joyería." lang="es" />
         </Link>
         <button 
             className="navbar-toggler" 
@@ -36,12 +36,37 @@ const Header = ({ history }) => {
                         <i className="fas fa-globe"></i> Inicio.
                     </Link>
                 </li>
-                <li className="nav-item">
-                    <Link 
-                    className="nav-link" 
-                    to='/about'>
-                        <i className="fas fa-info-circle"></i> Sobre Nosotros.
+                <li className="nav-item dropdown">
+                    <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i className="fas fa-info-circle"></i> Área Legal.
                     </Link>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div className="dropdown-divider"></div>
+                        <Link 
+                        className="dropdown-item" 
+                        to='/options1'>
+                            <i className="fas fa-info-circle"></i> TÉRMINOS Y CONDICIONES.
+                        </Link>
+                        <div className="dropdown-divider"></div>
+                        <Link 
+                        className="dropdown-item" 
+                        to='/options2'>
+                            <i className="fas fa-info-circle"></i> POLITICAS DE ENVIOS, CAMBIOS, DEVOLUCIONES Y GARANTÍAS.
+                        </Link>
+                        <div className="dropdown-divider"></div>
+                        <Link 
+                        className="dropdown-item" 
+                        to='/faq'>
+                            <i className="fas fa-info-circle"></i> PREGUNTAS FRECUENTES.
+                        </Link>
+                        <div className="dropdown-divider"></div>
+                        <Link 
+                        className="dropdown-item" 
+                        to='/about'>
+                            <i className="fas fa-info-circle"></i> SOBRE NOSOTROS.
+                        </Link>
+                        <div className="dropdown-divider"></div>
+                    </div>
                 </li>
                 <li className="nav-item dropdown">
                     <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -117,7 +142,7 @@ const Header = ({ history }) => {
                         <button className="btn btn-outline-dark" type="submit">
                             <i className="bi-cart-fill me-1"></i>
                             <i className="fas fa-cart-plus"></i> Ver Carrito.
-                            <span className="badge bg-dark text-white ms-1 rounded-pill">
+                            <span className="badge bg-dark text-white ms-1 rounded-pill" lang="es">
                                 ($0 COP)
                             </span>
                         </button>

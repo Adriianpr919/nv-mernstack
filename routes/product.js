@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { authenticatateJWT } = require('../middleware/authenticator');
 const upload = require('../middleware/multer');
-const productController = require('../controllers/category4');
+const productController = require('../controllers/product');
 
 router.post(
     '/', 
@@ -12,5 +12,6 @@ router.post(
 );
 
 router.get('/', productController.readAll);
+router.delete('/:productId', authenticatateJWT, productController.delete);
 
 module.exports = router;

@@ -4,7 +4,7 @@ import {
 } from '../constants/stoneConstants';
 
 const INITIAL_STATE = {
-    categories: [],
+    categoriesStone: [],
 };
 
 const stoneReducers = (state = INITIAL_STATE, action) => {
@@ -12,12 +12,12 @@ const stoneReducers = (state = INITIAL_STATE, action) => {
         case GET_CATEGORIES:
             return {
                 ...state,
-                categories: action.payload,
+                categoriesStone: action.payload,
             };
         case CREATE_CATEGORY:
             return {
                 ...state,
-                categories: [...state.categories, action.payload],
+                categoriesStone: [...state.categoriesStone, action.payload],
             };    
         default:
             return state;    

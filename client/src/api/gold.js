@@ -7,13 +7,13 @@ export const createGold = async (formData) => {
         },
     };
 
-    const response = await axios.post('/api/category2', formData, config);
+    const response = await axios.post('/api/gold', formData, config);
 
     return response;
 };
 
-export const getCategories2 = async () => {
-    const response = await axios.get('/api/category2');
+export const getGold = async () => {
+    const response = await axios.get('/api/gold');
 
     return response;
 };

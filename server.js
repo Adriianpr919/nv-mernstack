@@ -6,10 +6,10 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./database/db');
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/category');
-const sizeRoutes = require('./routes/category1');
-const goldRoutes = require('./routes/category2');
-const stoneRoutes = require('./routes/category3');
-const productRoutes = require('./routes/category4');
+const sizeRoutes = require('./routes/size');
+const goldRoutes = require('./routes/gold');
+const stoneRoutes = require('./routes/stone');
+const productRoutes = require('./routes/product');
 
 // middleware
 app.use(cors());
@@ -18,10 +18,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/category', categoryRoutes);
-app.use('/api/category1', sizeRoutes);
-app.use('/api/category2', goldRoutes);
-app.use('/api/category3', stoneRoutes);
-app.use('/api/category4', productRoutes);
+app.use('/api/size', sizeRoutes);
+app.use('/api/gold', goldRoutes);
+app.use('/api/stone', stoneRoutes);
+app.use('/api/product', productRoutes);
+app.use('/uploads', express.static('uploads'));
 
 // connect database
 connectDB();

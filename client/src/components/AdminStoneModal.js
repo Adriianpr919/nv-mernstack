@@ -5,7 +5,7 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createStone } from '../redux/actions/storeActions';
+import { createStone } from '../redux/actions/stoneActions';
 
 const AdminStoneModal = () => {
     const { successMsg, errorMsg } = useSelector(state => state.messages);

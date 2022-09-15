@@ -1,4 +1,4 @@
-const Stone = require('../models/category3');
+const Stone = require('../models/stone');
 
 exports.create = async (req, res) => {
     const { stone } = req.body;
@@ -30,10 +30,10 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const categories = await Stone.find({});
+        const categoriesStone = await Stone.find({});
 
         res.status(200).json({
-            categories,
+            categoriesStone,
         });
     } catch (err) {
         console.log('Error Color De Piedra readAll: ', err);

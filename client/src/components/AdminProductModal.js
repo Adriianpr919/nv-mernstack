@@ -7,10 +7,33 @@ import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
 import { createProduct } from '../redux/actions/productActions';
 
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+
 const AdminProductModal = () => {
     const { loading } = useSelector(state => state.loading);
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { categories } = useSelector(state => state.categories);
+    const { categoriesSize } = useSelector(state => state.categoriesSize);
+    const { categoriesGold } = useSelector(state => state.categoriesGold);
+    const { categoriesStone } = useSelector(state => state.categoriesStone);
+
+    const animatedComponents = makeAnimated();
+    const SizeOptions = [
+        { value: "producto 01", label: "Producto 01" },
+        { value: "producto 02", label: "Producto 02" },
+        { value: "producto 03", label: "Producto 03" },
+    ];
+    const GoldOptions = [
+        { value: "producto 01", label: "Producto 01" },
+        { value: "producto 02", label: "Producto 02" },
+        { value: "producto 03", label: "Producto 03" },
+    ];
+    const StoneOptions = [
+        { value: "producto 01", label: "Producto 01" },
+        { value: "producto 02", label: "Producto 02" },
+        { value: "producto 03", label: "Producto 03" },
+    ];
 
     const dispatch = useDispatch();
 
@@ -66,63 +89,7 @@ const AdminProductModal = () => {
         });
     };
 
-    const handleProductImage1 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage2 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage3 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage4 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage5 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage6 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage7 = (evt) => {
-        console.log(evt.target.files[0]);
-        setProductData({
-            ...productData,
-            [evt.target.name]: evt.target.files[0],
-        });
-    };
-
-    const handleProductImage8 = (evt) => {
+    const handleProductImage = (evt, valor) => {
         console.log(evt.target.files[0]);
         setProductData({
             ...productData,
@@ -134,13 +101,13 @@ const AdminProductModal = () => {
         evt.preventDefault();
 
         if (
-            productImage1, 
-            productImage2, 
-            productImage3, 
-            productImage4, 
-            productImage5, 
-            productImage6, 
-            productImage7, 
+            productImage1 === null || 
+            productImage2 === null ||
+            productImage3 === null ||
+            productImage4 === null || 
+            productImage5 === null || 
+            productImage6 === null || 
+            productImage7 === null || 
             productImage8 === null) {
                 setClientSideError("Seleccione Una Imagen.");
         } else if (
@@ -207,47 +174,7 @@ const AdminProductModal = () => {
     /********************************************** 
      * TAGS 
     **********************************************/
-    const [tags, setTags] = useState([])
-
-    function handleKeyDown(e){
-        if(e.key !== 'Enter') return
-        const value = e.target.value
-        if(!value.trim()) return
-        setTags([...tags, value])
-        e.target.value = ''
-    }
-
-    function removeTag(index){
-        setTags(tags.filter((el, i) => i !== index))
-    }
-
-    const [tags2, setTags2] = useState([])
-
-    function handleKeyDown2(e){
-        if(e.key !== 'Enter') return
-        const value = e.target.value
-        if(!value.trim()) return
-        setTags2([...tags2, value])
-        e.target.value = ''
-    }
-
-    function removeTag2(index2){
-        setTags2(tags2.filter((el, i) => i !== index2))
-    }
-
-    const [tags3, setTags3] = useState([])
-
-    function handleKeyDown3(e){
-        if(e.key !== 'Enter') return
-        const value = e.target.value
-        if(!value.trim()) return
-        setTags3([...tags3, value])
-        e.target.value = ''
-    }
-
-    function removeTag3(index3){
-        setTags3(tags3.filter((el, i) => i !== index3))
-    }
+    
 
     return(
         <div id="addProductsModal" className="modal" onClick={handleMessages}>
@@ -307,13 +234,13 @@ const AdminProductModal = () => {
                                         className="custom-select mr-sm-2" 
                                         aria-label="Selecciónar Categorías.">
                                             <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                            {categories && 
-                                                categories.map((c) => (
-                                                    <option
-                                                    key={c._id} 
-                                                    value={c._id}>
-                                                        {c.category}
-                                                    </option>
+                                            {
+                                                categories?.map((c) => (
+                                                <option
+                                                key={c._id} 
+                                                value={c._id}>
+                                                    {c.category}
+                                                </option>
                                             ))}
                                         </select>
                                         </div>
@@ -321,25 +248,31 @@ const AdminProductModal = () => {
                                     <div className="row">
                                         <div className="col-12 mb-2">
                                             <label 
-                                                htmlFor="addSize" 
+                                                htmlFor="id_label_multiple" 
                                                 className="text-secondary">
-                                                    <i className="fas fa-plus-circle"></i> Selecciónar Talla. *:
+                                                    <i className="fas fa-plus-circle"></i> Escribe Algo De Talla. *:
                                             </label>
                                             <div className="tags-input-container">
-                                                { tags.map((tag, index) => (
-                                                    <div className="tag-item" key={index}>
-                                                        <span className="text">{tag}</span>
-                                                        <span className="close" onClick={() => removeTag(index)}>&times;</span>
-                                                    </div>
-                                                )) }
-                                                <input 
-                                                onKeyDown={handleKeyDown} 
-                                                type="text" 
-                                                name='productSize'
-                                                value={productSize}
-                                                onChange={handleProductChange}
-                                                className="tags-input" 
-                                                placeholder="Escribe Algo." />
+                                                {
+                                                    categoriesSize?.map((c) => (
+                                                    <Select
+                                                    className="SizeSelect"
+                                                    name='productSize'
+                                                    onChange={handleProductChange}
+                                                    isClearable={true}
+                                                    isSearchable={true}
+                                                    isDisabled={false}
+                                                    isLoading={false}
+                                                    isRtl={false}
+                                                    closeMenuOnSelect={false}
+                                                    components={animatedComponents}
+                                                    isMulti
+                                                    options={SizeOptions}
+                                                    key={c._id} 
+                                                    value={c._id}
+                                                    placeholder="Escribe Algo."
+                                                    />//{c.size}*********falta mostrar los datos*************
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
@@ -348,23 +281,29 @@ const AdminProductModal = () => {
                                             <label 
                                                 htmlFor="addGold" 
                                                 className="text-secondary">
-                                                    <i className="fas fa-plus-circle"></i> Selecciónar Color De Oro. *:
+                                                    <i className="fas fa-plus-circle"></i> Escribe Algo De Color De Oro. *:
                                             </label>
                                             <div className="tags-input-container">
-                                                { tags2.map((tag2, index2) => (
-                                                    <div className="tag-item" key={index2}>
-                                                        <span className="text">{tag2}</span>
-                                                        <span className="close" onClick={() => removeTag2(index2)}>&times;</span>
-                                                    </div>
-                                                )) }
-                                                <input 
-                                                onKeyDown={handleKeyDown2} 
-                                                type="text" 
+                                            {
+                                                categoriesGold?.map((c) => (
+                                                <Select
+                                                className="GoldSelect"
                                                 name='productGold'
-                                                value={productGold}
                                                 onChange={handleProductChange}
-                                                className="tags-input" 
-                                                placeholder="Escribe Algo." />
+                                                isClearable={true}
+                                                isSearchable={true}
+                                                isDisabled={false}
+                                                isLoading={false}
+                                                isRtl={false}
+                                                closeMenuOnSelect={false}
+                                                components={animatedComponents}
+                                                isMulti
+                                                options={GoldOptions}
+                                                key={c._id} 
+                                                value={c._id}
+                                                placeholder="Escribe Algo."
+                                                />//{c.gold}*********falta mostrar los datos*************
+                                            ))}
                                             </div>
                                         </div>
                                     </div>
@@ -373,23 +312,29 @@ const AdminProductModal = () => {
                                             <label 
                                                 htmlFor="addStone" 
                                                 className="text-secondary">
-                                                    <i className="fas fa-plus-circle"></i> Selecciónar Color De Piedra. *:
+                                                    <i className="fas fa-plus-circle"></i> Escribe Algo De Color De Piedra. *:
                                             </label>
                                             <div className="tags-input-container">
-                                                { tags3.map((tag3, index3) => (
-                                                    <div className="tag-item" key={index3}>
-                                                        <span className="text">{tag3}</span>
-                                                        <span className="close" onClick={() => removeTag3(index3)}>&times;</span>
-                                                    </div>
-                                                )) }
-                                                <input 
-                                                onKeyDown={handleKeyDown3} 
-                                                type="text" 
+                                            {
+                                                categoriesStone?.map((c) => (
+                                                <Select
+                                                className="StoneSelect"
                                                 name='productStone'
-                                                value={productStone}
                                                 onChange={handleProductChange}
-                                                className="tags-input" 
-                                                placeholder="Escribe Algo." />
+                                                isClearable={true}
+                                                isSearchable={true}
+                                                isDisabled={false}
+                                                isLoading={false}
+                                                isRtl={false}
+                                                closeMenuOnSelect={false}
+                                                components={animatedComponents}
+                                                isMulti
+                                                options={StoneOptions}
+                                                key={c._id} 
+                                                value={c._id}
+                                                placeholder="Escribe Algo."
+                                                />//{c.stone}*********falta mostrar los datos*************
+                                            ))}
                                             </div>
                                         </div>
                                     </div>
@@ -485,7 +430,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file"
                                                     name='productImage1'
-                                                    onChange={handleProductImage1} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -511,7 +456,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file" 
                                                     name='productImage2'
-                                                    onChange={handleProductImage2} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -537,7 +482,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file" 
                                                     name='productImage3'
-                                                    onChange={handleProductImage3} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -563,7 +508,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file" 
                                                     name='productImage4'
-                                                    onChange={handleProductImage4} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -589,7 +534,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file" 
                                                     name='productImage5'
-                                                    onChange={handleProductImage5} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -615,7 +560,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file" 
                                                     name='productImage6'
-                                                    onChange={handleProductImage6} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -641,7 +586,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file" 
                                                     name='productImage7'
-                                                    onChange={handleProductImage7} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 
@@ -667,7 +612,7 @@ const AdminProductModal = () => {
                                                     <input 
                                                     type="file"
                                                     name='productImage8' 
-                                                    onChange={handleProductImage8} 
+                                                    onChange={handleProductImage} 
                                                     className="custom-file-input" 
                                                     id="customFileLang" 
                                                     aria-describedby="customFileLang" 

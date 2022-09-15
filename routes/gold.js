@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const goldController = require('../controllers/category2');
+const goldController = require('../controllers/gold');
 const { authenticatateJWT } = require('../middleware/authenticator');
 
 router.post('/', authenticatateJWT, goldController.create);

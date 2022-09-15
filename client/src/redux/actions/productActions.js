@@ -4,16 +4,24 @@ import {
     SHOW_ERROR_MESSAGE,
     SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
-import { GET_PRODUCTS } from '../constants/productConstants';
+import { 
+    CREATE_PRODUCT, 
+    GET_PRODUCTS,
+    DELETE_PRODUCT, 
+} from '../constants/productConstants';
 
 export const createProduct = formData => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
-        const response = await axios.post('/api/category4', formData);
+        const response = await axios.post('/api/product', formData);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_SUCCESS_MESSAGE, 
             payload: response.data.successMessage, 
+        });
+        dispatch({ 
+            type: CREATE_PRODUCT, 
+            payload: response.data.product, 
         });
     } catch (err) {
         console.log('createProduct API Error: ', err);
@@ -28,7 +36,7 @@ export const createProduct = formData => async dispatch => {
 export const getProducts = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
-        const response = await axios.get('/api/category4');
+        const response = await axios.get('/api/product');
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: GET_PRODUCTS, 
@@ -42,4 +50,23 @@ export const getProducts = () => async dispatch => {
             payload: err.response.data.errorMessage, 
         });
     }
+};
+
+export const deleteProduct = productId => async dispatch => {
+	try {
+		dispatch({ type: START_LOADING });
+		const response = await axios.delete(`/api/product/${productId}`);
+		dispatch({ type: STOP_LOADING });
+		dispatch({
+			type: DELETE_PRODUCT,
+			payload: response.data,
+		});
+	} catch (err) {
+		console.log('deleteProduct API error: ', err);
+		dispatch({ type: STOP_LOADING });
+		dispatch({
+			type: SHOW_ERROR_MESSAGE,
+			payload: err.response.data.errorMessage,
+		});
+	}
 };

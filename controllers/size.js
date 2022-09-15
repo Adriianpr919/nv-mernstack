@@ -1,4 +1,4 @@
-const Size = require('../models/category1');
+const Size = require('../models/size');
 
 exports.create = async (req, res) => {
     const { size } = req.body;
@@ -30,10 +30,10 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const categories = await Size.find({});
+        const categoriesSize = await Size.find({});
 
         res.status(200).json({
-            categories,
+            categoriesSize,
         });
     } catch (err) {
         console.log('Error Talla readAll: ', err);

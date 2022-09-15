@@ -7,13 +7,13 @@ export const createSize = async (formData) => {
         },
     };
 
-    const response = await axios.post('/api/category1', formData, config);
+    const response = await axios.post('/api/size', formData, config);
 
     return response;
 };
 
-export const getCategories1 = async () => {
-    const response = await axios.get('/api/category1');
+export const getSize = async () => {
+    const response = await axios.get('/api/size');
 
     return response;
 };

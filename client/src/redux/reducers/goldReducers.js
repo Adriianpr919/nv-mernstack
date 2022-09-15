@@ -4,7 +4,7 @@ import {
 } from '../constants/goldConstants';
 
 const INITIAL_STATE = {
-    categories: [],
+    categoriesGold: [],
 };
 
 const goldReducers = (state = INITIAL_STATE, action) => {
@@ -12,12 +12,12 @@ const goldReducers = (state = INITIAL_STATE, action) => {
         case GET_CATEGORIES:
             return {
                 ...state,
-                categories: action.payload,
+                categoriesGold: action.payload,
             };
         case CREATE_CATEGORY:
             return {
                 ...state,
-                categories: [...state.categories, action.payload],
+                categoriesGold: [...state.categoriesGold, action.payload],
             };    
         default:
             return state;    

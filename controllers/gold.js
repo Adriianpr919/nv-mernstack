@@ -1,4 +1,4 @@
-const Gold = require('../models/category2');
+const Gold = require('../models/gold');
 
 exports.create = async (req, res) => {
     const { gold } = req.body;
@@ -30,10 +30,10 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const categories = await Gold.find({});
+        const categoriesGold = await Gold.find({});
 
         res.status(200).json({
-            categories,
+            categoriesGold,
         });
     } catch (err) {
         console.log('Error Color De Oro readAll: ', err);

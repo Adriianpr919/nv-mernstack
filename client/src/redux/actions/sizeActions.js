@@ -3,14 +3,14 @@ import { SHOW_ERROR_MESSAGE, SHOW_SUCCESS_MESSAGE } from '../constants/messageCo
 import { GET_CATEGORIES, CREATE_CATEGORY } from '../constants/sizeConstants';
 import axios from 'axios';
 
-export const getCategories1 = () => async dispatch => {
+export const getSize = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
-        const response = await axios.get('/api/category1');
+        const response = await axios.get('/api/size');
         dispatch({ type: STOP_LOADING });
-        dispatch({ type: GET_CATEGORIES, payload: response.data.categories });
+        dispatch({ type: GET_CATEGORIES, payload: response.data.categoriesSize });
     } catch (err) {
-        console.log('getCategories1 API Error: ', err);
+        console.log('getSize API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({
             type: SHOW_ERROR_MESSAGE,
@@ -19,7 +19,7 @@ export const getCategories1 = () => async dispatch => {
     }
 };
 
-export const createCategory = formData => async dispatch => {
+export const createSize = formData => async dispatch => {
     try {
         const config = {
             headers: {
@@ -27,12 +27,12 @@ export const createCategory = formData => async dispatch => {
             }
         }
         dispatch({ type: START_LOADING });
-        const response = await axios.post('/api/category1', formData, config);
+        const response = await axios.post('/api/size', formData, config);
         dispatch({ type: STOP_LOADING });
         dispatch({ type: SHOW_SUCCESS_MESSAGE, payload: response.data.successMessage, });
         dispatch({ type: CREATE_CATEGORY, payload: response.data.size });
     } catch (err) {
-        console.log('createCategory API Error: ', err);
+        console.log('createSize API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({ type: SHOW_ERROR_MESSAGE, payload: err.response.data.errorMessage, });
     }
