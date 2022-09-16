@@ -12,8 +12,8 @@ const Card = ({ product }) => {
             <div className="card h-100 border border-dark">
                 <a href='#!'>
                     <img 
-                    src={`/uploads/${product.fileName}`}
-                    className="card-img-top w-100 border border-dark img-rounded mx-auto d-block img-thumbnail" 
+                    src={`/uploads/${product.fileName1}`}
+                    className="card-img-top w-100 img-fluid border border-dark img-rounded mx-auto d-block img-thumbnail" 
                     alt="Productos"
                     title="Productos" />
                 </a>
@@ -22,7 +22,7 @@ const Card = ({ product }) => {
                 <p className="card-text">
                     <h6 className='mb-3'>
                         <span className='text-secondary mr-2'>
-                            {product.productPrice.toLocaleString('es-ES', {
+                            {product.productActualPrice.toLocaleString('es-ES', {
                                 style: 'currency',
                                 currency: 'COP',
                             })}

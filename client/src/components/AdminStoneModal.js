@@ -8,14 +8,22 @@ import { clearMessages } from '../redux/actions/messageActions';
 import { createStone } from '../redux/actions/stoneActions';
 
 const AdminStoneModal = () => {
+    /****************************
+	 * REDUX GLOBAL STATE PROPERTIES
+	 ***************************/
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { loading } = useSelector(state => state.loading);
 
     const dispatch = useDispatch();
-
+    /****************************
+	 * COMPONENT STATE PROPERTIES
+	 ***************************/
     const [stone, setStone] = useState('');
     const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
 
+    /****************************
+	 * EVENT HANDLERS
+	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
     };
@@ -37,6 +45,9 @@ const AdminStoneModal = () => {
         }
     };
 
+    /****************************
+	 * RENDERER
+	 ***************************/
     return (
         <div id="addStoneModal" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">

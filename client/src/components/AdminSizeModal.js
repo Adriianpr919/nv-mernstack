@@ -8,14 +8,22 @@ import { clearMessages } from '../redux/actions/messageActions';
 import { createSize } from '../redux/actions/sizeActions';
 
 const AdminSizeModal = () => {
+    /****************************
+	 * REDUX GLOBAL STATE PROPERTIES
+	 ***************************/
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { loading } = useSelector(state => state.loading);
 
     const dispatch = useDispatch();
-
+    /****************************
+	 * COMPONENT STATE PROPERTIES
+	 ***************************/
     const [size, setSize] = useState('');
     const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
-
+    
+    /****************************
+	 * EVENT HANDLERS
+	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
     };
@@ -37,6 +45,9 @@ const AdminSizeModal = () => {
         }
     };
 
+    /****************************
+	 * RENDERER
+	 ***************************/
     return (
         <div id="addSizeModal" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">
@@ -93,6 +104,6 @@ const AdminSizeModal = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AdminSizeModal;

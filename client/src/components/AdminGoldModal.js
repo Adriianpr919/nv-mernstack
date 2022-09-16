@@ -8,14 +8,22 @@ import { clearMessages } from '../redux/actions/messageActions';
 import { createGold } from '../redux/actions/goldActions';
 
 const AdminGoldModal = () => {
+    /****************************
+	 * REDUX GLOBAL STATE PROPERTIES
+	 ***************************/
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { loading } = useSelector(state => state.loading);
 
     const dispatch = useDispatch();
-
+    /****************************
+	 * COMPONENT STATE PROPERTIES
+	 ***************************/
     const [gold, setGold] = useState('');
     const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
 
+    /****************************
+	 * EVENT HANDLERS
+	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
     };
@@ -37,6 +45,9 @@ const AdminGoldModal = () => {
         }
     };
     
+    /****************************
+	 * RENDERER
+	 ***************************/
     return (
         <div id="addGoldModal" className="modal" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-lg">

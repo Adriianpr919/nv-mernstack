@@ -95,8 +95,10 @@ const Signing = () => {
                 <i className="fas fa-user-shield"></i> <h3 className="titleSigning">Inicia Sesión.</h3>
             </p>
             {/*Email*/}
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
+            <div className="form-group input-group">
+                <div className='input-group-prepend'>
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
+                </div>
                 <input 
                     type="email" 
                     name="email" 
@@ -109,8 +111,10 @@ const Signing = () => {
                 />
             </div>
             {/*password A1*/}
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
+            <div className="form-group input-group">
+                <div className='input-group-prepend'>
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
+                </div>
                 <input 
                     type="password" 
                     name="password" 

@@ -108,7 +108,8 @@ const Header = ({ history }) => {
                             className="nav-link active" 
                             aria-current="page" 
                             to='/user/dashboard'>
-                                <i className="fas fa-users"></i> Panel De Usuario.
+                                <i className="fas fa-users"></i>{' '} 
+                                Panel De Usuario.
                             </Link>
                         </li>
                     </Fragment>
@@ -120,7 +121,8 @@ const Header = ({ history }) => {
                             className="nav-link active" 
                             aria-current="page" 
                             to='/admin/dashboard'>
-                                <i className="fas fa-user-tie"></i> Panel De Administrador.
+                                <i className="fas fa-user-tie"></i>{' '} 
+                                Panel De Administrador.
                             </Link>
                         </li>
                     </Fragment>

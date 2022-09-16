@@ -26,7 +26,7 @@ const AdminDashboard = () => {
             getCategories(),
             getSize(),
             getGold(),
-            getStone()
+            getStone(),
             );
     }, [dispatch]);
 

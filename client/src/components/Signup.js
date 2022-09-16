@@ -111,8 +111,10 @@ const Signup = () => {
                 <i className="fas fa-user-plus"></i> <h3 className="titleSignup">Regístrarse.</h3>
             </p>
             {/*Username*/}
-            <div className="input-group mb-3">
-                <span className="input-group-text"><i className="fas fa-user-plus"></i></span>
+            <div className="form-group input-group">
+                <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-user-plus"></i></span>
+                </div>
                 <input 
                     type="text" 
                     name="username" 
@@ -125,8 +127,10 @@ const Signup = () => {
                 />
             </div>
             {/*Email*/}
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
+            <div className="form-group input-group">
+                <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
+                </div>
                 <input 
                     type="email" 
                     name="email" 
@@ -139,8 +143,10 @@ const Signup = () => {
                 />
             </div>
             {/*password A1*/}
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
+            <div className="form-group input-group">
+                <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
+                </div>
                 <input 
                     type="password" 
                     name="password" 
@@ -154,8 +160,10 @@ const Signup = () => {
                 />
             </div>
             {/*password A2*/}
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
+            <div className="form-group input-group">
+                <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
+                </div>
                 <input 
                     type="password" 
                     name="password2" 
@@ -197,7 +205,6 @@ const Signup = () => {
                         <div className="text-center pb-4">{showLoading()}</div>
                     )}
                     {showSignupForm()}
-                    {/* <p style={{ color: 'white' }}>{JSON.stringify(formData)}</p> */}
                 </div>
             </div>
         </div>

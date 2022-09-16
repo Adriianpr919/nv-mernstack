@@ -124,3 +124,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* -------------------------- opciones -------------------------- */
+.home-page {
+	height: 100vh;
+}
+
+.banner-image {
+	/*background-image: url('/images/banner.jpg');*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 1;
+	height: 60%;
+}
