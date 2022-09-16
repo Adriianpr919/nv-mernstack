@@ -11,6 +11,9 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 const AdminProductModal = () => {
+    /****************************
+	 * REDUX GLOBAL STATE PROPERTIES
+	 ***************************/
     const { loading } = useSelector(state => state.loading);
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { categories } = useSelector(state => state.categories);
@@ -36,7 +39,9 @@ const AdminProductModal = () => {
     ];
 
     const dispatch = useDispatch();
-
+    /****************************
+	 * COMPONENT STATE PROPERTIES
+	 ***************************/
     const [clientSideError, setClientSideError] = useState('');
     const [productData, setProductData] = useState({
         productName: '',
@@ -77,6 +82,9 @@ const AdminProductModal = () => {
         productImage8,
     } = productData;
 
+    /****************************
+	 * EVENT HANDLERS
+	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
         setClientSideError('');
@@ -171,12 +179,10 @@ const AdminProductModal = () => {
         }
     };
 
-    /********************************************** 
-     * TAGS 
-    **********************************************/
-    
-
-    return(
+    /****************************
+	 * RENDERER
+	 ***************************/
+    return (
         <div id="addProductsModal" className="modal" onClick={handleMessages}>
         <div className="modal-dialog modal-dialog-centered modal-lg">
             <div className="modal-content">
