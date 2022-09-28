@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const createGold = async (formData) => {
+export const createGolden = async (formData) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const createGold = async (formData) => {
     return response;
 };
 
-export const getGold = async () => {
+export const getGolds = async () => {
     const response = await axios.get('/api/gold');
 
     return response;

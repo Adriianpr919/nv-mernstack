@@ -5,7 +5,7 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createSize } from '../redux/actions/sizeActions';
+import { createSized } from '../redux/actions/sizeActions';
 
 const AdminSizeModal = () => {
     /****************************
@@ -18,9 +18,9 @@ const AdminSizeModal = () => {
     /****************************
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
-    const [size, setSize] = useState('');
+    const [sized, setSized] = useState('');
     const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
-    
+
     /****************************
 	 * EVENT HANDLERS
 	 ***************************/
@@ -28,20 +28,20 @@ const AdminSizeModal = () => {
         dispatch(clearMessages());
     };
 
-    const handleSizeChange = (evt) => {
+    const handleSizedChange = (evt) => {
         dispatch(clearMessages());
-        setSize(evt.target.value);
+        setSized(evt.target.value);
     };
 
-    const handleSizeSubmit = (evt) => {
+    const handleSizedSubmit = (evt) => {
         evt.preventDefault();
 
-        if (isEmpty(size)) {
-            setClientSideErrorMsg('Por favor Ingrese Una Talla.'); 
+        if (isEmpty(sized)) {
+            setClientSideErrorMsg("Todos Los Campos Son Obligatorios.");
         } else {
-            const data = { size };
-            dispatch(createSize(data));
-            setSize('');
+            const data = { sized };
+            dispatch(createSized(data));
+            setSized('');
         }
     };
 
@@ -49,57 +49,63 @@ const AdminSizeModal = () => {
 	 * RENDERER
 	 ***************************/
     return (
-        <div id="addSizeModal" className="modal" onClick={handleMessages}>
-            <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div id="addSizeModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
+            <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
-                    <form onSubmit={handleSizeSubmit}>
+                    <form onSubmit={handleSizedSubmit}>
                         <div className="modal-header bg-info">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Talla.
                             </h5>
                             <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
                                 <span>
-                                <i className="fas fa-window-close"></i> Cerrar.
+                                    <i className="fas fa-window-close"></i> Cerrar.
                                 </span>
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                            {clientSideErrorMsg && 
-                                    showErrorMsg(clientSideErrorMsg)}
-                            {errorMsg && showErrorMsg(errorMsg)}
-                            {successMsg && showSuccessMsg(successMsg)}
+                        {clientSideErrorMsg && 
+                            showErrorMsg(clientSideErrorMsg)}
+                        {errorMsg && showErrorMsg(errorMsg)}
+                        {successMsg && showSuccessMsg(successMsg)}
 
-                            {loading ? (
-                                    <div className="text-center">
-                                        {showLoading()}
+                        {loading ? (
+                            <div className="text-center">
+                                {showLoading()}
+                            </div>
+                        ) : (
+                            <Fragment>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addSize" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Añadir Talla. *:
+                                            </label>
+                                            <input 
+                                                type="text"
+                                                name='sized'
+                                                value={sized} 
+                                                onChange={handleSizedChange} 
+                                                className="form-control"
+                                                placeholder="Añadir Talla."
+                                            />
+                                        </div>
                                     </div>
-                                ) : (
-                                    <Fragment>
-                                        <label 
-                                            htmlFor="addSize" 
-                                            className="text-secondary">
-                                                <i className="fas fa-plus-circle"></i> Añadir Talla. *:
-                                        </label>
-                                        <input 
-                                            type="text" 
-                                            className="form-control"
-                                            name='size'
-                                            value={size}
-                                            onChange={handleSizeChange} 
-                                            placeholder="Añadir Talla."
-                                        />
-                                    </Fragment>
-                            )}
+                                </div>
+                            </Fragment>
+                        )}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">
-                            <i className="fas fa-window-close"></i> Cerrar.
+                                <i className="fas fa-window-close"></i> Cerrar.
                             </button>
                             <button type="submit" className="btn btn-outline-success">
-                            <i className="far fa-check-circle"></i> Guardar.
+                                <i className="far fa-check-circle"></i> Guardar.
                             </button>
                         </div>
-                    </form>    
+                    </form>
                 </div>
             </div>
         </div>

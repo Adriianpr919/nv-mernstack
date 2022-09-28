@@ -14,7 +14,10 @@ export const getCategories = () => async dispatch => {
         dispatch({ type: START_LOADING });
         const response = await axios.get('/api/category');
         dispatch({ type: STOP_LOADING });
-        dispatch({ type: GET_CATEGORIES, payload: response.data.categories });
+        dispatch({ 
+            type: GET_CATEGORIES, 
+            payload: response.data.categories 
+        });
     } catch (err) {
         console.log('getCategories API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -39,7 +42,10 @@ export const createCategory = formData => async dispatch => {
             type: SHOW_SUCCESS_MESSAGE, 
             payload: response.data.successMessage, 
         });
-        dispatch({ type: CREATE_CATEGORY, payload: response.data.category });
+        dispatch({ 
+            type: CREATE_CATEGORY, 
+            payload: response.data.category 
+        });
     } catch (err) {
         console.log('createCategory API Error: ', err);
         dispatch({ type: STOP_LOADING });

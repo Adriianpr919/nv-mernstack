@@ -5,18 +5,18 @@ import equals from 'validator/lib/equals';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import { isAuthenticated } from '../helpers/auth';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signup } from '../api/auth';
 
 const Signup = () => {
-    let history = useHistory();
+    let navigate = useNavigate();
     useEffect(() => {
         if (isAuthenticated() && isAuthenticated().role === 1) {
-            history.push('/admin/dashboard');
+            navigate('/admin/dashboard');
         } else if (isAuthenticated() && isAuthenticated().role === 0) {
-            history.push('/user/dashboard');
+            navigate('/user/dashboard');
         }
-    }, [history]);
+    }, [navigate]);
 
     /************ component state *************/
     const [formData, setFormData] = useState({

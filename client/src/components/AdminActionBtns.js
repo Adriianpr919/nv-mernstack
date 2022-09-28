@@ -11,8 +11,20 @@ const AdminActionBtns = () => (
                 </div>
 
                 <div className="col-md-4 my-1">
+                    <button className="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#viewCategoryModal">
+                        <i className="fas fa-eye"></i><h5 className="fontFamilyH6">Ver Categoría.</h5>
+                    </button>
+                </div>
+
+                <div className="col-md-4 my-1">
                     <button className="btn btn-outline-info btn-block" data-toggle="modal" data-target="#addSizeModal">
                         <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Talla.</h5>
+                    </button>
+                </div>
+
+                <div className="col-md-4 my-1">
+                    <button className="btn btn-outline-info btn-block" data-toggle="modal" data-target="#viewSizeModal">
+                        <i className="fas fa-eye"></i><h5 className="fontFamilyH6">Ver Talla.</h5>
                     </button>
                 </div>
 
@@ -23,8 +35,20 @@ const AdminActionBtns = () => (
                 </div>
 
                 <div className="col-md-4 my-1">
+                    <button className="btn btn-outline-warning btn-block" data-toggle="modal" data-target="#viewGoldModal">
+                        <i className="fas fa-eye"></i><h5 className="fontFamilyH6">Ver Color De Oro.</h5>
+                    </button>
+                </div>
+
+                <div className="col-md-4 my-1">
                     <button className="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#addStoneModal">
                         <i className="fas fa-plus-circle"></i><h5 className="fontFamilyH6">Añadir Color De Piedra.</h5>
+                    </button>
+                </div>
+
+                <div className="col-md-4 my-1">
+                    <button className="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#viewStoneModal">
+                        <i className="fas fa-eye"></i><h5 className="fontFamilyH6">Ver Color De Piedra.</h5>
                     </button>
                 </div>
 

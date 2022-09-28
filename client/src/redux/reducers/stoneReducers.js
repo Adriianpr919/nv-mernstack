@@ -1,25 +1,25 @@
 import { 
-    GET_CATEGORIES, 
-    CREATE_CATEGORY, 
+    GET_STONES,
+    CREATE_ROCK, 
 } from '../constants/stoneConstants';
 
 const INITIAL_STATE = {
-    categoriesStone: [],
+    stones: [],
 };
 
 const stoneReducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case GET_CATEGORIES:
+        case GET_STONES: 
             return {
                 ...state,
-                categoriesStone: action.payload,
+                stones: action.payload,
+            };  
+        case CREATE_ROCK:
+            return {
+                ...state,
+                stones: [...state.stones, action.payload],
             };
-        case CREATE_CATEGORY:
-            return {
-                ...state,
-                categoriesStone: [...state.categoriesStone, action.payload],
-            };    
-        default:
+        default: 
             return state;    
     }
 };

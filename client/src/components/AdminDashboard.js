@@ -9,27 +9,30 @@ import AdminSizeModal from './AdminSizeModal';
 import AdminGoldModal from './AdminGoldModal';
 import AdminStoneModal from './AdminStoneModal';
 import AdminProductModal from './AdminProductModal';
+
+import AdminBodyCategory from './AdminBodyCategory';
 import AdminBody from './AdminBody';
+import AdminBodySize from './AdminBodySize';
+import AdminBodyGold from './AdminBodyGold';
+import AdminBodyStone from './AdminBodyStone';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { getCategories } from '../redux/actions/categoryActions';
-import { getSize } from '../redux/actions/sizeActions';
-import { getGold } from '../redux/actions/goldActions';
-import { getStone } from '../redux/actions/stoneActions';
+import { getSizes } from '../redux/actions/sizeActions';
+import { getGolds } from '../redux/actions/goldActions';
+import { getStones } from '../redux/actions/stoneActions';
 import { getProducts } from '../redux/actions/productActions';
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(
             getCategories(),
-            getSize(),
-            getGold(),
-            getStone(),
-            );
+            getSizes(),
+            getGolds(),
+            getStones(),
+        );
     }, [dispatch]);
-
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
@@ -45,7 +48,11 @@ const AdminDashboard = () => {
             <AdminGoldModal />
             <AdminStoneModal />
             <AdminProductModal />
+            <AdminBodyCategory />
             <AdminBody />
+            <AdminBodySize />
+            <AdminBodyGold />
+            <AdminBodyStone />
         </section>
     );
 }

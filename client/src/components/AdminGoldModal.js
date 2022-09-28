@@ -5,7 +5,7 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createGold } from '../redux/actions/goldActions';
+import { createGolden } from '../redux/actions/goldActions';
 
 const AdminGoldModal = () => {
     /****************************
@@ -18,7 +18,7 @@ const AdminGoldModal = () => {
     /****************************
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
-    const [gold, setGold] = useState('');
+    const [golden, setGolden] = useState('');
     const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
 
     /****************************
@@ -28,75 +28,81 @@ const AdminGoldModal = () => {
         dispatch(clearMessages());
     };
 
-    const handleGoldChange = (evt) => {
+    const handleGoldenChange = (evt) => {
         dispatch(clearMessages());
-        setGold(evt.target.value);
+        setGolden(evt.target.value);
     };
 
-    const handleGoldSubmit = (evt) => {
+    const handleGoldenSubmit = (evt) => {
         evt.preventDefault();
 
-        if (isEmpty(gold)) {
-            setClientSideErrorMsg('Por favor Ingrese El Color De Oro.'); 
+        if (isEmpty(golden)) {
+            setClientSideErrorMsg("Todos Los Campos Son Obligatorios.");
         } else {
-            const data = { gold };
-            dispatch(createGold(data));
-            setGold('');
+            const data = { golden };
+            dispatch(createGolden(data));
+            setGolden('');
         }
     };
-    
+
     /****************************
 	 * RENDERER
 	 ***************************/
     return (
-        <div id="addGoldModal" className="modal" onClick={handleMessages}>
-            <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div id="addGoldModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
+            <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
-                    <form onSubmit={handleGoldSubmit}>
+                    <form onSubmit={handleGoldenSubmit}>
                         <div className="modal-header bg-warning">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Color De Oro.
                             </h5>
                             <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
                                 <span>
-                                <i className="fas fa-window-close"></i> Cerrar.
+                                    <i className="fas fa-window-close"></i> Cerrar.
                                 </span>
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                            {clientSideErrorMsg && 
-                                        showErrorMsg(clientSideErrorMsg)}
-                            {errorMsg && showErrorMsg(errorMsg)}
-                            {successMsg && showSuccessMsg(successMsg)}
+                        {clientSideErrorMsg && 
+                            showErrorMsg(clientSideErrorMsg)}
+                        {errorMsg && showErrorMsg(errorMsg)}
+                        {successMsg && showSuccessMsg(successMsg)}
 
-                            {loading ? (
-                                    <div className="text-center">
-                                        {showLoading()}
+                        {loading ? (
+                            <div className="text-center">
+                                {showLoading()}
+                            </div>
+                        ) : (
+                            <Fragment>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-12 mb-2">
+                                            <label 
+                                                htmlFor="addGold" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Nombre Color De Oro. *:
+                                            </label>
+                                            <input 
+                                                type="text"
+                                                name='golden'
+                                                value={golden} 
+                                                onChange={handleGoldenChange} 
+                                                className="form-control"
+                                                placeholder="Nombre Color De Oro."
+                                            />
+                                        </div>
                                     </div>
-                                ) : (
-                                    <Fragment>
-                                        <label 
-                                            htmlFor="addGold" 
-                                            className="text-secondary">
-                                                <i className="fas fa-plus-circle"></i> Añadir Color De Oro. *:
-                                        </label>
-                                        <input 
-                                            type="text" 
-                                            className="form-control"
-                                            name='gold'
-                                            value={gold}
-                                            onChange={handleGoldChange} 
-                                            placeholder="Añadir Color De Oro."
-                                        />
-                                    </Fragment>
-                            )}
+                                </div>
+                            </Fragment>
+                        )}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">
-                            <i className="fas fa-window-close"></i> Cerrar.
+                                <i className="fas fa-window-close"></i> Cerrar.
                             </button>
                             <button type="submit" className="btn btn-outline-success">
-                            <i className="far fa-check-circle"></i> Guardar.
+                                <i className="far fa-check-circle"></i> Guardar.
                             </button>
                         </div>
                     </form>

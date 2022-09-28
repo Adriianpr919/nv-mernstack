@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const createSize = async (formData) => {
+export const createSized = async (formData) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const createSize = async (formData) => {
     return response;
 };
 
-export const getSize = async () => {
+export const getSizes = async () => {
     const response = await axios.get('/api/size');
 
     return response;

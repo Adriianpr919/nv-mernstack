@@ -2,51 +2,26 @@ const Product = require('../models/product');
 const fs = require('fs');
 
 exports.create = async (req, res) => {
-    console.log('req.body: ', req.body);
-    console.log('req.file: ', req.file);
-    console.log('req.user: ', req.user);
-
     const {
-        filename1, 
-        filename2, 
-        filename3, 
-        filename4, 
-        filename5, 
-        filename6, 
-        filename7, 
-        filename8,
+        filename,
     } = req.file;
     const {
         productName,
-        productCategory,
-        productSize,
-        productGold,
-        productStone,
-        productPreviousPrice,
-        productActualPrice,
-        productQty,
         productDesc,
+        productPrice,
+        productCategory,
+        productQty,
     } = req.body;
 
     try {
         let product = new Product();
+
+        product.fileName = filename;
         product.productName = productName;
-        product.productCategory = productCategory;
-        product.productSize = productSize;
-        product.productGold = productGold;
-        product.productStone = productStone;
-        product.productPreviousPrice = productPreviousPrice;
-        product.productActualPrice = productActualPrice;
-        product.productQty = productQty;
         product.productDesc = productDesc;
-        product.fileName1 = filename1;
-        product.fileName2 = filename2;
-        product.fileName3 = filename3;
-        product.fileName4 = filename4;
-        product.fileName5 = filename5;
-        product.fileName6 = filename6;
-        product.fileName7 = filename7;
-        product.fileName8 = filename8;
+        product.productPrice = productPrice;
+        product.productCategory = productCategory;
+        product.productQty = productQty;
 
         await product.save();
 
@@ -56,7 +31,6 @@ exports.create = async (req, res) => {
         });
     } catch (err) {
         console.log(err, 'productController.create error');
-
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -66,20 +40,67 @@ exports.create = async (req, res) => {
 exports.readAll = async (req, res) => {
     try {
         const products = await Product.find({}).populate(
-                'productCategory',
-                'category',
-                'size',
-                'gold',
-                'stone'
-        );
+			'productCategory', 
+			'category'
+		);
+        
         res.json({ products });    
     } catch (err) {
         console.log(err, 'productController.readAll error');
-
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }    
+};
+
+exports.readByCount = async (req, res) => {
+	try {
+		const products = await Product.find({})
+			.populate('productCategory', 'category')
+			.limit(6);
+
+		res.json({ products });
+	} catch (err) {
+		console.log(err, 'productController.readAll error');
+		res.status(500).json({
+			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
+		});
+	}
+};
+
+exports.read = async (req, res) => {
+	try {
+		const productId = req.params.productId;
+		const product = await Product.findById(productId);
+
+		res.json(product);
+	} catch (err) {
+		console.log(err, 'productController.read error');
+		res.status(500).json({
+			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
+		});
+	}
+};
+
+exports.update = async (req, res) => {
+	const productId = req.params.productId;
+
+	if (req.file !== undefined) {
+		req.body.fileName = req.file.filename;
+	}
+
+	const oldProduct = await Product.findByIdAndUpdate(productId, req.body);
+
+	if (req.file !== undefined && req.file.filename !== oldProduct.fileName) {
+		fs.unlink(`uploads/${oldProduct.fileName}`, err => {
+			if (err) throw err;
+			console.log('Imagen Eliminada Del Sistema De Archivos.');
+		});
+	}
+
+	res.json({
+		successMessage: 'Producto Actualizado Con Éxito.',
+	});
 };
 
 exports.delete = async (req, res) => {

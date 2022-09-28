@@ -4,19 +4,18 @@ import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import { setAuthentication, isAuthenticated } from '../helpers/auth';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signing } from '../api/auth';
 
 const Signing = () => {
-    let history = useHistory();
-
+    let navigate = useNavigate();
     useEffect(() => {
         if (isAuthenticated() && isAuthenticated().role === 1) {
-            history.push('/admin/dashboard');
+            navigate('/admin/dashboard');
         } else if (isAuthenticated() && isAuthenticated().role === 0) {
-            history.push('/user/dashboard');
+            navigate('/user/dashboard');
         }
-    }, [history]);
+    }, [navigate]);
 
     /************ component state *************/
     const [formData, setFormData] = useState({
@@ -68,10 +67,10 @@ const Signing = () => {
 
                     if (isAuthenticated() && isAuthenticated().role === 1) {
                         console.log('Redirigir Al Panel De Control Administración.');
-                        history.push('/admin/dashboard');
+                        navigate('/admin/dashboard');
                     } else {
                         console.log('Redirigir Al Panel De Control Del Usuario.');
-                        history.push('/user/dashboard');
+                        navigate('/user/dashboard');
                     }
                 })
                 .catch((err) => {

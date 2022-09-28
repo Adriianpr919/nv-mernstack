@@ -7,11 +7,19 @@ const productController = require('../controllers/product');
 router.post(
     '/', 
     authenticatateJWT, 
-    upload.single('productImage1', 'productImage2', 'productImage3', 'productImage4', 'productImage5', 'productImage6', 'productImage7', 'productImage8'),
+    upload.single('productImage'),
     productController.create   
 );
 
 router.get('/', productController.readAll);
+router.get('/count', productController.readByCount);
+router.get('/:productId', productController.read);
+router.put(
+	'/:productId',
+	authenticatateJWT,
+	upload.single('productImage'),
+	productController.update
+);
 router.delete('/:productId', authenticatateJWT, productController.delete);
 
 module.exports = router;

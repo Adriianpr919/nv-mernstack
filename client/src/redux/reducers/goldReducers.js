@@ -1,25 +1,25 @@
 import { 
-    GET_CATEGORIES, 
-    CREATE_CATEGORY, 
+    GET_GOLDS, 
+    CREATE_GOLDEN, 
 } from '../constants/goldConstants';
 
 const INITIAL_STATE = {
-    categoriesGold: [],
+    golds: [],
 };
 
 const goldReducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case GET_CATEGORIES:
+        case GET_GOLDS: 
             return {
                 ...state,
-                categoriesGold: action.payload,
+                golds: action.payload,
             };
-        case CREATE_CATEGORY:
+        case CREATE_GOLDEN:
             return {
                 ...state,
-                categoriesGold: [...state.categoriesGold, action.payload],
-            };    
-        default:
+                golds: [...state.golds, action.payload],
+            };   
+        default: 
             return state;    
     }
 };

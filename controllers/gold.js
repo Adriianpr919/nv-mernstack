@@ -1,44 +1,43 @@
-const Gold = require('../models/gold');
+const Golden = require('../models/gold');
 
 exports.create = async (req, res) => {
-    const { gold } = req.body;
+    const { golden } = req.body;
 
     try {
-        const categoryExist = await Gold.findOne({ gold });
-        if (categoryExist) {
+        const goldenExist = await Golden.findOne({ golden });
+        if (goldenExist) {
             return res.status(400).json({
-                errorMessage: `${gold} El Color De Oro Ya Existe.`,
+                errorMessage: `${golden} El Color De Oro Ya Existe.`,
             });
         }
 
-        let newGold = new Gold();
-        newGold.gold = gold;
+        let newGolden = new Golden();
+        newGolden.golden = golden;
 
-        newGold = await newGold.save();
+        newGolden = await newGolden.save();
 
         res.status(200).json({
-            gold: newGold,
-            successMessage: `${newGold.gold} ¡Ha Sido Éxitoso.!`,
+            golden: newGolden,
+            successMessage: `${newGolden.golden} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
         console.log('Error De Creación De Color De Oro: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };
 
 exports.readAll = async (req, res) => {
     try {
-        const categoriesGold = await Gold.find({});
-
-        res.status(200).json({
-            categoriesGold,
-        });
+        const golds = await Golden.find({});
+        res.status(200).json({ 
+            golds, 
+        });    
     } catch (err) {
         console.log('Error Color De Oro readAll: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }   
+    }    
 };

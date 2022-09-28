@@ -1,44 +1,43 @@
-const Size = require('../models/size');
+const Sized = require('../models/size');
 
 exports.create = async (req, res) => {
-    const { size } = req.body;
+    const { sized } = req.body;
 
     try {
-        const categoryExist = await Size.findOne({ size });
-        if (categoryExist) {
+        const sizedExist = await Sized.findOne({ sized });
+        if (sizedExist) {
             return res.status(400).json({
-                errorMessage: `${size} La Talla Ya Existe.`,
+                errorMessage: `${sized} La Talla Ya Existe.`,
             });
         }
 
-        let newSize = new Size();
-        newSize.size = size;
+        let newSized = new Sized();
+        newSized.sized = sized;
 
-        newSize = await newSize.save();
+        newSized = await newSized.save();
 
         res.status(200).json({
-            size: newSize,
-            successMessage: `${newSize.size} ¡Ha Sido Éxitoso.!`,
+            sized: newSized,
+            successMessage: `${newSized.sized} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
         console.log('Error De Creación De Talla: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };
 
 exports.readAll = async (req, res) => {
     try {
-        const categoriesSize = await Size.find({});
-
-        res.status(200).json({
-            categoriesSize,
-        });
+        const sizes = await Sized.find({});
+        res.status(200).json({ 
+            sizes, 
+        });    
     } catch (err) {
         console.log('Error Talla readAll: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }   
+    }    
 };

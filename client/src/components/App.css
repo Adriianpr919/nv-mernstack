@@ -129,7 +129,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .banner-image {
-	/*background-image: url('/images/banner.jpg');*/
+	background-image: url(./img/A1.jpg);
+    background-color: rgba(0, 0, 0, 0.40);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;

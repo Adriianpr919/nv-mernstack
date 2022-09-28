@@ -1,2 +1,2 @@
-export const GET_CATEGORIES = 'GET_CATEGORIES';
-export const CREATE_CATEGORY = 'CREATE_CATEGORY';
+export const GET_GOLDS = 'GET_GOLDS';
+export const CREATE_GOLDEN = 'CREATE_GOLDEN';

@@ -1,44 +1,43 @@
-const Stone = require('../models/stone');
+const Rock = require('../models/stone');
 
 exports.create = async (req, res) => {
-    const { stone } = req.body;
+    const { rock } = req.body;
 
     try {
-        const categoryExist = await Stone.findOne({ stone });
-        if (categoryExist) {
+        const rockExist = await Rock.findOne({ rock });
+        if (rockExist) {
             return res.status(400).json({
-                errorMessage: `${stone} El Color De Piedra Ya Existe.`,
+                errorMessage: `${rock} El Color De Piedra Ya Existe.`,
             });
         }
 
-        let newStone = new Stone();
-        newStone.stone = stone;
+        let newRock = new Rock();
+        newRock.rock = rock;
 
-        newStone = await newStone.save();
+        newRock = await newRock.save();
 
         res.status(200).json({
-            stone: newStone,
-            successMessage: `${newStone.stone} ¡Ha Sido Éxitoso.!`,
+            rock: newRock,
+            successMessage: `${newRock.rock} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
         console.log('Error De Creación De Color De Piedra: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };
 
 exports.readAll = async (req, res) => {
     try {
-        const categoriesStone = await Stone.find({});
-
-        res.status(200).json({
-            categoriesStone,
-        });
+        const stones = await Rock.find({});
+        res.status(200).json({ 
+            stones, 
+        });    
     } catch (err) {
         console.log('Error Color De Piedra readAll: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }   
+    }    
 };

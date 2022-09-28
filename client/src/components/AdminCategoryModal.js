@@ -49,17 +49,17 @@ const AdminCategoryModal = () => {
 	 * RENDERER
 	 ***************************/
     return (
-        <div id="addCategoryModal" className="modal" onClick={handleMessages}>
-            <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div id="addCategoryModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
+            <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
                     <form onSubmit={handleCategorySubmit}>    
                         <div className="modal-header bg-dark text-white">
                             <h5 className="modal-title">
-                            <i className="fas fa-plus-circle"></i> Añadir Categoría.
+                                <i className="fas fa-plus-circle"></i> Añadir Categoría.
                             </h5>
                             <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
                                 <span>
-                                <i className="fas fa-window-close"></i> Cerrar.
+                                    <i className="fas fa-window-close"></i> Cerrar.
                                 </span>
                             </button>
                         </div>
@@ -93,10 +93,10 @@ const AdminCategoryModal = () => {
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">
-                            <i className="fas fa-window-close"></i> Cerrar.
+                                <i className="fas fa-window-close"></i> Cerrar.
                             </button>
                             <button type="submit" className="btn btn-outline-success">
-                            <i className="far fa-check-circle"></i> Guardar.
+                                <i className="far fa-check-circle"></i> Guardar.
                             </button>
                         </div>
                     </form>

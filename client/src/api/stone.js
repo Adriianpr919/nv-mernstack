@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const createStone = async (formData) => {
+export const createRock = async (formData) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const createStone = async (formData) => {
     return response;
 };
 
-export const getStone = async () => {
+export const getStones = async () => {
     const response = await axios.get('/api/stone');
 
     return response;

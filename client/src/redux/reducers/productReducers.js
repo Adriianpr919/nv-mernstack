@@ -1,6 +1,7 @@
 import { 
     CREATE_PRODUCT, 
     GET_PRODUCTS, 
+    GET_PRODUCT,
     DELETE_PRODUCT, 
 } from '../constants/productConstants';
 
@@ -18,6 +19,10 @@ const productReducer = (state = INITIAL_STATE, action) => {
             return {
                 products: [...action.payload],
             };
+        case GET_PRODUCT:
+			return {
+				product: action.payload,
+			};
         case DELETE_PRODUCT:
             return {
                 products: state.products.filter(

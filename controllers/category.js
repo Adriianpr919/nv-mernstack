@@ -31,7 +31,6 @@ exports.create = async (req, res) => {
 exports.readAll = async (req, res) => {
     try {
         const categories = await Category.find({});
-
         res.status(200).json({
             categories,
         });

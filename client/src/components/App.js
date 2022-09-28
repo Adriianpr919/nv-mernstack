@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Head from './Head';
 import Header from './Header';
@@ -10,10 +10,13 @@ import Options1 from './options1';
 import Options2 from './options2';
 import Faq from './faq';
 import About from './About';
+import Shop from './Shop';
+import Cart from './Cart';
 import Products from './Products';
 import Info from './Info';
 import UserDashboard from './UserDashboard';
 import AdminDashboard from './AdminDashboard';
+import AdminEditProduct from './AdminEditProduct';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import NotFound from './NotFound';
@@ -21,27 +24,52 @@ import Footer from './Footer';
 
 const App = () => {
   return (
-      <BrowserRouter>
-        <Head />
-        <Header />
-        <main>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/signing" component={Signing} />
-            <Route exact path="/options1" component={Options1} />
-            <Route exact path="/options2" component={Options2} />
-            <Route exact path="/faq" component={Faq} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/products" component={Products} />
-            <Route exact path="/info" component={Info} />
-            <UserRoute exact path="/user/dashboard" component={UserDashboard} />
-            <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
-            <Route component={NotFound} />
-          </Switch>
-        </main>
-        <Footer />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Head />
+      <Header />
+      <main>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/signing" element={<Signing />} />
+          <Route exact path="/options1" element={<Options1 />} />
+          <Route exact path="/options2" element={<Options2 />} />
+          <Route exact path="/faq" element={<Faq />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path='/shop' element={<Shop />} />
+          <Route exact path='/cart' element={<Cart />} />
+          <Route 
+            exact 
+            path="/product/:productId" 
+            element={<Products />} 
+          />
+          <Route exact path="/info" element={<Info />} />
+          {/* protected user routes */}
+          <Route element={<UserRoute />}>
+						<Route
+							exact
+							path='/user/dashboard'
+							element={<UserDashboard />}
+						/>
+					</Route>
+          {/* protected admin routes */}
+          <Route element={<AdminRoute />}>
+						<Route
+							exact
+							path='/admin/dashboard'
+							element={<AdminDashboard />}
+						/>
+            <Route
+							exact
+							path='/admin/edit/product/:productId'
+							element={<AdminEditProduct />}
+						/>
+					</Route>
+          <Route element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 };
 

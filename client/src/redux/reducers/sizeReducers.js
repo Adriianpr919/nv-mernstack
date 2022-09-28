@@ -1,25 +1,25 @@
 import { 
-    GET_CATEGORIES, 
-    CREATE_CATEGORY, 
+    GET_SIZES,
+    CREATE_SIZED, 
 } from '../constants/sizeConstants';
 
 const INITIAL_STATE = {
-    categoriesSize: [],
+    sizes: [],
 };
 
 const sizeReducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case GET_CATEGORIES:
+        case GET_SIZES: 
             return {
                 ...state,
-                categoriesSize: action.payload,
+                sizes: action.payload,
             };
-        case CREATE_CATEGORY:
+        case CREATE_SIZED:
             return {
                 ...state,
-                categoriesSize: [...state.categoriesSize, action.payload],
-            };    
-        default:
+                sizes: [...state.sizes, action.payload],
+            };
+        default: 
             return state;    
     }
 };

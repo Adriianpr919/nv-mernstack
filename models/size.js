@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 
 const sizeSchema = new mongoose.Schema(
     {
-        size: {
+        sized: {
             type: String,
             required: true,
             trim: true,
-            maxlength: 50,
+            maxlength: 255,
         },
-    },
+    }, 
     { timestamps: true }
 );
 
-const Size = mongoose.model('Size', sizeSchema);
+const Sized = mongoose.model('Sized', sizeSchema);
 
-module.exports = Size;
+module.exports = Sized;

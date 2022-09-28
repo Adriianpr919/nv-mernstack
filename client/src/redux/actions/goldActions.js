@@ -1,31 +1,34 @@
 import { START_LOADING, STOP_LOADING } from '../constants/loadingConstants';
-import { 
-    SHOW_ERROR_MESSAGE, 
-    SHOW_SUCCESS_MESSAGE, 
+import {
+    SHOW_ERROR_MESSAGE,
+    SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
 import { 
-    GET_CATEGORIES, 
-    CREATE_CATEGORY, 
+    GET_GOLDS,
+    CREATE_GOLDEN, 
 } from '../constants/goldConstants';
 import axios from 'axios';
 
-export const getGold = () => async dispatch => {
+export const getGolds = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
         const response = await axios.get('/api/gold');
         dispatch({ type: STOP_LOADING });
-        dispatch({ type: GET_CATEGORIES, payload: response.data.categoriesGold });
+        dispatch({ 
+            type: GET_GOLDS, 
+            payload: response.data.golds
+        });
     } catch (err) {
-        console.log('getGold API Error: ', err);
+        console.log('getGolds API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({
-            type: SHOW_ERROR_MESSAGE,
-            payload: err.response.data.errorMessage,
+        dispatch({ 
+            type: SHOW_ERROR_MESSAGE, 
+            payload: err.response.data.errorMessage, 
         });
     }
 };
 
-export const createGold = formData => async dispatch => {
+export const createGolden = formData => async dispatch => {
     try {
         const config = {
             headers: {
@@ -39,9 +42,12 @@ export const createGold = formData => async dispatch => {
             type: SHOW_SUCCESS_MESSAGE, 
             payload: response.data.successMessage, 
         });
-        dispatch({ type: CREATE_CATEGORY, payload: response.data.gold });
+        dispatch({ 
+            type: CREATE_GOLDEN, 
+            payload: response.data.golden
+        });
     } catch (err) {
-        console.log('createGold API Error: ', err);
+        console.log('createGolden API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_ERROR_MESSAGE, 

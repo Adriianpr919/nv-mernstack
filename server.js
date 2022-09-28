@@ -10,6 +10,7 @@ const sizeRoutes = require('./routes/size');
 const goldRoutes = require('./routes/gold');
 const stoneRoutes = require('./routes/stone');
 const productRoutes = require('./routes/product');
+const filterRoutes = require('./routes/filter');
 
 // middleware
 app.use(cors());
@@ -23,6 +24,7 @@ app.use('/api/gold', goldRoutes);
 app.use('/api/stone', stoneRoutes);
 app.use('/api/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
+app.use('/api/filter', filterRoutes);
 
 // connect database
 connectDB();

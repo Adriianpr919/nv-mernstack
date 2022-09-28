@@ -1,31 +1,34 @@
 import { START_LOADING, STOP_LOADING } from '../constants/loadingConstants';
-import { 
-    SHOW_ERROR_MESSAGE, 
-    SHOW_SUCCESS_MESSAGE, 
+import {
+    SHOW_ERROR_MESSAGE,
+    SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
 import { 
-    GET_CATEGORIES, 
-    CREATE_CATEGORY, 
+    GET_SIZES,
+    CREATE_SIZED, 
 } from '../constants/sizeConstants';
 import axios from 'axios';
 
-export const getSize = () => async dispatch => {
+export const getSizes = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
         const response = await axios.get('/api/size');
         dispatch({ type: STOP_LOADING });
-        dispatch({ type: GET_CATEGORIES, payload: response.data.categoriesSize });
+        dispatch({ 
+            type: GET_SIZES, 
+            payload: response.data.sizes
+        });
     } catch (err) {
-        console.log('getSize API Error: ', err);
+        console.log('getSizes API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({
-            type: SHOW_ERROR_MESSAGE,
-            payload: err.response.data.errorMessage,
+        dispatch({ 
+            type: SHOW_ERROR_MESSAGE, 
+            payload: err.response.data.errorMessage, 
         });
     }
 };
 
-export const createSize = formData => async dispatch => {
+export const createSized = formData => async dispatch => {
     try {
         const config = {
             headers: {
@@ -39,9 +42,12 @@ export const createSize = formData => async dispatch => {
             type: SHOW_SUCCESS_MESSAGE, 
             payload: response.data.successMessage, 
         });
-        dispatch({ type: CREATE_CATEGORY, payload: response.data.size });
+        dispatch({ 
+            type: CREATE_SIZED, 
+            payload: response.data.sized 
+        });
     } catch (err) {
-        console.log('createSize API Error: ', err);
+        console.log('createSized API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_ERROR_MESSAGE, 

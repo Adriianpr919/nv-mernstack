@@ -3,20 +3,24 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import loadingReducer from './reducers/loadingReducers';
 import messageReducer from './reducers/messageReducers';
-import categoryReducers from './reducers/categoryReducers';
-import sizeReducers from './reducers/sizeReducers';
-import goldReducers from './reducers/goldReducers';
-import stoneReducers from './reducers/stoneReducers';
-import productReducers from './reducers/productReducers';
+import categoryReducer from './reducers/categoryReducers';
+import sizeReducer from './reducers/sizeReducers';
+import goldReducer from './reducers/goldReducers';
+import stoneReducer from './reducers/stoneReducers';
+import productReducer from './reducers/productReducers';
+import filterReducer from './reducers/filterReducers';
+import cartReducer from './reducers/cartReducers';
 
 const reducer = combineReducers({
     loading: loadingReducer,
     messages: messageReducer,
-    categories: categoryReducers,   
-    categoriesSize: sizeReducers,
-    categoriesGold: goldReducers,
-    categoriesStone: stoneReducers,
-    products: productReducers,
+    categories: categoryReducer,   
+    sizes: sizeReducer,
+    golds: goldReducer,
+    stones: stoneReducer,
+    products: productReducer,
+    filters: filterReducer,
+    cart: cartReducer,
 });
 
 const initialState = {};

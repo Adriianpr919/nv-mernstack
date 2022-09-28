@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './img/logo.ico';
+import Logo from './img/Logonv.png';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ const Footer = () => {
                     </small>
                 </div>
                 <div className="col-12 col-md">
-                    <h5>SÍGANOS.</h5>
+                    <h5>Síganos.</h5>
                     <ul className="list-unstyled text-small">
                         <li>
                             <a href="https://www.youtube.com/embed/lUIAHkN8TlQ" target="_blank" rel="noopener noreferrer" className="text-muted linkEnlace">
@@ -36,7 +36,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="col-12 col-md">
-                    <h5>INFORMACIÓN DE LA TIENDA.</h5>
+                    <h5>Información De La Tienda.</h5>
                     <ul className="list-unstyled text-small">
                         <li>
                             <Link to="#" className="text-muted">
@@ -51,32 +51,32 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="col-12 col-md">
-                    <h5>ÁREA LEGAL.</h5>
+                    <h5>Área Legal.</h5>
                     <ul className="list-unstyled text-small">
                         <li>
                             <Link to="/options1" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">TÉRMINOS Y CONDICIONES.</span>
+                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Términos y Condiciones.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/options2" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">POLITICAS DE ENVIOS, CAMBIOS, DEVOLUCIONES Y GARANTÍAS.</span>
+                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Políticas De Envios, Cambios, Devoluciones Y Garantías.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/faq" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">PREGUNTAS FRECUENTES.</span>
+                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Preguntas Frecuentes.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/about" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">SOBRE NOSOTROS.</span>
+                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Sobre Nosotros.</span>
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="col-12 col-md">
-                    <h5>ATENCIÓN AL CLIENTE.</h5>
+                    <h5>Atención Al Cliente.</h5>
                     <ul className="list-unstyled text-small">
                         <li>
                             <a 
