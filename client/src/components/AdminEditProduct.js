@@ -91,11 +91,12 @@ const AdminEditProduct = () => {
 			<div className='container my-3'>
 				<div className='row'>
 					<div className='col-md-8 mx-auto'>
-						<Link to='/admin/dashboard'>
-							<span className='fas fa-arrow-circle-left'> Regresa</span>
-						</Link>
+						<div className='jumbotron'>
+							<Link to='/admin/dashboard' className='btn btn-outline-primary mb-4'>
+								<span className='fas fa-arrow-circle-left'> Regresa</span>
+							</Link>
+						</div>
 						<div>
-							<br />
 							<div className='modal-content'>
 								<form onSubmit={handleProductSubmit}>
 									<div className='modal-header bg-primary text-white'>

@@ -20,7 +20,7 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                     <img
                         className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
                         src={`/uploads/${product.fileName}`}
-                        style={{maxWidth: "250px"}}
+                        style={{maxWidth: "150px"}}
                         alt="Productos"
                         title="Productos"
                     />

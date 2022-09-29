@@ -9,9 +9,11 @@ import AdminSizeModal from './AdminSizeModal';
 import AdminGoldModal from './AdminGoldModal';
 import AdminStoneModal from './AdminStoneModal';
 import AdminProductModal from './AdminProductModal';
+import UserOrdersViewModal from './UserOrdersViewModal';
 
 import AdminBodyCategory from './AdminBodyCategory';
 import AdminBody from './AdminBody';
+import UserBodyOrders from './UserBodyOrders';
 import AdminBodySize from './AdminBodySize';
 import AdminBodyGold from './AdminBodyGold';
 import AdminBodyStone from './AdminBodyStone';
@@ -53,6 +55,8 @@ const AdminDashboard = () => {
             <AdminBodySize />
             <AdminBodyGold />
             <AdminBodyStone />
+            <UserBodyOrders />
+            <UserOrdersViewModal />
         </section>
     );
 }
