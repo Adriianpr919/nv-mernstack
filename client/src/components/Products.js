@@ -103,12 +103,19 @@ const Products = () => {
                             Descripción *: {product.productDesc}
                         </p>
                         <button
-                            className='btn btn-outline-dark btn-large btn-block mb-5 py-2'
+                            className='btn btn-outline-warning btn-large btn-block mb-5 py-2'
                             disabled={product.productQty <= 0}
                             onClick={handleAddToCart}
                         >
-                            <i className="fas fa-cart-plus"></i> Añadir Al Carrito.
+                            <i className="fas fa-cart-plus" style={{fontSize:"25px"}}></i> Añadir Al Carrito.
                         </button>
+                        <a 
+                        href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="btn btn-outline-success btn-large btn-block mb-5 py-2">
+                            <i className="fab fa-whatsapp" style={{fontSize:"25px"}}></i> Comprar Por WhatsAPP.
+                        </a>
                     </div>
                 </div>
             )}

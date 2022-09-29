@@ -4,11 +4,13 @@ import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import { setAuthentication, isAuthenticated } from '../helpers/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { signing } from '../api/auth';
 
 const Signing = () => {
     let navigate = useNavigate();
+    let location = useLocation();
+
     useEffect(() => {
         if (isAuthenticated() && isAuthenticated().role === 1) {
             navigate('/admin/dashboard');
@@ -64,17 +66,26 @@ const Signing = () => {
             signing(data)
                 .then((response) => {
                     setAuthentication(response.data.token, response.data.user);
+                    const redirect = location.search.split('=')[1];
 
                     if (isAuthenticated() && isAuthenticated().role === 1) {
                         console.log('Redirigir Al Panel De Control Administración.');
                         navigate('/admin/dashboard');
-                    } else {
-                        console.log('Redirigir Al Panel De Control Del Usuario.');
-                        navigate('/user/dashboard');
+                    }
+                    else if (
+						isAuthenticated() &&
+						isAuthenticated().role === 0 &&
+						!redirect
+					) {
+						console.log('Redirigir Al Panel De Control Del Usuario.');
+						navigate('/user/dashboard');
+					} else {
+                        console.log('Redireccionamiento A Envío.');
+                        navigate('/shipping');
                     }
                 })
                 .catch((err) => {
-                    console.log('iniciar sesión en el error de la función api: ', err);
+                    console.log('Iniciar Sesión En El Error De La Función API: ', err);
                     setFormData({ 
                         ...formData, 
                         loading: false, 

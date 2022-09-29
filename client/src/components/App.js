@@ -12,6 +12,8 @@ import Faq from './faq';
 import About from './About';
 import Shop from './Shop';
 import Cart from './Cart';
+import Shipping from './Shipping';
+import Payment from './Payment';
 import Products from './Products';
 import Info from './Info';
 import UserDashboard from './UserDashboard';
@@ -20,7 +22,6 @@ import AdminEditProduct from './AdminEditProduct';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import NotFound from './NotFound';
-import Footer from './Footer';
 
 const App = () => {
   return (
@@ -43,6 +44,8 @@ const App = () => {
             path="/product/:productId" 
             element={<Products />} 
           />
+          <Route exact path='/shipping' element={<Shipping />} />
+          <Route exact path='/payment' element={<Payment />} />
           <Route exact path="/info" element={<Info />} />
           {/* protected user routes */}
           <Route element={<UserRoute />}>
@@ -68,7 +71,6 @@ const App = () => {
           <Route element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
     </BrowserRouter>
   );
 };

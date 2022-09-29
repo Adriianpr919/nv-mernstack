@@ -74,7 +74,7 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                                 type='button'
                                 className='btn btn-outline-primary btn-sm mr-1 my-1'
                             >
-                                <i className="fas fa-eye"></i> Ver El Producto.
+                                <i className="fas fa-eye"></i> Ver Detalles.
                             </Link>
                             <button
                                 type='button'
