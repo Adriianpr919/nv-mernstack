@@ -6,6 +6,7 @@ import { showLoading } from '../helpers/loading';
 import { setAuthentication, isAuthenticated } from '../helpers/auth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { signing } from '../api/auth';
+import './Signing.css';
 
 const Signing = () => {
     let navigate = useNavigate();
@@ -99,18 +100,16 @@ const Signing = () => {
      * VIEWS
     **********************************************/
     const showSigningForm = () => (
-        <form className="signing-form" onSubmit={handleSubmit} noValidate>
+        <form className="form-signin" onSubmit={handleSubmit} noValidate>
             {/*Signing*/}
-            <p className="text-center text-white">
-                <i className="fas fa-user-shield"></i> <h3 className="titleSigning">Inicia Sesión.</h3>
-            </p>
+            <div className="text-center text-white mb-4">
+                <i className="fas fa-user-shield"></i> <h3 className="titleSigning mb-3 font-weight-normal">Inicia Sesión.</h3>
+            </div>
             {/*Email*/}
-            <div className="form-group input-group">
-                <div className='input-group-prepend'>
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
-                </div>
+            <div className="form-label-group">
                 <input 
                     type="email" 
+                    id="inputEmail"
                     name="email" 
                     value={email} 
                     onChange={handleChange} 
@@ -118,15 +117,19 @@ const Signing = () => {
                     placeholder="Tu Correo."
                     aria-label="Tu Correo."
                     required 
+                    autofocus
                 />
+                <label 
+                    htmlFor="inputEmail" 
+                    className="text-secondary">
+                        <i className="fas fa-at"></i> Correo.
+                </label>
             </div>
             {/*password A1*/}
-            <div className="form-group input-group">
-                <div className='input-group-prepend'>
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
-                </div>
+            <div className="form-label-group">
                 <input 
                     type="password" 
+                    id="inputPassword"
                     name="password" 
                     value={password} 
                     onChange={handleChange} 
@@ -136,22 +139,25 @@ const Signing = () => {
                     pattern=".{6,}" 
                     required
                 />
+                <label 
+                    htmlFor="inputPassword" 
+                    className="text-secondary">
+                        <i className="fas fa-key"></i> Contraseña.
+                </label>
             </div>
             {/*Signing Button*/}
             <div className="form-group">
                 <button type="submit" className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
-                    Iniciar Sesión.
+                    <i className="fas fa-user-shield"></i> Iniciar Sesión.
                 </button>
             </div>
             {/*Already have account*/}
-            <p className="commentFormSigning">
-                <br />
+            <p className="commentFormSigning mt-5 mb-3">
                 <p className="commentFormP">
                 SI TODAVÍA NO TIENES UNA CUENTA DE USUARIO DE https://nuryvalenzuelajoyeria.com.co/ UTILIZA ESTA OPCIÓN PARA ACCEDER AL FORMULARIO DE REGISTRO.
 
                 TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA AGILIZAR EL PROCESO DE COMPRA.
                 </p>
-                <br />
                 <Link to="/signup" className="linkLogin" rel="noopener noreferrer" aria-label="Regístrarse."> 
                     <i className="fas fa-user-plus"></i> Regístrarse.
                 </Link>

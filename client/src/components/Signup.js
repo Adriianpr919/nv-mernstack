@@ -7,6 +7,7 @@ import { showLoading } from '../helpers/loading';
 import { isAuthenticated } from '../helpers/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { signup } from '../api/auth';
+import './Signup.css';
 
 const Signup = () => {
     let navigate = useNavigate();
@@ -105,18 +106,16 @@ const Signup = () => {
      * VIEWS
     **********************************************/
     const showSignupForm = () => (
-        <form className="signup-form" onSubmit={handleSubmit} noValidate>
+        <form className="form-signin" onSubmit={handleSubmit} noValidate>
             {/*Signup*/}
-            <p className="text-center text-white">
-                <i className="fas fa-user-plus"></i> <h3 className="titleSignup">Regístrarse.</h3>
-            </p>
+            <div className="text-center text-white mb-4">
+                <i className="fas fa-user-plus"></i> <h3 className="titleSignup mb-3 font-weight-normal">Regístrarse.</h3>
+            </div>
             {/*Username*/}
-            <div className="form-group input-group">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-user-plus"></i></span>
-                </div>
+            <div className="form-label-group">
                 <input 
                     type="text" 
+                    id="inputName"
                     name="username" 
                     value={username} 
                     onChange={handleChange} 
@@ -124,15 +123,19 @@ const Signup = () => {
                     placeholder="Nombre De Usuario."
                     aria-label="Nombre De Usuario."
                     required 
+                    autofocus
                 />
+                <label 
+                    htmlFor="inputName" 
+                    className="text-secondary">
+                        <i className="fas fa-user-plus"></i> Usuario.
+                </label>
             </div>
             {/*Email*/}
-            <div className="form-group input-group">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
-                </div>
+            <div className="form-label-group">
                 <input 
                     type="email" 
+                    id="inputEmail"
                     name="email" 
                     value={email} 
                     onChange={handleChange} 
@@ -140,15 +143,19 @@ const Signup = () => {
                     placeholder="Tu Correo."
                     aria-label="Tu Correo."
                     required 
+                    autofocus
                 />
+                <label 
+                    htmlFor="inputEmail" 
+                    className="text-secondary">
+                        <i className="fas fa-at"></i> Correo.
+                </label>
             </div>
             {/*password A1*/}
-            <div className="form-group input-group">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
-                </div>
+            <div className="form-label-group">
                 <input 
                     type="password" 
+                    id="inputPassword"
                     name="password" 
                     value={password} 
                     onChange={handleChange} 
@@ -158,14 +165,17 @@ const Signup = () => {
                     pattern=".{6,}" 
                     required
                 />
+                <label 
+                    htmlFor="inputPassword" 
+                    className="text-secondary">
+                        <i className="fas fa-key"></i> Contraseña 1.
+                </label>
             </div>
             {/*password A2*/}
-            <div className="form-group input-group">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-key"></i></span>
-                </div>
+            <div className="form-label-group">
                 <input 
                     type="password" 
+                    id="inputPassword2"
                     name="password2" 
                     value={password2} 
                     onChange={handleChange} 
@@ -175,15 +185,20 @@ const Signup = () => {
                     pattern=".{6,}"
                     required
                 />
+                <label 
+                    htmlFor="inputPassword2" 
+                    className="text-secondary">
+                        <i className="fas fa-key"></i> Contraseña 2.
+                </label>
             </div>
             {/*Signup Button*/}
             <div className="form-group">
                 <button type="submit" className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
-                    Crear Cuenta.
+                    <i className="fas fa-user-plus"></i> Crear Cuenta.
                 </button>
             </div>
             {/*Already have account*/}
-            <p className="text-center text-white">
+            <p className="text-center text-white mt-5 mb-3">
                 ¿Ya Tienes Una Cuenta? 
                 <Link to="/signing" className="linkLogin" rel="noopener noreferrer" aria-label="Inicia Sesión."> 
                     <i className="fas fa-user-shield"></i> Inicia Sesión.
