@@ -29,18 +29,20 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                 <div className='card-body text-center'>
                     <h5>{product.productName}</h5>
                     <hr />
-                    <h6 className='mb-3'>
-                        <span className='text-secondary mr-2'>
-                            &#36; {product.productPrice.toLocaleString('es-ES', {
-                                style: 'currency',
-                                currency: 'COP',
-                            })}
+                    <h6 className='mb-3 text-success'>
+                        <span className='mr-2'>
+                            <b>
+                                &#36; {product.productPrice.toLocaleString('es-ES', {
+                                    style: 'currency',
+                                    currency: 'COP',
+                                })}
+                            </b>
                         </span>
                     </h6>
                     <p className='text-muted'>
 						{product.productQty <= 0 ? 'Agotado.' : 'En Stock.'}
 					</p>
-                    <p>
+                    <p style={{textAlign: "justify"}}>
                         {product.productDesc.length > 60
                             ? product.productDesc.substring(0, 60) + '...'
                             : product.productDesc.substring(0, 60)}

@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: "Zara";
-    src: url("../../public/assets/Zara-Font/Zara.otf");
+    font-family: "sansation";
+    src: url("../../public/assets/sansation/Sansation_Regular.ttf");
 }
 
 :root {
-    --bs-font-sans-serif: 'Zara', sans-serif;
-    --bs-font-monospace: 'Zara', sans-serif;
+    --bs-font-sans-serif: 'sansation', sans-serif;
+    --bs-font-monospace: 'sansation', sans-serif;
 }
 
 body {

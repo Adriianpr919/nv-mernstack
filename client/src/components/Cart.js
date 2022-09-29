@@ -63,7 +63,7 @@ const Cart = () => {
 					</div>
                     <div className='row'>
                         <div className='col-md-8'>
-                            <div className='table-responsive-xl'>
+                            <div className='table-responsive'>
                                 <table className="table">
                                     <thead className="thead-dark">
                                         <tr>
@@ -102,15 +102,17 @@ const Cart = () => {
                                                 <td>6.5</td>
                                                 <td>Amarillo</td>
                                                 <td>Azul</td>
-                                                <td>
+                                                <td className="text-success">
                                                     {' '}
-                                                    &#36; {product.productPrice.toLocaleString(
-                                                        'es-ES',
-                                                        {
-                                                            style: 'currency',
-                                                            currency: 'COP',
-                                                        }
-                                                    )}
+                                                    <strong>
+                                                        <b>&#36;</b> {product.productPrice.toLocaleString(
+                                                            'es-ES',
+                                                            {
+                                                                style: 'currency',
+                                                                currency: 'COP',
+                                                            }
+                                                        )}
+                                                    </strong> 
                                                 </td>
                                                 <td>
                                                     <input
@@ -147,33 +149,50 @@ const Cart = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            
                         </div>
                         <div className='col-md-4 border-left pl-4'>
-                            <h2>Resumen De La Compra.</h2>
-                            <p className='font-weight-light text-muted border-bottom'>
-								{cart.length === 1
+                            <h2 className="d-flex justify-content-between align-items-center mb-3">
+                                <span className="text-muted">
+                                    Resumen De La Compra.
+                                </span>
+                                <span className="badge badge-secondary badge-pill border border-dark">
+                                    {cart.length === 1
 									? '(1) ARTÍCULO.'
 									: `(${cart.length}) ELEMENTOS.`}
-							</p>
-							<p className='font-weight-bold'>
-								Total *: &#36;
-								{cart
-									.reduce(
-										(currentSum, currentCartItem) =>
-											currentSum +
-											currentCartItem.count *
-												currentCartItem.productPrice,
-										0
-									)
-									.toFixed(2)} COP
-							</p>
-							<button
-								className='btn btn-outline-dark btn-large btn-block mb-5 py-2'
-								onClick={handleCheckout}
-							>
-								<i class="fas fa-money-check-alt"></i> Pasar Por La Caja.
-							</button>
+                                </span>
+                            </h2>
+                            <ul className="list-group mb-3">
+                                <li className="list-group-item d-flex justify-content-between">
+                                    <h3 className="d-flex justify-content-between align-items-center mb-3">
+                                        <span>
+                                            <stong><b>Total *: (COP)</b></stong>
+                                        </span>
+                                    </h3>
+                                    <h3 className="d-flex justify-content-between align-items-center mb-3">
+                                        <strong className="text-success">
+                                            <b>&#36;</b> {cart
+                                            .reduce(
+                                                (currentSum, currentCartItem) =>
+                                                    currentSum +
+                                                    currentCartItem.count *
+                                                        currentCartItem.productPrice,
+                                                0
+                                            )
+                                            .toFixed(2)} 
+                                        </strong>
+                                    </h3>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between">
+                                    <button
+                                        className='btn btn-outline-dark btn-large btn-block mb-5 py-2'
+                                        onClick={handleCheckout}
+                                    >
+                                        <h3>
+                                            <i class="fas fa-money-check-alt"></i> Pasar Por La Caja.
+                                        </h3>
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </>
