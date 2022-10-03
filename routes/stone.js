@@ -4,6 +4,6 @@ const stoneController = require('../controllers/stone');
 const { authenticatateJWT } = require('../middleware/authenticator');
 
 router.post('/', authenticatateJWT, stoneController.create);
-router.get('/', authenticatateJWT, stoneController.readAll);
+router.get('/', stoneController.readAll);
 
 module.exports = router;

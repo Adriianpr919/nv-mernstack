@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     sizes: [],
 };
 
-const sizeReducers = (state = INITIAL_STATE, action) => {
+const sizedReducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GET_SIZES: 
             return {
@@ -24,4 +24,4 @@ const sizeReducers = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default sizeReducers;
+export default sizedReducers;

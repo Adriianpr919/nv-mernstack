@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     golds: [],
 };
 
-const goldReducers = (state = INITIAL_STATE, action) => {
+const goldenReducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GET_GOLDS: 
             return {
@@ -24,4 +24,4 @@ const goldReducers = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default goldReducers;
+export default goldenReducers;

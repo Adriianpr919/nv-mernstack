@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     stones: [],
 };
 
-const stoneReducers = (state = INITIAL_STATE, action) => {
+const rockReducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GET_STONES: 
             return {
@@ -24,4 +24,4 @@ const stoneReducers = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default stoneReducers;
+export default rockReducers;

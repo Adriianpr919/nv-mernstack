@@ -5,6 +5,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
 import { getCategories } from '../redux/actions/categoryActions';
+import './AdminEditProduct.css';
 
 const AdminEditProduct = () => {
     /****************************
@@ -106,36 +107,104 @@ const AdminEditProduct = () => {
 									</div>
 									<div className='modal-body my-2'>
 										<Fragment>
-											<label className='btn btn-dark mr-4'>
-                                                <i className="fas fa-upload"></i> Cambiar Foto. *:
-												<input
-													type='file'
-													name='productImage'
-													accept='images/*'
-													hidden
-													onChange={handleImageUpload}
-												/>
-											</label>
-											{productImage &&
-											productImage.name ? (
-												<span className='badge badge-secondary'>
-													{productImage.name}
-												</span>
-											) : productImage ? (
-												<img
-													className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-													style={{
-														maxWidth: '150px'
-													}}
-													src={`/uploads/${productImage}`}
-													alt='Productos.'
-                                                    title='Productos.'
-												/>
-											) : null}
+											<div className="panel panel-default">
+        
+												<div className="panel-heading">
+													<i class='fas fa-camera-retro'></i> IMPORTANTE *:
+												</div>
+												<div className="panel-body">
+													<fieldset className="col-12 mb-2 border border-secondary"> 
+														
+														<legend>
+															POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.
+														</legend>
+														
+														<div className="panel panel-default">
+															<div className="panel-body">
+																<p>
+																	<div className="col-12 mb-2">
+																		{/* FOTO */}
+																		<label className='btn btn-dark mr-4'>
+																			<i className="fas fa-upload"></i> Cambiar Foto. *:
+																			<input
+																				type='file'
+																				name='productImage'
+																				accept='images/*'
+																				hidden
+																				onChange={handleImageUpload}
+																			/>
+																		</label>
+																		{productImage &&
+																		productImage.name ? (
+																			<span className='badge badge-secondary'>
+																				{productImage.name}
+																			</span>
+																		) : productImage ? (
+																			<img
+																				className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
+																				style={{
+																					maxWidth: '150px'
+																				}}
+																				src={`/uploads/${productImage}`}
+																				alt='Productos.'
+																				title='Productos.'
+																			/>
+																		) : null}
+																	</div>
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 2 */}
+																		FOTO 2
+																	</div>
+																	
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 3 */}
+																		FOTO 3 
+																	</div>
+																	
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 4 */}
+																		FOTO 4
+																	</div>
+																	
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 5 */}
+																		FOTO 5
+																	</div>
+																	
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 6 */}
+																		FOTO 6
+																	</div>
+																	
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 7 */}
+																		FOTO 7
+																	</div>
+																	
+																	
+																	<div className="col-12 mb-2">
+																		{/* FOTO 8 */}
+																		FOTO 8
+																	</div>
+																	
+																</p>
+															</div>
+														</div>
+														
+													</fieldset>             
+												</div>
+															
+											</div>
 
 											<div className='form-group'>
 												<label className='text-secondary'>
-                                                    <i className="far fa-edit pr-1"></i> Nombre Del Producto. *:
+                                                    <i className="far fa-edit pr-1"></i> Cambiar Nombre Del Producto. *:
 												</label>
 												<input
 													type='text'
@@ -151,7 +220,7 @@ const AdminEditProduct = () => {
 											</div>
 											<div className='form-group'>
 												<label className='text-secondary'>
-                                                    <i className="far fa-edit pr-1"></i> Descripción. *:
+                                                    <i className="far fa-edit pr-1"></i> Cambiar Descripción. *:
 												</label>
 												<textarea
 													className='form-control'
@@ -167,7 +236,7 @@ const AdminEditProduct = () => {
 											</div>
 											<div className='form-group'>
 												<label className='text-secondary'>
-                                                    <i className="far fa-edit pr-1"></i> Precio. *:
+                                                    <i className="far fa-edit pr-1"></i> Cambiar Precio. *:
 												</label>
 												<input
 													type='text'
@@ -181,62 +250,97 @@ const AdminEditProduct = () => {
 													}
 												/>
 											</div>
-											<div className='form-row'>
-												<div className='form-group col-md-6'>
-													<label className='text-secondary'>
-                                                        <i className="far fa-edit pr-1"></i> Cambiar Categorías. *:
-													</label>
-													<select
-														className='custom-select mr-sm-2'
-														name='productCategory'
-														value={productCategory}
-														onChange={e =>
-															setProductCategory(
-																e.target.value
+											<div className='form-group'>
+												<label className='text-secondary'>
+													<i className="far fa-edit pr-1"></i> Cambiar Categorías. *:
+												</label>
+												<select
+													className='custom-select mr-sm-2'
+													name='productCategory'
+													value={productCategory}
+													onChange={e =>
+														setProductCategory(
+															e.target.value
+														)
+													}
+												>
+													<option value='' selected>
+														--- Abrir Este Menú De Selecciónar Categorías ---
+													</option>
+													{categories &&
+														categories.map(
+															c => (
+																<option
+																	key={
+																		c._id
+																	}
+																	value={
+																		c._id
+																	}
+																>
+																	{
+																		c.category
+																	}
+																</option>
 															)
-														}
-													>
-														<option value='' selected>
-                                                            --- Abrir Este Menú De Selecciónar Categorías ---
-														</option>
-														{categories &&
-															categories.map(
-																c => (
-																	<option
-																		key={
-																			c._id
-																		}
-																		value={
-																			c._id
-																		}
-																	>
-																		{
-																			c.category
-																		}
-																	</option>
-																)
-															)}
-													</select>
-												</div>
+														)}
+												</select>
+											</div>
+											<div className='form-group'>
+												<fieldset className='border border-secondary'>
+													<legend>
+														<i class='fas fa-edit'></i> Cambiar Opciones. *:
+													</legend>
+													<div className="form-row align-items-center">
+														<div className="col-12 mb-2">
+															{/* TALLA */}
+															TALLA TAGS
+														</div>
 
-												<div className='form-group col-md-6'>
-													<label className='text-secondary'>
-                                                        <i className="far fa-edit pr-1"></i> Cantidad. *:
-													</label>
-													<input
-														type='number'
-														className='form-control'
-														min='0'
-														max='9000'
-														name='productQty'
-														value={productQty}
-														onChange={e =>
-															setProductQty(
-																e.target.value
-															)
-														}
-													/>
-												</div>
+														<div className="col-12 mb-2">
+															{/* ORO */}
+															ORO TAGS
+														</div>
+
+														<div className="col-12 mb-2">
+															{/* PIEDRA */}
+															PIEDRA TAGS
+														</div>
+
+														<div className="col-12 mb-2">
+															<div className="form-check">
+																<input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="" />
+																<label className="form-check-label" htmlFor="gridRadios1">
+																	<i class='far fa-eye-slash' style={{color: "red"}}></i> DesActivar.
+																</label>
+															</div>
+															<div className="form-check">
+																<input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="" />
+																<label className="form-check-label" htmlFor="gridRadios2">
+																	<i class='far fa-eye' style={{color: "green"}}></i> Activar.
+																</label>
+															</div>
+														</div>
+													</div>
+												</fieldset>
+											</div>
+											<div className='form-group'>
+												<label className='text-secondary'>
+													<i className="far fa-edit pr-1"></i> Cambiar Cantidad. *:
+												</label>
+												<input
+													type='number'
+													className='form-control'
+													min='0'
+													max='9000'
+													name='productQty'
+													value={productQty}
+													onChange={e =>
+														setProductQty(
+															e.target.value
+														)
+													}
+												/>
 											</div>
 										</Fragment>
 									</div>

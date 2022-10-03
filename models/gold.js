@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
-const goldSchema = new mongoose.Schema(
+const goldenSchema = new mongoose.Schema(
     {
         golden: {
             type: String,
             required: true,
             trim: true,
-            maxlength: 255,
+            maxlength: 100,
         },
     }, 
     { timestamps: true }
 );
 
-const Golden = mongoose.model('Golden', goldSchema);
+const Golden = mongoose.model('Golden', goldenSchema);
 
 module.exports = Golden;

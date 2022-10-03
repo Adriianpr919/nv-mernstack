@@ -6,6 +6,7 @@ import { showLoading } from '../helpers/loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
 import { createProduct } from '../redux/actions/productActions';
+import './AdminProductModal.css';
 
 
 
@@ -132,34 +133,242 @@ const AdminProductModal = () => {
                         ) : (
                             <Fragment>
                                 <div className="container">
-                                    <div className="row">
-                                        <div className="col-12 mb-2">
-                                            <label 
-                                                htmlFor="addFile" 
-                                                className="text-secondary">
-                                                    <i className="fas fa-upload"></i> Foto. *:
-                                            </label>
-                                            <div className="input-group mb-3">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text" id="customFileLang">Subir.</span>
+                                    <div class="panel panel-default">
+                                        <div className="panel-heading">
+                                            <i class='fas fa-camera-retro'></i> IMPORTANTE *:
+                                        </div>
+                                        <div className="panel-body">
+                                            <fieldset className="col-12 mb-2 border border-secondary">    	
+                                                <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
+                                                
+                                                <div className="panel panel-default">
+                                                    <div className="panel-body">
+                                                        <p>
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            name='productImage'
+                                                                            onChange={handleProductImage} 
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile2" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 2. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 2. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile3" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 3. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 3. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile4" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 4. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 4. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile5" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 5. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 5. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile6" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 6. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 6. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile7" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 7. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 7. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile8" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto 8. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto 8. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div className="custom-file">
-                                                    <input 
-                                                    type="file"
-                                                    name='productImage'
-                                                    onChange={handleProductImage} 
-                                                    className="custom-file-input" 
-                                                    id="customFileLang" 
-                                                    aria-describedby="customFileLang" 
-                                                    data-browse="Elegir" 
-                                                    lang="es" />
-                                                    <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
-                                                        <i className="fas fa-upload"></i> Foto. *:
-                                                    </label>
-                                                </div>
-                                            </div>
+                                                
+                                            </fieldset>				
                                         </div>
                                     </div>
+                                    
                                     <div className="row">
                                         <div className="col-12 mb-2">
                                         <label 
@@ -240,6 +449,46 @@ const AdminProductModal = () => {
                                                 </option> 
                                             ))}
                                         </select>
+                                        </div>
+                                    </div>
+                                    <div className='row'>
+                                        <div className='col-12 mb-2'>
+                                            <fieldset className='border border-secondary'>
+                                                <legend>
+                                                    <i class='fas fa-edit'></i> Opciones. *:
+                                                </legend>
+                                                <div className="form-row align-items-center">
+                                                    <div className="col-12 mb-2">
+                                                        {/* TALLA */}
+                                                        TALLA TAGS
+                                                    </div>
+
+                                                    <div className="col-12 mb-2">
+                                                        {/* ORO */}
+                                                        ORO TAGS
+                                                    </div>
+
+                                                    <div className="col-12 mb-2">
+                                                        {/* PIEDRA */}
+                                                        PIEDRA TAGS
+                                                    </div>
+
+                                                    <div className="col-12 mb-2">
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="" />
+                                                            <label className="form-check-label" htmlFor="gridRadios1">
+                                                                <i class='far fa-eye-slash' style={{color: "red"}}></i> DesActivar.
+                                                            </label>
+                                                        </div>
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="" />
+                                                            <label className="form-check-label" htmlFor="gridRadios2">
+                                                                <i class='far fa-eye' style={{color: "green"}}></i> Activar.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
                                     <div className="row">

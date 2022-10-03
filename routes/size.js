@@ -4,6 +4,6 @@ const sizeController = require('../controllers/size');
 const { authenticatateJWT } = require('../middleware/authenticator');
 
 router.post('/', authenticatateJWT, sizeController.create);
-router.get('/', authenticatateJWT, sizeController.readAll);
+router.get('/', sizeController.readAll);
 
 module.exports = router;
