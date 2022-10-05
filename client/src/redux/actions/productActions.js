@@ -24,6 +24,8 @@ export const createProduct = formData => async dispatch => {
             type: CREATE_PRODUCT, 
             payload: response.data.product, 
         });
+
+		window.localStorage.setItem("userProducts", JSON.stringify(formData));
     } catch (err) {
         console.log('createProduct API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -43,6 +45,8 @@ export const getProducts = () => async dispatch => {
             type: GET_PRODUCTS, 
             payload: response.data.products, 
         });
+
+		window.localStorage.setItem("userProducts", JSON.stringify());
     } catch (err) {
         console.log('getProducts API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -62,6 +66,8 @@ export const getProductsByCount = () => async dispatch => {
 			type: GET_PRODUCTS,
 			payload: response.data.products,
 		});
+
+		window.localStorage.setItem("userProducts", JSON.stringify());
 	} catch (err) {
 		console.log('getProducts API error: ', err);
 		dispatch({ type: STOP_LOADING });
@@ -81,6 +87,8 @@ export const getProduct = productId => async dispatch => {
 			type: GET_PRODUCT,
 			payload: response.data,
 		});
+
+		window.localStorage.setItem("userProducts", JSON.stringify(productId));
 	} catch (err) {
 		console.log('getProducts API error: ', err);
 		dispatch({ type: STOP_LOADING });
@@ -100,6 +108,8 @@ export const deleteProduct = productId => async dispatch => {
 			type: DELETE_PRODUCT,
 			payload: response.data,
 		});
+
+		window.localStorage.setItem("userProducts", JSON.stringify(productId));
 	} catch (err) {
 		console.log('deleteProduct API error: ', err);
 		dispatch({ type: STOP_LOADING });

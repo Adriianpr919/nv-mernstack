@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './AdminStoneView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteStone } from '../redux/actions/stoneActions';
 
 const AdminStoneViewModal = ({ stone, adminPage = false }) => {
+    const data=useRef();
+
     const dispatch = useDispatch();
+
+    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             <div className="container padding-bottom-3x mb-1">
@@ -52,6 +56,7 @@ const AdminStoneViewModal = ({ stone, adminPage = false }) => {
                                                         <>
                                                             <button
                                                                 type='button'
+                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
                                                                     dispatch(deleteStone(stone._id))

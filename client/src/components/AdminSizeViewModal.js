@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './AdminSizeView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteSize } from '../redux/actions/sizeActions';
 
 const AdminSizeViewModal = ({ size, adminPage = false }) => {
+    const data=useRef();
+
     const dispatch = useDispatch();
+
+    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             <div className="container padding-bottom-3x mb-1">
@@ -52,6 +56,7 @@ const AdminSizeViewModal = ({ size, adminPage = false }) => {
                                                         <>
                                                             <button
                                                                 type='button'
+                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
                                                                     dispatch(deleteSize(size._id))

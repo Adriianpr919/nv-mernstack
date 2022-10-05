@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './AdminGoldView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteGold } from '../redux/actions/goldActions';
 
 const AdminGoldViewModal = ({ gold, adminPage = false }) => {
+    const data=useRef();
+
     const dispatch = useDispatch();
+
+    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             <div className="container padding-bottom-3x mb-1">
@@ -52,6 +56,7 @@ const AdminGoldViewModal = ({ gold, adminPage = false }) => {
                                                         <>
                                                             <button
                                                                 type='button'
+                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
                                                                     dispatch(deleteGold(gold._id))

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useRef } from 'react';
 import axios from 'axios';
 import AdminHeader from './AdminHeader';
 import { Link, useParams, useNavigate } from 'react-router-dom';
@@ -13,6 +13,8 @@ const AdminEditProduct = () => {
 	 ***************************/
 	const { productId } = useParams();
 	let navigate = useNavigate();
+
+	const data=useRef();
 
 	/****************************
 	 * REDUX GLOBAL STATE PROPERTIES
@@ -54,6 +56,9 @@ const AdminEditProduct = () => {
 	const handleImageUpload = e => {
 		const image = e.target.files[0];
 		setProductImage(image);
+
+		console.log(data.current.value,"initial value");
+        localStorage.setItem("inputValue",data.current.value);
 	};
 
 	const handleProductSubmit = async e => {
@@ -81,7 +86,12 @@ const AdminEditProduct = () => {
 			.catch(err => {
 				console.log(err);
 			});
+		
+		console.log(data.current.value,"initial value");
+		localStorage.setItem("inputValue",data.current.value);
 	};
+
+	console.log(localStorage.getItem("inputValue"),"****");
 
 	/****************************
 	 * RENDERER
@@ -128,6 +138,7 @@ const AdminEditProduct = () => {
 																			<i className="fas fa-upload"></i> Cambiar Foto. *:
 																			<input
 																				type='file'
+																				ref={data}
 																				name='productImage'
 																				accept='images/*'
 																				hidden
@@ -208,6 +219,7 @@ const AdminEditProduct = () => {
 												</label>
 												<input
 													type='text'
+													ref={data}
 													className='form-control'
 													name='productName'
 													value={productName}
@@ -223,6 +235,7 @@ const AdminEditProduct = () => {
                                                     <i className="far fa-edit pr-1"></i> Cambiar Descripción. *:
 												</label>
 												<textarea
+													ref={data}
 													className='form-control'
 													rows="10" cols="80"
 													name='productDesc'
@@ -240,6 +253,7 @@ const AdminEditProduct = () => {
 												</label>
 												<input
 													type='text'
+													ref={data}
 													className='form-control'
 													name='productPrice'
 													value={productPrice}
@@ -255,6 +269,7 @@ const AdminEditProduct = () => {
 													<i className="far fa-edit pr-1"></i> Cambiar Categorías. *:
 												</label>
 												<select
+													ref={data}
 													className='custom-select mr-sm-2'
 													name='productCategory'
 													value={productCategory}
@@ -330,6 +345,7 @@ const AdminEditProduct = () => {
 												</label>
 												<input
 													type='number'
+													ref={data}
 													className='form-control'
 													min='0'
 													max='9000'

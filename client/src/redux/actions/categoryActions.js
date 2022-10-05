@@ -18,6 +18,8 @@ export const getCategories = () => async dispatch => {
             type: GET_CATEGORIES, 
             payload: response.data.categories 
         });
+
+        window.localStorage.setItem("userCategories", JSON.stringify());
     } catch (err) {
         console.log('getCategories API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -46,6 +48,8 @@ export const createCategory = formData => async dispatch => {
             type: CREATE_CATEGORY, 
             payload: response.data.category 
         });
+        
+        window.localStorage.setItem("userCategories", JSON.stringify(formData));
     } catch (err) {
         console.log('createCategory API Error: ', err);
         dispatch({ type: STOP_LOADING });

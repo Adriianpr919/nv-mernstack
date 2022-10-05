@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../redux/actions/productActions';
 import { getCategories } from '../redux/actions/categoryActions';
@@ -8,6 +8,8 @@ import Card from './Card';
 const Shop = () => {
     const [text, setText] = useState('');
     const [categoryIds, setCategoryIds] = useState([]);
+
+    const data=useRef();
 
     const dispatch = useDispatch();
 
@@ -28,6 +30,9 @@ const Shop = () => {
 		setText(e.target.value);
 
 		dispatch(getProductsByFilter({ type: 'text', query: e.target.value }));
+
+        console.log(data.current.value,"initial value");
+        localStorage.setItem("inputValue",data.current.value);
 	};
 
     const handleCategory = e => {
@@ -52,12 +57,20 @@ const Shop = () => {
 		dispatch(
 			getProductsByFilter({ type: 'category', query: updatedCategoryIds })
 		);
+
+        console.log(data.current.value,"initial value");
+        localStorage.setItem("inputValue",data.current.value);
 	};
 
 	const resetState = () => {
 		setText('');
 		setCategoryIds([]);
+
+        console.log(data.current.value,"initial value");
+        localStorage.setItem("inputValue",data.current.value);
 	};
+
+    console.log(localStorage.getItem("inputValue"),"****");
 
     return (
         <section className='shop-page m-4'>
@@ -75,6 +88,7 @@ const Shop = () => {
                             <input
                                 className='form-control mr-sm-2'
                                 type='search'
+                                ref={data}
                                 placeholder='Búscar'
                                 aria-label='Búscar'
                                 name='search'
@@ -84,6 +98,7 @@ const Shop = () => {
                             <button
                                 className='btn btn-outline-success my-2 my-sm-0'
                                 type='submit'
+                                ref={data}
                                 disabled={true}
                             >
                                 <i class="fa fa-search" style={{color: "green"}}></i> Búscar
@@ -98,6 +113,7 @@ const Shop = () => {
                                 <input
                                     className='form-check-input'
                                     type='checkbox'
+                                    ref={data}
                                     name='category'
 									value={c._id}
                                     id='flexCheckChecked'

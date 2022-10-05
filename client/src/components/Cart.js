@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { ADD_TO_CART } from '../redux/constants/cartConstants';
@@ -9,10 +9,15 @@ const Cart = () => {
     let navigate = useNavigate();
     const { cart } = useSelector(state => state.cart);
 
+    const data=useRef();
+
     const dispatch = useDispatch();
 
     const handleGoBackBtn = () => {
 		navigate(-1);
+
+        console.log(data.current.value,"initial value");
+        localStorage.setItem("inputValue",data.current.value);
 	};
 
     const handleQtyChange = (e, product) => {
@@ -40,7 +45,12 @@ const Cart = () => {
 		} else {
 			navigate('/signing?redirect=shipping');
 		}
+
+        console.log(data.current.value,"initial value");
+        localStorage.setItem("inputValue",data.current.value);
 	};
+
+    console.log(localStorage.getItem("inputValue"),"****");
     
     return (
         <section className='cart-page m-4'>
@@ -51,6 +61,7 @@ const Cart = () => {
                         <button
                             className='btn btn-outline-primary ml-4'
                             onClick={handleGoBackBtn}
+                            ref={data}
                         >
                             <i className='fas fa-arrow-circle-left'></i> Regresa
                         </button>
@@ -94,6 +105,7 @@ const Cart = () => {
                                                     {' '}
                                                     <Link
                                                         to={`/product/${product._id}`}
+                                                        ref={data}
                                                         className='btn btn-outline-primary btn-sm mr-1 my-1'
                                                     >
                                                         {product.productName}
@@ -132,6 +144,7 @@ const Cart = () => {
                                                     {' '}
                                                     <button
                                                         type='button'
+                                                        ref={data}
                                                         className='btn btn-outline-danger btn-sm'
                                                         onClick={() =>
                                                             dispatch(
@@ -186,6 +199,7 @@ const Cart = () => {
                                     <button
                                         className='btn btn-outline-dark btn-large btn-block mb-5 py-2'
                                         onClick={handleCheckout}
+                                        ref={data}
                                     >
                                         <h3>
                                             <i class="fas fa-money-check-alt"></i> Pasar Por La Caja.
