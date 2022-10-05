@@ -82,7 +82,7 @@ export const getProduct = productId => async dispatch => {
 			payload: response.data,
 		});
 	} catch (err) {
-		console.log('getProducts api error: ', err);
+		console.log('getProducts API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,

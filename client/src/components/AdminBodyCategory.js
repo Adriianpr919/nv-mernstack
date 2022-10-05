@@ -26,6 +26,7 @@ const AdminBodyCategory = () => {
                             <AdminCategoryViewModal 
                                 key={c._id}
                                 c={c}
+                                adminPage={true}
                             />
                         ))}
                     </p>

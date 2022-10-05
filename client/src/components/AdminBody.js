@@ -8,7 +8,7 @@ const AdminBody = () => {
     return (
         <>
 			{products &&
-				products.map(product => (
+				products.map((product) => (
 					<Card
 						key={product._id}
 						product={product}

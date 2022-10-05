@@ -19,12 +19,6 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
             <div className="container padding-bottom-3x mb-1">
                 <div className="table-responsive shopping-cart">
                     <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Producto.</th>
-                                <th className="text-center">Acciones.</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <td className='border border-light bg-light'>
@@ -33,7 +27,7 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
                                                 src={`/uploads/${product.fileName}`}
-                                                style={{maxWidth: "150px"}}
+                                                style={{maxWidth: "100px"}}
                                                 alt="Productos"
                                                 title="Productos"
                                             />
@@ -41,9 +35,9 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                                         <div className="product-info">
                                             <a href="#!">
                                                 <b>
-                                                    <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
+                                                    <h4 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
                                                         {product.productName}
-                                                    </h2>
+                                                    </h4>
                                                 </b>
                                             </a>
                                             <span>

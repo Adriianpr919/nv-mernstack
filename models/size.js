@@ -1,17 +1,28 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
-const sizedSchema = new mongoose.Schema(
+const SizeSchema = new mongoose.Schema(
     {
-        sized: {
-            type: String,
+        fileName: {
+            type: 'String',
+            required: true,
+        },
+        productName: {
+            type: 'String',
             required: true,
             trim: true,
-            maxlength: 50,
+            maxlength: 255,
+        },
+        productCategory: {
+            type: ObjectId,
+            ref: 'Category',
+            required: true,
         },
     }, 
     { timestamps: true }
 );
 
-const Sized = mongoose.model('Sized', sizedSchema);
+SizeSchema.index({ productName: 'text' });
+const Size = mongoose.model('Size', SizeSchema);
 
-module.exports = Sized;
+module.exports = Size;

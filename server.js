@@ -24,6 +24,9 @@ app.use('/api/gold', goldRoutes);
 app.use('/api/stone', stoneRoutes);
 app.use('/api/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
+app.use('/uploadsSize', express.static('uploadsSize'));
+app.use('/uploadsGold', express.static('uploadsGold'));
+app.use('/uploadsStone', express.static('uploadsStone'));
 app.use('/api/filter', filterRoutes);
 
 // connect database

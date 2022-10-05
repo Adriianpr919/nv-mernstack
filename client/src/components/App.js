@@ -19,6 +19,9 @@ import Info from './Info';
 import UserDashboard from './UserDashboard';
 import AdminDashboard from './AdminDashboard';
 import AdminEditProduct from './AdminEditProduct';
+import AdminEditSize from './AdminEditSize';
+import AdminEditGold from './AdminEditGold';
+import AdminEditStone from './AdminEditStone';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import NotFound from './NotFound';
@@ -67,6 +70,21 @@ const App = () => {
 							path='/admin/edit/product/:productId'
 							element={<AdminEditProduct />}
 						/>
+            <Route
+              exact
+              path='/admin/edit/size/:sizeId'
+              element={<AdminEditSize />}
+            />  
+            <Route
+              exact
+              path='/admin/edit/gold/:goldId'
+              element={<AdminEditGold />}
+            />
+            <Route
+              exact
+              path='/admin/edit/stone/:stoneId'
+              element={<AdminEditStone />}
+            />
 					</Route>
           <Route element={<NotFound />} />
         </Routes>

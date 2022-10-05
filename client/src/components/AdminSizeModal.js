@@ -5,43 +5,77 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createSized } from '../redux/actions/sizeActions';
+import { createSize } from '../redux/actions/sizeActions';
 
 const AdminSizeModal = () => {
     /****************************
 	 * REDUX GLOBAL STATE PROPERTIES
 	 ***************************/
-    const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { loading } = useSelector(state => state.loading);
+    const { successMsg, errorMsg } = useSelector(state => state.messages);
+    const { categories } = useSelector(state => state.categories);
 
     const dispatch = useDispatch();
     /****************************
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
-    const [sized, setSized] = useState('');
-    const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
+    const [clientSideError, setClientSideError] = useState('');
+    const [sizeData, setSizeData] = useState({
+        productImage: null,
+        productName: '',
+        productCategory: '',
+    });
+    const {
+        productImage,
+        productName,
+        productCategory,
+    } = sizeData;
 
     /****************************
 	 * EVENT HANDLERS
 	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
+        setClientSideError('');
     };
 
-    const handleSizedChange = (evt) => {
-        dispatch(clearMessages());
-        setSized(evt.target.value);
+    const handleSizeChange = (evt) => {
+        setSizeData({
+            ...sizeData,
+            [evt.target.name]: evt.target.value,
+        });
     };
 
-    const handleSizedSubmit = (evt) => {
+    const handleSizeImage = (evt) => {
+        console.log(evt.target.files[0]);
+        setSizeData({
+            ...sizeData,
+            [evt.target.name]: evt.target.files[0],
+        });
+    };
+
+    const handleSizeSubmit = (evt) => {
         evt.preventDefault();
 
-        if (isEmpty(sized)) {
-            setClientSideErrorMsg("Todos Los Campos Son Obligatorios.");
+        if (productImage === null) {
+            setClientSideError("Seleccione Una Imagen Con .png");
+        } else if (isEmpty(productName)) {
+            setClientSideError("Todos Los Campos Son Obligatorios.");
+        }  else if (isEmpty(productCategory)) {
+            setClientSideError("Por favor Seleccione Una Categoría.");
         } else {
-            const data = { sized };
-            dispatch(createSized(data));
-            setSized('');
+            let formData = new FormData();
+
+            formData.append('productImage', productImage);
+            formData.append('productName', productName);
+            formData.append('productCategory', productCategory);
+
+            dispatch(createSize(formData));
+            setSizeData({
+                productImage: null,
+                productName: '',
+                productCategory: '',
+            });
         }
     };
 
@@ -52,7 +86,7 @@ const AdminSizeModal = () => {
         <div id="addSizeModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
-                    <form onSubmit={handleSizedSubmit}>
+                    <form onSubmit={handleSizeSubmit}>
                         <div className="modal-header bg-info">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Talla.
@@ -64,8 +98,8 @@ const AdminSizeModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                        {clientSideErrorMsg && 
-                            showErrorMsg(clientSideErrorMsg)}
+                        {clientSideError && 
+                            showErrorMsg(clientSideError)}
                         {errorMsg && showErrorMsg(errorMsg)}
                         {successMsg && showSuccessMsg(successMsg)}
 
@@ -76,6 +110,53 @@ const AdminSizeModal = () => {
                         ) : (
                             <Fragment>
                                 <div className="container">
+                                <div class="panel panel-default">
+                                        <div className="panel-heading">
+                                            <i class='fas fa-camera-retro'></i> IMPORTANTE *:
+                                        </div>
+                                        <div className="panel-body">
+                                            <fieldset className="col-12 mb-2 border border-secondary">    	
+                                                <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
+                                                
+                                                <div className="panel panel-default">
+                                                    <div className="panel-body">
+                                                        <p>
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label 
+                                                                        htmlFor="addFile" 
+                                                                        className="text-secondary">
+                                                                            <i className="fas fa-upload"></i> Foto Talla. *:
+                                                                    </label>
+                                                                    <div className="input-group mb-3">
+                                                                        <div className="input-group-prepend">
+                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                        </div>
+                                                                        <div className="custom-file">
+                                                                            <input 
+                                                                            type="file"
+                                                                            name='productImage'
+                                                                            onChange={handleSizeImage} 
+                                                                            className="custom-file-input" 
+                                                                            id="customFileLang" 
+                                                                            aria-describedby="customFileLang" 
+                                                                            data-browse="Elegir" 
+                                                                            lang="es" />
+                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                <i className="fas fa-upload"></i> Foto Talla. *:
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </fieldset>				
+                                        </div>
+                                    </div>
                                     <div className="row">
                                         <div className="col-12 mb-2">
                                             <label 
@@ -85,12 +166,36 @@ const AdminSizeModal = () => {
                                             </label>
                                             <input 
                                                 type="text"
-                                                name='sized'
-                                                value={sized} 
-                                                onChange={handleSizedChange} 
+                                                name='productName'
+                                                value={productName} 
+                                                onChange={handleSizeChange} 
                                                 className="form-control"
                                                 placeholder="Añadir Talla."
                                             />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-12 mb-2">
+                                        <label 
+                                            htmlFor="addCategory" 
+                                            className="text-secondary">
+                                                <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
+                                        </label>
+                                        <select 
+                                        name='productCategory'
+                                        onChange={handleSizeChange}
+                                        className="custom-select mr-sm-2" 
+                                        aria-label="Selecciónar Categorías.">
+                                            <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
+                                            {categories &&
+												categories.map((c) => (
+                                                <option
+                                                key={c._id} 
+                                                value={c._id}>
+                                                    {c.category}
+                                                </option> 
+                                            ))}
+                                        </select>
                                         </div>
                                     </div>
                                 </div>

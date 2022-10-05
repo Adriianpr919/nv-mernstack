@@ -1,13 +1,39 @@
+import axios from 'axios';
 import { START_LOADING, STOP_LOADING } from '../constants/loadingConstants';
 import {
     SHOW_ERROR_MESSAGE,
     SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
 import { 
+    CREATE_SIZE, 
     GET_SIZES,
-    CREATE_SIZED, 
+    GET_SIZE,
+    DELETE_SIZE, 
 } from '../constants/sizeConstants';
-import axios from 'axios';
+
+export const createSize = formData => async dispatch => {
+    try {
+        dispatch({ type: START_LOADING });
+        const response = await axios.post('/api/size', formData);
+        dispatch({ type: STOP_LOADING });
+        dispatch({ 
+            type: SHOW_SUCCESS_MESSAGE, 
+            payload: response.data.successMessage, 
+        });
+        dispatch({ 
+            type: CREATE_SIZE, 
+            payload: response.data.size, 
+        });
+        window.localStorage.setItem("userSizes", JSON.stringify(formData));
+    } catch (err) {
+        console.log('createSize API Error: ', err);
+        dispatch({ type: STOP_LOADING });
+        dispatch({ 
+            type: SHOW_ERROR_MESSAGE, 
+            payload: err.response.data.errorMessage, 
+        });
+    }
+};
 
 export const getSizes = () => async dispatch => {
     try {
@@ -16,8 +42,9 @@ export const getSizes = () => async dispatch => {
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: GET_SIZES, 
-            payload: response.data.sizes
+            payload: response.data.sizes, 
         });
+        window.localStorage.setItem("userSizes", JSON.stringify());
     } catch (err) {
         console.log('getSizes API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -28,30 +55,62 @@ export const getSizes = () => async dispatch => {
     }
 };
 
-export const createSized = formData => async dispatch => {
+export const getSizesByCount = () => async dispatch => {
+	try {
+		dispatch({ type: START_LOADING });
+		const response = await axios.get('/api/size/count');
+		dispatch({ type: STOP_LOADING });
+		dispatch({
+			type: GET_SIZES,
+			payload: response.data.sizes,
+		});
+        window.localStorage.setItem("userSizes", JSON.stringify());
+	} catch (err) {
+		console.log('getSizes API error: ', err);
+		dispatch({ type: STOP_LOADING });
+		dispatch({
+			type: SHOW_ERROR_MESSAGE,
+			payload: err.response.data.errorMessage,
+		});
+	}
+};
+
+export const getSize = sizeId => async dispatch => {
+	try {
+		dispatch({ type: START_LOADING });
+		const response = await axios.get(`/api/size/${sizeId}`);
+		dispatch({ type: STOP_LOADING });
+		dispatch({
+			type: GET_SIZE,
+			payload: response.data,
+		});
+        window.localStorage.setItem("userSizes", JSON.stringify(sizeId));
+	} catch (err) {
+		console.log('getSizes API error: ', err);
+		dispatch({ type: STOP_LOADING });
+		dispatch({
+			type: SHOW_ERROR_MESSAGE,
+			payload: err.response.data.errorMessage,
+		});
+	}
+};
+
+export const deleteSize = sizeId => async dispatch => {
     try {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
         dispatch({ type: START_LOADING });
-        const response = await axios.post('/api/size', formData, config);
+        const response = await axios.delete(`/api/size/${sizeId}`);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_SUCCESS_MESSAGE, 
-            payload: response.data.successMessage, 
+        dispatch({
+            type: DELETE_SIZE,
+            payload: response.data,
         });
-        dispatch({ 
-            type: CREATE_SIZED, 
-            payload: response.data.sized 
-        });
+        window.localStorage.setItem("userSizes", JSON.stringify(sizeId));
     } catch (err) {
-        console.log('createSized API Error: ', err);
+        console.log('deleteSize API error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_ERROR_MESSAGE, 
-            payload: err.response.data.errorMessage, 
+        dispatch({
+            type: SHOW_ERROR_MESSAGE,
+            payload: err.response.data.errorMessage,
         });
     }
 };

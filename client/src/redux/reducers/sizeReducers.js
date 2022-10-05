@@ -1,27 +1,37 @@
 import { 
+    CREATE_SIZE, 
     GET_SIZES,
-    CREATE_SIZED, 
+    GET_SIZE, 
+    DELETE_SIZE, 
 } from '../constants/sizeConstants';
 
 const INITIAL_STATE = {
     sizes: [],
 };
 
-const sizedReducers = (state = INITIAL_STATE, action) => {
+const sizeReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case GET_SIZES: 
+        case CREATE_SIZE:
             return {
-                ...state,
-                sizes: action.payload,
-            };
-        case CREATE_SIZED:
-            return {
-                ...state,
                 sizes: [...state.sizes, action.payload],
             };
+        case GET_SIZES: 
+            return {
+                sizes: [...action.payload],
+            };
+        case GET_SIZE:
+            return {
+                size: action.payload,
+            };
+        case DELETE_SIZE:
+            return {
+                sizes: state.sizes.filter(
+                    s => s._id !== action.payload._id
+                ),
+            };    
         default: 
             return state;    
     }
 };
 
-export default sizedReducers;
+export default sizeReducer;

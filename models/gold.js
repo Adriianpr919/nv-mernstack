@@ -1,17 +1,28 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
-const goldenSchema = new mongoose.Schema(
+const GoldSchema = new mongoose.Schema(
     {
-        golden: {
-            type: String,
+        fileName: {
+            type: 'String',
+            required: true,
+        },
+        productName: {
+            type: 'String',
             required: true,
             trim: true,
-            maxlength: 100,
+            maxlength: 255,
+        },
+        productCategory: {
+            type: ObjectId,
+            ref: 'Category',
+            required: true,
         },
     }, 
     { timestamps: true }
 );
 
-const Golden = mongoose.model('Golden', goldenSchema);
+GoldSchema.index({ productName: 'text' });
+const Gold = mongoose.model('Gold', GoldSchema);
 
-module.exports = Golden;
+module.exports = Gold;

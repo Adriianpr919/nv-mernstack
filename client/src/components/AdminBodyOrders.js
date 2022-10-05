@@ -1,18 +1,15 @@
 import React from 'react';
-import AdminGoldViewModal from './AdminGoldViewModal';
-//Redux **************************************************************************
-import { useSelector } from 'react-redux';
+import AdminOrdersViewModal from './AdminOrdersViewModal';
 
-const AdminBodyGold = () => {
-    const { golds } = useSelector(state => state.golds); 
+const AdminBodyOrders = () => {
     return (
         <>
-            <div id="viewGoldModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
+            <div id="viewOrdersModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
                 <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div className="modal-content">
-                        <div className="modal-header bg-warning">
+                        <div className="modal-header bg-success text-light">
                             <h5 className="modal-title">
-                                <i className="fas fa-eye"></i> Ver Color De Oro.
+                                <i className="fas fa-eye"></i> Ver Pedidos.
                             </h5>
                             <button className="btn btn-danger" data-dismiss="modal" aria-label="Cerrar.">
                                 <span>
@@ -22,14 +19,7 @@ const AdminBodyGold = () => {
                         </div>
                         <div className="modal-body">
                             <p>
-                                {golds &&
-                                    golds.map((gold) => ( 
-                                        <AdminGoldViewModal 
-                                            key={gold._id}
-                                            gold={gold}
-                                            adminPage={true}
-                                        />
-                                ))} 
+                                <AdminOrdersViewModal />
                             </p>
                         </div>
                         <div className="modal-footer">
@@ -39,9 +29,9 @@ const AdminBodyGold = () => {
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </>
     );
 };
 
-export default AdminBodyGold;
+export default AdminBodyOrders;

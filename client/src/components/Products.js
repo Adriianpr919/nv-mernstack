@@ -39,13 +39,92 @@ const Products = () => {
                 <div className="container">
                     <div className="row">
                         <div className='col-md-6'>
-                            <img
-                                className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4'
-                                src={`/uploads/${product.fileName}`}
-                                style={{maxWidth: "500px"}}
-                                alt='Productos.'
-                                title='Productos.'
-                            />
+                            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                                <ol className="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                                </ol>
+                                <div className="carousel-inner">
+                                    <div className="carousel-item active">{/* FOTO 0 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 1 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 2 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 3 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 4 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 5 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 6 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`}
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 7 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`} 
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                    <div className="carousel-item">{/* FOTO 8 */}
+                                        <img 
+                                        src={`/uploads/${product.fileName}`} 
+                                        alt='Productos.'
+                                        title='Productos.'
+                                        className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
+                                    </div>
+                                </div>
+                                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Antes.</span>
+                                </a>
+                                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Despues.</span>
+                                </a>
+                            </div>
                         </div>
                         <div className="col-md-6 order-md-2 mb-4">
                             <ul className="list-group mb-3">

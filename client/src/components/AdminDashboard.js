@@ -9,11 +9,10 @@ import AdminSizeModal from './AdminSizeModal';
 import AdminGoldModal from './AdminGoldModal';
 import AdminStoneModal from './AdminStoneModal';
 import AdminProductModal from './AdminProductModal';
-import UserOrdersViewModal from './UserOrdersViewModal';
 
 import AdminBodyCategory from './AdminBodyCategory';
 import AdminBody from './AdminBody';
-import UserBodyOrders from './UserBodyOrders';
+import AdminBodyOrders from './AdminBodyOrders';
 import AdminBodySize from './AdminBodySize';
 import AdminBodyGold from './AdminBodyGold';
 import AdminBodyStone from './AdminBodyStone';
@@ -30,13 +29,15 @@ const AdminDashboard = () => {
     useEffect(() => {
         dispatch(
             getCategories(),
+        );
+    }, [dispatch]);
+    useEffect(() => {
+        dispatch(
+            getProducts(),
             getSizes(),
             getGolds(),
             getStones(),
         );
-    }, [dispatch]);
-    useEffect(() => {
-        dispatch(getProducts());
     }, [dispatch]);
     return (
         /********************************************** 
@@ -55,8 +56,7 @@ const AdminDashboard = () => {
             <AdminBodySize />
             <AdminBodyGold />
             <AdminBodyStone />
-            <UserBodyOrders />
-            <UserOrdersViewModal />
+            <AdminBodyOrders />
         </section>
     );
 }

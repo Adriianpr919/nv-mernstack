@@ -49,7 +49,7 @@ const Cart = () => {
                     <h1 className='display-4'>
                         Tu Carrito Esta Vacío.{' '}
                         <button
-                            className='btn btn-outline-light text-primary ml-4'
+                            className='btn btn-outline-primary ml-4'
                             onClick={handleGoBackBtn}
                         >
                             <i className='fas fa-arrow-circle-left'></i> Regresa

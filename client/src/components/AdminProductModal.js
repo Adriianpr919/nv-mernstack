@@ -69,7 +69,7 @@ const AdminProductModal = () => {
         evt.preventDefault();
 
         if (productImage === null) {
-                setClientSideError("Seleccione Una Imagen.");
+                setClientSideError("Seleccione Una Imagen Con .png");
         } else if (
             isEmpty(productName) || 
             isEmpty(productDesc) ||
