@@ -6,14 +6,14 @@ const NotFound = () => {
     return (
         <>
             <div id="notfound">
-                <div class="notfound-bg">
+                <div className="notfound-bg">
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-                <div class="notfound">
-                    <div class="notfound-404">
+                <div className="notfound">
+                    <div className="notfound-404">
                         <h1>404</h1>
                     </div>
                     <h2>Página No Encontrada Lo Siento.</h2>
@@ -21,7 +21,7 @@ const NotFound = () => {
                     <Link to="/">
                         <i className="fas fa-globe"></i> Volver Inicio.
                     </Link>
-                    <div class="notfound-social">
+                    <div className="notfound-social">
                         <a href="https://www.youtube.com/embed/lUIAHkN8TlQ" target="_blank" rel="noopener noreferrer">
                             <i className="fab fa-youtube" style={{fontSize:"25px"}}></i>
                         </a>
