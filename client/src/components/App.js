@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Head from './Head';
 import Header from './Header';
@@ -86,7 +86,8 @@ const App = () => {
               element={<AdminEditStone />}
             />
 					</Route>
-          <Route element={<NotFound />} />
+          <Route path='/not_found' element={<NotFound />} />
+          <Route path='*' element={<Navigate to='/not_found' />} />
         </Routes>
       </main>
     </BrowserRouter>
