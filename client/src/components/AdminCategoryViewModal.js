@@ -9,8 +9,6 @@ const AdminCategoryViewModal = ({ c }) => {
 
     const data=useRef();
 
-    
-
     console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
