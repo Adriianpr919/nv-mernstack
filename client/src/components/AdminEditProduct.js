@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment, useRef } from 'react';
 import axios from 'axios';
-import AdminHeader from './AdminHeader';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
@@ -98,7 +97,6 @@ const AdminEditProduct = () => {
 	 ***************************/
     return (
         <Fragment>
-			<AdminHeader />
 			<div className='container my-3'>
 				<div className='row'>
 					<div className='col-md-8 mx-auto'>
