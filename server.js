@@ -6,9 +6,9 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./database/db');
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/category');
-const sizeRoutes = require('./routes/size');
-const goldRoutes = require('./routes/gold');
-const stoneRoutes = require('./routes/stone');
+const sizedRoutes = require('./routes/sized');
+const goldenRoutes = require('./routes/golden');
+const rockRoutes = require('./routes/rock');
 const productRoutes = require('./routes/product');
 const filterRoutes = require('./routes/filter');
 
@@ -19,14 +19,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/category', categoryRoutes);
-app.use('/api/size', sizeRoutes);
-app.use('/api/gold', goldRoutes);
-app.use('/api/stone', stoneRoutes);
+app.use('/api/sized', sizedRoutes);
+app.use('/api/golden', goldenRoutes);
+app.use('/api/rock', rockRoutes);
 app.use('/api/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
-app.use('/uploadsSize', express.static('uploadsSize'));
-app.use('/uploadsGold', express.static('uploadsGold'));
-app.use('/uploadsStone', express.static('uploadsStone'));
+app.use('/uploadsSized', express.static('uploadsSized'));
+app.use('/uploadsGolden', express.static('uploadsGolden'));
+app.use('/uploadsRock', express.static('uploadsRock'));
 app.use('/api/filter', filterRoutes);
 
 // connect database

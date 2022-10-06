@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import './AdminStoneView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
-import { deleteStone } from '../redux/actions/stoneActions';
+import { deleteRock } from '../redux/actions/rockActions';
 
-const AdminStoneViewModal = ({ stone, adminPage = false }) => {
+const AdminStoneViewModal = ({ rock, adminPage = false }) => {
     const data=useRef();
 
     const dispatch = useDispatch();
@@ -27,8 +27,8 @@ const AdminStoneViewModal = ({ stone, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsStone/${stone.fileName}`}
-                                                style={{maxWidth: "150px"}}
+                                                src={`/uploadsRock/${rock.fileName}`}
+                                                style={{maxWidth: "100px"}}
                                                 alt="C. De Piedra."
                                                 title="C. De Piedra."
                                             />
@@ -37,7 +37,7 @@ const AdminStoneViewModal = ({ stone, adminPage = false }) => {
                                             <a href="#!">
                                                 <b>
                                                     <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {stone.productName}
+                                                        {rock.productName}
                                                     </h2>
                                                 </b>
                                             </a>
@@ -45,7 +45,7 @@ const AdminStoneViewModal = ({ stone, adminPage = false }) => {
                                                 <em>
                                                     <h4 className='text-success'>
                                                         <b>
-                                                            {stone.productCategory}
+                                                            {rock.productCategory}
                                                         </b>
                                                     </h4>
                                                 </em>
@@ -59,7 +59,7 @@ const AdminStoneViewModal = ({ stone, adminPage = false }) => {
                                                                 ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
-                                                                    dispatch(deleteStone(stone._id))
+                                                                    dispatch(deleteRock(rock._id))
                                                                 }
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>

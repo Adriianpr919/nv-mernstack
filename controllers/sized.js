@@ -1,4 +1,4 @@
-const Size = require('../models/size');
+const Sized = require('../models/Sized');
 const fs = require('fs');
 
 exports.create = async (req, res) => {
@@ -11,20 +11,20 @@ exports.create = async (req, res) => {
     } = req.body;
 
     try {
-        let size = new Size();
+        let sized = new Sized();
 
-        size.fileName = filename;
-        size.productName = productName;
-        size.productCategory = productCategory;
+        sized.fileName = filename;
+        sized.productName = productName;
+        sized.productCategory = productCategory;
 
-        await size.save();
+        sized = await sized.save();
 
-        res.json({
-            successMessage: `${productName} Fue Creado Con Éxito.`,
-            size,
+        res.status(200).json({
+            successMessage: `${sized.productName} Fue Creado Con Éxito.`,
+            productName: sized,
         });
     } catch (err) {
-        console.log(err, 'sizeController.create error');
+        console.log(err, 'sizedController.create error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -33,14 +33,15 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const sizes = await Size.find({}).populate(
+        const sizes = await Sized.find({}).populate(
 			'productCategory', 
 			'category'
 		);
-        
-        res.json({ sizes });    
+        res.status(200).json({ 
+            sizes, 
+        });    
     } catch (err) {
-        console.log(err, 'sizeController.readAll error');
+        console.log(err, 'sizedController.readAll error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -49,13 +50,14 @@ exports.readAll = async (req, res) => {
 
 exports.readByCount = async (req, res) => {
 	try {
-		const sizes = await Size.find({})
+		const sizes = await Sized.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
-
-		res.json({ sizes });
+		res.status(200).json({ 
+            sizes, 
+        });
 	} catch (err) {
-		console.log(err, 'sizeController.readAll error');
+		console.log(err, 'sizedController.readAll error');
 		res.status(500).json({
 			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
 		});
@@ -64,12 +66,12 @@ exports.readByCount = async (req, res) => {
 
 exports.read = async (req, res) => {
 	try {
-		const sizeId = req.params.sizeId;
-		const size = await Size.findById(sizeId);
+		const sizedId = req.params.sizedId;
+		const sized = await Sized.findById(sizedId);
 
-		res.json(size);
+		res.status(200).json(sized);
 	} catch (err) {
-		console.log(err, 'sizeController.read error');
+		console.log(err, 'sizedController.read error');
 		res.status(500).json({
 			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
 		});
@@ -77,42 +79,42 @@ exports.read = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-	const sizeId = req.params.sizeId;
+	const sizedId = req.params.sizedId;
 
 	if (req.file !== undefined) {
 		req.body.fileName = req.file.filename;
 	}
 
-	const oldSize = await Size.findByIdAndUpdate(sizeId, req.body);
+	const oldSized = await Sized.findByIdAndUpdate(sizedId, req.body);
 
-	if (req.file !== undefined && req.file.filename !== oldSize.fileName) {
-		fs.unlink(`uploadsSize/${oldSize.fileName}`, err => {
+	if (req.file !== undefined && req.file.filename !== oldSized.fileName) {
+		fs.unlink(`uploadsSized/${oldSized.fileName}`, err => {
 			if (err) throw err;
 			console.log('Imagen Eliminada Del Sistema De Archivos.');
 		});
 	}
 
-	res.json({
+	res.status(200).json({
 		successMessage: 'Talla Actualizado Con Éxito.',
 	});
 };
 
 exports.delete = async (req, res) => {
     try {
-        const sizeId = req.params.sizeId;
-        const deletedSize = await Size.findByIdAndDelete(sizeId);
+        const sizedId = req.params.sizedId;
+        const deletedSized = await Sized.findByIdAndDelete(sizedId);
 
-        fs.unlink(`uploadsSize/${deletedSize.fileName}`, err => {
+        fs.unlink(`uploadsSized/${deletedSized.fileName}`, err => {
             if (err) throw err;
             console.log(
                 'Imagen Eliminado Con Éxito Del Sistema De Archivos: ',
-                deletedSize.fileName
+                deletedSized.fileName
             );
         });
 
-        res.json(deletedSize);
+        res.status(200).json(deletedSized);
     } catch (err) {
-        console.log(err, 'sizeController.delete error');
+        console.log(err, 'sizedController.delete error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
         });

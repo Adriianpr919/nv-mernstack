@@ -25,7 +25,7 @@ export const createProduct = formData => async dispatch => {
             payload: response.data.product, 
         });
 
-		window.localStorage.setItem("userProducts", JSON.stringify(formData));
+		window.localStorage.setItem("createProduct", JSON.stringify(formData));
     } catch (err) {
         console.log('createProduct API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -109,7 +109,7 @@ export const deleteProduct = productId => async dispatch => {
 			payload: response.data,
 		});
 
-		window.localStorage.setItem("userProducts", JSON.stringify(productId));
+		window.localStorage.setItem("deleteProduct", JSON.stringify(productId));
 	} catch (err) {
 		console.log('deleteProduct API error: ', err);
 		dispatch({ type: STOP_LOADING });

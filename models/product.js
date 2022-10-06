@@ -11,7 +11,7 @@ const ProductSchema = new mongoose.Schema(
             type: 'String',
             required: true,
             trim: true,
-            maxlength: 255,
+            maxlength: 60,
         },
         productDesc: {
             type: 'String',

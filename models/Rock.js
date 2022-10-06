@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
-const SizeSchema = new mongoose.Schema(
+const RockSchema = new mongoose.Schema(
     {
         fileName: {
             type: 'String',
@@ -11,7 +11,7 @@ const SizeSchema = new mongoose.Schema(
             type: 'String',
             required: true,
             trim: true,
-            maxlength: 255,
+            maxlength: 60,
         },
         productCategory: {
             type: ObjectId,
@@ -22,7 +22,7 @@ const SizeSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-SizeSchema.index({ productName: 'text' });
-const Size = mongoose.model('Size', SizeSchema);
+RockSchema.index({ productName: 'text' });
+const Rock = mongoose.model('Rock', RockSchema);
 
-module.exports = Size;
+module.exports = Rock;

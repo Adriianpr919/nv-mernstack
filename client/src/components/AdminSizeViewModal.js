@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import './AdminSizeView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
-import { deleteSize } from '../redux/actions/sizeActions';
+import { deleteSized } from '../redux/actions/sizedActions';
 
-const AdminSizeViewModal = ({ size, adminPage = false }) => {
+const AdminSizeViewModal = ({ sized, adminPage = false }) => {
     const data=useRef();
 
     const dispatch = useDispatch();
@@ -27,8 +27,8 @@ const AdminSizeViewModal = ({ size, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsSize/${size.fileName}`}
-                                                style={{maxWidth: "150px"}}
+                                                src={`/uploadsSized/${sized.fileName}`}
+                                                style={{maxWidth: "100px"}}
                                                 alt="Talla."
                                                 title="Talla."
                                             />
@@ -37,7 +37,7 @@ const AdminSizeViewModal = ({ size, adminPage = false }) => {
                                             <a href="#!">
                                                 <b>
                                                     <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {size.productName}
+                                                        {sized.productName}
                                                     </h2>
                                                 </b>
                                             </a>
@@ -45,7 +45,7 @@ const AdminSizeViewModal = ({ size, adminPage = false }) => {
                                                 <em>
                                                     <h4 className='text-secondary'>
                                                         <b>
-                                                            {size.productCategory}
+                                                            {sized.productCategory}
                                                         </b>
                                                     </h4>
                                                 </em>
@@ -59,7 +59,7 @@ const AdminSizeViewModal = ({ size, adminPage = false }) => {
                                                                 ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
-                                                                    dispatch(deleteSize(size._id))
+                                                                    dispatch(deleteSized(sized._id))
                                                                 }
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>

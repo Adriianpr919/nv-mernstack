@@ -1,4 +1,4 @@
-const Stone = require('../models/stone');
+const Golden = require('../models/Golden');
 const fs = require('fs');
 
 exports.create = async (req, res) => {
@@ -11,20 +11,20 @@ exports.create = async (req, res) => {
     } = req.body;
 
     try {
-        let stone = new Stone();
+        let golden = new Golden();
 
-        stone.fileName = filename;
-        stone.productName = productName;
-        stone.productCategory = productCategory;
+        golden.fileName = filename;
+        golden.productName = productName;
+        golden.productCategory = productCategory;
 
-        await stone.save();
+        golden = await golden.save();
 
-        res.json({
-            successMessage: `${productName} Fue Creado Con Éxito.`,
-            stone,
+        res.status(200).json({
+            successMessage: `${golden.productName} Fue Creado Con Éxito.`,
+            productName: golden,
         });
     } catch (err) {
-        console.log(err, 'stoneController.create error');
+        console.log(err, 'goldenController.create error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -33,14 +33,14 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const stones = await Stone.find({}).populate(
+        const golds = await Golden.find({}).populate(
 			'productCategory', 
 			'category'
 		);
         
-        res.json({ stones });    
+        res.status(200).json({ golds, });    
     } catch (err) {
-        console.log(err, 'stoneController.readAll error');
+        console.log(err, 'goldenController.readAll error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -49,13 +49,13 @@ exports.readAll = async (req, res) => {
 
 exports.readByCount = async (req, res) => {
 	try {
-		const stones = await Stone.find({})
+		const golds = await Golden.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
 
-		res.json({ stones });
+		res.status(200).json({ golds, });
 	} catch (err) {
-		console.log(err, 'stoneController.readAll error');
+		console.log(err, 'goldenController.readAll error');
 		res.status(500).json({
 			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
 		});
@@ -64,12 +64,12 @@ exports.readByCount = async (req, res) => {
 
 exports.read = async (req, res) => {
 	try {
-		const stoneId = req.params.stoneId;
-		const stone = await Stone.findById(stoneId);
+		const goldenId = req.params.goldenId;
+		const golden = await Golden.findById(goldenId);
 
-		res.json(stone);
+		res.status(200).json(golden);
 	} catch (err) {
-		console.log(err, 'stoneController.read error');
+		console.log(err, 'goldenController.read error');
 		res.status(500).json({
 			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
 		});
@@ -77,42 +77,42 @@ exports.read = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-	const stoneId = req.params.stoneId;
+	const goldenId = req.params.goldenId;
 
 	if (req.file !== undefined) {
 		req.body.fileName = req.file.filename;
 	}
 
-	const oldStone = await Stone.findByIdAndUpdate(stoneId, req.body);
+	const oldGolden = await Golden.findByIdAndUpdate(goldenId, req.body);
 
-	if (req.file !== undefined && req.file.filename !== oldStone.fileName) {
-		fs.unlink(`uploadsStone/${oldStone.fileName}`, err => {
+	if (req.file !== undefined && req.file.filename !== oldGolden.fileName) {
+		fs.unlink(`uploadsGolden/${oldGolden.fileName}`, err => {
 			if (err) throw err;
 			console.log('Imagen Eliminada Del Sistema De Archivos.');
 		});
 	}
 
-	res.json({
-		successMessage: 'Piedra Actualizado Con Éxito.',
+	res.status(200).json({
+		successMessage: 'Oro Actualizado Con Éxito.',
 	});
 };
 
 exports.delete = async (req, res) => {
     try {
-        const stoneId = req.params.stoneId;
-        const deletedStone = await Stone.findByIdAndDelete(stoneId);
+        const goldenId = req.params.goldenId;
+        const deletedGolden = await Golden.findByIdAndDelete(goldenId);
 
-        fs.unlink(`uploadsStone/${deletedStone.fileName}`, err => {
+        fs.unlink(`uploadsGolden/${deletedGolden.fileName}`, err => {
             if (err) throw err;
             console.log(
                 'Imagen Eliminado Con Éxito Del Sistema De Archivos: ',
-                deletedStone.fileName
+                deletedGolden.fileName
             );
         });
 
-        res.json(deletedStone);
+        res.status(200).json(deletedGolden);
     } catch (err) {
-        console.log(err, 'stoneController.delete error');
+        console.log(err, 'goldenController.delete error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
         });

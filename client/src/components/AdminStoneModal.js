@@ -5,7 +5,7 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createStone } from '../redux/actions/stoneActions';
+import { createRock } from '../redux/actions/rockActions';
 
 const AdminStoneModal = () => {
     /****************************
@@ -22,7 +22,7 @@ const AdminStoneModal = () => {
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
     const [clientSideError, setClientSideError] = useState('');
-    const [stoneData, setStoneData] = useState({
+    const [rockData, setRockData] = useState({
         productImage: null,
         productName: '',
         productCategory: '',
@@ -31,7 +31,7 @@ const AdminStoneModal = () => {
         productImage,
         productName,
         productCategory,
-    } = stoneData;
+    } = rockData;
 
     /****************************
 	 * EVENT HANDLERS
@@ -45,8 +45,8 @@ const AdminStoneModal = () => {
     };
 
     const handleRockChange = (evt) => {
-        setStoneData({
-            ...stoneData,
+        setRockData({
+            ...rockData,
             [evt.target.name]: evt.target.value,
         });
 
@@ -56,8 +56,8 @@ const AdminStoneModal = () => {
 
     const handleRockImage = (evt) => {
         console.log(evt.target.files[0]);
-        setStoneData({
-            ...stoneData,
+        setRockData({
+            ...rockData,
             [evt.target.name]: evt.target.files[0],
         });
 
@@ -81,8 +81,8 @@ const AdminStoneModal = () => {
             formData.append('productName', productName);
             formData.append('productCategory', productCategory);
 
-            dispatch(createStone(formData));
-            setStoneData({
+            dispatch(createRock(formData));
+            setRockData({
                 productImage: null,
                 productName: '',
                 productCategory: '',

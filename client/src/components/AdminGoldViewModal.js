@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import './AdminGoldView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
-import { deleteGold } from '../redux/actions/goldActions';
+import { deleteGolden } from '../redux/actions/goldenActions';
 
-const AdminGoldViewModal = ({ gold, adminPage = false }) => {
+const AdminGoldViewModal = ({ golden, adminPage = false }) => {
     const data=useRef();
 
     const dispatch = useDispatch();
@@ -27,8 +27,8 @@ const AdminGoldViewModal = ({ gold, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsGold/${gold.fileName}`}
-                                                style={{maxWidth: "150px"}}
+                                                src={`/uploadsGolden/${golden.fileName}`}
+                                                style={{maxWidth: "100px"}}
                                                 alt="C. De Oro."
                                                 title="C. De Oro."
                                             />
@@ -37,7 +37,7 @@ const AdminGoldViewModal = ({ gold, adminPage = false }) => {
                                             <a href="#!">
                                                 <b>
                                                     <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {gold.productName}
+                                                        {golden.productName}
                                                     </h2>
                                                 </b>
                                             </a>
@@ -45,7 +45,7 @@ const AdminGoldViewModal = ({ gold, adminPage = false }) => {
                                                 <em>
                                                     <h4 className='text-success'>
                                                         <b>
-                                                            {gold.productCategory}
+                                                            {golden.productCategory}
                                                         </b>
                                                     </h4>
                                                 </em>
@@ -59,7 +59,7 @@ const AdminGoldViewModal = ({ gold, adminPage = false }) => {
                                                                 ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
-                                                                    dispatch(deleteGold(gold._id))
+                                                                    dispatch(deleteGolden(golden._id))
                                                                 }
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>

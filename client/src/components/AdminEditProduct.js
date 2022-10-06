@@ -154,7 +154,7 @@ const AdminEditProduct = () => {
 																			<img
 																				className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
 																				style={{
-																					maxWidth: '150px'
+																					maxWidth: '100px'
 																				}}
 																				src={`/uploads/${productImage}`}
 																				alt='Productos.'

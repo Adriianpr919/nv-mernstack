@@ -17,7 +17,7 @@ export const getCategories = () => async dispatch => {
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: GET_CATEGORIES, 
-            payload: response.data.categories 
+            payload: response.data.categories, 
         });
 
         window.localStorage.setItem("userCategories", JSON.stringify());
@@ -47,10 +47,10 @@ export const createCategory = formData => async dispatch => {
         });
         dispatch({ 
             type: CREATE_CATEGORY, 
-            payload: response.data.category 
+            payload: response.data.category, 
         });
         
-        window.localStorage.setItem("userCategories", JSON.stringify(formData));
+        window.localStorage.setItem("createCategory", JSON.stringify(formData));
     } catch (err) {
         console.log('createCategory API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -71,7 +71,7 @@ export const deleteCategory = categoryId => async dispatch => {
             payload: response.data,
         });
 
-        window.localStorage.setItem("userCategories", JSON.stringify(categoryId));
+        window.localStorage.setItem("deleteCategory", JSON.stringify(categoryId));
     } catch (err) {
         console.log('deleteCategory API error: ', err);
         dispatch({ type: STOP_LOADING });

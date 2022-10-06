@@ -1,17 +1,17 @@
 import { 
-    CREATE_GOLD, 
+    CREATE_GOLDEN, 
     GET_GOLDS,
     GET_GOLD, 
-    DELETE_GOLD, 
-} from '../constants/goldConstants';
+    DELETE_GOLDEN, 
+} from '../constants/goldenConstants';
 
 const INITIAL_STATE = {
     golds: [],
 };
 
-const goldReducer = (state = INITIAL_STATE, action) => {
+const goldenReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case CREATE_GOLD:
+        case CREATE_GOLDEN:
             return {
                 golds: [...state.golds, action.payload],
             };
@@ -21,12 +21,12 @@ const goldReducer = (state = INITIAL_STATE, action) => {
             };
         case GET_GOLD:
             return {
-                gold: action.payload,
+                golden: action.payload,
             };
-        case DELETE_GOLD:
+        case DELETE_GOLDEN:
             return {
                 golds: state.golds.filter(
-                    g => g._id !== action.payload._id
+                    golden => golden._id !== action.payload._id
                 ),
             };    
         default: 
@@ -34,4 +34,4 @@ const goldReducer = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default goldReducer;
+export default goldenReducer;

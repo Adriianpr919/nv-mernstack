@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
-const GoldSchema = new mongoose.Schema(
+const SizedSchema = new mongoose.Schema(
     {
         fileName: {
             type: 'String',
@@ -11,7 +11,7 @@ const GoldSchema = new mongoose.Schema(
             type: 'String',
             required: true,
             trim: true,
-            maxlength: 255,
+            maxlength: 60,
         },
         productCategory: {
             type: ObjectId,
@@ -22,7 +22,7 @@ const GoldSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-GoldSchema.index({ productName: 'text' });
-const Gold = mongoose.model('Gold', GoldSchema);
+SizedSchema.index({ productName: 'text' });
+const Sized = mongoose.model('Sized', SizedSchema);
 
-module.exports = Gold;
+module.exports = Sized;

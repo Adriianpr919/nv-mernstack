@@ -1,17 +1,17 @@
 import { 
-    CREATE_STONE, 
+    CREATE_ROCK, 
     GET_STONES,
     GET_STONE, 
-    DELETE_STONE, 
-} from '../constants/stoneConstants';
+    DELETE_ROCK, 
+} from '../constants/rockConstants';
 
 const INITIAL_STATE = {
     stones: [],
 };
 
-const stoneReducer = (state = INITIAL_STATE, action) => {
+const rockReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case CREATE_STONE:
+        case CREATE_ROCK:
             return {
                 stones: [...state.stones, action.payload],
             };
@@ -21,12 +21,12 @@ const stoneReducer = (state = INITIAL_STATE, action) => {
             };
         case GET_STONE:
 			return {
-				stone: action.payload,
+				rock: action.payload,
 			};
-        case DELETE_STONE:
+        case DELETE_ROCK:
             return {
                 stones: state.stones.filter(
-                    r => r._id !== action.payload._id
+                    rock => rock._id !== action.payload._id
                 ),
             };    
         default: 
@@ -34,4 +34,4 @@ const stoneReducer = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default stoneReducer;
+export default rockReducer;

@@ -4,9 +4,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import loadingReducer from './reducers/loadingReducers';
 import messageReducer from './reducers/messageReducers';
 import categoryReducer from './reducers/categoryReducers';
-import sizeReducer from './reducers/sizeReducers';
-import goldReducer from './reducers/goldReducers';
-import stoneReducer from './reducers/stoneReducers';
+import sizedReducer from './reducers/sizedReducers';
+import goldenReducer from './reducers/goldenReducers';
+import rockReducer from './reducers/rockReducers';
 import productReducer from './reducers/productReducers';
 import filterReducer from './reducers/filterReducers';
 import cartReducer from './reducers/cartReducers';
@@ -16,9 +16,9 @@ const reducer = combineReducers({
     loading: loadingReducer,
     messages: messageReducer,
     categories: categoryReducer,   
-    sizes: sizeReducer,
-    golds: goldReducer,
-    stones: stoneReducer,
+    sizes: sizedReducer,
+    golds: goldenReducer,
+    stones: rockReducer,
     products: productReducer,
     filters: filterReducer,
     cart: cartReducer,

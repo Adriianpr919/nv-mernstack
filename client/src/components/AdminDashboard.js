@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './AdminStyle.css';
 
 // Components All.
-import AdminHeader from './AdminHeader';
 import AdminActionBtns from './AdminActionBtns';
 import AdminCategoryModal from './AdminCategoryModal';
 import AdminSizeModal from './AdminSizeModal';
@@ -16,35 +15,43 @@ import AdminBodyOrders from './AdminBodyOrders';
 import AdminBodySize from './AdminBodySize';
 import AdminBodyGold from './AdminBodyGold';
 import AdminBodyStone from './AdminBodyStone';
+
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { getCategories } from '../redux/actions/categoryActions';
-import { getSizes } from '../redux/actions/sizeActions';
-import { getGolds } from '../redux/actions/goldActions';
-import { getStones } from '../redux/actions/stoneActions';
+import { getSizes } from '../redux/actions/sizedActions';
+import { getGolds } from '../redux/actions/goldenActions';
+import { getStones } from '../redux/actions/rockActions';
 import { getProducts } from '../redux/actions/productActions';
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();
+
     useEffect(() => {
-        dispatch(
-            getCategories(),
-        );
+        dispatch(getCategories());
     }, [dispatch]);
+
     useEffect(() => {
-        dispatch(
-            getProducts(),
-            getSizes(),
-            getGolds(),
-            getStones(),
-        );
+        dispatch(getProducts());
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getSizes());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getGolds());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getStones());
+    }, [dispatch]);
+
     return (
         /********************************************** 
          * RENDERING
         **********************************************/
         <section>
-            <AdminHeader />
             <AdminActionBtns />
             <AdminCategoryModal />
             <AdminSizeModal />

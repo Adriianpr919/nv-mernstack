@@ -5,7 +5,7 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createGold } from '../redux/actions/goldActions';
+import { createGolden } from '../redux/actions/goldenActions';
 
 const AdminGoldModal = () => {
     /****************************
@@ -22,7 +22,7 @@ const AdminGoldModal = () => {
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
     const [clientSideError, setClientSideError] = useState('');
-    const [goldData, setGoldData] = useState({
+    const [goldenData, setGoldenData] = useState({
         productImage: null,
         productName: '',
         productCategory: '',
@@ -31,7 +31,7 @@ const AdminGoldModal = () => {
         productImage,
         productName,
         productCategory,
-    } = goldData;
+    } = goldenData;
 
     /****************************
 	 * EVENT HANDLERS
@@ -44,9 +44,9 @@ const AdminGoldModal = () => {
         localStorage.setItem("inputValue",data.current.value);
     };
 
-    const handleGoldChange = (evt) => {
-        setGoldData({
-            ...goldData,
+    const handleGoldenChange = (evt) => {
+        setGoldenData({
+            ...goldenData,
             [evt.target.name]: evt.target.value,
         });
 
@@ -54,10 +54,10 @@ const AdminGoldModal = () => {
         localStorage.setItem("inputValue",data.current.value);
     };
 
-    const handleGoldImage = (evt) => {
+    const handleGoldenImage = (evt) => {
         console.log(evt.target.files[0]);
-        setGoldData({
-            ...goldData,
+        setGoldenData({
+            ...goldenData,
             [evt.target.name]: evt.target.files[0],
         });
 
@@ -65,7 +65,7 @@ const AdminGoldModal = () => {
         localStorage.setItem("inputValue",data.current.value);
     };
 
-    const handleGoldSubmit = (evt) => {
+    const handleGoldenSubmit = (evt) => {
         evt.preventDefault();
 
         if (productImage === null) {
@@ -81,8 +81,8 @@ const AdminGoldModal = () => {
             formData.append('productName', productName);
             formData.append('productCategory', productCategory);
 
-            dispatch(createGold(formData));
-            setGoldData({
+            dispatch(createGolden(formData));
+            setGoldenData({
                 productImage: null,
                 productName: '',
                 productCategory: '',
@@ -102,7 +102,7 @@ const AdminGoldModal = () => {
         <div id="addGoldModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
-                    <form onSubmit={handleGoldSubmit}>
+                    <form onSubmit={handleGoldenSubmit}>
                         <div className="modal-header bg-warning">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Color De Oro.
@@ -153,7 +153,7 @@ const AdminGoldModal = () => {
                                                                             type="file"
                                                                             ref={data}
                                                                             name='productImage'
-                                                                            onChange={handleGoldImage} 
+                                                                            onChange={handleGoldenImage} 
                                                                             className="custom-file-input" 
                                                                             id="customFileLang" 
                                                                             aria-describedby="customFileLang" 
@@ -186,7 +186,7 @@ const AdminGoldModal = () => {
                                                 ref={data}
                                                 name='productName'
                                                 value={productName} 
-                                                onChange={handleGoldChange} 
+                                                onChange={handleGoldenChange} 
                                                 className="form-control"
                                                 placeholder="Nombre Color De Oro."
                                             />
@@ -202,7 +202,7 @@ const AdminGoldModal = () => {
                                         <select 
                                         ref={data}
                                         name='productCategory'
-                                        onChange={handleGoldChange}
+                                        onChange={handleGoldenChange}
                                         className="custom-select mr-sm-2" 
                                         aria-label="Selecciónar Categorías.">
                                             <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>

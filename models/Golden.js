@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
-const StoneSchema = new mongoose.Schema(
+const GoldenSchema = new mongoose.Schema(
     {
         fileName: {
             type: 'String',
@@ -11,7 +11,7 @@ const StoneSchema = new mongoose.Schema(
             type: 'String',
             required: true,
             trim: true,
-            maxlength: 255,
+            maxlength: 60,
         },
         productCategory: {
             type: ObjectId,
@@ -22,7 +22,7 @@ const StoneSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-StoneSchema.index({ productName: 'text' });
-const Stone = mongoose.model('Stone', StoneSchema);
+GoldenSchema.index({ productName: 'text' });
+const Golden = mongoose.model('Golden', GoldenSchema);
 
-module.exports = Stone;
+module.exports = Golden;

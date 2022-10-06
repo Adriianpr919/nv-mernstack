@@ -5,7 +5,7 @@ import { showLoading } from '../helpers/loading';
 //Redux ***************************************************************
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
-import { createSize } from '../redux/actions/sizeActions';
+import { createSized } from '../redux/actions/sizedActions';
 
 const AdminSizeModal = () => {
     /****************************
@@ -22,7 +22,7 @@ const AdminSizeModal = () => {
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
     const [clientSideError, setClientSideError] = useState('');
-    const [sizeData, setSizeData] = useState({
+    const [sizedData, setSizedData] = useState({
         productImage: null,
         productName: '',
         productCategory: '',
@@ -31,7 +31,7 @@ const AdminSizeModal = () => {
         productImage,
         productName,
         productCategory,
-    } = sizeData;
+    } = sizedData;
 
     /****************************
 	 * EVENT HANDLERS
@@ -44,9 +44,9 @@ const AdminSizeModal = () => {
         localStorage.setItem("inputValue",data.current.value);
     };
 
-    const handleSizeChange = (evt) => {
-        setSizeData({
-            ...sizeData,
+    const handleSizedChange = (evt) => {
+        setSizedData({
+            ...sizedData,
             [evt.target.name]: evt.target.value,
         });
 
@@ -54,10 +54,10 @@ const AdminSizeModal = () => {
         localStorage.setItem("inputValue",data.current.value);
     };
 
-    const handleSizeImage = (evt) => {
+    const handleSizedImage = (evt) => {
         console.log(evt.target.files[0]);
-        setSizeData({
-            ...sizeData,
+        setSizedData({
+            ...sizedData,
             [evt.target.name]: evt.target.files[0],
         });
 
@@ -65,7 +65,7 @@ const AdminSizeModal = () => {
         localStorage.setItem("inputValue",data.current.value);
     };
 
-    const handleSizeSubmit = (evt) => {
+    const handleSizedSubmit = (evt) => {
         evt.preventDefault();
 
         if (productImage === null) {
@@ -81,8 +81,8 @@ const AdminSizeModal = () => {
             formData.append('productName', productName);
             formData.append('productCategory', productCategory);
 
-            dispatch(createSize(formData));
-            setSizeData({
+            dispatch(createSized(formData));
+            setSizedData({
                 productImage: null,
                 productName: '',
                 productCategory: '',
@@ -102,7 +102,7 @@ const AdminSizeModal = () => {
         <div id="addSizeModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
-                    <form onSubmit={handleSizeSubmit}>
+                    <form onSubmit={handleSizedSubmit}>
                         <div className="modal-header bg-info">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Talla.
@@ -153,7 +153,7 @@ const AdminSizeModal = () => {
                                                                             type="file"
                                                                             ref={data}
                                                                             name='productImage'
-                                                                            onChange={handleSizeImage} 
+                                                                            onChange={handleSizedImage} 
                                                                             className="custom-file-input" 
                                                                             id="customFileLang" 
                                                                             aria-describedby="customFileLang" 
@@ -186,7 +186,7 @@ const AdminSizeModal = () => {
                                                 ref={data}
                                                 name='productName'
                                                 value={productName} 
-                                                onChange={handleSizeChange} 
+                                                onChange={handleSizedChange} 
                                                 className="form-control"
                                                 placeholder="Añadir Talla."
                                             />
@@ -202,7 +202,7 @@ const AdminSizeModal = () => {
                                         <select 
                                         ref={data}
                                         name='productCategory'
-                                        onChange={handleSizeChange}
+                                        onChange={handleSizedChange}
                                         className="custom-select mr-sm-2" 
                                         aria-label="Selecciónar Categorías.">
                                             <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>

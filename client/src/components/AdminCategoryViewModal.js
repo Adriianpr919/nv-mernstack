@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { deleteCategory } from '../redux/actions/categoryActions';
 
 const AdminCategoryViewModal = ({ c }) => {
-    //const { dispatch } = createCategory(); **
     const dispatch = useDispatch();
 
     const data=useRef();

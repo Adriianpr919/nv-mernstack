@@ -15,13 +15,9 @@ import Cart from './Cart';
 import Shipping from './Shipping';
 import Payment from './Payment';
 import Products from './Products';
-import Info from './Info';
 import UserDashboard from './UserDashboard';
 import AdminDashboard from './AdminDashboard';
 import AdminEditProduct from './AdminEditProduct';
-import AdminEditSize from './AdminEditSize';
-import AdminEditGold from './AdminEditGold';
-import AdminEditStone from './AdminEditStone';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import NotFound from './NotFound';
@@ -49,7 +45,6 @@ const App = () => {
           />
           <Route exact path='/shipping' element={<Shipping />} />
           <Route exact path='/payment' element={<Payment />} />
-          <Route exact path="/info" element={<Info />} />
           {/* protected user routes */}
           <Route element={<UserRoute />}>
 						<Route
@@ -70,21 +65,6 @@ const App = () => {
 							path='/admin/edit/product/:productId'
 							element={<AdminEditProduct />}
 						/>
-            <Route
-              exact
-              path='/admin/edit/size/:sizeId'
-              element={<AdminEditSize />}
-            />  
-            <Route
-              exact
-              path='/admin/edit/gold/:goldId'
-              element={<AdminEditGold />}
-            />
-            <Route
-              exact
-              path='/admin/edit/stone/:stoneId'
-              element={<AdminEditStone />}
-            />
 					</Route>
           <Route path='/not_found' element={<NotFound />} />
           <Route path='*' element={<Navigate to='/not_found' />} />

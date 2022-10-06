@@ -5,28 +5,34 @@ import {
     SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
 import { 
-    CREATE_SIZE, 
-    GET_SIZES,
-    GET_SIZE,
-    DELETE_SIZE, 
-} from '../constants/sizeConstants';
+    CREATE_ROCK, 
+    GET_STONES,
+    GET_STONE,
+    DELETE_ROCK, 
+} from '../constants/rockConstants';
 
-export const createSize = formData => async dispatch => {
+export const createRock = formData => async dispatch => {
     try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
         dispatch({ type: START_LOADING });
-        const response = await axios.post('/api/size', formData);
+        const response = await axios.post('/api/rock', formData, config);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_SUCCESS_MESSAGE, 
             payload: response.data.successMessage, 
         });
         dispatch({ 
-            type: CREATE_SIZE, 
-            payload: response.data.size, 
+            type: CREATE_ROCK, 
+            payload: response.data.rock, 
         });
-        window.localStorage.setItem("userSizes", JSON.stringify(formData));
+
+        window.localStorage.setItem("createRock", JSON.stringify(formData));
     } catch (err) {
-        console.log('createSize API Error: ', err);
+        console.log('createRock API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_ERROR_MESSAGE, 
@@ -35,18 +41,19 @@ export const createSize = formData => async dispatch => {
     }
 };
 
-export const getSizes = () => async dispatch => {
+export const getStones = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
-        const response = await axios.get('/api/size');
+        const response = await axios.get('/api/rock');
         dispatch({ type: STOP_LOADING });
         dispatch({ 
-            type: GET_SIZES, 
-            payload: response.data.sizes, 
+            type: GET_STONES, 
+            payload: response.data.stones, 
         });
-        window.localStorage.setItem("userSizes", JSON.stringify());
+
+        window.localStorage.setItem("userStones", JSON.stringify());
     } catch (err) {
-        console.log('getSizes API Error: ', err);
+        console.log('getStones API Error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_ERROR_MESSAGE, 
@@ -55,18 +62,19 @@ export const getSizes = () => async dispatch => {
     }
 };
 
-export const getSizesByCount = () => async dispatch => {
+export const getStonesByCount = () => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.get('/api/size/count');
+		const response = await axios.get('/api/rock/count');
 		dispatch({ type: STOP_LOADING });
 		dispatch({
-			type: GET_SIZES,
-			payload: response.data.sizes,
+			type: GET_STONES,
+			payload: response.data.stones,
 		});
-        window.localStorage.setItem("userSizes", JSON.stringify());
+
+        window.localStorage.setItem("userStones", JSON.stringify());
 	} catch (err) {
-		console.log('getSizes API error: ', err);
+		console.log('getStones API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,
@@ -75,18 +83,19 @@ export const getSizesByCount = () => async dispatch => {
 	}
 };
 
-export const getSize = sizeId => async dispatch => {
+export const getStone = rockId => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.get(`/api/size/${sizeId}`);
+		const response = await axios.get(`/api/rock/${rockId}`);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
-			type: GET_SIZE,
+			type: GET_STONE,
 			payload: response.data,
 		});
-        window.localStorage.setItem("userSizes", JSON.stringify(sizeId));
+
+        window.localStorage.setItem("userStones", JSON.stringify(rockId));
 	} catch (err) {
-		console.log('getSizes API error: ', err);
+		console.log('getStones API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,
@@ -95,18 +104,19 @@ export const getSize = sizeId => async dispatch => {
 	}
 };
 
-export const deleteSize = sizeId => async dispatch => {
+export const deleteRock = rockId => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
-        const response = await axios.delete(`/api/size/${sizeId}`);
+        const response = await axios.delete(`/api/rock/${rockId}`);
         dispatch({ type: STOP_LOADING });
         dispatch({
-            type: DELETE_SIZE,
+            type: DELETE_ROCK,
             payload: response.data,
         });
-        window.localStorage.setItem("userSizes", JSON.stringify(sizeId));
+
+        window.localStorage.setItem("deleteRock", JSON.stringify(rockId));
     } catch (err) {
-        console.log('deleteSize API error: ', err);
+        console.log('deleteRock API error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({
             type: SHOW_ERROR_MESSAGE,
