@@ -41,3 +41,17 @@ exports.readAll = async (req, res) => {
         });
     }   
 };
+
+exports.delete = async (req, res) => {
+    try {
+        const categoryId = req.params.categoryId;
+        const deletedCategory = await Category.findByIdAndDelete(categoryId);
+
+        res.json(deletedCategory);
+    } catch (err) {
+        console.log(err, 'categoryController.delete error');
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
+        });
+    }
+};

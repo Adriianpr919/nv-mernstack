@@ -6,6 +6,7 @@ import {
 import { 
     GET_CATEGORIES, 
     CREATE_CATEGORY, 
+    DELETE_CATEGORY,
 } from '../constants/categoryConstants';
 import axios from 'axios';
 
@@ -56,6 +57,27 @@ export const createCategory = formData => async dispatch => {
         dispatch({ 
             type: SHOW_ERROR_MESSAGE, 
             payload: err.response.data.errorMessage, 
+        });
+    }
+};
+
+export const deleteCategory = categoryId => async dispatch => {
+    try {
+        dispatch({ type: START_LOADING });
+        const response = await axios.delete(`/api/category/${categoryId}`);
+        dispatch({ type: STOP_LOADING });
+        dispatch({
+            type: DELETE_CATEGORY,
+            payload: response.data,
+        });
+
+        window.localStorage.setItem("userCategories", JSON.stringify(categoryId));
+    } catch (err) {
+        console.log('deleteCategory API error: ', err);
+        dispatch({ type: STOP_LOADING });
+        dispatch({
+            type: SHOW_ERROR_MESSAGE,
+            payload: err.response.data.errorMessage,
         });
     }
 };

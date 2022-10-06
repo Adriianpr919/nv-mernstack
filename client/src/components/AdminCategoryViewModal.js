@@ -1,9 +1,15 @@
 import React, { useRef } from 'react';
 //Redux **************************************************************************
-import '../redux/actions/categoryActions';
+import { useDispatch } from 'react-redux';
+import { deleteCategory } from '../redux/actions/categoryActions';
 
 const AdminCategoryViewModal = ({ c }) => {
+    //const { dispatch } = createCategory(); **
+    const dispatch = useDispatch();
+
     const data=useRef();
+
+    
 
     console.log(localStorage.getItem("inputValue"),"****");
     return (
@@ -35,6 +41,9 @@ const AdminCategoryViewModal = ({ c }) => {
                                                             <button
                                                                 type='button'
                                                                 ref={data}
+                                                                onClick={() =>
+                                                                    dispatch(deleteCategory(c._id))
+                                                                }
                                                                 className='btn btn-outline-danger btn-sm'
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>
