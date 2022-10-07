@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { isAuthenticated, logout } from '../helpers/auth';
 import { useSelector } from 'react-redux';
@@ -9,18 +9,11 @@ const Header = () => {
     let navigate = useNavigate();
     const { cart } = useSelector(state => state.cart);
 
-    const data=useRef();
-
     const handleLogout = (_evt) => {
         logout(() => {
             navigate('/signing');
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
-
-    console.log(localStorage.getItem("inputValue"),"****");
     //views header
     const showNavigation = () => (
         <>
@@ -121,7 +114,6 @@ const Header = () => {
                             <Fragment>
                                 <li className="nav-item">
                                     <Link 
-                                    ref={data}
                                     className="nav-link active" 
                                     aria-current="page" 
                                     to='/user/dashboard'>
@@ -199,7 +191,6 @@ const Header = () => {
                             <Fragment>
                                 <li className="nav-item">
                                     <Link 
-                                    ref={data}
                                     className="nav-link active" 
                                     aria-current="page" 
                                     to='/admin/dashboard'>
@@ -213,7 +204,6 @@ const Header = () => {
                             <Fragment>
                                 <li className="nav-item">
                                     <button 
-                                    ref={data}
                                     className="btn btn-outline-danger logoutHover"
                                     onClick={handleLogout}>
                                         <i className="fas fa-power-off"></i>{' '} 

@@ -1,15 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './AdminStoneView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteRock } from '../redux/actions/rockActions';
 
-const AdminStoneViewModal = ({ rock, adminPage = false }) => {
-    const data=useRef();
-
+const AdminStoneViewModal = ({ r, adminPage = false }) => {
     const dispatch = useDispatch();
-
-    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             <div className="container padding-bottom-3x mb-1">
@@ -27,7 +23,7 @@ const AdminStoneViewModal = ({ rock, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsRock/${rock.fileName}`}
+                                                src={`/uploadsRock/${r.fileName}`}
                                                 style={{maxWidth: "100px"}}
                                                 alt="C. De Piedra."
                                                 title="C. De Piedra."
@@ -37,7 +33,7 @@ const AdminStoneViewModal = ({ rock, adminPage = false }) => {
                                             <a href="#!">
                                                 <b>
                                                     <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {rock.productName}
+                                                        {r.productName}
                                                     </h2>
                                                 </b>
                                             </a>
@@ -45,7 +41,7 @@ const AdminStoneViewModal = ({ rock, adminPage = false }) => {
                                                 <em>
                                                     <h4 className='text-success'>
                                                         <b>
-                                                            {rock.productCategory}
+                                                            {r.productCategory}
                                                         </b>
                                                     </h4>
                                                 </em>
@@ -56,10 +52,9 @@ const AdminStoneViewModal = ({ rock, adminPage = false }) => {
                                                         <>
                                                             <button
                                                                 type='button'
-                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
-                                                                    dispatch(deleteRock(rock._id))
+                                                                    dispatch(deleteRock(r._id))
                                                                 }
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>

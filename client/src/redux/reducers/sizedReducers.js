@@ -9,6 +9,14 @@ const INITIAL_STATE = {
     sizes: [],
 };
 
+if (localStorage.getItem('sizes')) {
+    INITIAL_STATE.sizes = JSON.parse(
+        localStorage.getItem('sizes')
+    );
+} else {
+    INITIAL_STATE.sizes = [];
+}
+
 const sizedReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CREATE_SIZED:
@@ -26,7 +34,7 @@ const sizedReducer = (state = INITIAL_STATE, action) => {
         case DELETE_SIZED:
             return {
                 sizes: state.sizes.filter(
-                    sized => sized._id !== action.payload._id
+                    s => s._id !== action.payload._id
                 ),
             };    
         default: 

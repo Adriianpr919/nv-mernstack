@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
@@ -19,8 +19,6 @@ const AdminProductModal = () => {
     const { categories } = useSelector(state => state.categories);
     
     
-
-    const data=useRef();
 
     const dispatch = useDispatch();
     /****************************
@@ -43,16 +41,12 @@ const AdminProductModal = () => {
         productCategory,
         productQty,
     } = productData;
-
     /****************************
 	 * EVENT HANDLERS
 	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
         setClientSideError('');
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleProductChange = (evt) => {
@@ -60,9 +54,6 @@ const AdminProductModal = () => {
             ...productData,
             [evt.target.name]: evt.target.value,
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleProductImage = (evt) => {
@@ -71,9 +62,6 @@ const AdminProductModal = () => {
             ...productData,
             [evt.target.name]: evt.target.files[0],
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleProductSubmit = (evt) => {
@@ -111,13 +99,7 @@ const AdminProductModal = () => {
                 productQty: '',
             });
         }
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
-
-    console.log(localStorage.getItem("inputValue"),"****");
-
     /****************************
 	 * RENDERER
 	 ***************************/
@@ -174,7 +156,6 @@ const AdminProductModal = () => {
                                                                         <div className="custom-file">
                                                                             <input 
                                                                             type="file"
-                                                                            ref={data}
                                                                             name='productImage'
                                                                             onChange={handleProductImage} 
                                                                             className="custom-file-input" 
@@ -395,7 +376,6 @@ const AdminProductModal = () => {
                                         </label>
                                         <input 
                                             type="text"
-                                            ref={data}
                                             name='productName'
                                             value={productName} 
                                             onChange={handleProductChange} 
@@ -418,7 +398,6 @@ const AdminProductModal = () => {
                                                 </span>
                                             </div>
                                             <textarea 
-                                            ref={data}
                                             name='productDesc'
                                             value={productDesc}
                                             onChange={handleProductChange}
@@ -438,7 +417,6 @@ const AdminProductModal = () => {
                                         </label>
                                         <input 
                                             type="text"
-                                            ref={data}
                                             name='productPrice'
                                             value={productPrice} 
                                             onChange={handleProductChange}
@@ -455,7 +433,6 @@ const AdminProductModal = () => {
                                                 <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
                                         </label>
                                         <select 
-                                        ref={data}
                                         name='productCategory'
                                         onChange={handleProductChange}
                                         className="custom-select mr-sm-2" 
@@ -521,7 +498,6 @@ const AdminProductModal = () => {
                                         </label>
                                         <input 
                                             type="number"
-                                            ref={data}
                                             name='productQty'
                                             value={productQty}
                                             onChange={handleProductChange}

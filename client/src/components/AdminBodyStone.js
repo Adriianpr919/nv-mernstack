@@ -23,10 +23,10 @@ const AdminBodyStone = () => {
                         <div className="modal-body">
                             <p>
                                 {stones && 
-                                    stones.map((rock) => ( 
+                                    stones.map((r) => ( 
                                         <AdminStoneViewModal 
-                                            key={rock._id}
-                                            rock={rock}
+                                            key={r._id}
+                                            r={r}
                                             adminPage={true}
                                         />
                                 ))} 

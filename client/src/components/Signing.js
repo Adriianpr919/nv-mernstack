@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helpers/message';
@@ -11,8 +11,6 @@ import './Signing.css';
 const Signing = () => {
     let navigate = useNavigate();
     let location = useLocation();
-
-    const data=useRef();
 
     useEffect(() => {
         if (isAuthenticated() && isAuthenticated().role === 1) {
@@ -44,9 +42,6 @@ const Signing = () => {
             [evt.target.name]: evt.target.value,
             errorMsg: '',
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleSubmit = (evt) => {
@@ -98,14 +93,8 @@ const Signing = () => {
                         errorMsg: err.response.data.errorMessage, 
                     });
                 });
-                
         }
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
-
-    console.log(localStorage.getItem("inputValue"),"****");
     /********************************************** 
      * VIEWS
     **********************************************/
@@ -119,7 +108,6 @@ const Signing = () => {
             <div className="form-label-group">
                 <input 
                     type="email" 
-                    ref={data}
                     id="inputEmail"
                     name="email" 
                     value={email} 
@@ -140,7 +128,6 @@ const Signing = () => {
             <div className="form-label-group">
                 <input 
                     type="password" 
-                    ref={data}
                     id="inputPassword"
                     name="password" 
                     value={password} 
@@ -159,7 +146,7 @@ const Signing = () => {
             </div>
             {/*Signing Button*/}
             <div className="form-group">
-                <button type="submit" ref={data} className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
+                <button type="submit" className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
                     <i className="fas fa-user-shield"></i> Iniciar Sesión.
                 </button>
             </div>

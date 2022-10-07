@@ -23,10 +23,10 @@ const AdminBodyGold = () => {
                         <div className="modal-body">
                             <p>
                                 {golds &&
-                                    golds.map((golden) => ( 
+                                    golds.map((g) => ( 
                                         <AdminGoldViewModal 
-                                            key={golden._id}
-                                            golden={golden}
+                                            key={g._id}
+                                            g={g}
                                             adminPage={true}
                                         />
                                 ))} 

@@ -13,13 +13,8 @@ import {
 
 export const createGolden = formData => async dispatch => {
     try {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
         dispatch({ type: START_LOADING });
-        const response = await axios.post('/api/golden', formData, config);
+        const response = await axios.post('/api/golden', formData);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_SUCCESS_MESSAGE, 
@@ -30,7 +25,7 @@ export const createGolden = formData => async dispatch => {
             payload: response.data.golden, 
         });
 
-        window.localStorage.setItem("createGolden", JSON.stringify(formData));
+        localStorage.setItem('createGolden', JSON.stringify(formData));
     } catch (err) {
         console.log('createGolden API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -51,7 +46,7 @@ export const getGolds = () => async dispatch => {
             payload: response.data.golds, 
         });
 
-        window.localStorage.setItem("userGolds", JSON.stringify());
+        localStorage.setItem('userGolds', JSON.stringify());
     } catch (err) {
         console.log('getGolds API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -72,7 +67,7 @@ export const getGoldsByCount = () => async dispatch => {
 			payload: response.data.golds,
 		});
 
-        window.localStorage.setItem("userGolds", JSON.stringify());
+        localStorage.setItem('userGolds', JSON.stringify());
 	} catch (err) {
 		console.log('getGolds API error: ', err);
 		dispatch({ type: STOP_LOADING });
@@ -93,7 +88,7 @@ export const getGold = goldenId => async dispatch => {
 			payload: response.data,
 		});
 
-        window.localStorage.setItem("userGolds", JSON.stringify(goldenId));
+        localStorage.setItem('userGolds', JSON.stringify(goldenId));
 	} catch (err) {
 		console.log('getGolds API error: ', err);
 		dispatch({ type: STOP_LOADING });
@@ -114,7 +109,7 @@ export const deleteGolden = goldenId => async dispatch => {
             payload: response.data,
         });
 
-        window.localStorage.setItem("deleteGolden", JSON.stringify(goldenId));
+        localStorage.removeItem('deleteGolden', JSON.stringify(goldenId));
     } catch (err) {
         console.log('deleteGolden API error: ', err);
         dispatch({ type: STOP_LOADING });

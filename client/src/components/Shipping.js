@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import usaStates from '../data/usaStates';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +9,6 @@ const Shipping = () => {
     const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { shippingAddress } = useSelector(state => state.order);
-
-    const data=useRef();
 
     const [address, setAddress] = useState('');
 	const [address2, setAddress2] = useState('');
@@ -43,12 +41,7 @@ const Shipping = () => {
 
 		dispatch(saveShippingAddress(shippingData));
 		navigate('/payment');
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
 	};
-
-    console.log(localStorage.getItem("inputValue"),"****");
 
     return (
         <section className='m-4'>
@@ -69,7 +62,6 @@ const Shipping = () => {
                                 <label htmlFor="inputAddress">Dirección 1 *: <span class="text-muted">(Opcional 1.)</span></label>
                                 <input 
                                 type="text" 
-                                ref={data}
                                 className="form-control" 
                                 value={address}
                                 onChange={evt =>
@@ -81,7 +73,6 @@ const Shipping = () => {
                                 <label htmlFor="inputAddress2">Dirección 2 *: <span class="text-muted">(Opcional 2.)</span></label>
                                 <input 
                                 type="text" 
-                                ref={data}
                                 className="form-control" 
                                 value={address2}
                                 onChange={evt =>
@@ -93,7 +84,6 @@ const Shipping = () => {
                                 <label htmlFor="inputCity">Ciudad *: <span class="text-muted">(Ciudad.)</span></label>
                                 <input 
                                 type="text" 
-                                ref={data}
                                 className="form-control" 
                                 value={city}
                                 onChange={evt =>
@@ -104,7 +94,6 @@ const Shipping = () => {
                             <div className='form-group'>
                                 <label htmlFor="inputState">Estado *: <span class="text-muted">(Estado.)</span></label>
                                 <select 
-                                ref={data}
                                 className="form-control" 
                                 value={state}
                                 onChange={evt =>
@@ -125,7 +114,6 @@ const Shipping = () => {
                                 <label htmlFor="inputZip">Código Postal *: <span class="text-muted">(Código Postal.)</span></label>
                                 <input 
                                 type="text" 
-                                ref={data}
                                 className="form-control" 
                                 value={zip}
                                 onChange={evt =>
@@ -134,7 +122,7 @@ const Shipping = () => {
                                 placeholder="Código Postal." />
                             </div>
 
-                            <button type='submit' ref={data} className='btn btn-outline-primary'>
+                            <button type='submit' className='btn btn-outline-primary'>
                                 <i class="fa fa-angle-right"></i> Continuar. 
 							</button>
                         </form>

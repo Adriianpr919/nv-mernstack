@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
@@ -15,8 +15,6 @@ const AdminStoneModal = () => {
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { categories } = useSelector(state => state.categories);
 
-    const data=useRef();
-
     const dispatch = useDispatch();
     /****************************
 	 * COMPONENT STATE PROPERTIES
@@ -32,16 +30,12 @@ const AdminStoneModal = () => {
         productName,
         productCategory,
     } = rockData;
-
     /****************************
 	 * EVENT HANDLERS
 	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
         setClientSideError('');
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleRockChange = (evt) => {
@@ -49,9 +43,6 @@ const AdminStoneModal = () => {
             ...rockData,
             [evt.target.name]: evt.target.value,
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleRockImage = (evt) => {
@@ -60,9 +51,6 @@ const AdminStoneModal = () => {
             ...rockData,
             [evt.target.name]: evt.target.files[0],
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleRockSubmit = (evt) => {
@@ -88,13 +76,7 @@ const AdminStoneModal = () => {
                 productCategory: '',
             });
         }
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
-
-    console.log(localStorage.getItem("inputValue"),"****");
-
     /****************************
 	 * RENDERER
 	 ***************************/
@@ -151,7 +133,6 @@ const AdminStoneModal = () => {
                                                                         <div className="custom-file">
                                                                             <input 
                                                                             type="file"
-                                                                            ref={data}
                                                                             name='productImage'
                                                                             onChange={handleRockImage} 
                                                                             className="custom-file-input" 
@@ -183,7 +164,6 @@ const AdminStoneModal = () => {
                                             </label>
                                             <input 
                                                 type="text"
-                                                ref={data}
                                                 name='productName'
                                                 value={productName} 
                                                 onChange={handleRockChange} 
@@ -200,7 +180,6 @@ const AdminStoneModal = () => {
                                                 <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
                                         </label>
                                         <select 
-                                        ref={data}
                                         name='productCategory'
                                         onChange={handleRockChange}
                                         className="custom-select mr-sm-2" 

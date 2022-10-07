@@ -9,6 +9,14 @@ const INITIAL_STATE = {
     stones: [],
 };
 
+if (localStorage.getItem('stones')) {
+    INITIAL_STATE.stones = JSON.parse(
+        localStorage.getItem('stones')
+    );    
+} else {
+    INITIAL_STATE.stones = [];
+}
+
 const rockReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CREATE_ROCK:
@@ -26,7 +34,7 @@ const rockReducer = (state = INITIAL_STATE, action) => {
         case DELETE_ROCK:
             return {
                 stones: state.stones.filter(
-                    rock => rock._id !== action.payload._id
+                    r => r._id !== action.payload._id
                 ),
             };    
         default: 

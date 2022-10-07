@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
@@ -7,8 +7,6 @@ import { addToCart } from '../redux/actions/cartActions';
 const Products = () => {
     const navigate = useNavigate();
 	const { productId } = useParams();
-
-    const data=useRef();
 
 	const dispatch = useDispatch();
 
@@ -20,19 +18,11 @@ const Products = () => {
 
     const handleAddToCart = () => {
 		dispatch(addToCart(product));
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
 	};
 
     const handleGoBackBtn = () => {
 		navigate(-1);
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
 	};
-
-    console.log(localStorage.getItem("inputValue"),"****");
 
     return (
         <section className='product-page m-4'>
@@ -41,7 +31,6 @@ const Products = () => {
                     to='/shop'
                     className='btn btn-outline-primary mb-4'
                     onClick={handleGoBackBtn}
-                    ref={data}
                 >
                     <i className='fas fa-arrow-circle-left'></i> Regresa
                 </button>
@@ -265,7 +254,6 @@ const Products = () => {
                                             className='btn btn-outline-warning btn-large btn-block mb-5 py-2'
                                             disabled={product.productQty <= 0}
                                             onClick={handleAddToCart}
-                                            ref={data}
                                         >
                                             <i className="fas fa-cart-plus" style={{fontSize:"25px"}}></i> Añadir Al Carrito.
                                         </button>

@@ -1,14 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteCategory } from '../redux/actions/categoryActions';
 
 const AdminCategoryViewModal = ({ c }) => {
     const dispatch = useDispatch();
-
-    const data=useRef();
-
-    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             
@@ -37,7 +33,6 @@ const AdminCategoryViewModal = ({ c }) => {
                                                         <>
                                                             <button
                                                                 type='button'
-                                                                ref={data}
                                                                 onClick={() =>
                                                                     dispatch(deleteCategory(c._id))
                                                                 }

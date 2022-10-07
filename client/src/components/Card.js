@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './Card.css';
 import './Card1.css';
 import { Link } from 'react-router-dom';
@@ -8,18 +8,12 @@ import { deleteProduct } from '../redux/actions/productActions';
 import { addToCart } from '../redux/actions/cartActions';
 
 const Card = ({ product, adminPage = false, homePage = false }) => {
-    const data=useRef();
 
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
 		dispatch(addToCart(product));
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
 	};
-
-    console.log(localStorage.getItem("inputValue"),"****");
 
     return (
         <>
@@ -84,7 +78,6 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                                                             <Link
                                                                 to={`/admin/edit/product/${product._id}`}
                                                                 type='button'
-                                                                ref={data}
                                                                 className='btn btn-outline-success btn-sm mr-1 my-1'
                                                             >
                                                                 <i className='far fa-edit pr-1' style={{fontSize:"20px", color:"green"}} alt="Editar" title="Editar"></i>
@@ -92,7 +85,6 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                                                             </Link>
                                                             <button
                                                                 type='button'
-                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
                                                                     dispatch(deleteProduct(product._id))
@@ -114,14 +106,12 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
                                             <Link
                                                 to={`/product/${product._id}`}
                                                 type='button'
-                                                ref={data}
                                                 className='btn btn-outline-primary btn-sm mr-1 my-1'
                                             >
                                                 <i className="fas fa-eye"></i> Ver Detalles.
                                             </Link>
                                             <button
                                                 type='button'
-                                                ref={data}
                                                 className='btn btn-outline-warning btn-sm'
                                                 disabled={product.productQty <= 0}
                                                 onClick={handleAddToCart}

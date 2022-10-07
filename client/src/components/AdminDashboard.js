@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './AdminStyle.css';
 
 // Components All.
+import AdminHeader from './AdminHeader';
 import AdminActionBtns from './AdminActionBtns';
 import AdminCategoryModal from './AdminCategoryModal';
 import AdminSizeModal from './AdminSizeModal';
@@ -52,6 +53,7 @@ const AdminDashboard = () => {
          * RENDERING
         **********************************************/
         <section>
+            <AdminHeader />
             <AdminActionBtns />
             <AdminCategoryModal />
             <AdminSizeModal />

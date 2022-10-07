@@ -23,10 +23,10 @@ const AdminBodySize = () => {
                         <div className="modal-body">
                             <p>
                                 {sizes && 
-                                    sizes.map((sized) => ( 
+                                    sizes.map((s) => ( 
                                         <AdminSizeViewModal 
-                                            key={sized._id}
-                                            sized={sized}
+                                            key={s._id}
+                                            s={s}
                                             adminPage={true}
                                         />
                                 ))}     

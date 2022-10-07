@@ -1,15 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './AdminGoldView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteGolden } from '../redux/actions/goldenActions';
 
-const AdminGoldViewModal = ({ golden, adminPage = false }) => {
-    const data=useRef();
-
+const AdminGoldViewModal = ({ g, adminPage = false }) => {
     const dispatch = useDispatch();
-
-    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             <div className="container padding-bottom-3x mb-1">
@@ -27,7 +23,7 @@ const AdminGoldViewModal = ({ golden, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsGolden/${golden.fileName}`}
+                                                src={`/uploadsGolden/${g.fileName}`}
                                                 style={{maxWidth: "100px"}}
                                                 alt="C. De Oro."
                                                 title="C. De Oro."
@@ -37,7 +33,7 @@ const AdminGoldViewModal = ({ golden, adminPage = false }) => {
                                             <a href="#!">
                                                 <b>
                                                     <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {golden.productName}
+                                                        {g.productName}
                                                     </h2>
                                                 </b>
                                             </a>
@@ -45,7 +41,7 @@ const AdminGoldViewModal = ({ golden, adminPage = false }) => {
                                                 <em>
                                                     <h4 className='text-success'>
                                                         <b>
-                                                            {golden.productCategory}
+                                                            {g.productCategory}
                                                         </b>
                                                     </h4>
                                                 </em>
@@ -56,10 +52,9 @@ const AdminGoldViewModal = ({ golden, adminPage = false }) => {
                                                         <>
                                                             <button
                                                                 type='button'
-                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
-                                                                    dispatch(deleteGolden(golden._id))
+                                                                    dispatch(deleteGolden(g._id))
                                                                 }
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>

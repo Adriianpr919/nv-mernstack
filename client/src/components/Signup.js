@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import equals from 'validator/lib/equals';
@@ -11,8 +11,6 @@ import './Signup.css';
 
 const Signup = () => {
     let navigate = useNavigate();
-
-    const data=useRef();
 
     useEffect(() => {
         if (isAuthenticated() && isAuthenticated().role === 1) {
@@ -51,9 +49,6 @@ const Signup = () => {
             successMsg: '',
             errorMsg: '',
         });
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleSubmit = (evt) => {
@@ -107,12 +102,7 @@ const Signup = () => {
                     });
                 });
         }
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };    
-
-    console.log(localStorage.getItem("inputValue"),"****");
     /********************************************** 
      * VIEWS
     **********************************************/
@@ -126,7 +116,6 @@ const Signup = () => {
             <div className="form-label-group">
                 <input 
                     type="text" 
-                    ref={data}
                     id="inputName"
                     name="username" 
                     value={username} 
@@ -147,7 +136,6 @@ const Signup = () => {
             <div className="form-label-group">
                 <input 
                     type="email" 
-                    ref={data}
                     id="inputEmail"
                     name="email" 
                     value={email} 
@@ -168,7 +156,6 @@ const Signup = () => {
             <div className="form-label-group">
                 <input 
                     type="password" 
-                    ref={data}
                     id="inputPassword"
                     name="password" 
                     value={password} 
@@ -189,7 +176,6 @@ const Signup = () => {
             <div className="form-label-group">
                 <input 
                     type="password" 
-                    ref={data}
                     id="inputPassword2"
                     name="password2" 
                     value={password2} 
@@ -208,7 +194,7 @@ const Signup = () => {
             </div>
             {/*Signup Button*/}
             <div className="form-group">
-                <button type="submit" ref={data} className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
+                <button type="submit" className="btn btn-primary btn-block btn-lg d-grid gap-2 col-6 mx-auto">
                     <i className="fas fa-user-plus"></i> Crear Cuenta.
                 </button>
             </div>

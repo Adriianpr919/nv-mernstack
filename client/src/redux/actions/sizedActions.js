@@ -13,13 +13,8 @@ import {
 
 export const createSized = formData => async dispatch => {
     try {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
         dispatch({ type: START_LOADING });
-        const response = await axios.post('/api/sized', formData, config);
+        const response = await axios.post('/api/sized', formData);
         dispatch({ type: STOP_LOADING });
         dispatch({ 
             type: SHOW_SUCCESS_MESSAGE, 
@@ -30,7 +25,7 @@ export const createSized = formData => async dispatch => {
             payload: response.data.sized, 
         });
 
-        window.localStorage.setItem("createSized", JSON.stringify(formData));
+        localStorage.setItem('createSized', JSON.stringify(formData));
     } catch (err) {
         console.log('createSized API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -51,7 +46,7 @@ export const getSizes = () => async dispatch => {
             payload: response.data.sizes, 
         });
 
-        window.localStorage.setItem("userSizes", JSON.stringify());
+        localStorage.setItem('userSizes', JSON.stringify());
     } catch (err) {
         console.log('getSizes API Error: ', err);
         dispatch({ type: STOP_LOADING });
@@ -72,7 +67,7 @@ export const getSizesByCount = () => async dispatch => {
 			payload: response.data.sizes,
 		});
 
-        window.localStorage.setItem("userSizes", JSON.stringify());
+        localStorage.setItem('userSizes', JSON.stringify());
 	} catch (err) {
 		console.log('getSizes API error: ', err);
 		dispatch({ type: STOP_LOADING });
@@ -93,7 +88,7 @@ export const getSize = sizedId => async dispatch => {
 			payload: response.data,
 		});
 
-        window.localStorage.setItem("userSizes", JSON.stringify(sizedId));
+        localStorage.setItem('userSizes', JSON.stringify(sizedId));
 	} catch (err) {
 		console.log('getSizes API error: ', err);
 		dispatch({ type: STOP_LOADING });
@@ -114,7 +109,7 @@ export const deleteSized = sizedId => async dispatch => {
             payload: response.data,
         });
 
-        window.localStorage.setItem("deleteSized", JSON.stringify(sizedId));
+        localStorage.removeItem('deleteSized', JSON.stringify(sizedId));
     } catch (err) {
         console.log('deleteSize API error: ', err);
         dispatch({ type: STOP_LOADING });

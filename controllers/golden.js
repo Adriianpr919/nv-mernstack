@@ -17,11 +17,11 @@ exports.create = async (req, res) => {
         golden.productName = productName;
         golden.productCategory = productCategory;
 
-        golden = await golden.save();
+        await golden.save();
 
-        res.status(200).json({
-            successMessage: `${golden.productName} Fue Creado Con Éxito.`,
-            productName: golden,
+        res.json({
+            successMessage: `${productName} Fue Creado Con Éxito.`,
+            golden,
         });
     } catch (err) {
         console.log(err, 'goldenController.create error');
@@ -38,7 +38,7 @@ exports.readAll = async (req, res) => {
 			'category'
 		);
         
-        res.status(200).json({ golds, });    
+        res.json({ golds, });    
     } catch (err) {
         console.log(err, 'goldenController.readAll error');
         res.status(500).json({
@@ -53,7 +53,7 @@ exports.readByCount = async (req, res) => {
 			.populate('productCategory', 'category')
 			.limit(6);
 
-		res.status(200).json({ golds, });
+		res.json({ golds, });
 	} catch (err) {
 		console.log(err, 'goldenController.readAll error');
 		res.status(500).json({
@@ -67,7 +67,7 @@ exports.read = async (req, res) => {
 		const goldenId = req.params.goldenId;
 		const golden = await Golden.findById(goldenId);
 
-		res.status(200).json(golden);
+		res.json(golden);
 	} catch (err) {
 		console.log(err, 'goldenController.read error');
 		res.status(500).json({
@@ -92,7 +92,7 @@ exports.update = async (req, res) => {
 		});
 	}
 
-	res.status(200).json({
+	res.json({
 		successMessage: 'Oro Actualizado Con Éxito.',
 	});
 };
@@ -110,7 +110,7 @@ exports.delete = async (req, res) => {
             );
         });
 
-        res.status(200).json(deletedGolden);
+        res.json(deletedGolden);
     } catch (err) {
         console.log(err, 'goldenController.delete error');
         res.status(500).json({

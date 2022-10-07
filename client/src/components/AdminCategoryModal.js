@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import { showErrorMsg, showSuccessMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
@@ -14,31 +14,22 @@ const AdminCategoryModal = () => {
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { loading } = useSelector(state => state.loading);
 
-    const data=useRef();
-
     const dispatch = useDispatch();
     /****************************
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
     const [category, setCategory] = useState('');
     const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
-
     /****************************
 	 * EVENT HANDLERS
 	 ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleCategoryChange = (evt) => {
         dispatch(clearMessages());
         setCategory(evt.target.value);
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
 
     const handleCategorySubmit = (evt) => {
@@ -51,13 +42,7 @@ const AdminCategoryModal = () => {
             dispatch(createCategory(data));
             setCategory('');
         }
-
-        console.log(data.current.value,"initial value");
-        localStorage.setItem("inputValue",data.current.value);
     };
-
-    console.log(localStorage.getItem("inputValue"),"****");
-    
     /****************************
 	 * RENDERER
 	 ***************************/
@@ -95,7 +80,6 @@ const AdminCategoryModal = () => {
                                         </label>
                                         <input 
                                             type="text" 
-                                            ref={data}
                                             className="form-control"
                                             name='category'
                                             value={category}

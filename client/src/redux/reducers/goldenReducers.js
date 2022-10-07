@@ -9,6 +9,14 @@ const INITIAL_STATE = {
     golds: [],
 };
 
+if (localStorage.getItem('golds')) {
+    INITIAL_STATE.golds = JSON.parse(
+        localStorage.getItem('golds')
+    );
+} else {
+    INITIAL_STATE.golds = [];
+}
+
 const goldenReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CREATE_GOLDEN:
@@ -26,7 +34,7 @@ const goldenReducer = (state = INITIAL_STATE, action) => {
         case DELETE_GOLDEN:
             return {
                 golds: state.golds.filter(
-                    golden => golden._id !== action.payload._id
+                    g => g._id !== action.payload._id
                 ),
             };    
         default: 

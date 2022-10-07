@@ -17,11 +17,11 @@ exports.create = async (req, res) => {
         rock.productName = productName;
         rock.productCategory = productCategory;
 
-        rock = await rock.save();
+        await rock.save();
 
-        res.status(200).json({
-            successMessage: `${rock.productName} Fue Creado Con Éxito.`,
-            productName: rock,
+        res.json({
+            successMessage: `${productName} Fue Creado Con Éxito.`,
+            rock,
         });
     } catch (err) {
         console.log(err, 'rockController.create error');
@@ -38,7 +38,7 @@ exports.readAll = async (req, res) => {
 			'category'
 		);
         
-        res.status(200).json({ stones, });    
+        res.json({ stones, });    
     } catch (err) {
         console.log(err, 'rockController.readAll error');
         res.status(500).json({
@@ -53,7 +53,7 @@ exports.readByCount = async (req, res) => {
 			.populate('productCategory', 'category')
 			.limit(6);
 
-		res.status(200).json({ stones, });
+		res.json({ stones, });
 	} catch (err) {
 		console.log(err, 'rockController.readAll error');
 		res.status(500).json({
@@ -67,7 +67,7 @@ exports.read = async (req, res) => {
 		const rockId = req.params.rockId;
 		const rock = await Rock.findById(rockId);
 
-		res.status(200).json(rock);
+		res.json(rock);
 	} catch (err) {
 		console.log(err, 'rockController.read error');
 		res.status(500).json({
@@ -92,7 +92,7 @@ exports.update = async (req, res) => {
 		});
 	}
 
-	res.status(200).json({
+	res.json({
 		successMessage: 'Piedra Actualizado Con Éxito.',
 	});
 };
@@ -110,7 +110,7 @@ exports.delete = async (req, res) => {
             );
         });
 
-        res.status(200).json(deletedRock);
+        res.json(deletedRock);
     } catch (err) {
         console.log(err, 'rockController.delete error');
         res.status(500).json({

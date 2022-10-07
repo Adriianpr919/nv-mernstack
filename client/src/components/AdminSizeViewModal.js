@@ -1,15 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './AdminSizeView.css';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { deleteSized } from '../redux/actions/sizedActions';
 
-const AdminSizeViewModal = ({ sized, adminPage = false }) => {
-    const data=useRef();
-
+const AdminSizeViewModal = ({ s, adminPage = false }) => {
     const dispatch = useDispatch();
-
-    console.log(localStorage.getItem("inputValue"),"****");
     return (
         <>
             <div className="container padding-bottom-3x mb-1">
@@ -27,7 +23,7 @@ const AdminSizeViewModal = ({ sized, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsSized/${sized.fileName}`}
+                                                src={`/uploadsSized/${s.fileName}`}
                                                 style={{maxWidth: "100px"}}
                                                 alt="Talla."
                                                 title="Talla."
@@ -37,7 +33,7 @@ const AdminSizeViewModal = ({ sized, adminPage = false }) => {
                                             <a href="#!">
                                                 <b>
                                                     <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {sized.productName}
+                                                        {s.productName}
                                                     </h2>
                                                 </b>
                                             </a>
@@ -45,7 +41,7 @@ const AdminSizeViewModal = ({ sized, adminPage = false }) => {
                                                 <em>
                                                     <h4 className='text-secondary'>
                                                         <b>
-                                                            {sized.productCategory}
+                                                            {s.productCategory}
                                                         </b>
                                                     </h4>
                                                 </em>
@@ -56,10 +52,9 @@ const AdminSizeViewModal = ({ sized, adminPage = false }) => {
                                                         <>
                                                             <button
                                                                 type='button'
-                                                                ref={data}
                                                                 className='btn btn-outline-danger btn-sm'
                                                                 onClick={() =>
-                                                                    dispatch(deleteSized(sized._id))
+                                                                    dispatch(deleteSized(s._id))
                                                                 }
                                                             >
                                                                 <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>

@@ -17,11 +17,11 @@ exports.create = async (req, res) => {
         sized.productName = productName;
         sized.productCategory = productCategory;
 
-        sized = await sized.save();
+        await sized.save();
 
-        res.status(200).json({
-            successMessage: `${sized.productName} Fue Creado Con Éxito.`,
-            productName: sized,
+        res.json({
+            successMessage: `${productName} Fue Creado Con Éxito.`,
+            sized,
         });
     } catch (err) {
         console.log(err, 'sizedController.create error');
@@ -37,7 +37,7 @@ exports.readAll = async (req, res) => {
 			'productCategory', 
 			'category'
 		);
-        res.status(200).json({ 
+        res.json({ 
             sizes, 
         });    
     } catch (err) {
@@ -53,7 +53,7 @@ exports.readByCount = async (req, res) => {
 		const sizes = await Sized.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
-		res.status(200).json({ 
+		res.json({ 
             sizes, 
         });
 	} catch (err) {
@@ -69,7 +69,7 @@ exports.read = async (req, res) => {
 		const sizedId = req.params.sizedId;
 		const sized = await Sized.findById(sizedId);
 
-		res.status(200).json(sized);
+		res.json(sized);
 	} catch (err) {
 		console.log(err, 'sizedController.read error');
 		res.status(500).json({
@@ -94,7 +94,7 @@ exports.update = async (req, res) => {
 		});
 	}
 
-	res.status(200).json({
+	res.json({
 		successMessage: 'Talla Actualizado Con Éxito.',
 	});
 };
@@ -112,7 +112,7 @@ exports.delete = async (req, res) => {
             );
         });
 
-        res.status(200).json(deletedSized);
+        res.json(deletedSized);
     } catch (err) {
         console.log(err, 'sizedController.delete error');
         res.status(500).json({
