@@ -96,109 +96,109 @@ const AdminGoldModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                        {clientSideError && 
-                            showErrorMsg(clientSideError)}
-                        {errorMsg && showErrorMsg(errorMsg)}
-                        {successMsg && showSuccessMsg(successMsg)}
+                            {clientSideError && 
+                                showErrorMsg(clientSideError)}
+                            {errorMsg && showErrorMsg(errorMsg)}
+                            {successMsg && showSuccessMsg(successMsg)}
 
-                        {loading ? (
-                            <div className="text-center">
-                                {showLoading()}
-                            </div>
-                        ) : (
-                            <Fragment>
-                                <div className="container">
-                                <div class="panel panel-default">
-                                        <div className="panel-heading">
-                                            <i class='fas fa-camera-retro'></i> IMPORTANTE *:
-                                        </div>
-                                        <div className="panel-body">
-                                            <fieldset className="col-12 mb-2 border border-secondary">    	
-                                                <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
-                                                
-                                                <div className="panel panel-default">
-                                                    <div className="panel-body">
-                                                        <p>
-                                                            <div className="row">
-                                                                <div className="col-12 mb-2">
-                                                                    <label 
-                                                                        htmlFor="addFile" 
-                                                                        className="text-secondary">
-                                                                            <i className="fas fa-upload"></i> Foto C. De Oro. *:
-                                                                    </label>
-                                                                    <div className="input-group mb-3">
-                                                                        <div className="input-group-prepend">
-                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
-                                                                        </div>
-                                                                        <div className="custom-file">
-                                                                            <input 
-                                                                            type="file"
-                                                                            name='productImage'
-                                                                            onChange={handleGoldenImage} 
-                                                                            className="custom-file-input" 
-                                                                            id="customFileLang" 
-                                                                            aria-describedby="customFileLang" 
-                                                                            data-browse="Elegir" 
-                                                                            lang="es" />
-                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                            {loading ? (
+                                <div className="text-center">
+                                    {showLoading()}
+                                </div>
+                            ) : (
+                                <Fragment>
+                                    <div className="container">
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading">
+                                                <i className='fas fa-camera-retro'></i> IMPORTANTE *:
+                                            </div>
+                                            <div className="panel-body">
+                                                <fieldset className="col-12 mb-2 border border-secondary">    	
+                                                    <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
+                                                    
+                                                    <div className="panel panel-default">
+                                                        <div className="panel-body">
+                                                            <p>
+                                                                <div className="row">
+                                                                    <div className="col-12 mb-2">
+                                                                        <label 
+                                                                            htmlFor="addFile" 
+                                                                            className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto C. De Oro. *:
-                                                                            </label>
+                                                                        </label>
+                                                                        <div className="input-group mb-3">
+                                                                            <div className="input-group-prepend">
+                                                                                <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                            </div>
+                                                                            <div className="custom-file">
+                                                                                <input 
+                                                                                type="file"
+                                                                                name='productImage'
+                                                                                onChange={handleGoldenImage} 
+                                                                                className="custom-file-input" 
+                                                                                id="customFileLang" 
+                                                                                aria-describedby="customFileLang" 
+                                                                                data-browse="Elegir" 
+                                                                                lang="es" />
+                                                                                <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
+                                                                                    <i className="fas fa-upload"></i> Foto C. De Oro. *:
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                        </p>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
-                                            </fieldset>				
+                                                    
+                                                </fieldset>				
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addGold" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-plus-circle"></i> Nombre Color De Oro. *:
+                                                </label>
+                                                <input 
+                                                    type="text"
+                                                    name='productName'
+                                                    value={productName} 
+                                                    onChange={handleGoldenChange} 
+                                                    className="form-control"
+                                                    placeholder="Nombre Color De Oro."
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12 mb-2">
+                                                <label 
+                                                    htmlFor="addCategory" 
+                                                    className="text-secondary">
+                                                        <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
+                                                </label>
+                                                <select 
+                                                name='productCategory'
+                                                onChange={handleGoldenChange}
+                                                className="custom-select mr-sm-2" 
+                                                aria-label="Selecciónar Categorías.">
+                                                    <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
+                                                    {categories &&
+                                                        categories.map((c) => (
+                                                        <option
+                                                        key={c._id} 
+                                                        value={c._id}>
+                                                            {c.category}
+                                                        </option> 
+                                                    ))}
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="col-12 mb-2">
-                                            <label 
-                                                htmlFor="addGold" 
-                                                className="text-secondary">
-                                                    <i className="fas fa-plus-circle"></i> Nombre Color De Oro. *:
-                                            </label>
-                                            <input 
-                                                type="text"
-                                                name='productName'
-                                                value={productName} 
-                                                onChange={handleGoldenChange} 
-                                                className="form-control"
-                                                placeholder="Nombre Color De Oro."
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12 mb-2">
-                                        <label 
-                                            htmlFor="addCategory" 
-                                            className="text-secondary">
-                                                <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
-                                        </label>
-                                        <select 
-                                        name='productCategory'
-                                        onChange={handleGoldenChange}
-                                        className="custom-select mr-sm-2" 
-                                        aria-label="Selecciónar Categorías.">
-                                            <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                            {categories &&
-												categories.map((c) => (
-                                                <option
-                                                key={c._id} 
-                                                value={c._id}>
-                                                    {c.category}
-                                                </option> 
-                                            ))}
-                                        </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Fragment>
-                        )}
+                                </Fragment>
+                            )}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">

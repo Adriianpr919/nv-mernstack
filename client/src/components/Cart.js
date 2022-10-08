@@ -165,7 +165,7 @@ const Cart = () => {
                                 <li className="list-group-item d-flex justify-content-between">
                                     <h3 className="d-flex justify-content-between align-items-center mb-3">
                                         <span>
-                                            <stong><b>Total *: (COP)</b></stong>
+                                            <strong><b>Total *: (COP)</b></strong>
                                         </span>
                                     </h3>
                                     <h3 className="d-flex justify-content-between align-items-center mb-3">
@@ -188,7 +188,7 @@ const Cart = () => {
                                         onClick={handleCheckout}
                                     >
                                         <h3>
-                                            <i class="fas fa-money-check-alt"></i> Pasar Por La Caja.
+                                            <i className="fas fa-money-check-alt"></i> Pasar Por La Caja.
                                         </h3>
                                     </button>
                                 </li>

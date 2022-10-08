@@ -153,9 +153,10 @@ const Signing = () => {
             {/*Already have account*/}
             <p className="commentFormSigning mt-5 mb-3">
                 <p className="commentFormP">
-                SI TODAVÍA NO TIENES UNA CUENTA DE USUARIO DE https://nuryvalenzuelajoyeria.com.co/ UTILIZA ESTA OPCIÓN PARA ACCEDER AL FORMULARIO DE REGISTRO.
-
-                TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA AGILIZAR EL PROCESO DE COMPRA.
+                    {' '}    
+                    SI TODAVÍA NO TIENES UNA CUENTA DE USUARIO DE https://nuryvalenzuelajoyeria.com.co/ UTILIZA ESTA OPCIÓN PARA ACCEDER AL FORMULARIO DE REGISTRO.{' '}
+                    {' '}
+                    TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA AGILIZAR EL PROCESO DE COMPRA.{' '}
                 </p>
                 <Link to="/signup" className="linkLogin" rel="noopener noreferrer" aria-label="Regístrarse."> 
                     <i className="fas fa-user-plus"></i> Regístrarse.

@@ -182,12 +182,12 @@ const Products = () => {
                                         <small className="text-muted">Talla.</small>
                                     </div>
                                     <span className="text-dark">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect01">Talla *:</label>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" htmlFor="inputGroupSelect01">Talla *:</label>
                                             </div>
-                                            <select class="custom-select" id="inputGroupSelect01">
-                                                <option value="" selected>--- Seleccióna Talla ---</option>
+                                            <select className="custom-select" id="inputGroupSelect01" defaultValue={'DEFAULT'} aria-label="Talla.">
+                                                <option value="DEFAULT" selected disabled>--- Seleccióna Talla ---</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -203,12 +203,12 @@ const Products = () => {
                                         <small>Oro.</small>
                                     </div>
                                     <span className="text-dark">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect02">Oro *:</label>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" htmlFor="inputGroupSelect02">Oro *:</label>
                                             </div>
-                                            <select class="custom-select" id="inputGroupSelect02">
-                                                <option value="" selected>--- Seleccióna Oro ---</option>
+                                            <select className="custom-select" id="inputGroupSelect02" defaultValue={'DEFAULT'} aria-label="Oro.">
+                                                <option value="DEFAULT" selected disabled>--- Seleccióna Oro ---</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -224,12 +224,12 @@ const Products = () => {
                                         <small>Piedra.</small>
                                     </div>
                                     <span className="text-dark">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect03">Piedra *:</label>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" htmlFor="inputGroupSelect03">Piedra *:</label>
                                             </div>
-                                            <select class="custom-select" id="inputGroupSelect03">
-                                                <option value="" selected>--- Seleccióna Piedra ---</option>
+                                            <select className="custom-select" id="inputGroupSelect03" defaultValue={'DEFAULT'} aria-label="Piedra.">
+                                                <option value="DEFAULT" selected disabled>--- Seleccióna Piedra ---</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>

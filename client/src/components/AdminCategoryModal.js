@@ -68,25 +68,25 @@ const AdminCategoryModal = () => {
                             {successMsg && showSuccessMsg(successMsg)}
 
                             {loading ? (
-                                    <div className="text-center">
-                                        {showLoading()}
-                                    </div>
-                                ) : (
-                                    <Fragment>
-                                        <label 
-                                            htmlFor="addCategory" 
-                                            className="text-secondary">
-                                                <i className="fas fa-plus-circle"></i> Añadir Categoría. *:
-                                        </label>
-                                        <input 
-                                            type="text" 
-                                            className="form-control"
-                                            name='category'
-                                            value={category}
-                                            onChange={handleCategoryChange} 
-                                            placeholder="Añadir Categoría."
-                                        />
-                                    </Fragment>
+                                <div className="text-center">
+                                    {showLoading()}
+                                </div>
+                            ) : (
+                                <Fragment>
+                                    <label 
+                                        htmlFor="addCategory" 
+                                        className="text-secondary">
+                                            <i className="fas fa-plus-circle"></i> Añadir Categoría. *:
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        className="form-control"
+                                        name='category'
+                                        value={category}
+                                        onChange={handleCategoryChange} 
+                                        placeholder="Añadir Categoría."
+                                    />
+                                </Fragment>
                             )}
                         </div>
                         <div className="modal-footer">

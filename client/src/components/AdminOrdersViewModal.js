@@ -6,8 +6,8 @@ const AdminOrdersViewModal = () => {
             <div className="card-deck">
                 <div className="card">
                     <div className="card-body">
-                        <div class="table-responsive-xl">
-                            <table class="table">
+                        <div className="table-responsive-xl">
+                            <table className="table">
                                 <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">

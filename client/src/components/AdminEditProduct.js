@@ -105,7 +105,7 @@ const AdminEditProduct = () => {
 													<div className="panel panel-default">
 						
 														<div className="panel-heading">
-															<i class='fas fa-camera-retro'></i> IMPORTANTE *:
+															<i className='fas fa-camera-retro'></i> IMPORTANTE *:
 														</div>
 														<div className="panel-body">
 															<fieldset className="col-12 mb-2 border border-secondary"> 
@@ -193,7 +193,7 @@ const AdminEditProduct = () => {
 
 													<div className='form-group'>
 														<label className='text-secondary'>
-																												<i className="far fa-edit pr-1"></i> Cambiar Nombre Del Producto. *:
+															<i className="far fa-edit pr-1"></i> Cambiar Nombre Del Producto. *:
 														</label>
 														<input
 															type='text'
@@ -209,7 +209,7 @@ const AdminEditProduct = () => {
 													</div>
 													<div className='form-group'>
 														<label className='text-secondary'>
-																												<i className="far fa-edit pr-1"></i> Cambiar Descripción. *:
+															<i className="far fa-edit pr-1"></i> Cambiar Descripción. *:
 														</label>
 														<textarea
 															className='form-control'
@@ -225,7 +225,7 @@ const AdminEditProduct = () => {
 													</div>
 													<div className='form-group'>
 														<label className='text-secondary'>
-																												<i className="far fa-edit pr-1"></i> Cambiar Precio. *:
+															<i className="far fa-edit pr-1"></i> Cambiar Precio. *:
 														</label>
 														<input
 															type='text'
@@ -278,7 +278,7 @@ const AdminEditProduct = () => {
 													<div className='form-group'>
 														<fieldset className='border border-secondary'>
 															<legend>
-																<i class='fas fa-edit'></i> Cambiar Opciones. *:
+																<i className='fas fa-edit'></i> Cambiar Opciones. *:
 															</legend>
 															<div className="form-row align-items-center">
 																<div className="col-12 mb-2">
@@ -300,13 +300,13 @@ const AdminEditProduct = () => {
 																	<div className="form-check">
 																		<input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="" />
 																		<label className="form-check-label" htmlFor="gridRadios1">
-																			<i class='far fa-eye-slash' style={{color: "red"}}></i> DesActivar.
+																			<i className='far fa-eye-slash' style={{color: "red"}}></i> DesActivar.
 																		</label>
 																	</div>
 																	<div className="form-check">
 																		<input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="" />
 																		<label className="form-check-label" htmlFor="gridRadios2">
-																			<i class='far fa-eye' style={{color: "green"}}></i> Activar.
+																			<i className='far fa-eye' style={{color: "green"}}></i> Activar.
 																		</label>
 																	</div>
 																</div>

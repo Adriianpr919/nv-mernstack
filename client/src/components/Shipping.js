@@ -59,7 +59,7 @@ const Shipping = () => {
 
                         <form onSubmit={handleSubmit}>
                             <div className='form-group'>
-                                <label htmlFor="inputAddress">Dirección 1 *: <span class="text-muted">(Opcional 1.)</span></label>
+                                <label htmlFor="inputAddress">Dirección 1 *: <span className="text-muted">(Opcional 1.)</span></label>
                                 <input 
                                 type="text" 
                                 className="form-control" 
@@ -70,7 +70,7 @@ const Shipping = () => {
                                 placeholder="Dirección 1." />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor="inputAddress2">Dirección 2 *: <span class="text-muted">(Opcional 2.)</span></label>
+                                <label htmlFor="inputAddress2">Dirección 2 *: <span className="text-muted">(Opcional 2.)</span></label>
                                 <input 
                                 type="text" 
                                 className="form-control" 
@@ -81,7 +81,7 @@ const Shipping = () => {
                                 placeholder="Número De Apartamento, Suite, Casa, Unidad, etc." />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor="inputCity">Ciudad *: <span class="text-muted">(Ciudad.)</span></label>
+                                <label htmlFor="inputCity">Ciudad *: <span className="text-muted">(Ciudad.)</span></label>
                                 <input 
                                 type="text" 
                                 className="form-control" 
@@ -92,7 +92,7 @@ const Shipping = () => {
                                 placeholder="Ciudad." />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor="inputState">Estado *: <span class="text-muted">(Estado.)</span></label>
+                                <label htmlFor="inputState">Estado *: <span className="text-muted">(Estado.)</span></label>
                                 <select 
                                 className="form-control" 
                                 value={state}
@@ -111,7 +111,7 @@ const Shipping = () => {
                                 </select>
                             </div>
                             <div className='form-group'>
-                                <label htmlFor="inputZip">Código Postal *: <span class="text-muted">(Código Postal.)</span></label>
+                                <label htmlFor="inputZip">Código Postal *: <span className="text-muted">(Código Postal.)</span></label>
                                 <input 
                                 type="text" 
                                 className="form-control" 
@@ -123,7 +123,7 @@ const Shipping = () => {
                             </div>
 
                             <button type='submit' className='btn btn-outline-primary'>
-                                <i class="fa fa-angle-right"></i> Continuar. 
+                                <i className="fa fa-angle-right"></i> Continuar. 
 							</button>
                         </form>
                     </div>

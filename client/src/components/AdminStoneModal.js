@@ -108,9 +108,9 @@ const AdminStoneModal = () => {
                         ) : (
                             <Fragment>
                                 <div className="container">
-                                <div class="panel panel-default">
+                                    <div className="panel panel-default">
                                         <div className="panel-heading">
-                                            <i class='fas fa-camera-retro'></i> IMPORTANTE *:
+                                            <i className='fas fa-camera-retro'></i> IMPORTANTE *:
                                         </div>
                                         <div className="panel-body">
                                             <fieldset className="col-12 mb-2 border border-secondary">    	
@@ -174,26 +174,26 @@ const AdminStoneModal = () => {
                                     </div>
                                     <div className="row">
                                         <div className="col-12 mb-2">
-                                        <label 
-                                            htmlFor="addCategory" 
-                                            className="text-secondary">
-                                                <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
-                                        </label>
-                                        <select 
-                                        name='productCategory'
-                                        onChange={handleRockChange}
-                                        className="custom-select mr-sm-2" 
-                                        aria-label="Selecciónar Categorías.">
-                                            <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                            {categories &&
-												categories.map((c) => (
-                                                <option
-                                                key={c._id} 
-                                                value={c._id}>
-                                                    {c.category}
-                                                </option> 
-                                            ))}
-                                        </select>
+                                            <label 
+                                                htmlFor="addCategory" 
+                                                className="text-secondary">
+                                                    <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
+                                            </label>
+                                            <select 
+                                            name='productCategory'
+                                            onChange={handleRockChange}
+                                            className="custom-select mr-sm-2" 
+                                            aria-label="Selecciónar Categorías.">
+                                                <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
+                                                {categories &&
+                                                    categories.map((c) => (
+                                                    <option
+                                                    key={c._id} 
+                                                    value={c._id}>
+                                                        {c.category}
+                                                    </option> 
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

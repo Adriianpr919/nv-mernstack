@@ -7,8 +7,8 @@ const UserOrders = () => {
                 <div className="bg-light my-2">
                     <div className="container">
                         <div className="row pb-3">
-                            <div class="table-responsive-xl">
-                                <table class="table">
+                            <div className="table-responsive-xl">
+                                <table className="table">
                                     <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">

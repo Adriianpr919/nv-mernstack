@@ -86,7 +86,7 @@ const Shop = () => {
                                 type='submit'
                                 disabled={true}
                             >
-                                <i class="fa fa-search" style={{color: "green"}}></i> Búscar
+                                <i className="fa fa-search" style={{color: "green"}}></i> Búscar
                             </button>
                         </form>
                     </nav>

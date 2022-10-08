@@ -6,16 +6,16 @@ import { useSelector } from 'react-redux';
 const AdminBody = () => {
     const { products } = useSelector(state => state.products);
     return (
-        <>
-			{products &&
-				products.map((product) => (
-					<Card
-						key={product._id}
-						product={product}
-						adminPage={true}
-					/>
-			))}
-		</>
+      <>
+				{products &&
+					products.map((product) => (
+						<Card
+							key={product._id}
+							product={product}
+							adminPage={true}
+						/>
+				))}
+			</>
     );
 };
 

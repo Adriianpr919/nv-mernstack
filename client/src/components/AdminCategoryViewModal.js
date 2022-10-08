@@ -7,7 +7,6 @@ const AdminCategoryViewModal = ({ c }) => {
     const dispatch = useDispatch();
     return (
         <>
-            
             <div className="container padding-bottom-3x mb-1">
                 <div className="table-responsive shopping-cart">
                     <table className="table">
@@ -30,18 +29,18 @@ const AdminCategoryViewModal = ({ c }) => {
                                             </a>
                                             <span>
                                                 <em>
-                                                        <>
-                                                            <button
-                                                                type='button'
-                                                                onClick={() =>
-                                                                    dispatch(deleteCategory(c._id))
-                                                                }
-                                                                className='btn btn-outline-danger btn-sm'
-                                                            >
-                                                                <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>
-                                                                Borrar.
-                                                            </button>
-                                                        </>
+                                                    <>
+                                                        <button
+                                                            type='button'
+                                                            onClick={() =>
+                                                                dispatch(deleteCategory(c._id))
+                                                            }
+                                                            className='btn btn-outline-danger btn-sm'
+                                                        >
+                                                            <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>
+                                                            Borrar.
+                                                        </button>
+                                                    </>
                                                 </em>
                                             </span>
                                         </div>
