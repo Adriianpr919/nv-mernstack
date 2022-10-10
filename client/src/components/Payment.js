@@ -50,12 +50,12 @@ const Payment = () => {
 									className='form-check-input'
 									type='radio'
 									name='paymentMethod'
-									value='paypal'
+									value='Paypal'
 									onChange={handleChange}
 									checked={paymentType === 'paypal'}
 								/>
 								<label className='form-check-label'>
-									<i class="fab fa-cc-paypal" style={{fontSize:"25px", color: "blue"}}></i>
+									<i class="fab fa-cc-paypal" style={{fontSize:"25px", color: "#2e86de"}}></i> Paypal.
 								</label>
 							</div>
 							<hr className="divider" />
@@ -64,12 +64,12 @@ const Payment = () => {
 									className='form-check-input'
 									type='radio'
 									name='paymentMethod'
-									value='stripe'
+									value='Stripe'
 									onChange={handleChange}
 									checked={paymentType === 'stripe'}
 								/>
 								<label className='form-check-label'>
-									<i class="fab fa-cc-stripe" style={{fontSize:"25px", color: "purple"}}></i> Stripe
+									<i class="fab fa-cc-stripe" style={{fontSize:"25px", color: "#6c5ce7"}}></i> Stripe.
 								</label>
 							</div>
 							<hr className="divider" />
