@@ -13,6 +13,7 @@ import About from './About';
 import Shop from './Shop';
 import Cart from './Cart';
 import Shipping from './Shipping';
+import PlaceOrder from './PlaceOrder';
 import Payment from './Payment';
 import Products from './Products';
 import UserDashboard from './UserDashboard';
@@ -38,12 +39,13 @@ const App = () => {
           <Route exact path="/about" element={<About />} />
           <Route exact path='/shop' element={<Shop />} />
           <Route exact path='/cart' element={<Cart />} />
-          <Route 
-            exact 
-            path="/product/:productId" 
-            element={<Products />} 
+          <Route
+            exact
+            path="/product/:productId"
+            element={<Products />}
           />
           <Route exact path='/shipping' element={<Shipping />} />
+          <Route exact path='/placeorder' element={<PlaceOrder />} />
           <Route exact path='/payment' element={<Payment />} />
           {/* protected user routes */}
           <Route element={<UserRoute />}>
