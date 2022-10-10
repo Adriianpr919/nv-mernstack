@@ -103,17 +103,17 @@ const AdminEditProduct = () => {
 											<div className='modal-body my-2'>
 												<Fragment>
 													<div className="panel panel-default">
-						
+
 														<div className="panel-heading">
 															<i className='fas fa-camera-retro'></i> IMPORTANTE *:
 														</div>
 														<div className="panel-body">
-															<fieldset className="col-12 mb-2 border border-secondary"> 
-																
+															<fieldset className="col-12 mb-2 border border-secondary">
+
 																<legend>
 																	POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.
 																</legend>
-																
+
 																<div className="panel panel-default">
 																	<div className="panel-body">
 																		<p>
@@ -146,49 +146,49 @@ const AdminEditProduct = () => {
 																					/>
 																				) : null}
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 2 */}
 																				FOTO 2
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 3 */}
-																				FOTO 3 
+																				FOTO 3
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 4 */}
 																				FOTO 4
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 5 */}
 																				FOTO 5
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 6 */}
 																				FOTO 6
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 7 */}
 																				FOTO 7
 																			</div>
-																			
+
 																			<div className="col-12 mb-2">
 																				{/* FOTO 8 */}
 																				FOTO 8
 																			</div>
-																			
+
 																		</p>
 																	</div>
 																</div>
-																
-															</fieldset>             
+
+															</fieldset>
 														</div>
-																	
+
 													</div>
 
 													<div className='form-group'>
@@ -278,24 +278,13 @@ const AdminEditProduct = () => {
 													<div className='form-group'>
 														<fieldset className='border border-secondary'>
 															<legend>
-																<i className='fas fa-edit'></i> Cambiar Opciones. *:
+																<i className='fas fa-edit'></i> Cambiar Opci&oacute;n 1. *:
 															</legend>
 															<div className="form-row align-items-center">
 																<div className="col-12 mb-2">
 																	{/* TALLA */}
 																	TALLA TAGS
 																</div>
-
-																<div className="col-12 mb-2">
-																	{/* ORO */}
-																	ORO TAGS
-																</div>
-
-																<div className="col-12 mb-2">
-																	{/* PIEDRA */}
-																	PIEDRA TAGS
-																</div>
-
 																<div className="col-12 mb-2">
 																	<div className="form-check">
 																		<input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="" />
@@ -309,6 +298,23 @@ const AdminEditProduct = () => {
 																			<i className='far fa-eye' style={{color: "green"}}></i> Activar.
 																		</label>
 																	</div>
+																</div>
+															</div>
+														</fieldset>
+													</div>
+													<div className='form-group'>
+														<fieldset className='border border-secondary'>
+															<legend>
+																<i className='fas fa-edit'></i> Cambiar Opci&oacute;n 2. *:
+															</legend>
+															<div className="form-row align-items-center">
+																<div className="col-12 mb-2">
+																	{/* ORO */}
+																	ORO TAGS
+																</div>
+																<div className="col-12 mb-2">
+																	{/* PIEDRA */}
+																	PIEDRA TAGS
 																</div>
 															</div>
 														</fieldset>

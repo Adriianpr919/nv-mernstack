@@ -17,8 +17,8 @@ const AdminProductModal = () => {
     const { loading } = useSelector(state => state.loading);
     const { successMsg, errorMsg } = useSelector(state => state.messages);
     const { categories } = useSelector(state => state.categories);
-    
-    
+
+
 
     const dispatch = useDispatch();
     /****************************
@@ -70,7 +70,7 @@ const AdminProductModal = () => {
         if (productImage === null) {
                 setClientSideError("Seleccione Una Imagen Con .png");
         } else if (
-            isEmpty(productName) || 
+            isEmpty(productName) ||
             isEmpty(productDesc) ||
             isEmpty(productPrice)
         ) {
@@ -119,7 +119,7 @@ const AdminProductModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                            {clientSideError && 
+                            {clientSideError &&
                                 showErrorMsg(clientSideError)}
                             {errorMsg && showErrorMsg(errorMsg)}
                             {successMsg && showSuccessMsg(successMsg)}
@@ -136,16 +136,16 @@ const AdminProductModal = () => {
                                                 <i className='fas fa-camera-retro'></i> IMPORTANTE *:
                                             </div>
                                             <div className="panel-body">
-                                                <fieldset className="col-12 mb-2 border border-secondary">    	
+                                                <fieldset className="col-12 mb-2 border border-secondary">
                                                     <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
-                                                    
+
                                                     <div className="panel panel-default">
                                                         <div className="panel-body">
                                                             <p>
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile" 
+                                                                        <label
+                                                                            htmlFor="addFile"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto. *:
                                                                         </label>
@@ -154,14 +154,14 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
                                                                                 name='productImage'
-                                                                                onChange={handleProductImage} 
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                onChange={handleProductImage}
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto. *:
@@ -173,8 +173,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile2" 
+                                                                        <label
+                                                                            htmlFor="addFile2"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 2. *:
                                                                         </label>
@@ -183,12 +183,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 2. *:
@@ -200,8 +200,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile3" 
+                                                                        <label
+                                                                            htmlFor="addFile3"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 3. *:
                                                                         </label>
@@ -210,12 +210,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 3. *:
@@ -227,8 +227,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile4" 
+                                                                        <label
+                                                                            htmlFor="addFile4"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 4. *:
                                                                         </label>
@@ -237,12 +237,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 4. *:
@@ -254,8 +254,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile5" 
+                                                                        <label
+                                                                            htmlFor="addFile5"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 5. *:
                                                                         </label>
@@ -264,12 +264,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 5. *:
@@ -281,8 +281,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile6" 
+                                                                        <label
+                                                                            htmlFor="addFile6"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 6. *:
                                                                         </label>
@@ -291,12 +291,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 6. *:
@@ -308,8 +308,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile7" 
+                                                                        <label
+                                                                            htmlFor="addFile7"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 7. *:
                                                                         </label>
@@ -318,12 +318,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 7. *:
@@ -335,8 +335,8 @@ const AdminProductModal = () => {
 
                                                                 <div className="row">
                                                                     <div className="col-12 mb-2">
-                                                                        <label 
-                                                                            htmlFor="addFile8" 
+                                                                        <label
+                                                                            htmlFor="addFile8"
                                                                             className="text-secondary">
                                                                                 <i className="fas fa-upload"></i> Foto 8. *:
                                                                         </label>
@@ -345,12 +345,12 @@ const AdminProductModal = () => {
                                                                                 <span className="input-group-text" id="customFileLang">Subir.</span>
                                                                             </div>
                                                                             <div className="custom-file">
-                                                                                <input 
+                                                                                <input
                                                                                 type="file"
-                                                                                className="custom-file-input" 
-                                                                                id="customFileLang" 
-                                                                                aria-describedby="customFileLang" 
-                                                                                data-browse="Elegir" 
+                                                                                className="custom-file-input"
+                                                                                id="customFileLang"
+                                                                                aria-describedby="customFileLang"
+                                                                                data-browse="Elegir"
                                                                                 lang="es" />
                                                                                 <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                                     <i className="fas fa-upload"></i> Foto 8. *:
@@ -362,23 +362,23 @@ const AdminProductModal = () => {
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    
-                                                </fieldset>				
+
+                                                </fieldset>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="row">
                                             <div className="col-12 mb-2">
-                                                <label 
-                                                    htmlFor="addProducts" 
+                                                <label
+                                                    htmlFor="addProducts"
                                                     className="text-secondary">
                                                         <i className="fas fa-plus-circle"></i> Nombre Del Producto. *:
                                                 </label>
-                                                <input 
+                                                <input
                                                     type="text"
                                                     name='productName'
-                                                    value={productName} 
-                                                    onChange={handleProductChange} 
+                                                    value={productName}
+                                                    onChange={handleProductChange}
                                                     className="form-control"
                                                     placeholder="Nombre Del Producto."
                                                 />
@@ -386,8 +386,8 @@ const AdminProductModal = () => {
                                         </div>
                                         <div className="row">
                                             <div className="col-12 mb-2">
-                                                <label 
-                                                    htmlFor="addDescription" 
+                                                <label
+                                                    htmlFor="addDescription"
                                                     className="text-secondary">
                                                         <i className="fas fa-info-circle"></i> Descripción. *:
                                                 </label>
@@ -397,28 +397,28 @@ const AdminProductModal = () => {
                                                             <i className="fas fa-info-circle"></i> Descripción. *:
                                                         </span>
                                                     </div>
-                                                    <textarea 
+                                                    <textarea
                                                     name='productDesc'
                                                     value={productDesc}
                                                     onChange={handleProductChange}
                                                     className="form-control"
-                                                    rows="10" cols="80" 
-                                                    aria-label="Descripción." 
+                                                    rows="10" cols="80"
+                                                    aria-label="Descripción."
                                                     placeholder="Descripción."></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-12 mb-2">
-                                                <label 
-                                                    htmlFor="addPrice" 
+                                                <label
+                                                    htmlFor="addPrice"
                                                     className="text-secondary">
                                                         <i className="fas fa-plus-circle"></i> Precio. *:
                                                 </label>
-                                                <input 
+                                                <input
                                                     type="text"
                                                     name='productPrice'
-                                                    value={productPrice} 
+                                                    value={productPrice}
                                                     onChange={handleProductChange}
                                                     className="form-control"
                                                     placeholder="Precio."
@@ -427,24 +427,24 @@ const AdminProductModal = () => {
                                         </div>
                                         <div className="row">
                                             <div className="col-12 mb-2">
-                                                <label 
-                                                    htmlFor="addCategory" 
+                                                <label
+                                                    htmlFor="addCategory"
                                                     className="text-secondary">
                                                         <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
                                                 </label>
-                                                <select 
+                                                <select
                                                 name='productCategory'
                                                 onChange={handleProductChange}
-                                                className="custom-select mr-sm-2" 
+                                                className="custom-select mr-sm-2"
                                                 aria-label="Selecciónar Categorías.">
                                                     <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
                                                     {categories &&
                                                         categories.map((c) => (
                                                         <option
-                                                        key={c._id} 
+                                                        key={c._id}
                                                         value={c._id}>
                                                             {c.category}
-                                                        </option> 
+                                                        </option>
                                                     ))}
                                                 </select>
                                             </div>
@@ -453,24 +453,13 @@ const AdminProductModal = () => {
                                             <div className='col-12 mb-2'>
                                                 <fieldset className='border border-secondary'>
                                                     <legend>
-                                                        <i className='fas fa-edit'></i> Opciones. *:
+                                                        <i className='fas fa-edit'></i> Opci&oacute;n 1. *:
                                                     </legend>
                                                     <div className="form-row align-items-center">
                                                         <div className="col-12 mb-2">
                                                             {/* TALLA */}
                                                             TALLA TAGS
                                                         </div>
-
-                                                        <div className="col-12 mb-2">
-                                                            {/* ORO */}
-                                                            ORO TAGS
-                                                        </div>
-
-                                                        <div className="col-12 mb-2">
-                                                            {/* PIEDRA */}
-                                                            PIEDRA TAGS
-                                                        </div>
-
                                                         <div className="col-12 mb-2">
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="" />
@@ -489,19 +478,38 @@ const AdminProductModal = () => {
                                                 </fieldset>
                                             </div>
                                         </div>
+                                        <div className='row'>
+                                            <div className='col-12 mb-2'>
+                                                <fieldset className='border border-secondary'>
+                                                    <legend>
+                                                        <i className='fas fa-edit'></i> Opci&oacute;n 2. *:
+                                                    </legend>
+                                                    <div className="form-row align-items-center">
+                                                        <div className="col-12 mb-2">
+                                                            {/* ORO */}
+                                                            ORO TAGS
+                                                        </div>
+                                                        <div className="col-12 mb-2">
+                                                            {/* PIEDRA */}
+                                                            PIEDRA TAGS
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
                                         <div className="row">
                                             <div className="col-12 mb-2">
-                                                <label 
-                                                    htmlFor="addQuantity" 
+                                                <label
+                                                    htmlFor="addQuantity"
                                                     className="text-secondary">
                                                         <i className="fas fa-plus-circle"></i> Cantidad. *:
                                                 </label>
-                                                <input 
+                                                <input
                                                     type="number"
                                                     name='productQty'
                                                     value={productQty}
                                                     onChange={handleProductChange}
-                                                    min="0" 
+                                                    min="0"
                                                     max="9000"
                                                     className="form-control"
                                                     placeholder="Cantidad."
