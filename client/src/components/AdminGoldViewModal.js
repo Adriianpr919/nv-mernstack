@@ -57,7 +57,7 @@ const AdminGoldViewModal = ({ g, adminPage = false }) => {
                                                                     dispatch(deleteGolden(g._id))
                                                                 }
                                                             >
-                                                                <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>
+                                                                <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminada" title="Eliminada"></i>
                                                                 Borrar.
                                                             </button>
                                                         </>

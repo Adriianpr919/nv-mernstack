@@ -34,17 +34,17 @@ exports.create = async (req, res) => {
 exports.readAll = async (req, res) => {
     try {
         const stones = await Rock.find({}).populate(
-			'productCategory', 
+			'productCategory',
 			'category'
 		);
-        
-        res.json({ stones, });    
+
+        res.json({ stones, });
     } catch (err) {
         console.log(err, 'rockController.readAll error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }    
+    }
 };
 
 exports.readByCount = async (req, res) => {
@@ -105,7 +105,7 @@ exports.delete = async (req, res) => {
         fs.unlink(`uploadsRock/${deletedRock.fileName}`, err => {
             if (err) throw err;
             console.log(
-                'Imagen Eliminado Con Éxito Del Sistema De Archivos: ',
+                'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
                 deletedRock.fileName
             );
         });

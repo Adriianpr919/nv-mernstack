@@ -1,5 +1,6 @@
 import React from 'react';
 import ProgressBar from './ProgressBar';
+import './PlaceOrder.css';
 
 const PlaceOrder = () => {
 	return (
@@ -13,26 +14,24 @@ const PlaceOrder = () => {
       <div className='container border border-secondary py-4'>
         <div className='row justify-content-center'>
           <div className='col-md-8'>
-            <h6 className='font-weight-bold mb-4'>Realizar Pedido.</h6>
+            <h6 className='font-weight-bold mb-4'>Realizar Pedidos.</h6>
 
             <form>
-              <div className='form-check'>
-                <label className='form-check-label'>
-                  <i className="fas fa-angle-down" style={{fontSize:"25px"}}></i> Comprar Por WhatsAPP.
-                </label>
-                <br />
-                <a
-                  href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="linkEnlace btn btn-outline-secondary">
-                    <i className="fab fa-whatsapp" style={{fontSize:"25px"}}></i> Comprar Por WhatsAPP.
-                </a>
-              </div>
+              {/*inputs*/}
               <button className='btn btn-outline-success mt-3'>
-                <i className="fas fa-dollar-sign"></i> PROCESAR EL PAGO.
+                <i className="fas fa-dollar-sign"></i> PROCESAR EL PAGOS.
               </button>
             </form>
+            <hr className="divider" />
+            <article>
+              <a
+                href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkEnlace btn btn-outline-secondary">
+                  <i className="fab fa-whatsapp" style={{fontSize:"25px"}}></i> Comprar Por WhatsAPP.
+              </a>
+            </article>
           </div>
         </div>
       </div>

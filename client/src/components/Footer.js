@@ -20,17 +20,17 @@ const Footer = () => {
                     <ul className="list-unstyled text-small">
                         <li>
                             <a href="https://www.youtube.com/embed/lUIAHkN8TlQ" target="_blank" rel="noopener noreferrer" className="text-muted linkEnlace">
-                            <i className="fab fa-youtube" style={{fontSize:"25px", color:"#FD1D1D"}}></i>
+                                <i className="fab fa-youtube" style={{fontSize:"25px", color:"#FD1D1D"}}></i>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.instagram.com/nuryvalenzuelajoyeria/" target="_blank" rel="noopener noreferrer" className="text-muted linkEnlace">
-                            <i className="fab fa-instagram" style={{fontSize:"25px", color:"#C13584"}}></i>
+                                <i className="fab fa-instagram" style={{fontSize:"25px", color:"#C13584"}}></i>
                             </a>
                         </li>
                         <li>
                             <a href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E" target="_blank" rel="noopener noreferrer" className="text-muted linkEnlace">
-                            <i className="fab fa-whatsapp" style={{fontSize:"25px", color:"#008000"}}></i>
+                                <i className="fab fa-whatsapp" style={{fontSize:"25px", color:"#008000"}}></i>
                             </a>
                         </li>
                     </ul>
@@ -40,12 +40,12 @@ const Footer = () => {
                     <ul className="list-unstyled text-small">
                         <li>
                             <Link to="#" className="text-muted">
-                            <i className="fab fa-periscope" style={{fontSize:"25px", color:"#E6ACA9"}}></i> <span className="linkEnlace">Villavicencio, Meta, América Del Sur.</span>
+                                <i className="fab fa-periscope" style={{fontSize:"25px", color:"#E6ACA9"}}></i> <span className="linkEnlace">Villavicencio, Meta, América Del Sur.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="#" className="text-muted">
-                            <i className="fas fa-home" style={{fontSize:"25px", color:"#E6ACA9"}}></i> <span className="linkEnlace">Dirección: MonteArroyo Reservado (casa 6 manzana 3)</span>
+                                <i className="fas fa-home" style={{fontSize:"25px", color:"#E6ACA9"}}></i> <span className="linkEnlace">Dirección: MonteArroyo Reservados (casa 6 manzana 3)</span>
                             </Link>
                         </li>
                     </ul>
@@ -55,22 +55,22 @@ const Footer = () => {
                     <ul className="list-unstyled text-small">
                         <li>
                             <Link to="/options1" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Términos y Condiciones.</span>
+                                <i className="fas fa-info-circle"></i> <span className="linkEnlace">Términos y Condiciones.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/options2" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Políticas De Envios, Cambios, Devoluciones Y Garantías.</span>
+                                <i className="fas fa-info-circle"></i> <span className="linkEnlace">Políticas De Envios, Cambios, Devoluciones Y Garantías.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/faq" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Preguntas Frecuentes.</span>
+                                <i className="fas fa-info-circle"></i> <span className="linkEnlace">Preguntas Frecuentes.</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/about" className="text-muted">
-                            <i className="fas fa-info-circle"></i> <span className="linkEnlace">Sobre Nosotros.</span>
+                                <i className="fas fa-info-circle"></i> <span className="linkEnlace">Sobre Nosotros.</span>
                             </Link>
                         </li>
                     </ul>
@@ -79,23 +79,23 @@ const Footer = () => {
                     <h5>Atención Al Cliente.</h5>
                     <ul className="list-unstyled text-small">
                         <li>
-                            <a 
-                            href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                            <a
+                            href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-muted">
                                 <span className="linkEnlace">
-                                <i className="fab fa-whatsapp" style={{fontSize:"25px", color:"#008000"}}></i> WhatsApp: +57-3133966349
+                                    <i className="fab fa-whatsapp" style={{fontSize:"25px", color:"#008000"}}></i> WhatsApp: +57-3133966349
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a 
+                            <a
                             href="mailto:nuryvalenzuelajoyeria@gmail.com"
                             rel="noopener noreferrer"
                             className="text-muted">
                                 <span className="linkEnlace">
-                                <i className="fab fa-telegram" style={{fontSize:"25px", color:"blue"}}></i> nuryvalenzuelajoyeria@gmail.com
+                                    <i className="fab fa-telegram" style={{fontSize:"25px", color:"blue"}}></i> nuryvalenzuelajoyeria@gmail.com
                                 </span>
                             </a>
                         </li>

@@ -11,7 +11,7 @@ const ProgressBar = ({ step1, step2, step3 }) => {
                             className='breadcrumb-item active'
                             aria-current='page'
                         >
-                            <Link to='/shipping' className="btn btn-outline-primary">Envío</Link>
+                            <Link to='/shipping' className="btn btn-outline-primary">Envios.</Link>
                         </li>
                     ) : (
                         <li className='breadcrumb-item' aria-current='page'>
@@ -24,7 +24,7 @@ const ProgressBar = ({ step1, step2, step3 }) => {
                                 }}
                                 className='text-muted'
                             >
-                                Envío.
+                                Envios.
                             </Link>
                         </li>
                     )}
@@ -33,7 +33,7 @@ const ProgressBar = ({ step1, step2, step3 }) => {
                             className='breadcrumb-item active'
                             aria-current='page'
                         >
-                            <Link to='/payment' className="btn btn-outline-primary">Pago.</Link>
+                            <Link to='/payment' className="btn btn-outline-primary">Pagos.</Link>
                         </li>
                     ) : (
                         <li className='breadcrumb-item' aria-current='page'>
@@ -46,7 +46,7 @@ const ProgressBar = ({ step1, step2, step3 }) => {
                                 }}
                                 className='text-muted'
                             >
-                                Pago.
+                                Pagos.
                             </Link>
                         </li>
                     )}
@@ -55,7 +55,7 @@ const ProgressBar = ({ step1, step2, step3 }) => {
                             className='breadcrumb-item active'
                             aria-current='page'
                         >
-                            <Link to='/placeorder' className="btn btn-outline-primary">Realizar Pedido.</Link>
+                            <Link to='/placeorder' className="btn btn-outline-primary">Realizar Pedidos.</Link>
                         </li>
                     ) : (
                         <li className='breadcrumb-item' aria-current='page'>
@@ -68,7 +68,7 @@ const ProgressBar = ({ step1, step2, step3 }) => {
                                 }}
                                 className='text-muted'
                             >
-                                Realizar Pedido.
+                                Realizar Pedidos.
                             </Link>
                         </li>
                     )}

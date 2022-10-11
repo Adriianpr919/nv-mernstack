@@ -34,17 +34,17 @@ exports.create = async (req, res) => {
 exports.readAll = async (req, res) => {
     try {
         const golds = await Golden.find({}).populate(
-			'productCategory', 
+			'productCategory',
 			'category'
 		);
-        
-        res.json({ golds, });    
+
+        res.json({ golds, });
     } catch (err) {
         console.log(err, 'goldenController.readAll error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }    
+    }
 };
 
 exports.readByCount = async (req, res) => {
@@ -105,7 +105,7 @@ exports.delete = async (req, res) => {
         fs.unlink(`uploadsGolden/${deletedGolden.fileName}`, err => {
             if (err) throw err;
             console.log(
-                'Imagen Eliminado Con Éxito Del Sistema De Archivos: ',
+                'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
                 deletedGolden.fileName
             );
         });

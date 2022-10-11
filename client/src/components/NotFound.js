@@ -17,7 +17,7 @@ const NotFound = () => {
                         <h1>404</h1>
                     </div>
                     <h2>Página No Encontrada Lo Siento.</h2>
-                    <p>Es posible que la página que está buscando haya sido eliminada debido a un cambio de nombre o no esté disponible temporalmente.</p>
+                    <p>Es posible que la página que este buscando haya sido eliminada debido a un cambios de nombre o no este disponible temporalmente.</p>
                     <Link to="/">
                         <i className="fas fa-globe"></i> Volver Inicio.
                     </Link>

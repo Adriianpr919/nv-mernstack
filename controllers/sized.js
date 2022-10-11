@@ -34,18 +34,18 @@ exports.create = async (req, res) => {
 exports.readAll = async (req, res) => {
     try {
         const sizes = await Sized.find({}).populate(
-			'productCategory', 
+			'productCategory',
 			'category'
 		);
-        res.json({ 
-            sizes, 
-        });    
+        res.json({
+            sizes,
+        });
     } catch (err) {
         console.log(err, 'sizedController.readAll error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }    
+    }
 };
 
 exports.readByCount = async (req, res) => {
@@ -53,8 +53,8 @@ exports.readByCount = async (req, res) => {
 		const sizes = await Sized.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
-		res.json({ 
-            sizes, 
+		res.json({
+            sizes,
         });
 	} catch (err) {
 		console.log(err, 'sizedController.readAll error');
@@ -107,7 +107,7 @@ exports.delete = async (req, res) => {
         fs.unlink(`uploadsSized/${deletedSized.fileName}`, err => {
             if (err) throw err;
             console.log(
-                'Imagen Eliminado Con Éxito Del Sistema De Archivos: ',
+                'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
                 deletedSized.fileName
             );
         });

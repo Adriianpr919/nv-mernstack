@@ -39,8 +39,8 @@ const Signup = () => {
         errorMsg,
         loading,
     } = formData;
-    /********************************************** 
-     * EVENT HANDLERS 
+    /**********************************************
+     * EVENT HANDLERS
     **********************************************/
     const handleChange = (evt) => {
         setFormData({
@@ -56,13 +56,13 @@ const Signup = () => {
 
         // client-side validation
         if (
-            isEmpty(username) || 
-            isEmpty(email) || 
-            isEmpty(password) || 
+            isEmpty(username) ||
+            isEmpty(email) ||
+            isEmpty(password) ||
             isEmpty(password2)
         ) {
             setFormData({
-                ...formData, 
+                ...formData,
                 errorMsg: 'Todos Los Campos Son Obligatorios.',
             });
         } else if ( !isEmail(email) ) {
@@ -72,7 +72,7 @@ const Signup = () => {
             });
         } else if ( !equals(password, password2) ) {
             setFormData({
-                ...formData, 
+                ...formData,
                 errorMsg: 'La Contraseña No Coincide.',
             });
         } else {
@@ -95,15 +95,15 @@ const Signup = () => {
                 })
                 .catch((err) => {
                     console.log('Error De Registro De Axios: ', err);
-                    setFormData({ 
-                        ...formData, 
-                        loading: false, 
-                        errorMsg: err.response.data.errorMessage, 
+                    setFormData({
+                        ...formData,
+                        loading: false,
+                        errorMsg: err.response.data.errorMessage,
                     });
                 });
         }
-    };    
-    /********************************************** 
+    };
+    /**********************************************
      * VIEWS
     **********************************************/
     const showSignupForm = () => (
@@ -114,80 +114,80 @@ const Signup = () => {
             </div>
             {/*Username*/}
             <div className="form-label-group">
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     id="inputName"
-                    name="username" 
-                    value={username} 
-                    onChange={handleChange} 
-                    className="form-control" 
+                    name="username"
+                    value={username}
+                    onChange={handleChange}
+                    className="form-control"
                     placeholder="Nombre De Usuario."
                     aria-label="Nombre De Usuario."
-                    required 
+                    required
                     autofocus
                 />
-                <label 
-                    htmlFor="inputName" 
+                <label
+                    htmlFor="inputName"
                     className="text-secondary">
                         <i className="fas fa-user-plus"></i> Usuario.
                 </label>
             </div>
             {/*Email*/}
             <div className="form-label-group">
-                <input 
-                    type="email" 
+                <input
+                    type="email"
                     id="inputEmail"
-                    name="email" 
-                    value={email} 
-                    onChange={handleChange} 
-                    className="form-control" 
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    className="form-control"
                     placeholder="Tu Correo."
                     aria-label="Tu Correo."
-                    required 
+                    required
                     autofocus
                 />
-                <label 
-                    htmlFor="inputEmail" 
+                <label
+                    htmlFor="inputEmail"
                     className="text-secondary">
                         <i className="fas fa-at"></i> Correo.
                 </label>
             </div>
             {/*password A1*/}
             <div className="form-label-group">
-                <input 
-                    type="password" 
+                <input
+                    type="password"
                     id="inputPassword"
-                    name="password" 
-                    value={password} 
-                    onChange={handleChange} 
-                    className="form-control" 
+                    name="password"
+                    value={password}
+                    onChange={handleChange}
+                    className="form-control"
                     placeholder="Contraseña."
                     aria-label="Contraseña."
-                    pattern=".{6,}" 
+                    pattern=".{6,}"
                     required
                 />
-                <label 
-                    htmlFor="inputPassword" 
+                <label
+                    htmlFor="inputPassword"
                     className="text-secondary">
                         <i className="fas fa-key"></i> Contraseña 1.
                 </label>
             </div>
             {/*password A2*/}
             <div className="form-label-group">
-                <input 
-                    type="password" 
+                <input
+                    type="password"
                     id="inputPassword2"
-                    name="password2" 
-                    value={password2} 
-                    onChange={handleChange} 
-                    className="form-control" 
-                    placeholder="Confirmar La Contraseña." 
-                    aria-label="Confirmar La Contraseña."
+                    name="password2"
+                    value={password2}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Confirme La Contraseña."
+                    aria-label="Confirme La Contraseña."
                     pattern=".{6,}"
                     required
                 />
-                <label 
-                    htmlFor="inputPassword2" 
+                <label
+                    htmlFor="inputPassword2"
                     className="text-secondary">
                         <i className="fas fa-key"></i> Contraseña 2.
                 </label>
@@ -200,15 +200,15 @@ const Signup = () => {
             </div>
             {/*Already have account*/}
             <p className="text-center text-white mt-5 mb-3">
-                ¿Ya Tienes Una Cuenta? 
-                <Link to="/signing" className="linkLogin" rel="noopener noreferrer" aria-label="Inicia Sesión."> 
+                ¿Ya Tienes Una Cuenta?
+                <Link to="/signing" className="linkLogin" rel="noopener noreferrer" aria-label="Inicia Sesión.">
                     <i className="fas fa-user-shield"></i> Inicia Sesión.
                 </Link>
             </p>
         </form>
     );
-    
-    /********************************************** 
+
+    /**********************************************
      * RENDERING
     **********************************************/
     return (

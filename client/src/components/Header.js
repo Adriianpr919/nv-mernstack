@@ -35,26 +35,26 @@ const Header = () => {
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/options1'>
                                             <i className="fas fa-info-circle"></i> Términos y Condiciones.
                                         </Link>
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/options2'>
                                             <i className="fas fa-info-circle"></i> Políticas De Envios, Cambios, Devoluciones Y Garantías.
                                         </Link>
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/faq'>
                                             <i className="fas fa-info-circle"></i> Preguntas Frecuentes.
                                         </Link>
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/about'>
                                             <i className="fas fa-info-circle"></i> Sobre Nosotros.
                                         </Link>
@@ -67,8 +67,8 @@ const Header = () => {
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/shop'>
                                             <i className="fas fa-shopping-bag"></i> Ver Todos Los Productos.
                                         </Link>
@@ -94,16 +94,16 @@ const Header = () => {
                                     </form>
                                 </li>
                                 <li className="nav-item">
-                                    <Link 
-                                    className="nav-link" 
+                                    <Link
+                                    className="nav-link"
                                     to='/signing'>
-                                        <i className="fas fa-user-shield"></i>{' '} 
+                                        <i className="fas fa-user-shield"></i>{' '}
                                         Inicia Sesión.
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link 
-                                    className="nav-link" 
+                                    <Link
+                                    className="nav-link"
                                     to='/signup'>
                                         <i className="fas fa-user-plus"></i> Regístrarse.
                                     </Link>
@@ -113,11 +113,11 @@ const Header = () => {
                         {isAuthenticated() && isAuthenticated().role === 0 && (
                             <Fragment>
                                 <li className="nav-item">
-                                    <Link 
-                                    className="nav-link active" 
-                                    aria-current="page" 
+                                    <Link
+                                    className="nav-link active"
+                                    aria-current="page"
                                     to='/user/dashboard'>
-                                        <i className="fas fa-users"></i>{' '} 
+                                        <i className="fas fa-users"></i>{' '}
                                         Panel De Usuario.
                                     </Link>
                                 </li>
@@ -127,26 +127,26 @@ const Header = () => {
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/options1'>
                                             <i className="fas fa-info-circle"></i> Términos y Condiciones.
                                         </Link>
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/options2'>
                                             <i className="fas fa-info-circle"></i> Políticas De Envios, Cambios, Devoluciones Y Garantías.
                                         </Link>
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/faq'>
                                             <i className="fas fa-info-circle"></i> Preguntas Frecuentes.
                                         </Link>
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/about'>
                                             <i className="fas fa-info-circle"></i> Sobre Nosotros.
                                         </Link>
@@ -159,8 +159,8 @@ const Header = () => {
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <div className="dropdown-divider"></div>
-                                        <Link 
-                                        className="dropdown-item" 
+                                        <Link
+                                        className="dropdown-item"
                                         to='/shop'>
                                             <i className="fas fa-shopping-bag"></i> Ver Todos Los Productos.
                                         </Link>
@@ -190,11 +190,11 @@ const Header = () => {
                         {isAuthenticated() && isAuthenticated().role === 1 && (
                             <Fragment>
                                 <li className="nav-item">
-                                    <Link 
-                                    className="nav-link active" 
-                                    aria-current="page" 
+                                    <Link
+                                    className="nav-link active"
+                                    aria-current="page"
                                     to='/admin/dashboard'>
-                                        <i className="fas fa-user-tie"></i>{' '} 
+                                        <i className="fas fa-user-tie"></i>{' '}
                                         Panel De Administrador.
                                     </Link>
                                 </li>
@@ -203,10 +203,10 @@ const Header = () => {
                         {isAuthenticated() && (
                             <Fragment>
                                 <li className="nav-item">
-                                    <button 
+                                    <button
                                     className="btn btn-outline-danger logoutHover"
                                     onClick={handleLogout}>
-                                        <i className="fas fa-power-off"></i>{' '} 
+                                        <i className="fas fa-power-off"></i>{' '}
                                         Cerrar Sesión.
                                     </button>
                                 </li>
@@ -219,9 +219,9 @@ const Header = () => {
             <div className="nav-scroller bg-light shadow-sm">
                 <nav className="nav nav-underline">
                     <Link className="nav-link active" to="/">
-                        <img src={Logo} alt="Nury Valenzuela Joyería." title="Nury Valenzuela Joyería." lang="es" />
+                        <img src={Logo} alt="Nury Valenzuela." title="Nury Valenzuela." lang="es" />
                     </Link>
-                    
+
                     <div className="table-responsive">
                         <table className="table">
                             <thead>
@@ -251,11 +251,11 @@ const Header = () => {
                                     </th>
                                     <th scope="col">
                                         <Link to="#" className="text-muted">
-                                            <i className="fas fa-home" style={{fontSize:"25px", color:"#E6ACA9"}}></i> <span className="linkEnlace">Dirección: MonteArroyo Reservado (casa 6 manzana 3)</span>
+                                            <i className="fas fa-home" style={{fontSize:"25px", color:"#E6ACA9"}}></i> <span className="linkEnlace">Dirección: MonteArroyo Reservados (casa 6 manzana 3)</span>
                                         </Link>
                                     </th>
                                     <th scope="col">
-                                        <a 
+                                        <a
                                         href="mailto:nuryvalenzuelajoyeria@gmail.com"
                                         rel="noopener noreferrer"
                                         className="text-muted">

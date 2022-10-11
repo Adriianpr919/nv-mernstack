@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
+import './Shipping.css';
 import usaStates from '../data/usaStates';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -54,15 +55,15 @@ const Shipping = () => {
                 <div className='row justify-content-center'>
                     <div className='col-md-8'>
                         <h6 className='font-weight-bold mb-4'>
-                            Detalles De Envío.
+                            Detalles De Envios.
 						</h6>
 
                         <form onSubmit={handleSubmit}>
                             <div className='form-group'>
                                 <label htmlFor="inputAddress">Dirección 1 *: <span className="text-muted">(Opcional 1.)</span></label>
-                                <input 
-                                type="text" 
-                                className="form-control" 
+                                <input
+                                type="text"
+                                className="form-control"
                                 value={address}
                                 onChange={evt =>
                                     setAddress(evt.target.value)
@@ -71,9 +72,9 @@ const Shipping = () => {
                             </div>
                             <div className='form-group'>
                                 <label htmlFor="inputAddress2">Dirección 2 *: <span className="text-muted">(Opcional 2.)</span></label>
-                                <input 
-                                type="text" 
-                                className="form-control" 
+                                <input
+                                type="text"
+                                className="form-control"
                                 value={address2}
                                 onChange={evt =>
                                     setAddress2(evt.target.value)
@@ -82,9 +83,9 @@ const Shipping = () => {
                             </div>
                             <div className='form-group'>
                                 <label htmlFor="inputCity">Ciudad *: <span className="text-muted">(Ciudad.)</span></label>
-                                <input 
-                                type="text" 
-                                className="form-control" 
+                                <input
+                                type="text"
+                                className="form-control"
                                 value={city}
                                 onChange={evt =>
                                     setCity(evt.target.value)
@@ -93,8 +94,8 @@ const Shipping = () => {
                             </div>
                             <div className='form-group'>
                                 <label htmlFor="inputState">Estado *: <span className="text-muted">(Estado.)</span></label>
-                                <select 
-                                className="form-control" 
+                                <select
+                                className="form-control"
                                 value={state}
                                 onChange={evt =>
                                     setState(evt.target.value)
@@ -112,18 +113,18 @@ const Shipping = () => {
                             </div>
                             <div className='form-group'>
                                 <label htmlFor="inputZip">Código Postal *: <span className="text-muted">(Código Postal.)</span></label>
-                                <input 
-                                type="text" 
-                                className="form-control" 
+                                <input
+                                type="text"
+                                className="form-control"
                                 value={zip}
                                 onChange={evt =>
                                     setZip(evt.target.value)
                                 }
                                 placeholder="Código Postal." />
                             </div>
-
+                            <hr className="divider" />
                             <button type='submit' className='btn btn-outline-primary'>
-                                <i className="fa fa-angle-right"></i> Continuar. 
+                                <i className="fa fa-angle-right"></i> Continuar.
 							</button>
                         </form>
                     </div>

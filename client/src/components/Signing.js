@@ -33,8 +33,8 @@ const Signing = () => {
         errorMsg,
         loading,
     } = formData;
-    /********************************************** 
-     * EVENT HANDLERS 
+    /**********************************************
+     * EVENT HANDLERS
     **********************************************/
     const handleChange = (evt) => {
         setFormData({
@@ -50,7 +50,7 @@ const Signing = () => {
         // client-side validation
         if (isEmpty(email) || isEmpty(password)) {
             setFormData({
-                ...formData, 
+                ...formData,
                 errorMsg: 'Todos Los Campos Son Obligatorios.',
             });
         } else if (!isEmail(email)) {
@@ -70,7 +70,7 @@ const Signing = () => {
                     const redirect = location.search.split('=')[1];
 
                     if (isAuthenticated() && isAuthenticated().role === 1) {
-                        console.log('Redirigir Al Panel De Control Administración.');
+                        console.log('Redirigir Al Panel De Control Administrador.');
                         navigate('/admin/dashboard');
                     }
                     else if (
@@ -87,15 +87,15 @@ const Signing = () => {
                 })
                 .catch((err) => {
                     console.log('Iniciar Sesión En El Error De La Función API: ', err);
-                    setFormData({ 
-                        ...formData, 
-                        loading: false, 
-                        errorMsg: err.response.data.errorMessage, 
+                    setFormData({
+                        ...formData,
+                        loading: false,
+                        errorMsg: err.response.data.errorMessage,
                     });
                 });
         }
     };
-    /********************************************** 
+    /**********************************************
      * VIEWS
     **********************************************/
     const showSigningForm = () => (
@@ -106,40 +106,40 @@ const Signing = () => {
             </div>
             {/*Email*/}
             <div className="form-label-group">
-                <input 
-                    type="email" 
+                <input
+                    type="email"
                     id="inputEmail"
-                    name="email" 
-                    value={email} 
-                    onChange={handleChange} 
-                    className="form-control" 
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    className="form-control"
                     placeholder="Tu Correo."
                     aria-label="Tu Correo."
-                    required 
+                    required
                     autofocus
                 />
-                <label 
-                    htmlFor="inputEmail" 
+                <label
+                    htmlFor="inputEmail"
                     className="text-secondary">
                         <i className="fas fa-at"></i> Correo.
                 </label>
             </div>
             {/*password A1*/}
             <div className="form-label-group">
-                <input 
-                    type="password" 
+                <input
+                    type="password"
                     id="inputPassword"
-                    name="password" 
-                    value={password} 
-                    onChange={handleChange} 
-                    className="form-control" 
+                    name="password"
+                    value={password}
+                    onChange={handleChange}
+                    className="form-control"
                     placeholder="Contraseña."
                     aria-label="Contraseña."
-                    pattern=".{6,}" 
+                    pattern=".{6,}"
                     required
                 />
-                <label 
-                    htmlFor="inputPassword" 
+                <label
+                    htmlFor="inputPassword"
                     className="text-secondary">
                         <i className="fas fa-key"></i> Contraseña.
                 </label>
@@ -153,19 +153,19 @@ const Signing = () => {
             {/*Already have account*/}
             <p className="commentFormSigning mt-5 mb-3">
                 <p className="commentFormP">
-                    {' '}    
-                    SI TODAVÍA NO TIENES UNA CUENTA DE USUARIO DE https://nuryvalenzuelajoyeria.com.co/ UTILIZA ESTA OPCIÓN PARA ACCEDER AL FORMULARIO DE REGISTRO.{' '}
                     {' '}
-                    TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA AGILIZAR EL PROCESO DE COMPRA.{' '}
+                    SI TODAVÍA NO TIENES UNA CUENTA DE USUARIO DE https://nuryvalenzuelajoyeria.com.co/ UTILIZAR ESTA OPCIÓN PARA ACCEDER AL FORMULARIO DE REGISTRO.{' '}
+                    {' '}
+                    TE SOLICITAREMOS LA INFORMACIÓN IMPRESCINDIBLE PARA REALIZAR EL PROCESO DE COMPRA.{' '}
                 </p>
-                <Link to="/signup" className="linkLogin" rel="noopener noreferrer" aria-label="Regístrarse."> 
+                <Link to="/signup" className="linkLogin" rel="noopener noreferrer" aria-label="Regístrarse.">
                     <i className="fas fa-user-plus"></i> Regístrarse.
                 </Link>
             </p>
         </form>
     );
 
-    /********************************************** 
+    /**********************************************
      * RENDERING
     **********************************************/
     return (

@@ -53,64 +53,64 @@ const Products = () => {
                                 </ol>
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">{/* FOTO 0 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 1 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 2 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 3 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 4 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 5 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 6 */}
-                                        <img 
+                                        <img
                                         src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 7 */}
-                                        <img 
-                                        src={`/uploads/${product.fileName}`} 
+                                        <img
+                                        src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
                                     </div>
                                     <div className="carousel-item">{/* FOTO 8 */}
-                                        <img 
-                                        src={`/uploads/${product.fileName}`} 
+                                        <img
+                                        src={`/uploads/${product.fileName}`}
                                         alt='Productos.'
                                         title='Productos.'
                                         className="img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail mb-4" />
@@ -142,7 +142,7 @@ const Products = () => {
                                         <h5 className="my-0">
                                             <span>
                                                 <b>
-                                                    Precio *: 
+                                                    Precio *:
                                                 </b>
                                             </span>
                                         </h5>
@@ -164,7 +164,7 @@ const Products = () => {
                                         <h6 className="my-0">
                                         Estado *:{' '}
                                         </h6>
-                                        <small className="text-dark">UNIDADES.</small>
+                                        <small className="text-dark">UNIDAD.</small>
                                     </div>
                                     <span className="text-dark">
                                         <b>
@@ -177,7 +177,7 @@ const Products = () => {
                                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                                     <div className="text-dark">
                                         <h6 className="my-0">
-                                            Talla *: 
+                                            Talla *:
                                         </h6>
                                         <small className="text-muted">Talla.</small>
                                     </div>
@@ -187,7 +187,7 @@ const Products = () => {
                                                 <label className="input-group-text" htmlFor="inputGroupSelect01">Talla *:</label>
                                             </div>
                                             <select className="custom-select" id="inputGroupSelect01" defaultValue={'DEFAULT'} aria-label="Talla.">
-                                                <option value="DEFAULT" selected disabled>--- Seleccióna Talla ---</option>
+                                                <option value="DEFAULT" selected disabled>--- Selecciónar Talla ---</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -198,7 +198,7 @@ const Products = () => {
                                 <li className="list-group-item d-flex justify-content-between bg-light">
                                     <div className="text-dark">
                                         <h6 className="my-0">
-                                            Oro *: 
+                                            Oro *:
                                         </h6>
                                         <small>Oro.</small>
                                     </div>
@@ -208,7 +208,7 @@ const Products = () => {
                                                 <label className="input-group-text" htmlFor="inputGroupSelect02">Oro *:</label>
                                             </div>
                                             <select className="custom-select" id="inputGroupSelect02" defaultValue={'DEFAULT'} aria-label="Oro.">
-                                                <option value="DEFAULT" selected disabled>--- Seleccióna Oro ---</option>
+                                                <option value="DEFAULT" selected disabled>--- Selecciónar Oro ---</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -219,7 +219,7 @@ const Products = () => {
                                 <li className="list-group-item d-flex justify-content-between bg-light">
                                     <div className="text-dark">
                                         <h6 className="my-0">
-                                            Piedra *: 
+                                            Piedra *:
                                         </h6>
                                         <small>Piedra.</small>
                                     </div>
@@ -229,7 +229,7 @@ const Products = () => {
                                                 <label className="input-group-text" htmlFor="inputGroupSelect03">Piedra *:</label>
                                             </div>
                                             <select className="custom-select" id="inputGroupSelect03" defaultValue={'DEFAULT'} aria-label="Piedra.">
-                                                <option value="DEFAULT" selected disabled>--- Seleccióna Piedra ---</option>
+                                                <option value="DEFAULT" selected disabled>--- Selecciónar Piedra ---</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -240,7 +240,7 @@ const Products = () => {
                                 <li className="list-group-item d-flex justify-content-between bg-light">
                                     <div className="text-dark">
                                         <h6 className="my-0">
-                                            Descripción *: 
+                                            Descripción *:
                                         </h6>
                                         <small>Descripción.</small>
                                     </div>
@@ -261,10 +261,10 @@ const Products = () => {
                                 </li>
                                 <li className="list-group-item justify-content-between">
                                     <strong>
-                                        <a 
-                                        href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
+                                        <a
+                                        href="https://api.whatsapp.com/send?phone=573133966349&text=Hola%2C%20vengo%20desde%20tu%20perfil%20de%20Instagram%20y%20deseo%20obtener%20mas%20informaci%C3%B3n%20%20%F0%9F%92%8E"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="btn btn-outline-success btn-large btn-block mb-5 py-2">
                                             <i className="fab fa-whatsapp" style={{fontSize:"25px"}}></i> Comprar Por WhatsAPP.
                                         </a>
@@ -275,7 +275,7 @@ const Products = () => {
                     </div>
                 </div>
             )}
-        </section>    
+        </section>
     );
 };
 

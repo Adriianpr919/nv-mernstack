@@ -68,7 +68,7 @@ const AdminProductModal = () => {
         evt.preventDefault();
 
         if (productImage === null) {
-                setClientSideError("Seleccione Una Imagen Con .png");
+                setClientSideError("Seleccionar Una Imagen Con .png");
         } else if (
             isEmpty(productName) ||
             isEmpty(productDesc) ||
@@ -76,9 +76,9 @@ const AdminProductModal = () => {
         ) {
             setClientSideError("Todos Los Campos Son Obligatorios.");
         } else if (isEmpty(productCategory)) {
-            setClientSideError("Por favor Seleccione Una Categoría.");
+            setClientSideError("Por favor Seleccionar Una Categoría.");
         } else if (isEmpty(productQty)) {
-            setClientSideError("Seleccione Una Cantidad.");
+            setClientSideError("Seleccionar Una Cantidad.");
         } else {
             let formData = new FormData();
 

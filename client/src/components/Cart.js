@@ -41,13 +41,13 @@ const Cart = () => {
 			navigate('/signing?redirect=shipping');
 		}
 	};
-    
+
     return (
         <section className='cart-page m-4'>
             {cart.length <= 0 ? (
                 <div className='jumbotron'>
                     <h1 className='display-4'>
-                        Tu Carrito Esta Vacío.{' '}
+                        Tu Carrito Este Vacío.{' '}
                         <button
                             className='btn btn-outline-primary ml-4'
                             onClick={handleGoBackBtn}
@@ -112,7 +112,7 @@ const Cart = () => {
                                                                 currency: 'COP',
                                                             }
                                                         )}
-                                                    </strong> 
+                                                    </strong>
                                                 </td>
                                                 <td>
                                                     <input
@@ -141,11 +141,11 @@ const Cart = () => {
                                                             )
                                                         }
                                                     >
-                                                        <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminar" title="Eliminar"></i>
+                                                        <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminada" title="Eliminada"></i>
                                                     </button>
                                                 </td>
                                             </tr>
-                                        ))}    
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -153,7 +153,7 @@ const Cart = () => {
                         <div className='col-md-4 border-left pl-4'>
                             <h2 className="d-flex justify-content-between align-items-center mb-3">
                                 <span className="text-muted">
-                                    Resumen De La Compra.
+                                    Resume De La Compra.
                                 </span>
                                 <span className="badge badge-secondary badge-pill border border-dark">
                                     {cart.length === 1
@@ -178,7 +178,7 @@ const Cart = () => {
                                                         currentCartItem.productPrice,
                                                 0
                                             )
-                                            .toFixed(2)} 
+                                            .toFixed(2)}
                                         </strong>
                                     </h3>
                                 </li>

@@ -40,17 +40,17 @@ exports.create = async (req, res) => {
 exports.readAll = async (req, res) => {
     try {
         const products = await Product.find({}).populate(
-			'productCategory', 
+			'productCategory',
 			'category'
 		);
-        
-        res.json({ products });    
+
+        res.json({ products });
     } catch (err) {
         console.log(err, 'productController.readAll error');
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }    
+    }
 };
 
 exports.readByCount = async (req, res) => {
@@ -111,7 +111,7 @@ exports.delete = async (req, res) => {
 		fs.unlink(`uploads/${deletedProduct.fileName}`, err => {
 			if (err) throw err;
 			console.log(
-				'Imagen Eliminado Con Éxito Del Sistema De Archivos: ',
+				'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
 				deletedProduct.fileName
 			);
 		});
