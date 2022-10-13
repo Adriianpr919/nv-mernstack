@@ -4,10 +4,10 @@ import AdminSizeViewModal from './AdminSizeViewModal';
 import { useSelector } from 'react-redux';
 
 const AdminBodySize = () => {
-    const { sizes } = useSelector(state => state.sizes); 
+    const { sizes } = useSelector(state => state.sizes);
     return (
         <>
-            <div id="viewSizeModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
+            <div id="viewSizeModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
                 <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div className="modal-content">
                         <div className="modal-header bg-info">
@@ -21,16 +21,14 @@ const AdminBodySize = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>
-                                {sizes && 
-                                    sizes.map((s) => ( 
-                                        <AdminSizeViewModal 
-                                            key={s._id}
-                                            s={s}
-                                            adminPage={true}
-                                        />
-                                ))}     
-                            </p>
+                            {sizes &&
+                                sizes.map((s) => (
+                                    <AdminSizeViewModal
+                                        key={s._id}
+                                        s={s}
+                                        adminPage={true}
+                                    />
+                            ))}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">

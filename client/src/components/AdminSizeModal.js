@@ -81,7 +81,7 @@ const AdminSizeModal = () => {
 	 * RENDERER
 	 ***************************/
     return (
-        <div id="addSizeModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
+        <div id="addSizeModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
                     <form onSubmit={handleSizedSubmit}>
@@ -118,37 +118,34 @@ const AdminSizeModal = () => {
 
                                                 <div className="panel panel-default">
                                                     <div className="panel-body">
-                                                        <p>
-                                                            <div className="row">
-                                                                <div className="col-12 mb-2">
-                                                                    <label
-                                                                        htmlFor="addFile"
-                                                                        className="text-secondary">
+                                                        <div className="row">
+                                                            <div className="col-12 mb-2">
+                                                                <label
+                                                                    htmlFor="addFile"
+                                                                    className="text-secondary">
+                                                                        <i className="fas fa-upload"></i> Foto Talla. *:
+                                                                </label>
+                                                                <div className="input-group mb-3">
+                                                                    <div className="input-group-prepend">
+                                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
+                                                                    </div>
+                                                                    <div className="custom-file">
+                                                                        <input
+                                                                        type="file"
+                                                                        name='productImage'
+                                                                        onChange={handleSizedImage}
+                                                                        className="custom-file-input"
+                                                                        id="customFileLang"
+                                                                        aria-describedby="customFileLang"
+                                                                        data-browse="Elegir"
+                                                                        lang="es" />
+                                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
                                                                             <i className="fas fa-upload"></i> Foto Talla. *:
-                                                                    </label>
-                                                                    <div className="input-group mb-3">
-                                                                        <div className="input-group-prepend">
-                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
-                                                                        </div>
-                                                                        <div className="custom-file">
-                                                                            <input
-                                                                            type="file"
-                                                                            name='productImage'
-                                                                            onChange={handleSizedImage}
-                                                                            className="custom-file-input"
-                                                                            id="customFileLang"
-                                                                            aria-describedby="customFileLang"
-                                                                            data-browse="Elegir"
-                                                                            lang="es" />
-                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
-                                                                                <i className="fas fa-upload"></i> Foto Talla. *:
-                                                                            </label>
-                                                                        </div>
+                                                                        </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                 </div>
 

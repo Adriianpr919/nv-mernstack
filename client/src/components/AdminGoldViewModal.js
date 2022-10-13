@@ -31,19 +31,13 @@ const AdminGoldViewModal = ({ g, adminPage = false }) => {
                                         </a>
                                         <div className="product-info">
                                             <a href="#!">
-                                                <b>
-                                                    <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {g.productName}
-                                                    </h2>
-                                                </b>
+                                                <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
+                                                    {g.productName}
+                                                </h2>
                                             </a>
                                             <span>
-                                                <em>
-                                                    <h4 className='text-success'>
-                                                        <b>
-                                                            {g.productCategory}
-                                                        </b>
-                                                    </h4>
+                                                <em className='text-success'>
+                                                    {g.productCategory}
                                                 </em>
                                             </span>
                                             <span>

@@ -13,8 +13,8 @@ const Head = () => {
             <meta name="HandheldFriendly" content="True" />
             <meta name="MobileOptimized" content="320" />
             <meta name="theme-color" content="#E6ACA9" />
-            <link rel="shortcut icon" type="image/x-icon" href="./img/logo.ico" />
-            <link rel="apple-touch-icon" href="./img/logo.ico" />
+            <link rel="shortcut icon" type="image/x-icon" href="./assets/img/logo.ico" />
+            <link rel="apple-touch-icon" href="./assets/img/logo.ico" />
             <title data-rh="true">Nury Valenzuela.</title>
         </Helmet>
     );

@@ -4,10 +4,10 @@ import AdminStoneViewModal from './AdminStoneViewModal';
 import { useSelector } from 'react-redux';
 
 const AdminBodyStone = () => {
-    const { stones } = useSelector(state => state.stones); 
+    const { stones } = useSelector(state => state.stones);
     return (
         <>
-            <div id="viewStoneModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
+            <div id="viewStoneModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
                 <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div className="modal-content">
                         <div className="modal-header bg-secondary text-white">
@@ -21,16 +21,14 @@ const AdminBodyStone = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>
-                                {stones && 
-                                    stones.map((r) => ( 
-                                        <AdminStoneViewModal 
-                                            key={r._id}
-                                            r={r}
-                                            adminPage={true}
-                                        />
-                                ))} 
-                            </p>
+                            {stones &&
+                                stones.map((r) => (
+                                    <AdminStoneViewModal
+                                        key={r._id}
+                                        r={r}
+                                        adminPage={true}
+                                    />
+                            ))}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">
@@ -39,7 +37,7 @@ const AdminBodyStone = () => {
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </>
     );
 };

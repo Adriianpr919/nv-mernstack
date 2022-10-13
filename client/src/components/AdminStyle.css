@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "sansation";
-    src: url("../../public/assets/sansation/Sansation_Regular.ttf");
+    src: url("./assets/fonts/sansation/Sansation_Regular.ttf");
 }
 
 :root {
@@ -12,7 +12,7 @@
 
 body {
     font-family: var(--bs-font-sans-serif);
-    background-image: url(./img/pared-b.jpg);
+    background-image: url("./assets/img/pared-b.jpg");
     font-size: 16px;
 }
 

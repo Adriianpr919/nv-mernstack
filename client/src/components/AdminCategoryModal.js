@@ -36,7 +36,7 @@ const AdminCategoryModal = () => {
         evt.preventDefault();
 
         if (isEmpty(category)) {
-            setClientSideErrorMsg('Por favor Ingrese Una Categoría.'); 
+            setClientSideErrorMsg('Por favor Ingrese Una Categoría.');
         } else {
             const data = { category };
             dispatch(createCategory(data));
@@ -47,10 +47,10 @@ const AdminCategoryModal = () => {
 	 * RENDERER
 	 ***************************/
     return (
-        <div id="addCategoryModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" onClick={handleMessages}>
+        <div id="addCategoryModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
-                    <form onSubmit={handleCategorySubmit}>    
+                    <form onSubmit={handleCategorySubmit}>
                         <div className="modal-header bg-dark text-white">
                             <h5 className="modal-title">
                                 <i className="fas fa-plus-circle"></i> Añadir Categoría.
@@ -62,7 +62,7 @@ const AdminCategoryModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                            {clientSideErrorMsg && 
+                            {clientSideErrorMsg &&
                                 showErrorMsg(clientSideErrorMsg)}
                             {errorMsg && showErrorMsg(errorMsg)}
                             {successMsg && showSuccessMsg(successMsg)}
@@ -73,17 +73,17 @@ const AdminCategoryModal = () => {
                                 </div>
                             ) : (
                                 <Fragment>
-                                    <label 
-                                        htmlFor="addCategory" 
+                                    <label
+                                        htmlFor="addCategory"
                                         className="text-secondary">
                                             <i className="fas fa-plus-circle"></i> Añadir Categoría. *:
                                     </label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="form-control"
                                         name='category'
                                         value={category}
-                                        onChange={handleCategoryChange} 
+                                        onChange={handleCategoryChange}
                                         placeholder="Añadir Categoría."
                                     />
                                 </Fragment>

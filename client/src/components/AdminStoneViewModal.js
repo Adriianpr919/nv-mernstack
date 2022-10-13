@@ -31,19 +31,13 @@ const AdminStoneViewModal = ({ r, adminPage = false }) => {
                                         </a>
                                         <div className="product-info">
                                             <a href="#!">
-                                                <b>
-                                                    <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {r.productName}
-                                                    </h2>
-                                                </b>
+                                                <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
+                                                    {r.productName}
+                                                </h2>
                                             </a>
                                             <span>
-                                                <em>
-                                                    <h4 className='text-success'>
-                                                        <b>
-                                                            {r.productCategory}
-                                                        </b>
-                                                    </h4>
+                                                <em className='text-success'>
+                                                    {r.productCategory}
                                                 </em>
                                             </span>
                                             <span>

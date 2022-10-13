@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const AdminBodyCategory = () => {
     const { categories } = useSelector(state => state.categories);
     return (
-        <div id="viewCategoryModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
+        <div id="viewCategoryModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
                     <div className="modal-header bg-dark text-white">
@@ -20,16 +20,14 @@ const AdminBodyCategory = () => {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <p>
-                            {categories &&
-                                categories.map((c) => (
-                                <AdminCategoryViewModal 
-                                    key={c._id}
-                                    c={c}
-                                    adminPage={true}
-                                />
-                            ))}
-                        </p>
+                        {categories &&
+                            categories.map((c) => (
+                            <AdminCategoryViewModal
+                                key={c._id}
+                                c={c}
+                                adminPage={true}
+                            />
+                        ))}
                     </div>
                     <div className="modal-footer">
                         <button className="btn btn-outline-danger" data-dismiss="modal">

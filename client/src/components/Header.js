@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { isAuthenticated, logout } from '../helpers/auth';
 import { useSelector } from 'react-redux';
-import Logo from './img/Logonv.png';
+import Logo from './assets/img/Logonv.png';
 import './Header.css';
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
             navigate('/signing');
         });
     };
-    //views header
+    //views headerQS
     const showNavigation = () => (
         <>
             <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -24,7 +24,6 @@ const Header = () => {
                 <button className="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-
                 <div className="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                     <ul className="navbar-nav ml-auto mt-2 mt-lg-0 my-2 my-lg-0">
                         {!isAuthenticated() && (
@@ -215,13 +214,11 @@ const Header = () => {
                     </ul>
                 </div>
             </nav>
-
             <div className="nav-scroller bg-light shadow-sm">
                 <nav className="nav nav-underline">
                     <Link className="nav-link active" to="/">
                         <img src={Logo} alt="Nury Valenzuela." title="Nury Valenzuela." lang="es" />
                     </Link>
-
                     <div className="table-responsive">
                         <table className="table">
                             <thead>

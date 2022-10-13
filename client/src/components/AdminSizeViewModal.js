@@ -31,19 +31,13 @@ const AdminSizeViewModal = ({ s, adminPage = false }) => {
                                         </a>
                                         <div className="product-info">
                                             <a href="#!">
-                                                <b>
-                                                    <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                        {s.productName}
-                                                    </h2>
-                                                </b>
+                                                <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
+                                                    {s.productName}
+                                                </h2>
                                             </a>
                                             <span>
-                                                <em>
-                                                    <h4 className='text-secondary'>
-                                                        <b>
-                                                            {s.productCategory}
-                                                        </b>
-                                                    </h4>
+                                                <em className='text-secondary'>
+                                                    {s.productCategory}
                                                 </em>
                                             </span>
                                             <span>

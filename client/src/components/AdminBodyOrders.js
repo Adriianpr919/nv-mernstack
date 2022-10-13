@@ -4,7 +4,7 @@ import AdminOrdersViewModal from './AdminOrdersViewModal';
 const AdminBodyOrders = () => {
     return (
         <>
-            <div id="viewOrdersModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
+            <div id="viewOrdersModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
                 <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div className="modal-content">
                         <div className="modal-header bg-success text-light">
@@ -18,9 +18,7 @@ const AdminBodyOrders = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>
-                                <AdminOrdersViewModal />
-                            </p>
+                            <AdminOrdersViewModal />
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">

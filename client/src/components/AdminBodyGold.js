@@ -4,10 +4,10 @@ import AdminGoldViewModal from './AdminGoldViewModal';
 import { useSelector } from 'react-redux';
 
 const AdminBodyGold = () => {
-    const { golds } = useSelector(state => state.golds); 
+    const { golds } = useSelector(state => state.golds);
     return (
         <>
-            <div id="viewGoldModal" className="modal fade bd-example-modal-xl" tabindex="-1" role="dialog">
+            <div id="viewGoldModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
                 <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div className="modal-content">
                         <div className="modal-header bg-warning">
@@ -21,16 +21,14 @@ const AdminBodyGold = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>
-                                {golds &&
-                                    golds.map((g) => ( 
-                                        <AdminGoldViewModal 
-                                            key={g._id}
-                                            g={g}
-                                            adminPage={true}
-                                        />
-                                ))} 
-                            </p>
+                            {golds &&
+                                golds.map((g) => (
+                                    <AdminGoldViewModal
+                                        key={g._id}
+                                        g={g}
+                                        adminPage={true}
+                                    />
+                            ))}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">
@@ -39,7 +37,7 @@ const AdminBodyGold = () => {
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </>
     );
 };

@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "sansation";
-    src: url("../../public/assets/sansation/Sansation_Regular.ttf");
+    src: url("./assets/fonts/sansation/Sansation_Regular.ttf");
 }
 
 :root {
@@ -12,7 +12,7 @@
 
 body {
     font-family: var(--bs-font-sans-serif);
-    background-image: url(./img/pared-b.jpg);
+    background-image: url("./assets/img/pared-b.jpg");
     font-size: 16px;
 }
 
@@ -32,7 +32,7 @@ body::-webkit-scrollbar-thumb {
 
 .commentFormSigning {
     text-align: center;
-    color: white;    
+    color: white;
 }
 
 .commentFormP {
@@ -129,7 +129,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .banner-image {
-	background-image: url(./img/A1.jpg);
+	background-image: url("./assets/img/A1.jpg");
     background-color: rgba(0, 0, 0, 0.40);
 	background-size: cover;
 	background-repeat: no-repeat;

@@ -1,8 +1,8 @@
 import React from 'react';
-import aboutA1 from './img/aboutA1.jpg';
-import aboutA2 from './img/aboutA2.jpg';
-import aboutA3 from './img/aboutA3.jpg';
-import aboutA4 from './img/aboutA4.jpg';
+import aboutA1 from './assets/img/aboutA1.jpg';
+import aboutA2 from './assets/img/aboutA2.jpg';
+import aboutA3 from './assets/img/aboutA3.jpg';
+import aboutA4 from './assets/img/aboutA4.jpg';
 import './About.css';
 import { Link } from 'react-router-dom';
 
