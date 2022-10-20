@@ -1,44 +1,44 @@
-import { 
-    CREATE_SIZED, 
-    GET_SIZES,
-    GET_SIZE, 
-    DELETE_SIZED, 
+import {
+    CREATE_SIZED,
+    GET_SIZEDS,
+    GET_SIZED,
+    DELETE_SIZED,
 } from '../constants/sizedConstants';
 
 const INITIAL_STATE = {
-    sizes: [],
+    sizeds: [],
 };
 
-if (localStorage.getItem('sizes')) {
-    INITIAL_STATE.sizes = JSON.parse(
-        localStorage.getItem('sizes')
+if (localStorage.getItem('sizeds')) {
+    INITIAL_STATE.sizeds = JSON.parse(
+        localStorage.getItem('sizeds')
     );
 } else {
-    INITIAL_STATE.sizes = [];
+    INITIAL_STATE.sizeds = [];
 }
 
 const sizedReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CREATE_SIZED:
             return {
-                sizes: [...state.sizes, action.payload],
+                sizeds: [...state.sizeds, action.payload],
             };
-        case GET_SIZES: 
+        case GET_SIZEDS:
             return {
-                sizes: [...action.payload],
+                sizeds: [...action.payload],
             };
-        case GET_SIZE:
+        case GET_SIZED:
             return {
                 sized: action.payload,
             };
         case DELETE_SIZED:
             return {
-                sizes: state.sizes.filter(
+                sizeds: state.sizeds.filter(
                     s => s._id !== action.payload._id
                 ),
-            };    
-        default: 
-            return state;    
+            };
+        default:
+            return state;
     }
 };
 

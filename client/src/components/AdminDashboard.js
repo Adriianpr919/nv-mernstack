@@ -20,9 +20,9 @@ import AdminBodyStone from './AdminBodyStone';
 //Redux **************************************************************************
 import { useDispatch } from 'react-redux';
 import { getCategories } from '../redux/actions/categoryActions';
-import { getSizes } from '../redux/actions/sizedActions';
-import { getGolds } from '../redux/actions/goldenActions';
-import { getStones } from '../redux/actions/rockActions';
+import { getSizeds } from '../redux/actions/sizedActions';
+import { getGoldens } from '../redux/actions/goldenActions';
+import { getRocks } from '../redux/actions/rockActions';
 import { getProducts } from '../redux/actions/productActions';
 
 const AdminDashboard = () => {
@@ -37,19 +37,19 @@ const AdminDashboard = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getSizes());
+        dispatch(getSizeds());
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getGolds());
+        dispatch(getGoldens());
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getStones());
+        dispatch(getRocks());
     }, [dispatch]);
 
     return (
-        /********************************************** 
+        /**********************************************
          * RENDERING
         **********************************************/
         <section>

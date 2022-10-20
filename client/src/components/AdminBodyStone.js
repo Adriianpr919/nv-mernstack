@@ -4,7 +4,7 @@ import AdminStoneViewModal from './AdminStoneViewModal';
 import { useSelector } from 'react-redux';
 
 const AdminBodyStone = () => {
-    const { stones } = useSelector(state => state.stones);
+    const { rocks } = useSelector(state => state.rocks);
     return (
         <>
             <div id="viewStoneModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
@@ -21,12 +21,11 @@ const AdminBodyStone = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {stones &&
-                                stones.map((r) => (
+                            {rocks &&
+                                rocks.map((rock) => (
                                     <AdminStoneViewModal
-                                        key={r._id}
-                                        r={r}
-                                        adminPage={true}
+                                        key={rock._id}
+                                        rock={rock}
                                     />
                             ))}
                         </div>

@@ -33,13 +33,12 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const sizes = await Sized.find({}).populate(
+        const sizeds = await Sized.find({}).populate(
 			'productCategory',
 			'category'
 		);
-        res.json({
-            sizes,
-        });
+
+        res.json({ sizeds });
     } catch (err) {
         console.log(err, 'sizedController.readAll error');
         res.status(500).json({
@@ -50,12 +49,11 @@ exports.readAll = async (req, res) => {
 
 exports.readByCount = async (req, res) => {
 	try {
-		const sizes = await Sized.find({})
+		const sizeds = await Sized.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
-		res.json({
-            sizes,
-        });
+
+		res.json({ sizeds });
 	} catch (err) {
 		console.log(err, 'sizedController.readAll error');
 		res.status(500).json({

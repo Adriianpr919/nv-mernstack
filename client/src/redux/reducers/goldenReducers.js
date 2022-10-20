@@ -1,44 +1,44 @@
-import { 
-    CREATE_GOLDEN, 
-    GET_GOLDS,
-    GET_GOLD, 
-    DELETE_GOLDEN, 
+import {
+    CREATE_GOLDEN,
+    GET_GOLDENS,
+    GET_GOLDEN,
+    DELETE_GOLDEN,
 } from '../constants/goldenConstants';
 
 const INITIAL_STATE = {
-    golds: [],
+    goldens: [],
 };
 
-if (localStorage.getItem('golds')) {
-    INITIAL_STATE.golds = JSON.parse(
-        localStorage.getItem('golds')
+if (localStorage.getItem('goldens')) {
+    INITIAL_STATE.goldens = JSON.parse(
+        localStorage.getItem('goldens')
     );
 } else {
-    INITIAL_STATE.golds = [];
+    INITIAL_STATE.goldens = [];
 }
 
 const goldenReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CREATE_GOLDEN:
             return {
-                golds: [...state.golds, action.payload],
+                goldens: [...state.goldens, action.payload],
             };
-        case GET_GOLDS: 
+        case GET_GOLDENS:
             return {
-                golds: [...action.payload],
+                goldens: [...action.payload],
             };
-        case GET_GOLD:
+        case GET_GOLDEN:
             return {
                 golden: action.payload,
             };
         case DELETE_GOLDEN:
             return {
-                golds: state.golds.filter(
+                goldens: state.goldens.filter(
                     g => g._id !== action.payload._id
                 ),
-            };    
-        default: 
-            return state;    
+            };
+        default:
+            return state;
     }
 };
 

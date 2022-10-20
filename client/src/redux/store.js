@@ -15,10 +15,10 @@ import orderReducer from './reducers/orderReducers';
 const reducer = combineReducers({
     loading: loadingReducer,
     messages: messageReducer,
-    categories: categoryReducer,   
-    sizes: sizedReducer,
-    golds: goldenReducer,
-    stones: rockReducer,
+    categories: categoryReducer,
+    sizeds: sizedReducer,
+    goldens: goldenReducer,
+    rocks: rockReducer,
     products: productReducer,
     filters: filterReducer,
     cart: cartReducer,
@@ -30,8 +30,8 @@ const initialState = {};
 const middleware = [thunk];
 
 const store = createStore(
-    reducer, 
-    initialState, 
+    reducer,
+    initialState,
     composeWithDevTools(applyMiddleware(...middleware))
 );
 

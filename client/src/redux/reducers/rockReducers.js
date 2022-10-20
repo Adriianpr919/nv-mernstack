@@ -1,44 +1,44 @@
-import { 
-    CREATE_ROCK, 
-    GET_STONES,
-    GET_STONE, 
-    DELETE_ROCK, 
+import {
+    CREATE_ROCK,
+    GET_ROCKS,
+    GET_ROCK,
+    DELETE_ROCK,
 } from '../constants/rockConstants';
 
 const INITIAL_STATE = {
-    stones: [],
+    rocks: [],
 };
 
-if (localStorage.getItem('stones')) {
-    INITIAL_STATE.stones = JSON.parse(
-        localStorage.getItem('stones')
-    );    
+if (localStorage.getItem('rocks')) {
+    INITIAL_STATE.rocks = JSON.parse(
+        localStorage.getItem('rocks')
+    );
 } else {
-    INITIAL_STATE.stones = [];
+    INITIAL_STATE.rocks = [];
 }
 
 const rockReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CREATE_ROCK:
             return {
-                stones: [...state.stones, action.payload],
+                rocks: [...state.rocks, action.payload],
             };
-        case GET_STONES: 
+        case GET_ROCKS:
             return {
-                stones: [...action.payload],
+                rocks: [...action.payload],
             };
-        case GET_STONE:
+        case GET_ROCK:
 			return {
 				rock: action.payload,
 			};
         case DELETE_ROCK:
             return {
-                stones: state.stones.filter(
+                rocks: state.rocks.filter(
                     r => r._id !== action.payload._id
                 ),
-            };    
-        default: 
-            return state;    
+            };
+        default:
+            return state;
     }
 };
 

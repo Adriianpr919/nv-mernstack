@@ -4,11 +4,11 @@ import {
     SHOW_ERROR_MESSAGE,
     SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
-import { 
-    CREATE_GOLDEN, 
-    GET_GOLDS,
-    GET_GOLD,
-    DELETE_GOLDEN, 
+import {
+    CREATE_GOLDEN,
+    GET_GOLDENS,
+    GET_GOLDEN,
+    DELETE_GOLDEN,
 } from '../constants/goldenConstants';
 
 export const createGolden = formData => async dispatch => {
@@ -16,60 +16,60 @@ export const createGolden = formData => async dispatch => {
         dispatch({ type: START_LOADING });
         const response = await axios.post('/api/golden', formData);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_SUCCESS_MESSAGE, 
-            payload: response.data.successMessage, 
+        dispatch({
+            type: SHOW_SUCCESS_MESSAGE,
+            payload: response.data.successMessage,
         });
-        dispatch({ 
-            type: CREATE_GOLDEN, 
-            payload: response.data.golden, 
+        dispatch({
+            type: CREATE_GOLDEN,
+            payload: response.data.golden,
         });
 
-        localStorage.setItem('createGolden', JSON.stringify(formData));
+        window.localStorage.setItem('createGolden', JSON.stringify(formData));
     } catch (err) {
         console.log('createGolden API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_ERROR_MESSAGE, 
-            payload: err.response.data.errorMessage, 
+        dispatch({
+            type: SHOW_ERROR_MESSAGE,
+            payload: err.response.data.errorMessage,
         });
     }
 };
 
-export const getGolds = () => async dispatch => {
+export const getGoldens = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
         const response = await axios.get('/api/golden');
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: GET_GOLDS, 
-            payload: response.data.golds, 
+        dispatch({
+            type: GET_GOLDENS,
+            payload: response.data.goldens,
         });
 
-        localStorage.setItem('userGolds', JSON.stringify());
+        window.localStorage.setItem('getGoldens', JSON.stringify());
     } catch (err) {
-        console.log('getGolds API Error: ', err);
+        console.log('getGoldens API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_ERROR_MESSAGE, 
-            payload: err.response.data.errorMessage, 
+        dispatch({
+            type: SHOW_ERROR_MESSAGE,
+            payload: err.response.data.errorMessage,
         });
     }
 };
 
-export const getGoldsByCount = () => async dispatch => {
+export const getGoldensByCount = () => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
 		const response = await axios.get('/api/golden/count');
 		dispatch({ type: STOP_LOADING });
 		dispatch({
-			type: GET_GOLDS,
-			payload: response.data.golds,
+			type: GET_GOLDENS,
+			payload: response.data.goldens,
 		});
 
-        localStorage.setItem('userGolds', JSON.stringify());
+        window.localStorage.setItem('getGoldensByCount', JSON.stringify());
 	} catch (err) {
-		console.log('getGolds API error: ', err);
+		console.log('getGoldensByCount API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,
@@ -78,19 +78,19 @@ export const getGoldsByCount = () => async dispatch => {
 	}
 };
 
-export const getGold = goldenId => async dispatch => {
+export const getGolden = goldenId => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
 		const response = await axios.get(`/api/golden/${goldenId}`);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
-			type: GET_GOLD,
+			type: GET_GOLDEN,
 			payload: response.data,
 		});
 
-        localStorage.setItem('userGolds', JSON.stringify(goldenId));
+        window.localStorage.setItem('getGolden', JSON.stringify(goldenId));
 	} catch (err) {
-		console.log('getGolds API error: ', err);
+		console.log('getGolden API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,
@@ -109,7 +109,7 @@ export const deleteGolden = goldenId => async dispatch => {
             payload: response.data,
         });
 
-        localStorage.removeItem('deleteGolden', JSON.stringify(goldenId));
+        window.localStorage.removeItem('deleteGolden', JSON.stringify(goldenId));
     } catch (err) {
         console.log('deleteGolden API error: ', err);
         dispatch({ type: STOP_LOADING });

@@ -4,7 +4,7 @@ import './AdminGoldView.css';
 import { useDispatch } from 'react-redux';
 import { deleteGolden } from '../redux/actions/goldenActions';
 
-const AdminGoldViewModal = ({ g, adminPage = false }) => {
+const AdminGoldViewModal = ({ golden }) => {
     const dispatch = useDispatch();
     return (
         <>
@@ -23,7 +23,7 @@ const AdminGoldViewModal = ({ g, adminPage = false }) => {
                                         <a className="product-thumb" href="#!">
                                             <img
                                                 className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsGolden/${g.fileName}`}
+                                                src={`/uploadsGolden/${golden.fileName}`}
                                                 style={{maxWidth: "100px"}}
                                                 alt="C. De Oro."
                                                 title="C. De Oro."
@@ -32,30 +32,28 @@ const AdminGoldViewModal = ({ g, adminPage = false }) => {
                                         <div className="product-info">
                                             <a href="#!">
                                                 <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                    {g.productName}
+                                                    {golden.productName}
                                                 </h2>
                                             </a>
                                             <span>
                                                 <em className='text-success'>
-                                                    {g.productCategory}
+                                                    {golden.productCategory}
                                                 </em>
                                             </span>
                                             <span>
                                                 <em>
-                                                    {adminPage && (
-                                                        <>
-                                                            <button
-                                                                type='button'
-                                                                className='btn btn-outline-danger btn-sm'
-                                                                onClick={() =>
-                                                                    dispatch(deleteGolden(g._id))
-                                                                }
-                                                            >
-                                                                <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminada" title="Eliminada"></i>
-                                                                Borrar.
-                                                            </button>
-                                                        </>
-                                                    )}
+                                                    <>
+                                                        <button
+                                                            type='button'
+                                                            className='btn btn-outline-danger btn-sm'
+                                                            onClick={() =>
+                                                                dispatch(deleteGolden(golden._id))
+                                                            }
+                                                        >
+                                                            <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminada" title="Eliminada"></i>
+                                                            Borrar.
+                                                        </button>
+                                                    </>
                                                 </em>
                                             </span>
                                         </div>

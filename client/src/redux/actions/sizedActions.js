@@ -4,11 +4,11 @@ import {
     SHOW_ERROR_MESSAGE,
     SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
-import { 
-    CREATE_SIZED, 
-    GET_SIZES,
-    GET_SIZE,
-    DELETE_SIZED, 
+import {
+    CREATE_SIZED,
+    GET_SIZEDS,
+    GET_SIZED,
+    DELETE_SIZED,
 } from '../constants/sizedConstants';
 
 export const createSized = formData => async dispatch => {
@@ -16,60 +16,60 @@ export const createSized = formData => async dispatch => {
         dispatch({ type: START_LOADING });
         const response = await axios.post('/api/sized', formData);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_SUCCESS_MESSAGE, 
-            payload: response.data.successMessage, 
+        dispatch({
+            type: SHOW_SUCCESS_MESSAGE,
+            payload: response.data.successMessage,
         });
-        dispatch({ 
-            type: CREATE_SIZED, 
-            payload: response.data.sized, 
+        dispatch({
+            type: CREATE_SIZED,
+            payload: response.data.sized,
         });
 
-        localStorage.setItem('createSized', JSON.stringify(formData));
+        window.localStorage.setItem('createSized', JSON.stringify(formData));
     } catch (err) {
         console.log('createSized API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_ERROR_MESSAGE, 
-            payload: err.response.data.errorMessage, 
+        dispatch({
+            type: SHOW_ERROR_MESSAGE,
+            payload: err.response.data.errorMessage,
         });
     }
 };
 
-export const getSizes = () => async dispatch => {
+export const getSizeds = () => async dispatch => {
     try {
         dispatch({ type: START_LOADING });
         const response = await axios.get('/api/sized');
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: GET_SIZES, 
-            payload: response.data.sizes, 
+        dispatch({
+            type: GET_SIZEDS,
+            payload: response.data.sizeds,
         });
 
-        localStorage.setItem('userSizes', JSON.stringify());
+        window.localStorage.setItem('getSizeds', JSON.stringify());
     } catch (err) {
-        console.log('getSizes API Error: ', err);
+        console.log('getSizeds API Error: ', err);
         dispatch({ type: STOP_LOADING });
-        dispatch({ 
-            type: SHOW_ERROR_MESSAGE, 
-            payload: err.response.data.errorMessage, 
+        dispatch({
+            type: SHOW_ERROR_MESSAGE,
+            payload: err.response.data.errorMessage,
         });
     }
 };
 
-export const getSizesByCount = () => async dispatch => {
+export const getSizedsByCount = () => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
 		const response = await axios.get('/api/sized/count');
 		dispatch({ type: STOP_LOADING });
 		dispatch({
-			type: GET_SIZES,
-			payload: response.data.sizes,
+			type: GET_SIZEDS,
+			payload: response.data.sizeds,
 		});
 
-        localStorage.setItem('userSizes', JSON.stringify());
+        window.localStorage.setItem('getSizedsByCount', JSON.stringify());
 	} catch (err) {
-		console.log('getSizes API error: ', err);
+		console.log('getSizedsByCount API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,
@@ -78,19 +78,19 @@ export const getSizesByCount = () => async dispatch => {
 	}
 };
 
-export const getSize = sizedId => async dispatch => {
+export const getSized = sizedId => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
 		const response = await axios.get(`/api/sized/${sizedId}`);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
-			type: GET_SIZE,
+			type: GET_SIZED,
 			payload: response.data,
 		});
 
-        localStorage.setItem('userSizes', JSON.stringify(sizedId));
+        window.localStorage.setItem('getSized', JSON.stringify(sizedId));
 	} catch (err) {
-		console.log('getSizes API error: ', err);
+		console.log('getSized API error: ', err);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_ERROR_MESSAGE,
@@ -109,9 +109,9 @@ export const deleteSized = sizedId => async dispatch => {
             payload: response.data,
         });
 
-        localStorage.removeItem('deleteSized', JSON.stringify(sizedId));
+        window.localStorage.removeItem('deleteSized', JSON.stringify(sizedId));
     } catch (err) {
-        console.log('deleteSize API error: ', err);
+        console.log('deleteSized API error: ', err);
         dispatch({ type: STOP_LOADING });
         dispatch({
             type: SHOW_ERROR_MESSAGE,

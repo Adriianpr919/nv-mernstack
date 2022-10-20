@@ -4,7 +4,7 @@ import AdminGoldViewModal from './AdminGoldViewModal';
 import { useSelector } from 'react-redux';
 
 const AdminBodyGold = () => {
-    const { golds } = useSelector(state => state.golds);
+    const { goldens } = useSelector(state => state.goldens);
     return (
         <>
             <div id="viewGoldModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog">
@@ -21,12 +21,11 @@ const AdminBodyGold = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {golds &&
-                                golds.map((g) => (
+                            {goldens &&
+                                goldens.map((golden) => (
                                     <AdminGoldViewModal
-                                        key={g._id}
-                                        g={g}
-                                        adminPage={true}
+                                        key={golden._id}
+                                        golden={golden}
                                     />
                             ))}
                         </div>

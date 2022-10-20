@@ -33,12 +33,12 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const golds = await Golden.find({}).populate(
+        const goldens = await Golden.find({}).populate(
 			'productCategory',
 			'category'
 		);
 
-        res.json({ golds, });
+        res.json({ goldens });
     } catch (err) {
         console.log(err, 'goldenController.readAll error');
         res.status(500).json({
@@ -49,11 +49,11 @@ exports.readAll = async (req, res) => {
 
 exports.readByCount = async (req, res) => {
 	try {
-		const golds = await Golden.find({})
+		const goldens = await Golden.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
 
-		res.json({ golds, });
+		res.json({ goldens });
 	} catch (err) {
 		console.log(err, 'goldenController.readAll error');
 		res.status(500).json({

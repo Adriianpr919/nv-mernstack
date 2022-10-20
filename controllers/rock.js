@@ -33,12 +33,12 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const stones = await Rock.find({}).populate(
+        const rocks = await Rock.find({}).populate(
 			'productCategory',
 			'category'
 		);
 
-        res.json({ stones, });
+        res.json({ rocks });
     } catch (err) {
         console.log(err, 'rockController.readAll error');
         res.status(500).json({
@@ -49,11 +49,11 @@ exports.readAll = async (req, res) => {
 
 exports.readByCount = async (req, res) => {
 	try {
-		const stones = await Rock.find({})
+		const rocks = await Rock.find({})
 			.populate('productCategory', 'category')
 			.limit(6);
 
-		res.json({ stones, });
+		res.json({ rocks });
 	} catch (err) {
 		console.log(err, 'rockController.readAll error');
 		res.status(500).json({
