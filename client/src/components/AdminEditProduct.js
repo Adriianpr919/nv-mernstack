@@ -7,6 +7,9 @@ import { getProduct } from '../redux/actions/productActions';
 import { getCategories } from '../redux/actions/categoryActions';
 import './AdminEditProduct.css';
 
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
 const AdminEditProduct = () => {
     /****************************
 	 * PARAMS
@@ -16,6 +19,40 @@ const AdminEditProduct = () => {
 	/****************************
 	 * REDUX GLOBAL STATE PROPERTIES
 	 ***************************/
+	const animatedComponents = makeAnimated();
+	const options1 = [
+				{ value: "produto 01", label: "Produto 01" },
+				{ value: "produto 02", label: "Produto 02" },
+				{ value: "produto 03", label: "Produto 03" },
+				{ value: "produto 04", label: "Produto 04" },
+				{ value: "produto 05", label: "Produto 05" },
+				{ value: "produto 06", label: "Produto 06" },
+				{ value: "produto 07", label: "Produto 07" },
+				{ value: "produto 08", label: "Produto 08" },
+	];
+
+	const options2 = [
+				{ value: "produto 01", label: "Produto 01" },
+				{ value: "produto 02", label: "Produto 02" },
+				{ value: "produto 03", label: "Produto 03" },
+				{ value: "produto 04", label: "Produto 04" },
+				{ value: "produto 05", label: "Produto 05" },
+				{ value: "produto 06", label: "Produto 06" },
+				{ value: "produto 07", label: "Produto 07" },
+				{ value: "produto 08", label: "Produto 08" },
+	];
+
+	const options3 = [
+				{ value: "produto 01", label: "Produto 01" },
+				{ value: "produto 02", label: "Produto 02" },
+				{ value: "produto 03", label: "Produto 03" },
+				{ value: "produto 04", label: "Produto 04" },
+				{ value: "produto 05", label: "Produto 05" },
+				{ value: "produto 06", label: "Produto 06" },
+				{ value: "produto 07", label: "Produto 07" },
+				{ value: "produto 08", label: "Produto 08" },
+	];
+
 	const dispatch = useDispatch();
 	const { product } = useSelector(state => state.products);
 	const { categories } = useSelector(state => state.categories);
@@ -284,6 +321,19 @@ const AdminEditProduct = () => {
 																<div className="col-12 mb-2">
 																	{/* TALLA */}
 																	TALLA TAGS
+																	<Select
+																		defaultValue={[options1[0], options1[2]]}
+																		components={animatedComponents}
+																		isMulti
+																		options={options1}
+																		className="select"
+																		isClearable={true}
+																		isSearchable={true}
+																		isDisabled={false}
+																		isLoading={false}
+																		isRtl={false}
+																		closeMenuOnSelect={false}
+																	/>
 																</div>
 																<div className="col-12 mb-2">
 																	<div className="form-check">
@@ -311,10 +361,36 @@ const AdminEditProduct = () => {
 																<div className="col-12 mb-2">
 																	{/* ORO */}
 																	ORO TAGS
+																	<Select
+																		defaultValue={[options2[0], options2[2]]}
+																		components={animatedComponents}
+																		isMulti
+																		options={options2}
+																		className="select"
+																		isClearable={true}
+																		isSearchable={true}
+																		isDisabled={false}
+																		isLoading={false}
+																		isRtl={false}
+																		closeMenuOnSelect={false}
+																	/>
 																</div>
 																<div className="col-12 mb-2">
 																	{/* PIEDRA */}
 																	PIEDRA TAGS
+																	<Select
+																		defaultValue={[options3[0], options3[2]]}
+																		components={animatedComponents}
+																		isMulti
+																		options={options3}
+																		className="select"
+																		isClearable={true}
+																		isSearchable={true}
+																		isDisabled={false}
+																		isLoading={false}
+																		isRtl={false}
+																		closeMenuOnSelect={false}
+																	/>
 																</div>
 															</div>
 														</fieldset>
