@@ -1,6 +1,6 @@
 Proyecto Plataforma Joyería.
 -------------------------------------------------------
-imgProyecto.png
+![image](https://user-images.githubusercontent.com/54821048/198652153-9239216c-83be-47b2-b49f-76ab376f7741.png)
 -------------------------------------------------------
 Como arrancar el proyecto
 Primero dirijase al package.json para ver los scripts.
