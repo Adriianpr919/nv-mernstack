@@ -1,30 +1,27 @@
 const Golden = require('../models/Golden');
-const fs = require('fs');
 
 exports.create = async (req, res) => {
-    const {
-        filename,
-    } = req.file;
-    const {
-        productName,
-        productCategory,
-    } = req.body;
+    const { golden } = req.body;
 
     try {
-        let golden = new Golden();
+        const goldenExist = await Golden.findOne({ golden });
+        if (goldenExist) {
+            return res.status(400).json({
+                errorMessage: `${golden} El Color De Oro Ya Existe.`,
+            });
+        }
 
-        golden.fileName = filename;
-        golden.productName = productName;
-        golden.productCategory = productCategory;
+        let newGolden = new Golden();
+        newGolden.golden = golden;
 
-        await golden.save();
+        newGolden = await newGolden.save();
 
-        res.json({
-            successMessage: `${productName} Fue Creado Con Éxito.`,
-            golden,
+        res.status(200).json({
+            golden: newGolden,
+            successMessage: `${newGolden.golden} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
-        console.log(err, 'goldenController.create error');
+        console.log('Error De Creación De Color De Oro: ', err);
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -33,68 +30,16 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const goldens = await Golden.find({}).populate(
-			'productCategory',
-			'category'
-		);
-
-        res.json({ goldens });
+        const goldens = await Golden.find({});
+        res.status(200).json({
+            goldens,
+        });
     } catch (err) {
-        console.log(err, 'goldenController.readAll error');
+        console.log('Error De Color De Oro readAll: ', err);
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
-};
-
-exports.readByCount = async (req, res) => {
-	try {
-		const goldens = await Golden.find({})
-			.populate('productCategory', 'category')
-			.limit(6);
-
-		res.json({ goldens });
-	} catch (err) {
-		console.log(err, 'goldenController.readAll error');
-		res.status(500).json({
-			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
-		});
-	}
-};
-
-exports.read = async (req, res) => {
-	try {
-		const goldenId = req.params.goldenId;
-		const golden = await Golden.findById(goldenId);
-
-		res.json(golden);
-	} catch (err) {
-		console.log(err, 'goldenController.read error');
-		res.status(500).json({
-			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
-		});
-	}
-};
-
-exports.update = async (req, res) => {
-	const goldenId = req.params.goldenId;
-
-	if (req.file !== undefined) {
-		req.body.fileName = req.file.filename;
-	}
-
-	const oldGolden = await Golden.findByIdAndUpdate(goldenId, req.body);
-
-	if (req.file !== undefined && req.file.filename !== oldGolden.fileName) {
-		fs.unlink(`uploadsGolden/${oldGolden.fileName}`, err => {
-			if (err) throw err;
-			console.log('Imagen Eliminada Del Sistema De Archivos.');
-		});
-	}
-
-	res.json({
-		successMessage: 'Oro Actualizado Con Éxito.',
-	});
 };
 
 exports.delete = async (req, res) => {
@@ -102,19 +47,11 @@ exports.delete = async (req, res) => {
         const goldenId = req.params.goldenId;
         const deletedGolden = await Golden.findByIdAndDelete(goldenId);
 
-        fs.unlink(`uploadsGolden/${deletedGolden.fileName}`, err => {
-            if (err) throw err;
-            console.log(
-                'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
-                deletedGolden.fileName
-            );
-        });
-
         res.json(deletedGolden);
     } catch (err) {
         console.log(err, 'goldenController.delete error');
         res.status(500).json({
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };

@@ -22,8 +22,8 @@ exports.create = async (req, res) => {
         });
     } catch (err) {
         console.log('Error De Creación De Categoría: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };
@@ -36,10 +36,10 @@ exports.readAll = async (req, res) => {
         });
     } catch (err) {
         console.log('Error Categoría readAll: ', err);
-        res.status(500).json({ 
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.', 
+        res.status(500).json({
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
-    }   
+    }
 };
 
 exports.delete = async (req, res) => {
@@ -51,7 +51,7 @@ exports.delete = async (req, res) => {
     } catch (err) {
         console.log(err, 'categoryController.delete error');
         res.status(500).json({
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };

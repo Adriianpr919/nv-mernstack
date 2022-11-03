@@ -1,30 +1,27 @@
 const Sized = require('../models/Sized');
-const fs = require('fs');
 
 exports.create = async (req, res) => {
-    const {
-        filename,
-    } = req.file;
-    const {
-        productName,
-        productCategory,
-    } = req.body;
+    const { sized } = req.body;
 
     try {
-        let sized = new Sized();
+        const sizedExist = await Sized.findOne({ sized });
+        if (sizedExist) {
+            return res.status(400).json({
+                errorMessage: `${sized} La Talla Ya Existe.`,
+            });
+        }
 
-        sized.fileName = filename;
-        sized.productName = productName;
-        sized.productCategory = productCategory;
+        let newSized = new Sized();
+        newSized.sized = sized;
 
-        await sized.save();
+        newSized = await newSized.save();
 
-        res.json({
-            successMessage: `${productName} Fue Creado Con Éxito.`,
-            sized,
+        res.status(200).json({
+            sized: newSized,
+            successMessage: `${newSized.sized} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
-        console.log(err, 'sizedController.create error');
+        console.log('Error De Creación De Talla: ', err);
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -33,68 +30,16 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const sizeds = await Sized.find({}).populate(
-			'productCategory',
-			'category'
-		);
-
-        res.json({ sizeds });
+        const sizeds = await Sized.find({});
+        res.status(200).json({
+            sizeds,
+        });
     } catch (err) {
-        console.log(err, 'sizedController.readAll error');
+        console.log('Error Talla readAll: ', err);
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
-};
-
-exports.readByCount = async (req, res) => {
-	try {
-		const sizeds = await Sized.find({})
-			.populate('productCategory', 'category')
-			.limit(6);
-
-		res.json({ sizeds });
-	} catch (err) {
-		console.log(err, 'sizedController.readAll error');
-		res.status(500).json({
-			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
-		});
-	}
-};
-
-exports.read = async (req, res) => {
-	try {
-		const sizedId = req.params.sizedId;
-		const sized = await Sized.findById(sizedId);
-
-		res.json(sized);
-	} catch (err) {
-		console.log(err, 'sizedController.read error');
-		res.status(500).json({
-			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
-		});
-	}
-};
-
-exports.update = async (req, res) => {
-	const sizedId = req.params.sizedId;
-
-	if (req.file !== undefined) {
-		req.body.fileName = req.file.filename;
-	}
-
-	const oldSized = await Sized.findByIdAndUpdate(sizedId, req.body);
-
-	if (req.file !== undefined && req.file.filename !== oldSized.fileName) {
-		fs.unlink(`uploadsSized/${oldSized.fileName}`, err => {
-			if (err) throw err;
-			console.log('Imagen Eliminada Del Sistema De Archivos.');
-		});
-	}
-
-	res.json({
-		successMessage: 'Talla Actualizado Con Éxito.',
-	});
 };
 
 exports.delete = async (req, res) => {
@@ -102,19 +47,11 @@ exports.delete = async (req, res) => {
         const sizedId = req.params.sizedId;
         const deletedSized = await Sized.findByIdAndDelete(sizedId);
 
-        fs.unlink(`uploadsSized/${deletedSized.fileName}`, err => {
-            if (err) throw err;
-            console.log(
-                'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
-                deletedSized.fileName
-            );
-        });
-
         res.json(deletedSized);
     } catch (err) {
         console.log(err, 'sizedController.delete error');
         res.status(500).json({
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };

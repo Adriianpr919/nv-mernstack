@@ -6,80 +6,47 @@ import { showLoading } from '../helpers/loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
 import { createSized } from '../redux/actions/sizedActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const AdminSizeModal = () => {
     /****************************
-	 * REDUX GLOBAL STATE PROPERTIES
-	 ***************************/
-    const { loading } = useSelector(state => state.loading);
+     * REDUX GLOBAL STATE PROPERTIES
+     ***************************/
     const { successMsg, errorMsg } = useSelector(state => state.messages);
-    const { categories } = useSelector(state => state.categories);
+    const { loading } = useSelector(state => state.loading);
 
     const dispatch = useDispatch();
     /****************************
-	 * COMPONENT STATE PROPERTIES
-	 ***************************/
-    const [clientSideError, setClientSideError] = useState('');
-    const [sizedData, setSizedData] = useState({
-        productImage: null,
-        productName: '',
-        productCategory: '',
-    });
-    const {
-        productImage,
-        productName,
-        productCategory,
-    } = sizedData;
+     * COMPONENT STATE PROPERTIES
+     ***************************/
+    const [sized, setSized] = useState('');
+    const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
     /****************************
-	 * EVENT HANDLERS
-	 ***************************/
+     * EVENT HANDLERS
+     ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
-        setClientSideError('');
     };
 
     const handleSizedChange = (evt) => {
-        setSizedData({
-            ...sizedData,
-            [evt.target.name]: evt.target.value,
-        });
-    };
-
-    const handleSizedImage = (evt) => {
-        console.log(evt.target.files[0]);
-        setSizedData({
-            ...sizedData,
-            [evt.target.name]: evt.target.files[0],
-        });
+        dispatch(clearMessages());
+        setSized(evt.target.value);
     };
 
     const handleSizedSubmit = (evt) => {
         evt.preventDefault();
 
-        if (productImage === null) {
-            setClientSideError("Seleccionar Una Imagen Con .png");
-        } else if (isEmpty(productName)) {
-            setClientSideError("Todos Los Campos Son Obligatorios.");
-        }  else if (isEmpty(productCategory)) {
-            setClientSideError("Por favor Seleccionar Una Categoría.");
+        if (isEmpty(sized)) {
+            setClientSideErrorMsg("Por favor Ingrese La Talla.");
         } else {
-            let formData = new FormData();
-
-            formData.append('productImage', productImage);
-            formData.append('productName', productName);
-            formData.append('productCategory', productCategory);
-
-            dispatch(createSized(formData));
-            setSizedData({
-                productImage: null,
-                productName: '',
-                productCategory: '',
-            });
+            const data = { sized };
+            dispatch(createSized(data));
+            setSized('');
         }
     };
     /****************************
-	 * RENDERER
-	 ***************************/
+     * RENDERER
+     ***************************/
     return (
         <div id="addSizeModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -96,106 +63,61 @@ const AdminSizeModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                        {clientSideError &&
-                            showErrorMsg(clientSideError)}
-                        {errorMsg && showErrorMsg(errorMsg)}
-                        {successMsg && showSuccessMsg(successMsg)}
+                            {clientSideErrorMsg &&
+                                showErrorMsg(clientSideErrorMsg)}
+                            {errorMsg && showErrorMsg(errorMsg)}
+                            {successMsg && showSuccessMsg(successMsg)}
 
-                        {loading ? (
-                            <div className="text-center">
-                                {showLoading()}
-                            </div>
-                        ) : (
-                            <Fragment>
-                                <div className="container">
-                                    <div className="panel panel-default">
-                                        <div className="panel-heading">
-                                            <i className='fas fa-camera-retro'></i> IMPORTANTE *:
-                                        </div>
-                                        <div className="panel-body">
-                                            <fieldset className="col-12 mb-2 border border-secondary">
-                                                <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
-
-                                                <div className="panel panel-default">
-                                                    <div className="panel-body">
-                                                        <div className="row">
-                                                            <div className="col-12 mb-2">
-                                                                <label
-                                                                    htmlFor="addFile"
-                                                                    className="text-secondary">
-                                                                        <i className="fas fa-upload"></i> Foto Talla. *:
-                                                                </label>
-                                                                <div className="input-group mb-3">
-                                                                    <div className="input-group-prepend">
-                                                                        <span className="input-group-text" id="customFileLang">Subir.</span>
-                                                                    </div>
-                                                                    <div className="custom-file">
-                                                                        <input
-                                                                        type="file"
-                                                                        name='productImage'
-                                                                        onChange={handleSizedImage}
-                                                                        className="custom-file-input"
-                                                                        id="customFileLang"
-                                                                        aria-describedby="customFileLang"
-                                                                        data-browse="Elegir"
-                                                                        lang="es" />
-                                                                        <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
-                                                                            <i className="fas fa-upload"></i> Foto Talla. *:
-                                                                        </label>
-                                                                    </div>
+                            {loading ? (
+                                <div className="text-center">
+                                    {showLoading()}
+                                </div>
+                            ) : (
+                                <Fragment>
+                                    <div className="container">
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading">
+                                                <FontAwesomeIcon icon="fa-solid fa-triangle-exclamation" /> IMPORTANTE *:
+                                            </div>
+                                            <div className="panel-body">
+                                                <fieldset className="col-12 mb-2 border border-secondary">
+                                                    <legend>
+                                                        POR FAVOR TIENES QUE ESCRIBIR ASI
+                                                        <span>
+                                                            <b>
+                                                                <code>
+                                                                    "Con Mayuscula."
+                                                                </code>
+                                                            </b>
+                                                        </span>
+                                                    </legend>
+                                                    <div className="panel panel-default">
+                                                        <div className="panel-body">
+                                                            <div className="row">
+                                                                <div className="col-12 mb-2">
+                                                                    <label
+                                                                        htmlFor="addSize"
+                                                                        className="text-secondary">
+                                                                        <i className="fas fa-plus-circle"></i> Añadir Talla. *:
+                                                                    </label>
+                                                                    <input
+                                                                        type="text"
+                                                                        name='sized'
+                                                                        value={sized}
+                                                                        onChange={handleSizedChange}
+                                                                        className="form-control"
+                                                                        placeholder="Añadir Talla."
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                            </fieldset>
+                                                </fieldset>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="col-12 mb-2">
-                                            <label
-                                                htmlFor="addSize"
-                                                className="text-secondary">
-                                                    <i className="fas fa-plus-circle"></i> Añadir Talla. *:
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name='productName'
-                                                value={productName}
-                                                onChange={handleSizedChange}
-                                                className="form-control"
-                                                placeholder="Añadir Talla."
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12 mb-2">
-                                            <label
-                                                htmlFor="addCategory"
-                                                className="text-secondary">
-                                                    <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
-                                            </label>
-                                            <select
-                                            name='productCategory'
-                                            onChange={handleSizedChange}
-                                            className="custom-select mr-sm-2"
-                                            aria-label="Selecciónar Categorías.">
-                                                <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                                {categories &&
-                                                    categories.map((c) => (
-                                                    <option
-                                                    key={c._id}
-                                                    value={c._id}>
-                                                        {c.category}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Fragment>
-                        )}
+                                </Fragment>
+                            )}
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-outline-danger" data-dismiss="modal">

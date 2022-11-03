@@ -1,7 +1,6 @@
 import {
-    CREATE_SIZED,
     GET_SIZEDS,
-    GET_SIZED,
+    CREATE_SIZED,
     DELETE_SIZED,
 } from '../constants/sizedConstants';
 
@@ -19,22 +18,20 @@ if (localStorage.getItem('sizeds')) {
 
 const sizedReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case CREATE_SIZED:
-            return {
-                sizeds: [...state.sizeds, action.payload],
-            };
         case GET_SIZEDS:
             return {
-                sizeds: [...action.payload],
+                ...state,
+                sizeds: action.payload,
             };
-        case GET_SIZED:
+        case CREATE_SIZED:
             return {
-                sized: action.payload,
+                ...state,
+                sizeds: [...state.sizeds, action.payload],
             };
         case DELETE_SIZED:
             return {
                 sizeds: state.sizeds.filter(
-                    s => s._id !== action.payload._id
+                    (s) => s._id !== action.payload._id
                 ),
             };
         default:

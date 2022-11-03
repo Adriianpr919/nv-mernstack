@@ -1,7 +1,6 @@
 import {
-    CREATE_GOLDEN,
     GET_GOLDENS,
-    GET_GOLDEN,
+    CREATE_GOLDEN,
     DELETE_GOLDEN,
 } from '../constants/goldenConstants';
 
@@ -19,22 +18,20 @@ if (localStorage.getItem('goldens')) {
 
 const goldenReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case CREATE_GOLDEN:
-            return {
-                goldens: [...state.goldens, action.payload],
-            };
         case GET_GOLDENS:
             return {
-                goldens: [...action.payload],
+                ...state,
+                goldens: action.payload,
             };
-        case GET_GOLDEN:
+        case CREATE_GOLDEN:
             return {
-                golden: action.payload,
+                ...state,
+                goldens: [...state.goldens, action.payload],
             };
         case DELETE_GOLDEN:
             return {
                 goldens: state.goldens.filter(
-                    g => g._id !== action.payload._id
+                    (g) => g._id !== action.payload._id
                 ),
             };
         default:

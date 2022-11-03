@@ -1,30 +1,27 @@
 const Rock = require('../models/Rock');
-const fs = require('fs');
 
 exports.create = async (req, res) => {
-    const {
-        filename,
-    } = req.file;
-    const {
-        productName,
-        productCategory,
-    } = req.body;
+    const { rock } = req.body;
 
     try {
-        let rock = new Rock();
+        const rockExist = await Rock.findOne({ rock });
+        if (rockExist) {
+            return res.status(400).json({
+                errorMessage: `${rock} El Color De Piedra Ya Existe.`,
+            });
+        }
 
-        rock.fileName = filename;
-        rock.productName = productName;
-        rock.productCategory = productCategory;
+        let newRock = new Rock();
+        newRock.rock = rock;
 
-        await rock.save();
+        newRock = await newRock.save();
 
-        res.json({
-            successMessage: `${productName} Fue Creado Con Éxito.`,
-            rock,
+        res.status(200).json({
+            rock: newRock,
+            successMessage: `${newRock.rock} ¡Ha Sido Éxitoso.!`,
         });
     } catch (err) {
-        console.log(err, 'rockController.create error');
+        console.log('Error De Creación De Color De Piedra: ', err);
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
@@ -33,68 +30,16 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
     try {
-        const rocks = await Rock.find({}).populate(
-			'productCategory',
-			'category'
-		);
-
-        res.json({ rocks });
+        const rocks = await Rock.find({});
+        res.status(200).json({
+            rocks,
+        });
     } catch (err) {
-        console.log(err, 'rockController.readAll error');
+        console.log('Error Color De Piedra readAll: ', err);
         res.status(500).json({
             errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
-};
-
-exports.readByCount = async (req, res) => {
-	try {
-		const rocks = await Rock.find({})
-			.populate('productCategory', 'category')
-			.limit(6);
-
-		res.json({ rocks });
-	} catch (err) {
-		console.log(err, 'rockController.readAll error');
-		res.status(500).json({
-			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
-		});
-	}
-};
-
-exports.read = async (req, res) => {
-	try {
-		const rockId = req.params.rockId;
-		const rock = await Rock.findById(rockId);
-
-		res.json(rock);
-	} catch (err) {
-		console.log(err, 'rockController.read error');
-		res.status(500).json({
-			errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
-		});
-	}
-};
-
-exports.update = async (req, res) => {
-	const rockId = req.params.rockId;
-
-	if (req.file !== undefined) {
-		req.body.fileName = req.file.filename;
-	}
-
-	const oldRock = await Rock.findByIdAndUpdate(rockId, req.body);
-
-	if (req.file !== undefined && req.file.filename !== oldRock.fileName) {
-		fs.unlink(`uploadsRock/${oldRock.fileName}`, err => {
-			if (err) throw err;
-			console.log('Imagen Eliminada Del Sistema De Archivos.');
-		});
-	}
-
-	res.json({
-		successMessage: 'Piedra Actualizado Con Éxito.',
-	});
 };
 
 exports.delete = async (req, res) => {
@@ -102,19 +47,11 @@ exports.delete = async (req, res) => {
         const rockId = req.params.rockId;
         const deletedRock = await Rock.findByIdAndDelete(rockId);
 
-        fs.unlink(`uploadsRock/${deletedRock.fileName}`, err => {
-            if (err) throw err;
-            console.log(
-                'Imagen Eliminada Con Éxito Del Sistema De Archivos: ',
-                deletedRock.fileName
-            );
-        });
-
         res.json(deletedRock);
     } catch (err) {
         console.log(err, 'rockController.delete error');
         res.status(500).json({
-            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde',
+            errorMessage: 'Por Favor, Inténtelo De Nuevo Más Tarde.',
         });
     }
 };

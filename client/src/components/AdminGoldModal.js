@@ -6,80 +6,47 @@ import { showLoading } from '../helpers/loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearMessages } from '../redux/actions/messageActions';
 import { createGolden } from '../redux/actions/goldenActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const AdminGoldModal = () => {
     /****************************
-	 * REDUX GLOBAL STATE PROPERTIES
-	 ***************************/
-    const { loading } = useSelector(state => state.loading);
+     * REDUX GLOBAL STATE PROPERTIES
+     ***************************/
     const { successMsg, errorMsg } = useSelector(state => state.messages);
-    const { categories } = useSelector(state => state.categories);
+    const { loading } = useSelector(state => state.loading);
 
     const dispatch = useDispatch();
     /****************************
-	 * COMPONENT STATE PROPERTIES
-	 ***************************/
-    const [clientSideError, setClientSideError] = useState('');
-    const [goldenData, setGoldenData] = useState({
-        productImage: null,
-        productName: '',
-        productCategory: '',
-    });
-    const {
-        productImage,
-        productName,
-        productCategory,
-    } = goldenData;
+     * COMPONENT STATE PROPERTIES
+     ***************************/
+    const [golden, setGolden] = useState('');
+    const [clientSideErrorMsg, setClientSideErrorMsg] = useState('');
     /****************************
-	 * EVENT HANDLERS
-	 ***************************/
+     * EVENT HANDLERS
+     ***************************/
     const handleMessages = (_evt) => {
         dispatch(clearMessages());
-        setClientSideError('');
     };
 
     const handleGoldenChange = (evt) => {
-        setGoldenData({
-            ...goldenData,
-            [evt.target.name]: evt.target.value,
-        });
-    };
-
-    const handleGoldenImage = (evt) => {
-        console.log(evt.target.files[0]);
-        setGoldenData({
-            ...goldenData,
-            [evt.target.name]: evt.target.files[0],
-        });
+        dispatch(clearMessages());
+        setGolden(evt.target.value);
     };
 
     const handleGoldenSubmit = (evt) => {
         evt.preventDefault();
 
-        if (productImage === null) {
-            setClientSideError("Seleccionar Una Imagen Con .png");
-        } else if (isEmpty(productName)) {
-            setClientSideError("Todos Los Campos Son Obligatorios.");
-        } else if (isEmpty(productCategory)) {
-            setClientSideError("Por favor Seleccionar Una Categoría.");
+        if (isEmpty(golden)) {
+            setClientSideErrorMsg("Por favor Ingrese El Color De Oro.");
         } else {
-            let formData = new FormData();
-
-            formData.append('productImage', productImage);
-            formData.append('productName', productName);
-            formData.append('productCategory', productCategory);
-
-            dispatch(createGolden(formData));
-            setGoldenData({
-                productImage: null,
-                productName: '',
-                productCategory: '',
-            });
+            const data = { golden };
+            dispatch(createGolden(data));
+            setGolden('');
         }
     };
     /****************************
-	 * RENDERER
-	 ***************************/
+     * RENDERER
+     ***************************/
     return (
         <div id="addGoldModal" className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" onClick={handleMessages}>
             <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -96,8 +63,8 @@ const AdminGoldModal = () => {
                             </button>
                         </div>
                         <div className="modal-body my-2">
-                            {clientSideError &&
-                                showErrorMsg(clientSideError)}
+                            {clientSideErrorMsg &&
+                                showErrorMsg(clientSideErrorMsg)}
                             {errorMsg && showErrorMsg(errorMsg)}
                             {successMsg && showSuccessMsg(successMsg)}
 
@@ -110,87 +77,42 @@ const AdminGoldModal = () => {
                                     <div className="container">
                                         <div className="panel panel-default">
                                             <div className="panel-heading">
-                                                <i className='fas fa-camera-retro'></i> IMPORTANTE *:
+                                                <FontAwesomeIcon icon="fa-solid fa-triangle-exclamation" /> IMPORTANTE *:
                                             </div>
                                             <div className="panel-body">
                                                 <fieldset className="col-12 mb-2 border border-secondary">
-                                                    <legend>POR FAVOR TIENES QUE PONER ASI <span><b><code>".png"</code></b></span> Sin Mayuscula.</legend>
-
+                                                    <legend>
+                                                        POR FAVOR TIENES QUE ESCRIBIR ASI
+                                                        <span>
+                                                            <b>
+                                                                <code>
+                                                                    "Con Mayuscula."
+                                                                </code>
+                                                            </b>
+                                                        </span>
+                                                    </legend>
                                                     <div className="panel panel-default">
                                                         <div className="panel-body">
                                                             <div className="row">
                                                                 <div className="col-12 mb-2">
                                                                     <label
-                                                                        htmlFor="addFile"
+                                                                        htmlFor="addGold"
                                                                         className="text-secondary">
-                                                                            <i className="fas fa-upload"></i> Foto C. De Oro. *:
+                                                                        <i className="fas fa-plus-circle"></i> Nombre Color De Oro. *:
                                                                     </label>
-                                                                    <div className="input-group mb-3">
-                                                                        <div className="input-group-prepend">
-                                                                            <span className="input-group-text" id="customFileLang">Subir.</span>
-                                                                        </div>
-                                                                        <div className="custom-file">
-                                                                            <input
-                                                                            type="file"
-                                                                            name='productImage'
-                                                                            onChange={handleGoldenImage}
-                                                                            className="custom-file-input"
-                                                                            id="customFileLang"
-                                                                            aria-describedby="customFileLang"
-                                                                            data-browse="Elegir"
-                                                                            lang="es" />
-                                                                            <label className="custom-file-label" htmlFor="customFileLang" data-browse="Elegir">
-                                                                                <i className="fas fa-upload"></i> Foto C. De Oro. *:
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
+                                                                    <input
+                                                                        type="text"
+                                                                        name='golden'
+                                                                        value={golden}
+                                                                        onChange={handleGoldenChange}
+                                                                        className="form-control"
+                                                                        placeholder="Nombre Color De Oro."
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </fieldset>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-12 mb-2">
-                                                <label
-                                                    htmlFor="addGold"
-                                                    className="text-secondary">
-                                                        <i className="fas fa-plus-circle"></i> Nombre Color De Oro. *:
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name='productName'
-                                                    value={productName}
-                                                    onChange={handleGoldenChange}
-                                                    className="form-control"
-                                                    placeholder="Nombre Color De Oro."
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-12 mb-2">
-                                                <label
-                                                    htmlFor="addCategory"
-                                                    className="text-secondary">
-                                                        <i className="fas fa-plus-circle"></i> Selecciónar Categorías. *:
-                                                </label>
-                                                <select
-                                                name='productCategory'
-                                                onChange={handleGoldenChange}
-                                                className="custom-select mr-sm-2"
-                                                aria-label="Selecciónar Categorías.">
-                                                    <option value="" selected>--- Abrir Este Menú De Selecciónar Categorías ---</option>
-                                                    {categories &&
-                                                        categories.map((c) => (
-                                                        <option
-                                                        key={c._id}
-                                                        value={c._id}>
-                                                            {c.category}
-                                                        </option>
-                                                    ))}
-                                                </select>
                                             </div>
                                         </div>
                                     </div>

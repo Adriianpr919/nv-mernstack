@@ -1,7 +1,6 @@
 import {
-    CREATE_ROCK,
     GET_ROCKS,
-    GET_ROCK,
+    CREATE_ROCK,
     DELETE_ROCK,
 } from '../constants/rockConstants';
 
@@ -19,22 +18,20 @@ if (localStorage.getItem('rocks')) {
 
 const rockReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case CREATE_ROCK:
-            return {
-                rocks: [...state.rocks, action.payload],
-            };
         case GET_ROCKS:
             return {
-                rocks: [...action.payload],
+                ...state,
+                rocks: action.payload,
             };
-        case GET_ROCK:
-			return {
-				rock: action.payload,
-			};
+        case CREATE_ROCK:
+            return {
+                ...state,
+                rocks: [...state.rocks, action.payload],
+            };
         case DELETE_ROCK:
             return {
                 rocks: state.rocks.filter(
-                    r => r._id !== action.payload._id
+                    (r) => r._id !== action.payload._id
                 ),
             };
         default:

@@ -33,10 +33,6 @@ const AdminDashboard = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getProducts());
-    }, [dispatch]);
-
-    useEffect(() => {
         dispatch(getSizeds());
     }, [dispatch]);
 
@@ -46,6 +42,10 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         dispatch(getRocks());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getProducts());
     }, [dispatch]);
 
     return (

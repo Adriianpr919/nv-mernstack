@@ -20,26 +20,14 @@ const AdminSizeViewModal = ({ sized }) => {
                             <tr>
                                 <td className='border border-light bg-light'>
                                     <div className="product-item">
-                                        <a className="product-thumb" href="#!">
-                                            <img
-                                                className='img-fluid w-100 border border-dark img-rounded mx-auto d-block img-thumbnail'
-                                                src={`/uploadsSized/${sized.fileName}`}
-                                                style={{maxWidth: "100px"}}
-                                                alt="Talla."
-                                                title="Talla."
-                                            />
-                                        </a>
                                         <div className="product-info">
                                             <a href="#!">
-                                                <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
-                                                    {sized.productName}
-                                                </h2>
+                                                <b>
+                                                    <h2 className="product-title btn btn-outline-primary btn-sm mr-1 my-1">
+                                                        {sized.sized}
+                                                    </h2>
+                                                </b>
                                             </a>
-                                            <span>
-                                                <em className='text-secondary'>
-                                                    {sized.productCategory}
-                                                </em>
-                                            </span>
                                             <span>
                                                 <em>
                                                     <>
@@ -50,7 +38,7 @@ const AdminSizeViewModal = ({ sized }) => {
                                                                 dispatch(deleteSized(sized._id))
                                                             }
                                                         >
-                                                            <i className='far fa-trash-alt pr-1' style={{fontSize:"20px", color:"red"}} alt="Eliminada" title="Eliminada"></i>
+                                                            <i className='far fa-trash-alt pr-1' style={{ fontSize: "20px", color: "red" }} alt="Eliminada" title="Eliminada"></i>
                                                             Borrar.
                                                         </button>
                                                     </>

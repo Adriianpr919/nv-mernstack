@@ -86,10 +86,7 @@ const AdminActionBtns = () => (
                                         <td>
                                             <div className="col-md-12 my-1">
                                                 <button className="btn btn-outline-success btn-block" data-toggle="modal" data-target="#viewOrdersModal">
-                                                    <i className="fas fa-eye"> 
-                                                        {' '}
-                                                        <h5 className="fontFamilyH6">Ver Pedidos.</h5> 
-                                                    </i>
+                                                    <i className="fas fa-eye"></i><h5 className="fontFamilyH6">Ver Pedidos.</h5>
                                                 </button>
                                             </div>
                                         </td>
